@@ -14,7 +14,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         Button confirm_button = findViewById(R.id.confirm_button);
         EditText username =  findViewById(R.id.username);
         EditText email =  findViewById(R.id.email);
