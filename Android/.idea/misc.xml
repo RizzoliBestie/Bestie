@@ -4,8 +4,10 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/LorenzoArecco/Documents/GitHub/Bestie/Android/app/src/main/res/layout/activity_main.xml" value="0.165625" />
-        <entry key="..\:/Users/RiccardoMarcarini/Documents/GitHub/Bestie/Android/app/src/main/res/layout/activity_log_in.xml" value="0.1793478260869565" />
-        <entry key="..\:/Users/RiccardoMarcarini/Documents/GitHub/Bestie/Android/app/src/main/res/layout/activity_main.xml" value="0.1793478260869565" />
+        <entry key="..\:/Users/LucaFerrari/Documents/GitHub/Bestie/Android/app/src/main/res/layout/activity_curiosity.xml" value="0.2" />
+        <entry key="..\:/Users/LucaFerrari/Documents/GitHub/Bestie/Android/app/src/main/res/layout/activity_log_in.xml" value="0.16666666666666666" />
+        <entry key="..\:/Users/LucaFerrari/Documents/GitHub/Bestie/Android/app/src/main/res/layout/activity_main.xml" value="0.176" />
+        <entry key="..\:/Users/LucaFerrari/Documents/GitHub/Bestie/Android/app/src/main/res/layout/activity_sign.xml" value="0.16666666666666666" />
       </map>
     </option>
   </component>
