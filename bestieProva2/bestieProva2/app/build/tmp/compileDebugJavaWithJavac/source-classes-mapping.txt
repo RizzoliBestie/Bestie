@@ -1,5 +1,0 @@
-com/example/bestieprova2/BuildConfig.java
- com.example.bestieprova2.BuildConfig
-com/example/bestieprova2/MainActivity.java
- com.example.bestieprova2.MainActivity
- com.example.bestieprova2.MainActivity$1
