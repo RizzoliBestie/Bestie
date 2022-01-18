@@ -12,7 +12,10 @@
         android:layout_height="wrap_content"
         android:numColumns="3"
         android:gravity="center"
+        android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
+        android:elevation="2dp"
+        android:background="@color/purple_200"
         />
 
 </RelativeLayout>
