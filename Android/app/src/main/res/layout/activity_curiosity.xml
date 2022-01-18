@@ -6,4 +6,27 @@
     android:layout_height="match_parent"
     tools:context=".CuriosityActivity">
 
+    <EditText
+        android:id="@+id/editTextTextPersonName"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="150dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Name" />
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="750dp"
+        android:layout_marginTop="200dp"/>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:gravity="center"
+        android:textSize="40dp"
+        android:text="CURIOSITY" />
 </RelativeLayout>
