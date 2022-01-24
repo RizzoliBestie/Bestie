@@ -7,14 +7,14 @@
     tools:context=".Activity.CuriosityActivity">
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/searchEditText"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="150dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Name" />
+        android:text="Search by names" />
 
     <ListView
         android:id="@+id/animalWikiListView"
@@ -23,16 +23,17 @@
         android:layout_marginTop="200dp"/>
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/sectionTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:gravity="center"
-        android:textSize="40dp"
-        android:text="CURIOSITY" />
+        android:textStyle="bold|italic"
+        android:text="CURIOSITY"
+        android:textSize="40dp" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/sectionMenuImageView"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginLeft="340dp"
