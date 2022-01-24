@@ -17,6 +17,7 @@
         android:text="Name" />
 
     <ListView
+        android:id="@+id/animalWikiListView"
         android:layout_width="match_parent"
         android:layout_height="750dp"
         android:layout_marginTop="200dp"/>
@@ -29,4 +30,12 @@
         android:gravity="center"
         android:textSize="40dp"
         android:text="CURIOSITY" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="340dp"
+        android:layout_marginTop="145dp"
+        app:srcCompat="@android:drawable/ic_menu_sort_by_size" />
 </RelativeLayout>
