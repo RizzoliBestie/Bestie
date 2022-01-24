@@ -13,22 +13,22 @@
             android:name=".Activity.SettingsActivity"
             android:exported="false" />
         <activity
-            android:name=".Activity.Animale"
+            android:name=".Activity.AnimalActivity"
             android:exported="false" />
         <activity
-            android:name=".Activity.NewPet"
+            android:name=".Activity.NewPetActivity"
             android:exported="false" />
         <activity
-            android:name=".Activity.UpdatePet"
+            android:name=".Activity.UpdatePetActivity"
             android:exported="false" />
         <activity
-            android:name=".Activity.Pet"
+            android:name=".Activity.PetActivity"
             android:exported="false" />
         <activity
-            android:name=".Activity.Home"
+            android:name=".Activity.HomeActivity"
             android:exported="false" />
         <activity
-            android:name=".Activity.Map"
+            android:name=".Activity.MapActivity"
             android:exported="false" />
         <activity
             android:name=".Activity.MainActivity"
