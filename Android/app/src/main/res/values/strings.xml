@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Bestie</string>
+    <string name="toSignUp">You don\'t have any account?\n Sign up here!</string>
 </resources>

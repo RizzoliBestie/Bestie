@@ -49,16 +49,30 @@
         android:textSize="20dp" />
 
     <Button
-        android:id="@+id/confirm_button"
+    android:id="@+id/confirm_button"
+
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/email"
+    android:layout_centerHorizontal="true"
+    android:layout_marginTop="30dp"
+    android:background="@color/teal_700"
+    android:text="Confirm"
+    app:backgroundTint="#354188" />
+
+    <TextView
+        android:id="@+id/sign_up"
 
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/email"
+        android:layout_below="@id/confirm_button"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
         android:background="@color/teal_700"
-        android:text="Confirm"
-        app:backgroundTint="#354188" />
+        android:text="You don't have any account?\n Sign up here!"
+        android:textColor="#0000FF"
+        android:textSize="6dp"
+        app:backgroundTint="#00354188" />
 
 
 
