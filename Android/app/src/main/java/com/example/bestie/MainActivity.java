@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
         String[] vociMenu = new String[]{"Home", "Map", "Curiosità"};
         ListAdapter menuAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1, vociMenu);
         page_select.setAdapter(menuAdapter);
+        //ciao
 
 
     }
