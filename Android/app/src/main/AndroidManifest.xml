@@ -10,37 +10,37 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Bestie">
         <activity
-            android:name=".SettingsActivity"
+            android:name=".Activity.SettingsActivity"
             android:exported="false" />
         <activity
-            android:name=".Animale"
+            android:name=".Activity.Animale"
             android:exported="false" />
         <activity
-            android:name=".NewPet"
+            android:name=".Activity.NewPet"
             android:exported="false" />
         <activity
-            android:name=".UpdatePet"
+            android:name=".Activity.UpdatePet"
             android:exported="false" />
         <activity
-            android:name=".Pet"
+            android:name=".Activity.Pet"
             android:exported="false" />
         <activity
-            android:name=".Home"
+            android:name=".Activity.Home"
             android:exported="false" />
         <activity
-            android:name=".Map"
+            android:name=".Activity.Map"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".Activity.MainActivity"
             android:exported="false" />
         <activity
-            android:name=".CuriosityActivity"
+            android:name=".Activity.CuriosityActivity"
             android:exported="false" />
         <activity
-            android:name=".LogInActivity"
+            android:name=".Activity.LogInActivity"
             android:exported="false" />
         <activity
-            android:name=".SignInActivity"
+            android:name=".Activity.SignInActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

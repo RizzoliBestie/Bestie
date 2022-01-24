@@ -1,17 +1,16 @@
-package com.example.bestie;
+package com.example.bestie.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class LogInActivity extends AppCompatActivity {
+import com.example.bestie.R;
+
+public class NewPetActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_log_in);
-
-
+        setContentView(R.layout.activity_new_pet);
     }
-
 }

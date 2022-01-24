@@ -1,4 +1,4 @@
-package com.example.bestie;
+package com.example.bestie.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.GridView;
 import android.widget.ListAdapter;
+
+import com.example.bestie.R;
 
 public class MainActivity extends AppCompatActivity {
 

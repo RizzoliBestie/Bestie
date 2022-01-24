@@ -1,14 +1,16 @@
-package com.example.bestie;
+package com.example.bestie.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class Animale extends AppCompatActivity {
+import com.example.bestie.R;
+
+public class SettingsActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_animale);
+        setContentView(R.layout.activity_settings);
     }
 }
