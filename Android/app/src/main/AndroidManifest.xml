@@ -10,8 +10,29 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Bestie">
         <activity
+            android:name=".SettingsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Animale"
+            android:exported="false" />
+        <activity
+            android:name=".NewPet"
+            android:exported="false" />
+        <activity
+            android:name=".UpdatePet"
+            android:exported="false" />
+        <activity
+            android:name=".Pet"
+            android:exported="false" />
+        <activity
+            android:name=".Home"
+            android:exported="false" />
+        <activity
+            android:name=".Map"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".CuriosityActivity"
             android:exported="false" />
