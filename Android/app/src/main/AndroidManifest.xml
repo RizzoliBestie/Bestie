@@ -31,9 +31,6 @@
             android:name=".Activity.MapActivity"
             android:exported="false" />
         <activity
-            android:name=".Activity.MainActivity"
-            android:exported="false" />
-        <activity
             android:name=".Activity.CuriosityActivity"
             android:exported="false" />
         <activity
