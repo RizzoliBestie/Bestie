@@ -30,7 +30,8 @@
         android:gravity="center"
         android:text="CURIOSITY"
         android:textSize="20pt"
-        android:textStyle="bold|italic" />
+        android:textStyle="bold|italic"
+        android:typeface="serif" />
 
     <ImageView
         android:id="@+id/sectionMenuImageView"
