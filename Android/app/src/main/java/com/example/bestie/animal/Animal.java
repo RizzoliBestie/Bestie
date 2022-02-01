@@ -5,6 +5,7 @@ public class Animal {
     public String name;
     public String race;
     public String specie;
+    //public String image_url //da mettere dopo
 
     public Animal(String n, String r, String s){
         this.name = n;

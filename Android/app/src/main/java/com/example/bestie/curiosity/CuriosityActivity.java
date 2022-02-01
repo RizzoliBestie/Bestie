@@ -46,7 +46,7 @@ public class CuriosityActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int pos, long l) {
                 Animal p = pap.getItem(pos);
-                Toast.makeText(CuriosityActivity.this, p.name + " " + p.race + " " + p.specie, Toast.LENGTH_LONG).show();
+                Toast.makeText(CuriosityActivity.this, p.name + " " + p.race + " " + p.specie, Toast.LENGTH_SHORT).show();
                 /*
                 Intent intentSA = new Intent(MainActivity.this, SecondActivity.class);
                 intentSA.putExtra("titolo", p.titolo);
