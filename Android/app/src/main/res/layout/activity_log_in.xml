@@ -70,10 +70,12 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
         android:background="@color/teal_700"
-        android:text="You don't have any account?\n Sign up here!"
-        android:textColor="#0000FF"
-        android:textSize="6dp"
-        app:backgroundTint="#00354188" />
+        android:text="@string/toSignUp"
+        android:textColor="#BA57B5"
+        android:textSize="10dp"
+        app:backgroundTint="#00354188"
+        android:textAlignment="center"
+        android:/>
 
 
 
