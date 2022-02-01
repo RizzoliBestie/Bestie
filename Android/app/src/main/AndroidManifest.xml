@@ -25,10 +25,10 @@
             android:name=".pet.PetActivity"
             android:exported="false" />
         <activity
-            android:name="home.HomeActivity"
+            android:name=".home.HomeActivity"
             android:exported="false" />
         <activity
-            android:name="map.MapActivity"
+            android:name=".map.MapActivity"
             android:exported="false" />
         <activity
             android:name=".curiosity.CuriosityActivity"
@@ -43,7 +43,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".registrazione.SignInActivity"
+            android:name=".signin.SignInActivity"
             android:exported="false" >
         </activity>
     </application>
