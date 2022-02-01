@@ -1,4 +1,4 @@
-package com.example.bestie.registrazione;
+package com.example.bestie.signin;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;

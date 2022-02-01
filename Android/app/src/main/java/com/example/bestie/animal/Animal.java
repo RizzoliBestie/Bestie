@@ -1,4 +1,4 @@
-package com.example.bestie.Activity;
+package com.example.bestie.animal;
 
 public class Animal {
     //Classe base per gli animali

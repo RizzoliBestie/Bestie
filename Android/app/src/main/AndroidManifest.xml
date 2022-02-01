@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.bestie">
+    package="com.example.bestie" >
 
     <application
         android:allowBackup="true"
@@ -8,34 +8,34 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Bestie">
+        android:theme="@style/Theme.Bestie" >
         <activity
-            android:name=".Activity.SettingsActivity"
+            android:name=".settings.SettingsActivity"
             android:exported="false" />
         <activity
-            android:name=".Activity.AnimalActivity"
+            android:name=".animal.AnimalActivity"
             android:exported="false" />
         <activity
-            android:name=".Activity.NewPetActivity"
+            android:name=".pet.NewPetActivity"
             android:exported="false" />
         <activity
-            android:name=".Activity.UpdatePetActivity"
+            android:name=".pet.UpdatePetActivity"
             android:exported="false" />
         <activity
-            android:name=".Activity.PetActivity"
+            android:name=".pet.PetActivity"
             android:exported="false" />
         <activity
-            android:name=".Activity.HomeActivity"
+            android:name="home.HomeActivity"
             android:exported="false" />
         <activity
-            android:name=".Activity.MapActivity"
+            android:name="map.MapActivity"
             android:exported="false" />
         <activity
-            android:name=".Activity.CuriosityActivity"
+            android:name=".curiosity.CuriosityActivity"
             android:exported="false" />
         <activity
             android:name=".login.LogInActivity"
-            android:exported="true">
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -44,7 +44,7 @@
         </activity>
         <activity
             android:name=".registrazione.SignInActivity"
-            android:exported="false">
+            android:exported="false" >
         </activity>
     </application>
 

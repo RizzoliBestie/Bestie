@@ -1,4 +1,4 @@
-package com.example.bestie.Activity;
+package com.example.bestie.home;
 
 import androidx.appcompat.app.AppCompatActivity;
 

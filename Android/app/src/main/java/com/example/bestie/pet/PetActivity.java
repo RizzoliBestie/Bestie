@@ -1,4 +1,4 @@
-package com.example.bestie.Activity;
+package com.example.bestie.pet;
 
 import androidx.appcompat.app.AppCompatActivity;
 
