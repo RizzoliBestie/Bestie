@@ -1,4 +1,4 @@
-package com.example.bestie.Activity;
+package com.example.bestie.registrazione;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;

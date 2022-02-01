@@ -34,7 +34,7 @@
             android:name=".Activity.CuriosityActivity"
             android:exported="false" />
         <activity
-            android:name=".Activity.LogInActivity"
+            android:name=".login.LogInActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -43,7 +43,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Activity.SignInActivity"
+            android:name=".registrazione.SignInActivity"
             android:exported="false">
         </activity>
     </application>
