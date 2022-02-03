@@ -19,6 +19,9 @@ import com.example.bestie.R;
 import com.example.bestie.animal.Animal;
 import com.example.bestie.animal.AnimalArrayAdapter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class CuriosityActivity extends AppCompatActivity {
 
     ListView animalWikiListView = null;
@@ -37,19 +40,22 @@ public class CuriosityActivity extends AppCompatActivity {
         sectionTextView = findViewById(R.id.sectionTextView);
         searchEditText = findViewById(R.id.searchEditText);
 
-        Animal[] animals = new Animal[] {
-                new Animal("Volpe", "Fennec", "Vulpes Zerda"),
-                new Animal("Nittereute", "Cane Procione", "Nyctereutes procyonoides"),
-                new Animal("Volpe", "Volpe Rossa", "Vulpes Vulpes"),
-                new Animal("Urocioni", "Volpe Grigia", "Urocyon"),
-                new Animal("Volpe", "Volpe Americana", "Vulpes Velox"),
-                new Animal("Otocione", "Otycion", "Otycion megalotis")
+        List<Animal> animals = new ArrayList<Animal>();
+        animals.add(new Animal("Volpe", "Fennec", "Vulpes Zerda"));
+        animals.add(new Animal("Nittereute", "Cane Procione", "Nyctereutes procyonoides"));
+        animals.add(new Animal("Volpe", "Volpe Rossa", "Vulpes Vulpes"));
+        animals.add(new Animal("Urocioni", "Volpe Grigia", "Urocyon"));
+        animals.add(new Animal("Volpe", "Volpe Americana", "Vulpes Velox"));
+        animals.add(new Animal("Otocione", "Otycion", "Otycion megalotis"));
 
-        };
+        //Copia utilizzata per la ricerca
+        ArrayList<Animal> animalsSearchList = (ArrayList<Animal>) animals;
 
         //Crea l'arrayadapter, fa riferimento al row animal con la lista
         AnimalArrayAdapter animalAdapter = new AnimalArrayAdapter(this, R.layout.row_animal, animals);
         animalWikiListView.setAdapter(animalAdapter);
+        AnimalArrayAdapter animalSearchAdapter = new AnimalArrayAdapter(this, R.layout.row_animal, animalsSearchList);
+        //animalWikiListView.setAdapter(animalSearchAdapter);
 
         //Abilita filtro per i contenuti della ListView
         animalWikiListView.setTextFilterEnabled(true);
@@ -75,7 +81,9 @@ public class CuriosityActivity extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 //Al cambiamento dell'editText aggiorna la lista
-                animalAdapter.getFilter().filter(charSequence.toString());
+                //animalAdapter.getFilter().filter(charSequence.toString());
+
+
             }
 
             @Override

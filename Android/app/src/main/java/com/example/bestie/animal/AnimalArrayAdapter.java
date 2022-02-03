@@ -28,12 +28,12 @@ public class AnimalArrayAdapter extends ArrayAdapter<Animal> {
         TextView specieTextView;
     }
 
-    public AnimalArrayAdapter(@NonNull Context context, int resource, @NonNull Animal[] objects) {
+    public AnimalArrayAdapter(@NonNull Context context, int resource, @NonNull List<Animal> objects) {
         super(context, resource, objects);
         ctx = context;
         res = resource;
-        for (int i = 0; i < objects.length; i++){
-            dati.add(objects[i]);
+        for (int i = 0; i < objects.size(); i++){
+            dati.add(objects.get(i));
         }
     }
 
