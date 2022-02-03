@@ -20,7 +20,7 @@
         android:id="@+id/animalWikiListView"
         android:layout_width="match_parent"
         android:layout_height="760pt"
-        android:layout_marginTop="125pt"/>
+        android:layout_marginTop="125pt" />
 
     <TextView
         android:id="@+id/sectionTextView"

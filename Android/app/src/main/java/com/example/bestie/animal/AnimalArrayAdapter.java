@@ -59,7 +59,7 @@ public class AnimalArrayAdapter extends ArrayAdapter<Animal> {
 
         Animal p = getItem(position);
 
-        vh.animalImageView.setImageResource(R.drawable.volpe); //Fa solo la volpe come immagine
+        vh.animalImageView.setImageResource(R.drawable.volpe); //Fa solo la volpe come immagine per ora
         vh.nameTextView.setText(p.name);
         vh.raceTextView.setText(p.race);
         vh.specieTextView.setText(p.specie);
