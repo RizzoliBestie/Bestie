@@ -12,13 +12,74 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
--- L’esportazione dei dati non era selezionata.
 
--- L’esportazione dei dati non era selezionata.
+-- Dump della struttura del database Bestie
+CREATE DATABASE IF NOT EXISTS `Bestie` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `Bestie`;
 
--- L’esportazione dei dati non era selezionata.
+-- Dump della struttura di tabella Bestie.Pet
+CREATE TABLE IF NOT EXISTS `Pet` (
+  `id_pet` int NOT NULL,
+  `id_user` int NOT NULL,
+  `id_race` int NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `birthdate` date DEFAULT NULL,
+  `gender` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`id_pet`),
+  KEY `id_user_PET` (`id_user`),
+  KEY `id_race_PET` (`id_race`),
+  CONSTRAINT `id_race_PET` FOREIGN KEY (`id_race`) REFERENCES `Race` (`id_race`),
+  CONSTRAINT `id_user_PET` FOREIGN KEY (`id_user`) REFERENCES `User` (`id_user`) ON DELETE RESTRICT ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- L’esportazione dei dati non era selezionata.
+-- Dump dei dati della tabella Bestie.Pet: ~0 rows (circa)
+/*!40000 ALTER TABLE `Pet` DISABLE KEYS */;
+/*!40000 ALTER TABLE `Pet` ENABLE KEYS */;
+
+-- Dump della struttura di tabella Bestie.Race
+CREATE TABLE IF NOT EXISTS `Race` (
+  `id_race` int NOT NULL AUTO_INCREMENT,
+  `id_specie` int NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `information` varchar(50) NOT NULL,
+  `size` varchar(50) NOT NULL,
+  `fur_type` varchar(50) NOT NULL,
+  PRIMARY KEY (`id_race`),
+  KEY `id_specie_RACE` (`id_specie`),
+  CONSTRAINT `id_specie_RACE` FOREIGN KEY (`id_specie`) REFERENCES `Specie` (`id_specie`) ON DELETE RESTRICT ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- Dump dei dati della tabella Bestie.Race: ~0 rows (circa)
+/*!40000 ALTER TABLE `Race` DISABLE KEYS */;
+/*!40000 ALTER TABLE `Race` ENABLE KEYS */;
+
+-- Dump della struttura di tabella Bestie.Specie
+CREATE TABLE IF NOT EXISTS `Specie` (
+  `id_specie` int NOT NULL AUTO_INCREMENT,
+  `common_name` varchar(50) NOT NULL,
+  `scientific_name` varchar(50) NOT NULL,
+  PRIMARY KEY (`id_specie`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- Dump dei dati della tabella Bestie.Specie: ~0 rows (circa)
+/*!40000 ALTER TABLE `Specie` DISABLE KEYS */;
+/*!40000 ALTER TABLE `Specie` ENABLE KEYS */;
+
+-- Dump della struttura di tabella Bestie.User
+CREATE TABLE IF NOT EXISTS `User` (
+  `id_user` int NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `password` varchar(50) NOT NULL,
+  `phone_number` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`id_user`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- Dump dei dati della tabella Bestie.User: ~1 rows (circa)
+/*!40000 ALTER TABLE `User` DISABLE KEYS */;
+REPLACE INTO `User` (`id_user`, `username`, `email`, `password`, `phone_number`) VALUES
+	(1, 'mike', 'mike@', '1239', NULL);
+/*!40000 ALTER TABLE `User` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IFNULL(@OLD_FOREIGN_KEY_CHECKS, 1) */;
