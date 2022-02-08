@@ -14,10 +14,6 @@
             android:exported="false" >
         </activity>
         <activity
-            android:name=".animal.AnimalActivity"
-            android:exported="false" >
-        </activity>
-        <activity
             android:name=".pet.NewPetActivity"
             android:exported="false" >
         </activity>
@@ -49,7 +45,6 @@
         <activity
             android:name=".login.LogInActivity"
             android:exported="false" >
-
         </activity>
         <activity
             android:name=".signin.SignInActivity"
