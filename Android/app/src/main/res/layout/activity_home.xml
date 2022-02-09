@@ -40,4 +40,36 @@
         android:layout_marginRight="15dp"
         android:background="@drawable/settings_profilo">
     </Button>
+
+    <Button
+        android:id="@+id/menu_button"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="15dp"
+        android:background="@drawable/menu_button">
+    </Button>
+
+    <TextView
+        android:id="@+id/testoPet"
+        android:layout_below="@+id/homeImage"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_marginTop="-20dp"
+        android:layout_centerHorizontal="true"
+        android:text="\n\nIl tuo primo Pet!"
+        android:background="@drawable/text_view_home"
+        android:textAlignment="center"
+        />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/homeImage"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/doggo"
+        android:layout_below="@+id/header_title"
+        android:layout_marginTop="40dp"
+        android:layout_centerHorizontal="true"
+        />
 </RelativeLayout>
