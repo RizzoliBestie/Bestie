@@ -11,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Bestie" >
         <activity
-            android:name=".settings.SettingsActivity"
+            android:name=".curiosity.CuriosityActivity"
             android:exported="false" >
         </activity>
         <activity
@@ -35,17 +35,19 @@
             android:exported="false" >
         </activity>
         <activity
-            android:name=".curiosity.CuriosityActivity"
+            android:name=".settings.SettingsActivity"
+            android:label="Settings"
+            android:parentActivityName=".home.HomeActivity"
+            android:exported="false" >
+        </activity>
+        <activity
+            android:name=".login.LogInActivity"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity
-            android:name=".login.LogInActivity"
-            android:exported="false" >
         </activity>
         <activity
             android:name=".signin.SignInActivity"
