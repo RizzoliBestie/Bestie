@@ -41,12 +41,12 @@ public class CuriosityActivity extends AppCompatActivity {
         searchEditText = findViewById(R.id.searchEditText);
 
         List<Animal> animals = new ArrayList<Animal>();
-        animals.add(new Animal("Volpe", "Fennec", "Vulpes Zerda"));
-        animals.add(new Animal("Nittereute", "Cane Procione", "Nyctereutes procyonoides"));
-        animals.add(new Animal("Volpe", "Volpe Rossa", "Vulpes Vulpes"));
-        animals.add(new Animal("Urocioni", "Volpe Grigia", "Urocyon"));
-        animals.add(new Animal("Volpe", "Volpe Americana", "Vulpes Velox"));
-        animals.add(new Animal("Otocione", "Otycion", "Otycion megalotis"));
+        animals.add(new Animal("Volpe", "Fennec", "Vulpes Zerda", "https://www.parmadaily.it/wp-content/uploads/2016/09/fennec.jpg"));
+        animals.add(new Animal("Nittereute", "Cane Procione", "Nyctereutes procyonoides", "https://upload.wikimedia.org/wikipedia/commons/8/85/Der_Marderhund%2C_Tanuki_oder_Enok_%28Nyctereutes_procyonoides%29%2C_bitte_nicht_zu_verwechseln_mit_einem_Waschb%C3%A4r%2C_hier_im_Wisentgehege_in_Springe_%28Kleiner_Deister%29.jpg"));
+        animals.add(new Animal("Volpe", "Volpe Rossa", "Vulpes Vulpes", "https://www.giornaletrentino.it/image/contentid/policy:1.2991162:1631209711/image%20(3).jpg?f=3x2&w=299&$p$f$w=c5a262c"));
+        animals.add(new Animal("Urocioni", "Volpe Grigia", "Urocyon", "https://static.kodami.it/wp-content/uploads/sites/31/2021/05/iStock-1264712034-638x425.jpg"));
+        animals.add(new Animal("Volpe", "Volpe Americana", "Vulpes Velox", "https://upload.wikimedia.org/wikipedia/commons/2/2a/Vulpes_velox.jpg"));
+        animals.add(new Animal("Otocione", "Otycion", "Otycion megalotis", "https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Bandit_%2835877900754%29.jpg/220px-Bandit_%2835877900754%29.jpg"));
 
         //Copia utilizzata per la ricerca
         ArrayList<Animal> animalsSearchList = (ArrayList<Animal>) animals;
@@ -81,7 +81,7 @@ public class CuriosityActivity extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 //Al cambiamento dell'editText aggiorna la lista
-                //animalAdapter.getFilter().filter(charSequence.toString());
+                animalAdapter.getFilter().filter(charSequence.toString());
 
 
             }
