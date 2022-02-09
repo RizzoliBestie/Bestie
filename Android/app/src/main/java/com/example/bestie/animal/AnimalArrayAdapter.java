@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Filter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -18,11 +19,13 @@ import com.example.bestie.curiosity.CuriosityActivity;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class AnimalArrayAdapter extends ArrayAdapter<Animal> {
     Context ctx = null;
     int res = 0;
     ArrayList<Animal> dati = new ArrayList<>();
+    private Filter filter;
 
     static class ViewHolder {
         ImageView animalImageView;
@@ -75,5 +78,61 @@ public class AnimalArrayAdapter extends ArrayAdapter<Animal> {
         vh.specieTextView.setText(p.specie);
 
         return convertView;
+    }
+
+    @Override
+    public Filter getFilter() {
+        if (filter == null)
+            filter = new AppFilter(dati);
+        return filter;
+    }
+
+    private class AppFilter extends Filter {
+
+        private ArrayList<Animal> sourceObjects;
+
+        public AppFilter(List<Animal> objects) {
+            sourceObjects = new ArrayList<Animal>();
+            synchronized (this) {
+                sourceObjects.addAll(objects);
+            }
+        }
+
+        @Override
+        protected FilterResults performFiltering(CharSequence chars) {
+            String filterSeq = chars.toString().toLowerCase();
+            FilterResults result = new FilterResults();
+            if (filterSeq != null && filterSeq.length() > 0) {
+                ArrayList<Animal> filter = new ArrayList<Animal>();
+
+                for (Animal object : sourceObjects) {
+                    // the filtering itself:
+                    if (object.name.toLowerCase().contains(filterSeq))
+                        filter.add(object);
+                }
+                result.count = filter.size();
+                result.values = filter;
+            } else {
+                // add all objects
+                synchronized (this) {
+                    result.values = sourceObjects;
+                    result.count = sourceObjects.size();
+                }
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected void publishResults(CharSequence constraint,
+                                      FilterResults results) {
+            // NOTE: this function is *always* called from the UI thread.
+            ArrayList<Animal> filtered = (ArrayList<Animal>) results.values;
+            notifyDataSetChanged();
+            clear();
+            for (int i = 0, l = filtered.size(); i < l; i++)
+                add((Animal) filtered.get(i));
+            notifyDataSetInvalidated();
+        }
     }
 }

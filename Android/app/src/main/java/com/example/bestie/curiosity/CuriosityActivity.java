@@ -54,7 +54,7 @@ public class CuriosityActivity extends AppCompatActivity {
         //Crea l'arrayadapter, fa riferimento al row animal con la lista
         AnimalArrayAdapter animalAdapter = new AnimalArrayAdapter(this, R.layout.row_animal, animals);
         animalWikiListView.setAdapter(animalAdapter);
-        AnimalArrayAdapter animalSearchAdapter = new AnimalArrayAdapter(this, R.layout.row_animal, animalsSearchList);
+        //AnimalArrayAdapter animalSearchAdapter = new AnimalArrayAdapter(this, R.layout.row_animal, animalsSearchList);
         //animalWikiListView.setAdapter(animalSearchAdapter);
 
         //Abilita filtro per i contenuti della ListView
