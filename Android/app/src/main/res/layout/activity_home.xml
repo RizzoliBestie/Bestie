@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".home.HomeActivity">
+    tools:context=".home.HomeActivity"
+    android:background="@drawable/sfondo_home"
+    >
 
     <GridView
         android:id="@+id/page_select"
@@ -12,24 +14,26 @@
         android:layout_height="wrap_content"
         android:numColumns="3"
         android:gravity="center"
+        android:textAlignment="center"
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
         android:elevation="2dp"
         android:background="#FA2CCA6C"
         />
+
     <TextView
         android:id="@+id/header_title"
         android:layout_width="match_parent"
         android:layout_height="80dp"
+        android:layout_gravity="center_horizontal"
         android:background="#FA2CCA6C"
         android:fontFamily="Georgia, Verdana, Times new Romans"
+        android:paddingVertical="10dp"
         android:text="Pet a Pet!"
         android:textAlignment="center"
         android:textColor="#07610B"
-        android:textStyle="bold"
-        android:paddingVertical="10dp"
-        android:textSize="40dp">
-    </TextView>
+        android:textSize="40dp"
+        android:textStyle="bold"></TextView>
     <Button
         android:id="@+id/addPetButton"
         android:layout_width="38dp"
@@ -46,7 +50,7 @@
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="20dp"
         android:layout_marginLeft="15dp"
         android:background="@drawable/menu_pet">
     </Button>
@@ -58,10 +62,10 @@
         android:layout_height="300dp"
         android:layout_marginTop="-20dp"
         android:layout_centerHorizontal="true"
-        android:text="\n\nIl tuo primo Pet!"
+        android:text="\n\nPaoloCanoneNelCazzoDiBlocco"
         android:background="@drawable/text_view_home"
         android:textAlignment="center"
-        />
+        android:layout_gravity="center_horizontal" />
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/homeImage"
@@ -72,4 +76,7 @@
         android:layout_marginTop="40dp"
         android:layout_centerHorizontal="true"
         />
+
+
+
 </RelativeLayout>
