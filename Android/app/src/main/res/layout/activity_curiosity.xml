@@ -8,7 +8,7 @@
 
     <EditText
         android:id="@+id/searchEditText"
-        android:layout_width="135pt"
+        android:layout_width="125pt"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10pt"
         android:layout_marginTop="100pt"
@@ -40,5 +40,13 @@
         android:layout_marginLeft="0pt"
         android:layout_marginTop="100pt"
         android:layout_toRightOf="@+id/searchEditText"
-        app:srcCompat="@android:drawable/ic_menu_sort_by_size" />
+        app:srcCompat="@android:drawable/ic_menu_sort_by_size"
+        android:visibility="invisible"/>
+
+    <Spinner
+        android:id="@+id/sectionMenuSpinner"
+        android:layout_width="150pt"
+        android:layout_height="20pt"
+        android:layout_marginLeft="135pt"
+        android:layout_marginTop="100pt" />
 </RelativeLayout>

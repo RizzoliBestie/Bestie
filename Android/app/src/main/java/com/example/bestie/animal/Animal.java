@@ -5,21 +5,24 @@ public class Animal {
     public String name;
     public String race;
     public String specie;
-    public String image_url; //da mettere dopo
+    public String section;
+    public String image_url;
 
     //Senza Immagine
-    public Animal(String n, String r, String s){
+    public Animal(String n, String r, String s, String sec){
         this.name = n;
         this.race = r;
         this.specie = s;
+        this.section = sec;
         this.image_url = null;
     }
 
     //Con Immagine
-    public Animal(String n, String r, String s, String url){
+    public Animal(String n, String r, String s, String sec, String url){
         this.name = n;
         this.race = r;
         this.specie = s;
+        this.section = sec;
         this.image_url = url;
     }
 }
