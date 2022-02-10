@@ -9,12 +9,15 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.AdapterView;
 import android.widget.Switch;
+import android.widget.TextView;
 
 import com.example.bestie.R;
 
 public class SettingsActivity extends AppCompatActivity {
 
     private int items_number = 3;
+    TextView textView_1 = null;
+    TextView textView_2 = null;
     ListView listView = null;
     Switch aSwitch = null;
     Button button = null;
@@ -24,6 +27,8 @@ public class SettingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
+        textView_1 = findViewById(R.id.title_1);
+        textView_2 = findViewById(R.id.title_2);
         listView = findViewById(R.id.listView);
         aSwitch = findViewById(R.id.aSwitch);
         button = findViewById(R.id.button);

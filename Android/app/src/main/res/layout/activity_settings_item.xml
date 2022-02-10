@@ -7,6 +7,7 @@
     <TextView
         android:id="@+id/text_id"
         android:layout_width="match_parent"
+        android:textColor="@color/teal_200"
         android:textSize="17dp"
         android:layout_height="30dp"
         android:layout_marginTop="10dp"
@@ -15,6 +16,7 @@
     <TextView
         android:id="@+id/summary_id"
         android:layout_width="match_parent"
+        android:textColor="@color/teal_200"
         android:textSize="15dp"
         android:layout_height="20dp"
         android:layout_marginLeft="75dp"

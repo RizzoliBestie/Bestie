@@ -4,21 +4,45 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#293133"
     tools:context=".settings.SettingsActivity">
+
+    <TextView
+        android:id="@+id/title_1"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:background="@drawable/lines"
+        android:text="Profile"
+        android:textColor="@color/purple_200"
+        android:layout_marginTop="10dp"
+        android:textAlignment="center"
+        android:textSize="20dp" />
 
     <ListView
         android:id="@+id/listView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/title_1" />
+
+    <TextView
+        android:id="@+id/title_2"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_below="@id/listView"
+        android:background="@drawable/lines"
+        android:text="App"
+        android:textColor="@color/purple_200"
+        android:textAlignment="center"
+        android:textSize="20dp" />
 
     <Switch
         android:id="@+id/aSwitch"
         android:layout_width="match_parent"
         android:layout_height="65dp"
-        android:background="@drawable/lines"
         android:textSize="17dp"
-        android:textColor="#808080"
-        android:layout_below="@id/listView"
+        android:textColor="@color/teal_200"
+        android:layout_below="@id/title_2"
+        android:layout_marginTop="10dp"
         android:textAlignment="center"
         android:text="Enable/Disable notifications" />
 
