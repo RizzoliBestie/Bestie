@@ -11,21 +11,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Bestie">
-        <activity>
+        <activity
             android:name=".curiosity.CuriosityActivity"
-            android:exported="true" />
+            android:exported="false" >
+        </activity>
+        <activity
+            android:name=".API.buttareActivity"
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".API.buttareActivity"
-            android:exported="false" />
-        <activity
-            android:name=".settings.SettingsActivity"
-            android:exported="false"></activity>
         <activity
             android:name=".pet.NewPetActivity"
             android:exported="false"></activity>
@@ -49,14 +47,10 @@
         </activity>
         <activity
             android:name=".login.LogInActivity"
-            android:exported="false" />
-            <activity
-            android:name=".curiosity.CuriosityActivity"
-            android:exported="false">
+            android:exported="false" >
+
+
         </activity>
-        <activity
-            android:name=".login.LogInActivity"
-            android:exported="false"></activity>
         <activity
             android:name=".signin.SignInActivity"
             android:exported="false"></activity>
