@@ -44,6 +44,7 @@ public class CuriosityActivity extends AppCompatActivity {
         searchEditText = findViewById(R.id.searchEditText);
         sectionMenuSpinner = findViewById(R.id.sectionMenuSpinner);
 
+        //Input degli animali qui
         List<Animal> animals = new ArrayList<Animal>();
         animals.add(new Animal("Volpe", "Fennec", "Vulpes Zerda", "WILD", "https://www.parmadaily.it/wp-content/uploads/2016/09/fennec.jpg"));
         animals.add(new Animal("Nittereute", "Cane Procione", "Nyctereutes procyonoides", "WILD", "https://upload.wikimedia.org/wikipedia/commons/8/85/Der_Marderhund%2C_Tanuki_oder_Enok_%28Nyctereutes_procyonoides%29%2C_bitte_nicht_zu_verwechseln_mit_einem_Waschb%C3%A4r%2C_hier_im_Wisentgehege_in_Springe_%28Kleiner_Deister%29.jpg"));
@@ -51,9 +52,29 @@ public class CuriosityActivity extends AppCompatActivity {
         animals.add(new Animal("Urocioni", "Volpe Grigia", "Urocyon", "WILD","https://static.kodami.it/wp-content/uploads/sites/31/2021/05/iStock-1264712034-638x425.jpg"));
         animals.add(new Animal("Volpe", "Volpe Americana", "Vulpes Velox", "WILD","https://upload.wikimedia.org/wikipedia/commons/2/2a/Vulpes_velox.jpg"));
         animals.add(new Animal("Otocione", "Otycion", "Otycion megalotis", "WILD","https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Bandit_%2835877900754%29.jpg/220px-Bandit_%2835877900754%29.jpg"));
+        animals.add(new Animal("Gallina", "Gallus", "Gallus gallus domesticus", "FARM","https://www.tuttosullegalline.it/newsite/wp-content/uploads/2019/01/gallina-Brucie-4.jpg"));
 
-        //Copia utilizzata per la ricerca
-        ArrayList<Animal> animalsSearchList = (ArrayList<Animal>) animals;
+        List<Animal> animalsWildList = new ArrayList<Animal>();
+        for(int wild=0; wild<animals.size(); wild++){
+            if(animals.get(wild).section == "WILD"){
+                animalsWildList.add(animals.get(wild));
+            }
+        }
+
+        List<Animal> animalsFarmList = new ArrayList<Animal>();
+        for(int farm=0; farm<animals.size(); farm++){
+            if(animals.get(farm).section == "FARM"){
+                animalsFarmList.add(animals.get(farm));
+            }
+        }
+
+        List<Animal> animalsPetsList = new ArrayList<Animal>();
+        for(int pets=0; pets<animals.size(); pets++){
+            if(animals.get(pets).section == "PETS"){
+                animalsPetsList.add(animals.get(pets));
+            }
+        }
+
 
         //Crea l'arrayadapter, fa riferimento al row animal con la lista
         AnimalArrayAdapter animalAdapter = new AnimalArrayAdapter(this, R.layout.row_animal, animals);
@@ -109,11 +130,7 @@ public class CuriosityActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 Toast.makeText(getApplicationContext(), spinnerAdapter.getItem(i).toString(), Toast.LENGTH_SHORT).show();
-               /* for(int k=0; k<SectionString.length; k++){
-                    if(SectionString[i] == spinnerAdapter.getItem(k).toString()){
-                        sectionTextView.setText(spinnerAdapter.getItem(k).toString());
-                    }
-                } */
+                sectionTextView.setText(sectionMenuSpinner.getSelectedItem().toString());
             }
 
             @Override

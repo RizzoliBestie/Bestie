@@ -2,8 +2,8 @@
     <string name="app_name">Bestie</string>
     <string name="toSignUp">You don\'t have any account?\n Sign up here!</string>
     <string-array name="curiosity_sections">
-        <item>PETS</item>
-        <item>FARM</item>
         <item>WILD</item>
+        <item>FARM</item>
+        <item>PETS</item>
     </string-array>
 </resources>

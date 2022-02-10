@@ -12,7 +12,12 @@
         android:theme="@style/Theme.Bestie" >
         <activity
             android:name=".curiosity.CuriosityActivity"
-            android:exported="false" >
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".pet.NewPetActivity"
@@ -42,12 +47,8 @@
         </activity>
         <activity
             android:name=".login.LogInActivity"
-            android:exported="true" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            android:exported="false" >
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".signin.SignInActivity"
