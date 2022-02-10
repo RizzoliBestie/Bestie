@@ -25,4 +25,9 @@ public class Animal {
         this.section = sec;
         this.image_url = url;
     }
+
+    @Override
+    public String toString() {
+        return name + ' ' + race + ' ' + specie + ' '+ section;
+    }
 }

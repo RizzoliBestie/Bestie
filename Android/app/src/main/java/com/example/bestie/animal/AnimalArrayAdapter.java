@@ -62,7 +62,7 @@ public class AnimalArrayAdapter extends ArrayAdapter<Animal> {
 
             if(p.image_url != null) {
                 String urlImgS = p.image_url;
-                new AnimalDownloadImage(vh.animalImageView).execute(urlImgS);
+                (new AnimalDownloadImage(ctx, p.image_url, vh.animalImageView)).execute();
             } else {
                 vh.animalImageView.setImageResource(R.drawable.volpe); //Fa solo l'immagine della volpe
             }
@@ -87,12 +87,12 @@ public class AnimalArrayAdapter extends ArrayAdapter<Animal> {
         return filter;
     }
 
-    private class AppFilter extends Filter {
+    private class AppFilter<T> extends Filter {
 
-        private ArrayList<Animal> sourceObjects;
+        private ArrayList<T> sourceObjects;
 
-        public AppFilter(List<Animal> objects) {
-            sourceObjects = new ArrayList<Animal>();
+        public AppFilter(List<T> objects) {
+            sourceObjects = new ArrayList<T>();
             synchronized (this) {
                 sourceObjects.addAll(objects);
             }
@@ -103,11 +103,12 @@ public class AnimalArrayAdapter extends ArrayAdapter<Animal> {
             String filterSeq = chars.toString().toLowerCase();
             FilterResults result = new FilterResults();
             if (filterSeq != null && filterSeq.length() > 0) {
-                ArrayList<Animal> filter = new ArrayList<Animal>();
+                ArrayList<T> filter = new ArrayList<T>();
 
-                for (Animal object : sourceObjects) {
+                for (T object : sourceObjects) {
                     // the filtering itself:
-                    if (object.name.toLowerCase().contains(filterSeq)){
+                    String temp = object.toString().toLowerCase();
+                    if (temp.contains(filterSeq)){
                         filter.add(object);
                     }
                 }
@@ -128,11 +129,11 @@ public class AnimalArrayAdapter extends ArrayAdapter<Animal> {
         protected void publishResults(CharSequence constraint,
                                       FilterResults results) {
             // NOTE: this function is *always* called from the UI thread.
-            ArrayList<Animal> filtered = (ArrayList<Animal>) results.values;
+            ArrayList<T> filtered = (ArrayList<T>) results.values;
             notifyDataSetChanged();
             clear();
             for (int i = 0, l = filtered.size(); i < l; i++){
-                add((Animal) filtered.get(i));
+                add((Animal)filtered.get(i));
             }
             notifyDataSetInvalidated();
         }

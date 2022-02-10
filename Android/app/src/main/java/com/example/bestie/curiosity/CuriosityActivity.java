@@ -105,13 +105,12 @@ public class CuriosityActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                //Ogni cambiamento aggiorna la lista attraverso questi metodi(in questo caso aggiorna soprattutto le immagini)
-                animalAdapter.clear();
-                animalAdapter.notifyDataSetInvalidated();
-                animalAdapter.notifyDataSetChanged();
                 //Al cambiamento dell'editText aggiorna la lista
                 animalAdapter.getFilter().filter(charSequence.toString());
-
+                //Ogni cambiamento aggiorna la lista attraverso questi metodi(in questo caso aggiorna soprattutto le immagini)
+                animalAdapter.clear();
+                //animalAdapter.notifyDataSetInvalidated();
+                animalAdapter.notifyDataSetChanged();
             }
 
             @Override
