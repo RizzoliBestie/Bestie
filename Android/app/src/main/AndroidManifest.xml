@@ -12,6 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Bestie">
         <activity
+            android:name=".settings.ChangePasswordActivity"
+            android:label="Change password"
+            android:parentActivityName=".settings.SettingsActivity"
+            android:exported="false" >
+        </activity>
+        <activity
             android:name=".curiosity.CuriosityActivity"
             android:exported="false" >
         </activity>
@@ -41,9 +47,9 @@
             android:exported="false"></activity>
         <activity
             android:name=".settings.SettingsActivity"
+            android:exported="false"
             android:label="Settings"
-            android:parentActivityName=".home.HomeActivity"
-            android:exported="false" >
+            android:parentActivityName=".home.HomeActivity" >
         </activity>
         <activity
             android:name=".login.LogInActivity"

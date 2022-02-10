@@ -42,7 +42,7 @@ public class SettingsActivity extends AppCompatActivity {
         /* Cablaggio provvisorio dei dati che dovranno essere ottenuti dal db */
         items[0] = new Item("Username","...");
         items[1] = new Item("E-mail","...");
-        items[2] = new Item("Change password","...");
+        items[2] = new Item("Change password","");
         /* Cablaggio provvisorio dei dati che dovranno essere ottenuti dal db */
 
         ItemListAdapter itemListAdapter = new ItemListAdapter(this, R.layout.activity_settings_item, items);
@@ -51,29 +51,34 @@ public class SettingsActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int pos, long l) {
-                AlertDialog.Builder alert = new AlertDialog.Builder(SettingsActivity.this);
+                if(pos == 2){
+                    Intent openCPA = new Intent(SettingsActivity.this,ChangePasswordActivity.class);
+                    startActivity(openCPA);
+                }
+                else {
+                    AlertDialog.Builder alert = new AlertDialog.Builder(SettingsActivity.this);
 
-                alert.setTitle("Settings");
-                alert.setMessage(items[pos].getText());
+                    alert.setTitle("Settings");
+                    alert.setMessage(items[pos].getText());
 
-                // Set an EditText view to get user input
-                final EditText input = new EditText(SettingsActivity.this);
-                alert.setView(input);
+                    final EditText input = new EditText(SettingsActivity.this);
+                    alert.setView(input);
 
-                alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int whichButton) {
-                        Editable value = input.getText();
-                        // Do something with value!
-                    }
-                });
+                    alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int whichButton) {
+                            Editable value = input.getText();
+                            // Do something with value!
+                        }
+                    });
 
-                alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int whichButton) {
-                        // Canceled.
-                    }
-                });
+                    alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int whichButton) {
+                            // Canceled.
+                        }
+                    });
 
-                alert.show();
+                    alert.show();
+                }
             }
         });
 
