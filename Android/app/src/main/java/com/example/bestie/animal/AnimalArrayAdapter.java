@@ -107,8 +107,9 @@ public class AnimalArrayAdapter extends ArrayAdapter<Animal> {
 
                 for (Animal object : sourceObjects) {
                     // the filtering itself:
-                    if (object.name.toLowerCase().contains(filterSeq))
+                    if (object.name.toLowerCase().contains(filterSeq)){
                         filter.add(object);
+                    }
                 }
                 result.count = filter.size();
                 result.values = filter;
@@ -130,8 +131,9 @@ public class AnimalArrayAdapter extends ArrayAdapter<Animal> {
             ArrayList<Animal> filtered = (ArrayList<Animal>) results.values;
             notifyDataSetChanged();
             clear();
-            for (int i = 0, l = filtered.size(); i < l; i++)
+            for (int i = 0, l = filtered.size(); i < l; i++){
                 add((Animal) filtered.get(i));
+            }
             notifyDataSetInvalidated();
         }
     }
