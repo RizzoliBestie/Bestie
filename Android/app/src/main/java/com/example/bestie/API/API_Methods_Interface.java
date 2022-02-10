@@ -7,7 +7,7 @@ import retrofit2.http.GET;
 
 public interface API_Methods_Interface {
 
-    @GET("/5")
+    @GET("/")
     Call<Utent_Table> buttare();
 
 }
