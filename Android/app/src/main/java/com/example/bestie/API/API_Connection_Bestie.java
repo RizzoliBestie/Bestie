@@ -7,7 +7,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class API_Connection_Bestie extends Application {
 
-    public static final String BASE_URL = "https://localhost:3306/Bestie?useSSL=false";
+    public static final String BASE_URL = "http://192.168.1.9:8080/";
     private Retrofit retrofit = null;
 
     public API_Connection_Bestie () {
