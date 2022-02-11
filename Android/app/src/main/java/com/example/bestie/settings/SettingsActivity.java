@@ -82,5 +82,31 @@ public class SettingsActivity extends AppCompatActivity {
             }
         });
 
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder alert = new AlertDialog.Builder(SettingsActivity.this);
+
+                alert.setTitle("Delete the profile?");
+
+                final EditText input = new EditText(SettingsActivity.this);
+                alert.setView(input);
+
+                alert.setPositiveButton("Delete", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        // Deleting profile code
+                    }
+                });
+
+                alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        // Canceled.
+                    }
+                });
+
+                alert.show();
+            }
+        });
+
     }
 }

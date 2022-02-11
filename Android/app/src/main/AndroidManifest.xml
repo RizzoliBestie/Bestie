@@ -25,12 +25,7 @@
         </activity>
         <activity
             android:name=".API.buttareActivity"
-            android:exported="true" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            android:exported="false" >
         </activity>
         <activity
             android:name=".pet.NewPetActivity"
@@ -50,9 +45,14 @@
             android:exported="false"></activity>
         <activity
             android:name=".settings.SettingsActivity"
-            android:exported="false"
+            android:exported="true"
             android:label="Settings"
             android:parentActivityName=".home.HomeActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".login.LogInActivity"
