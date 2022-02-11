@@ -31,11 +31,11 @@ public class ChangePasswordActivity extends AppCompatActivity {
         editText_3 = findViewById(R.id.editText_3);
         button_1 = findViewById(R.id.button_1);
 
-       /*button_1.setOnClickListener(new View.OnClickListener() {
+       button_1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // Some code
             }
-        });*/
+       });
     }
 }
