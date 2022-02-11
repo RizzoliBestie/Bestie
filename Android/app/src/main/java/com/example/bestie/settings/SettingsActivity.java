@@ -89,8 +89,6 @@ public class SettingsActivity extends AppCompatActivity {
 
                 alert.setTitle("Delete the profile?");
 
-                final EditText input = new EditText(SettingsActivity.this);
-                alert.setView(input);
 
                 alert.setPositiveButton("Delete", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton) {
