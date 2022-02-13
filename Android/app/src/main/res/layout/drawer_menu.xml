@@ -1,57 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#008821"
-    android:orientation="vertical">
-
-    <Space
-        android:layout_width="wrap_content"
-        android:layout_height="90dp" />
+    android:background="@drawable/sfondo_home2">
 
     <TextView
+        android:id="@+id/archivio"
+        android:layout_marginTop="200dp"
+        android:layout_marginLeft="30dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingLeft="24dp"
-        android:paddingRight="24dp"
-        android:paddingStart="24dp"
-        android:text="Some Text 0"
-        android:textSize="12sp" />
+        android:text="Archivio"
+        android:textSize="30dp"
+        android:fontFamily="serif"
+        android:textColor="@color/black"
+        />
 
-    <LinearLayout
+    <TextView
+        android:id="@+id/settings"
+        android:layout_below="@id/archivio"
+        android:layout_marginTop="100dp"
+        android:layout_marginLeft="30dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:baselineAligned="false"
-        android:orientation="horizontal"
-        android:paddingLeft="24dp"
-        android:paddingRight="24dp">
+        android:text="Settings"
+        android:textSize="30dp"
+        android:fontFamily="serif"
+        android:textColor="@color/black"
+        />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
-            android:text="Some Text1" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Main Text"
-            android:textStyle="bold"
-            android:textSize="34sp" />
-
-    </LinearLayout>
-
-    <Space
+    <TextView
+        android:id="@+id/logout"
+        android:layout_below="@id/settings"
+        android:layout_marginTop="100dp"
+        android:layout_marginLeft="30dp"
         android:layout_width="wrap_content"
-        android:layout_height="56dp" />
+        android:layout_height="wrap_content"
+        android:text="Logout"
+        android:textSize="30dp"
+        android:fontFamily="serif"
+        android:textColor="@color/black"
+        />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/list"
-        android:layout_width="240dp"
-        android:layout_height="wrap_content" />
-
-    <Space
-        android:layout_width="wrap_content"
-        android:layout_height="40dp" />
-
-</LinearLayout>
+</RelativeLayout>
