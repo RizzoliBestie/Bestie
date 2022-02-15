@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -15,6 +16,8 @@ import android.widget.Toast;
 import com.example.bestie.R;
 import com.example.bestie.settings.SettingsActivity;
 
+import java.util.zip.Inflater;
+
 public class HomeActivity extends AppCompatActivity {
 
     @Override
@@ -25,9 +28,11 @@ public class HomeActivity extends AppCompatActivity {
         GridView page_select = findViewById(R.id.page_select);
         Button menuButton = findViewById(R.id.menu_button);
         Button addPetButton = findViewById(R.id.addPetButton);
-        TextView archivio = findViewById(R.id.archivio);
-        TextView settings = findViewById(R.id.settings);
-        TextView logout = findViewById(R.id.logout);
+        LayoutInflater inflater = LayoutInflater.from(getApplicationContext());
+        View drawer = inflater.inflate(R.layout.drawer_menu, null);
+        TextView archivio = drawer.findViewById(R.id.archivio);
+        TextView settings = drawer.findViewById(R.id.settings);
+        TextView logout = drawer.findViewById(R.id.logout);
 
         String[] vociMenu = new String[]{"Home", "Map", "Curiosità"};
         ListAdapter menuAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1, vociMenu);
