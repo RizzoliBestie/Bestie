@@ -11,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -44,6 +45,15 @@ public class CuriosityActivity extends AppCompatActivity {
         searchEditText = findViewById(R.id.searchEditText);
         sectionMenuSpinner = findViewById(R.id.sectionMenuSpinner);
 
+        //Setup della TextView che indica la sezione
+        String [] SectionString = new String[] {"PETS", "FARM", "WILD"};
+
+        final ArrayAdapter<CharSequence> spinnerAdapter = ArrayAdapter.createFromResource(this, R.array.curiosity_sections, android.R.layout.simple_spinner_item);
+        spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        sectionMenuSpinner.setAdapter(spinnerAdapter);
+
+
+
         //Input degli animali qui
         List<Animal> animals = new ArrayList<Animal>();
         animals.add(new Animal("Volpe", "Fennec", "Vulpes Zerda", "WILD", "https://www.parmadaily.it/wp-content/uploads/2016/09/fennec.jpg"));
@@ -53,32 +63,67 @@ public class CuriosityActivity extends AppCompatActivity {
         animals.add(new Animal("Volpe", "Volpe Americana", "Vulpes Velox", "WILD","https://upload.wikimedia.org/wikipedia/commons/2/2a/Vulpes_velox.jpg"));
         animals.add(new Animal("Otocione", "Otycion", "Otycion megalotis", "WILD","https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Bandit_%2835877900754%29.jpg/220px-Bandit_%2835877900754%29.jpg"));
         animals.add(new Animal("Gallina", "Gallus", "Gallus gallus domesticus", "FARM","https://www.tuttosullegalline.it/newsite/wp-content/uploads/2019/01/gallina-Brucie-4.jpg"));
+        animals.add(new Animal("Toro", "Mucca", "Bos Taurus", "FARM", "https://upload.wikimedia.org/wikipedia/commons/f/f3/Hereford_bull_large.jpg"));
+        animals.add(new Animal("Pecora", "Ovis", "Ovis aries", "FARM", "https://www.cibo360.it/images/alimentazione/cibi/pecora.jpg"));
+        animals.add(new Animal("Cane", "Canis lupus familiaris", "Siberian Husky", "PETS","https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Le%C3%AFko_au_bois_de_la_Cambre.jpg/330px-Le%C3%AFko_au_bois_de_la_Cambre.jpg"));
+        animals.add(new Animal("Cane", "Canis lupus familiaris", "Pastore Tedesco", "PETS","http://www.difossombrone.it/images/anatomia/difettitesta.jpg"));
+        animals.add(new Animal("Gatto", "Felis catus", "Persiano", "PETS","https://upload.wikimedia.org/wikipedia/it/thumb/3/3e/Prisca.jpg/390px-Prisca.jpg"));
 
-        List<Animal> animalsWildList = new ArrayList<Animal>();
+        List<Animal> animalsWild = new ArrayList<Animal>();
         for(int wild=0; wild<animals.size(); wild++){
             if(animals.get(wild).section == "WILD"){
-                animalsWildList.add(animals.get(wild));
+                animalsWild.add(animals.get(wild));
             }
         }
 
-        List<Animal> animalsFarmList = new ArrayList<Animal>();
+        List<Animal> animalsFarm = new ArrayList<Animal>();
         for(int farm=0; farm<animals.size(); farm++){
             if(animals.get(farm).section == "FARM"){
-                animalsFarmList.add(animals.get(farm));
+                animalsFarm.add(animals.get(farm));
             }
         }
 
-        List<Animal> animalsPetsList = new ArrayList<Animal>();
+        List<Animal> animalsPets = new ArrayList<Animal>();
         for(int pets=0; pets<animals.size(); pets++){
             if(animals.get(pets).section == "PETS"){
-                animalsPetsList.add(animals.get(pets));
+                animalsPets.add(animals.get(pets));
             }
         }
-
-
-        //Crea l'arrayadapter, fa riferimento al row animal con la lista
+        //Crea l'arrayadapter, fa riferimento a diverse categorie di animali
+        AnimalArrayAdapter animalAdapterWild = new AnimalArrayAdapter(this, R.layout.row_animal, animalsWild);
+        AnimalArrayAdapter animalAdapterFarm = new AnimalArrayAdapter(this, R.layout.row_animal, animalsFarm);
+        AnimalArrayAdapter animalAdapterPets = new AnimalArrayAdapter(this, R.layout.row_animal, animalsPets);
         AnimalArrayAdapter animalAdapter = new AnimalArrayAdapter(this, R.layout.row_animal, animals);
-        animalWikiListView.setAdapter(animalAdapter);
+
+
+        sectionMenuSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                //Toast.makeText(getApplicationContext(), spinnerAdapter.getItem(i).toString(), Toast.LENGTH_SHORT).show();
+                sectionTextView.setText(sectionMenuSpinner.getSelectedItem().toString());
+
+                //Imposta quale categoria di animali deve essere visualizzata
+                String index = sectionMenuSpinner.getSelectedItem().toString();
+                if(index.equals("WILD")){
+                    animalWikiListView.setAdapter(animalAdapterWild);
+                } else if(index.equals("FARM")) {
+                    animalWikiListView.setAdapter(animalAdapterFarm);
+                } else if(index.equals("PETS")) {
+                    animalWikiListView.setAdapter(animalAdapterPets);
+                } else {
+                    animalWikiListView.setAdapter(animalAdapter);
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+
+
+
         //AnimalArrayAdapter animalSearchAdapter = new AnimalArrayAdapter(this, R.layout.row_animal, animalsSearchList);
         //animalWikiListView.setAdapter(animalSearchAdapter);
 
@@ -88,7 +133,8 @@ public class CuriosityActivity extends AppCompatActivity {
         animalWikiListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int pos, long l) {
-                Animal p = animalAdapter.getItem(pos);
+                AnimalArrayAdapter animalRefAdapter = (AnimalArrayAdapter) animalWikiListView.getAdapter();
+                Animal p = animalRefAdapter.getItem(pos);
                 Toast.makeText(CuriosityActivity.this, p.name + ", " + p.race + ", " + p.specie, Toast.LENGTH_SHORT).show();
                 /*
                 Intent intentSA = new Intent(MainActivity.this, SecondActivity.class);
@@ -105,12 +151,13 @@ public class CuriosityActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                AnimalArrayAdapter animalRefAdapter = (AnimalArrayAdapter) animalWikiListView.getAdapter();
                 //Al cambiamento dell'editText aggiorna la lista
-                animalAdapter.getFilter().filter(charSequence.toString());
+                animalRefAdapter.getFilter().filter(charSequence.toString());
                 //Ogni cambiamento aggiorna la lista attraverso questi metodi(in questo caso aggiorna soprattutto le immagini)
-                animalAdapter.clear();
+                animalRefAdapter.clear();
                 //animalAdapter.notifyDataSetInvalidated();
-                animalAdapter.notifyDataSetChanged();
+                animalRefAdapter.notifyDataSetChanged();
             }
 
             @Override
@@ -118,25 +165,7 @@ public class CuriosityActivity extends AppCompatActivity {
 
             }
         });
-        //Setup della TextView che indica la sezione
-        String [] SectionString = new String[] {"PETS", "FARM", "WILD"};
 
-        final ArrayAdapter<CharSequence> spinnerAdapter = ArrayAdapter.createFromResource(this, R.array.curiosity_sections, android.R.layout.simple_spinner_item);
-        spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        sectionMenuSpinner.setAdapter(spinnerAdapter);
-
-        sectionMenuSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                Toast.makeText(getApplicationContext(), spinnerAdapter.getItem(i).toString(), Toast.LENGTH_SHORT).show();
-                sectionTextView.setText(sectionMenuSpinner.getSelectedItem().toString());
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });
 
         //Click della tendina (Hamburger Menu)
         /*sectionMenuImageView.setOnClickListener(new View.OnClickListener() {
