@@ -32,17 +32,17 @@ public class buttareActivity extends AppCompatActivity {
         API_Methods_Interface apiMethodsInterface = retrofit.create(API_Methods_Interface.class);
         textView = findViewById(R.id.buttare);
 
-        Call<Utent_Table> delete = apiMethodsInterface.deleteUser(1);
-        delete.enqueue(new Callback<Utent_Table>() {
+        Call<Integer> delete = apiMethodsInterface.deleteUser(new Integer(2));
+        delete.enqueue(new Callback<Integer>() {
             @Override
-            public void onResponse(Call<Utent_Table> call, Response<Utent_Table> response) {
+            public void onResponse(Call<Integer> call, Response<Integer> response) {
                 int statuscode = response.code();
 
                 Toast.makeText(buttareActivity.this,"Delete avvenuta con successo", Toast.LENGTH_LONG).show();
             }
 
             @Override
-            public void onFailure(Call<Utent_Table> call, Throwable t) {
+            public void onFailure(Call<Integer> call, Throwable t) {
 
             }
         });

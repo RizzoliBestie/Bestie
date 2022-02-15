@@ -5,7 +5,7 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.bestie.R;
-import com.yarolegovich.slidingrootnav.SlidingRootNavBuilder;
+//import com.yarolegovich.slidingrootnav.SlidingRootNavBuilder;
 
 public class ContentSlider extends AppCompatActivity{
 
@@ -14,12 +14,12 @@ public class ContentSlider extends AppCompatActivity{
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sliding_layout);
-        new SlidingRootNavBuilder(this)
+  /*      new SlidingRootNavBuilder(this)
                 .withMenuOpened(false)
                 .withContentClickableWhenMenuOpened(false)
                 .withSavedState(savedInstanceState)
                 .withMenuLayout(R.layout.drawer_menu)
-                .inject();
+                .inject();*/
     }
 }
 //push per il mio amico mike <3
