@@ -63,7 +63,7 @@ public class CuriosityActivity extends AppCompatActivity {
         animals.add(new Animal("Volpe", "Volpe Americana", "Vulpes Velox", "WILD","https://upload.wikimedia.org/wikipedia/commons/2/2a/Vulpes_velox.jpg"));
         animals.add(new Animal("Otocione", "Otycion", "Otycion megalotis", "WILD","https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Bandit_%2835877900754%29.jpg/220px-Bandit_%2835877900754%29.jpg"));
         animals.add(new Animal("Gallina", "Gallus", "Gallus gallus domesticus", "FARM","https://www.tuttosullegalline.it/newsite/wp-content/uploads/2019/01/gallina-Brucie-4.jpg"));
-        animals.add(new Animal("Toro", "Mucca", "Bos Taurus", "FARM", "https://upload.wikimedia.org/wikipedia/commons/f/f3/Hereford_bull_large.jpg"));
+        animals.add(new Animal("Toro", "Mucca", "Bos Taurus", "FARM", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRo3nFYjIbXjGoZQ5umhVFLdBLEEAHDP85yAw&usqp=CAU"));
         animals.add(new Animal("Pecora", "Ovis", "Ovis aries", "FARM", "https://www.cibo360.it/images/alimentazione/cibi/pecora.jpg"));
         animals.add(new Animal("Cane", "Canis lupus familiaris", "Siberian Husky", "PETS","https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Le%C3%AFko_au_bois_de_la_Cambre.jpg/330px-Le%C3%AFko_au_bois_de_la_Cambre.jpg"));
         animals.add(new Animal("Cane", "Canis lupus familiaris", "Pastore Tedesco", "PETS","http://www.difossombrone.it/images/anatomia/difettitesta.jpg"));
