@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.bestie.R;
 import com.example.bestie.database.Utent_Table;
@@ -31,6 +32,22 @@ public class buttareActivity extends AppCompatActivity {
         API_Methods_Interface apiMethodsInterface = retrofit.create(API_Methods_Interface.class);
         textView = findViewById(R.id.buttare);
 
+        Call<Utent_Table> delete = apiMethodsInterface.deleteUser(1);
+        delete.enqueue(new Callback<Utent_Table>() {
+            @Override
+            public void onResponse(Call<Utent_Table> call, Response<Utent_Table> response) {
+                int statuscode = response.code();
+
+                Toast.makeText(buttareActivity.this,"Delete avvenuta con successo", Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void onFailure(Call<Utent_Table> call, Throwable t) {
+
+            }
+        });
+
+
         Call<List<Utent_Table>> call = apiMethodsInterface.buttare();//GET http://api.myservice.com/users/antolezzi
         call.enqueue(new Callback<List<Utent_Table>>() {
             @Override
@@ -38,7 +55,7 @@ public class buttareActivity extends AppCompatActivity {
                 int statusCode = response.code();
                 List<Utent_Table> ut = response.body();
 
-                textView.setText(ut.get(0).username);
+                textView.setText(new Integer(ut.size()).toString());
             }
 
             @Override

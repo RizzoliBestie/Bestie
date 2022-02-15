@@ -20,6 +20,7 @@ sotto la voce "nome file". Cliccate l'icona della cartella e scegliete la direct
 all'interno della cartella dove è situato il file che state leggendo ora (documents/github/ecc...).
 Assicuratevi poi che nella parte di sinistra siano selezionate tutte le tabelle del database.
 Selezionate infine "Sostituisci dati esistenti" di fianco alla voce "dati" e "File.sql singolo"
-di fianco alla voce "Output" ed esportate il tutto. Per controllare che il file sia stato esportato
+di fianco alla voce "Output". Prima di esportare il tutto assicurarsi che le voci "Database" e "Tabella"
+Abbiano la scunta su "crea".Per controllare che il file sia stato esportato
 correttamente fate doppio click su bestie.sql in questa nella cartella del file che state leggendo
 ora e controllate che nel codice sql ci siano tutti i dati.
