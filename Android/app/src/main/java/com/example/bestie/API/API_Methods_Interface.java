@@ -13,9 +13,7 @@ import retrofit2.http.POST;
 public interface API_Methods_Interface {
 
     @GET("/login")
-    Call<List<Utent_Table>> buttare();
+    Call<String> checkLogin(@Body String username,@Body String password);
 
-    @POST("/delete")
-    Call<Integer> deleteUser(@Body int id);
 
 }

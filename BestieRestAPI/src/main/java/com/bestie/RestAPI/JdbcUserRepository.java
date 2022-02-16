@@ -34,4 +34,13 @@ public class JdbcUserRepository implements UserRepository{
 		return null;
 	}
 
+	//Metodi di autenticazione
+	
+	@Override
+	public List<User> checkLogin(String username, String password) {
+
+		return jdbcTemplate.query("SELECT * FROM User WHERE username = ? && password = ?", BeanPropertyRowMapper.newInstance(User.class), username, password);
+		
+	}
+
 }

@@ -12,4 +12,7 @@ public interface UserRepository {
 	
 	//Trova un utente tramite email
 	public List<User> findByMail(String email);
+	
+	//Controlla le credenziali dell'utente
+	public List<User> checkLogin(String username, String password);
 }

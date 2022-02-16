@@ -32,34 +32,18 @@ public class buttareActivity extends AppCompatActivity {
         API_Methods_Interface apiMethodsInterface = retrofit.create(API_Methods_Interface.class);
         textView = findViewById(R.id.buttare);
 
-        Call<Integer> delete = apiMethodsInterface.deleteUser(new Integer(2));
-        delete.enqueue(new Callback<Integer>() {
+        Call<String> call = apiMethodsInterface.checkLogin("luca","volpe!");//GET http://api.myservice.com/users/antolezzi
+        call.enqueue(new Callback<String>() {
             @Override
-            public void onResponse(Call<Integer> call, Response<Integer> response) {
-                int statuscode = response.code();
-
-                Toast.makeText(buttareActivity.this,"Delete avvenuta con successo", Toast.LENGTH_LONG).show();
-            }
-
-            @Override
-            public void onFailure(Call<Integer> call, Throwable t) {
-
-            }
-        });
-
-
-        Call<List<Utent_Table>> call = apiMethodsInterface.buttare();//GET http://api.myservice.com/users/antolezzi
-        call.enqueue(new Callback<List<Utent_Table>>() {
-            @Override
-            public void onResponse(Call<List<Utent_Table>> call, Response<List<Utent_Table>> response) {
+            public void onResponse(Call<String> call, Response<String> response) {
                 int statusCode = response.code();
-                List<Utent_Table> ut = response.body();
+                String ut = response.body();
 
-                textView.setText(new Integer(ut.size()).toString());
+                textView.setText(ut);
             }
 
             @Override
-            public void onFailure(Call<List<Utent_Table>> call, Throwable t) {
+            public void onFailure(Call<String> call, Throwable t) {
             }
         });
 
