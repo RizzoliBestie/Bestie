@@ -26,6 +26,11 @@ public class AnimalDownloadImage extends AsyncTask<Void, Void, Bitmap> {
         mView = view;
     }
 
+    public AnimalDownloadImage(String url, ImageView view) {
+        mUrl = url;
+        mView = view;
+    }
+
     @Override
     protected Bitmap doInBackground(Void... voids) {
         try {

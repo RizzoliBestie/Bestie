@@ -128,8 +128,6 @@ public class CuriosityActivity extends AppCompatActivity {
         });
 
 
-
-
         //AnimalArrayAdapter animalSearchAdapter = new AnimalArrayAdapter(this, R.layout.row_animal, animalsSearchList);
         //animalWikiListView.setAdapter(animalSearchAdapter);
 
@@ -142,10 +140,14 @@ public class CuriosityActivity extends AppCompatActivity {
                 AnimalArrayAdapter animalRefAdapter = (AnimalArrayAdapter) animalWikiListView.getAdapter();
                 Animal p = animalRefAdapter.getItem(pos);
                 Toast.makeText(CuriosityActivity.this, p.name + ", " + p.race + ", " + p.specie, Toast.LENGTH_SHORT).show();
-                /*
-                Intent intentSA = new Intent(MainActivity.this, SecondActivity.class);
-                intentSA.putExtra("titolo", p.titolo);
-                startActivity(intentSA); */
+
+                Intent infoIntent = new Intent(CuriosityActivity.this, AnimalInfoActivity.class);
+                infoIntent.putExtra("name", p.name);
+                infoIntent.putExtra("race", p.race);
+                infoIntent.putExtra("specie", p.specie);
+                infoIntent.putExtra("image_url", p.image_url);
+                infoIntent.putExtra("description", p.description);
+                startActivity(infoIntent);
             }
         });
 
