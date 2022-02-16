@@ -32,12 +32,8 @@
             android:parentActivityName=".settings.SettingsActivity"></activity>
         <activity
             android:name=".curiosity.CuriosityActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            android:exported="false">
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".API.buttareActivity"
@@ -65,7 +61,13 @@
         </activity>
         <activity
             android:name=".login.LogInActivity"
-            android:exported="false"></activity>
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".signin.SignInActivity"
             android:exported="false"></activity>

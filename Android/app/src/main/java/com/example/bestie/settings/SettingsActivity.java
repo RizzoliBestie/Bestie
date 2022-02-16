@@ -39,15 +39,15 @@ public class SettingsActivity extends AppCompatActivity {
         aSwitch = findViewById(R.id.aSwitch);
         button = findViewById(R.id.button);
 
-        SharedPreferences pref = this.getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences pref = this.getSharedPreferences("preferences", Context.MODE_PRIVATE);
 
-        SharedPreferences.Editor edt = pref.edit();
+        //SharedPreferences.Editor edt = pref.edit();
 
         /* Cablaggio provvisorio */
-        edt.putString("username_key","username");
+        /*edt.putString("username_key","username");
         edt.putString("email_key","e-mail");
         edt.putString("password_key","password");
-        edt.apply();
+        edt.apply();*/
         /* Cablaggio provvisorio */
 
         // aSwitch.setChecked(xxxx);
