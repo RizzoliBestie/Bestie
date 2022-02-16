@@ -3,6 +3,7 @@ package com.example.bestie.settings;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,6 +15,7 @@ import android.widget.ListView;
 import android.widget.AdapterView;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.content.SharedPreferences;
 
 import com.example.bestie.R;
 
@@ -37,13 +39,25 @@ public class SettingsActivity extends AppCompatActivity {
         aSwitch = findViewById(R.id.aSwitch);
         button = findViewById(R.id.button);
 
+        SharedPreferences pref = this.getPreferences(Context.MODE_PRIVATE);
+
+        SharedPreferences.Editor edt = pref.edit();
+
+        /* Cablaggio provvisorio */
+        edt.putString("username_key","username");
+        edt.putString("email_key","e-mail");
+        edt.putString("password_key","password");
+        edt.apply();
+        /* Cablaggio provvisorio */
+
+        // aSwitch.setChecked(xxxx);
+
         Item[] items = new Item[items_number];
 
-        /* Cablaggio provvisorio dei dati che dovranno essere ottenuti dal db */
-        items[0] = new Item("Username","...");
-        items[1] = new Item("E-mail","...");
-        items[2] = new Item("Change password","");
-        /* Cablaggio provvisorio dei dati che dovranno essere ottenuti dal db */
+        items[0] = new Item("Username", pref.getString("username_key","-"));
+        items[1] = new Item("E-mail", pref.getString("email_key","-"));
+        items[2] = new Item("Password", pref.getString("password_key",null));
+
 
         ItemListAdapter itemListAdapter = new ItemListAdapter(this, R.layout.activity_settings_item, items);
         listView.setAdapter(itemListAdapter);

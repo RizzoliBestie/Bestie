@@ -62,7 +62,6 @@
             android:exported="false"
             android:label="Settings"
             android:parentActivityName=".home.HomeActivity" >
-
         </activity>
         <activity
             android:name=".login.LogInActivity"
