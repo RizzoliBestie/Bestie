@@ -71,21 +71,21 @@ public class CuriosityActivity extends AppCompatActivity {
 
         List<Animal> animalsWild = new ArrayList<Animal>();
         for(int wild=0; wild<animals.size(); wild++){
-            if(animals.get(wild).section == "WILD"){
+            if(animals.get(wild).section.equals("WILD")){
                 animalsWild.add(animals.get(wild));
             }
         }
 
         List<Animal> animalsFarm = new ArrayList<Animal>();
         for(int farm=0; farm<animals.size(); farm++){
-            if(animals.get(farm).section == "FARM"){
+            if(animals.get(farm).section.equals("FARM")){
                 animalsFarm.add(animals.get(farm));
             }
         }
 
         List<Animal> animalsPets = new ArrayList<Animal>();
         for(int pets=0; pets<animals.size(); pets++){
-            if(animals.get(pets).section == "PETS"){
+            if(animals.get(pets).section.equals("PETS")){
                 animalsPets.add(animals.get(pets));
             }
         }
@@ -103,15 +103,21 @@ public class CuriosityActivity extends AppCompatActivity {
                 sectionTextView.setText(sectionMenuSpinner.getSelectedItem().toString());
 
                 //Imposta quale categoria di animali deve essere visualizzata
+
                 String index = sectionMenuSpinner.getSelectedItem().toString();
-                if(index.equals("WILD")){
-                    animalWikiListView.setAdapter(animalAdapterWild);
-                } else if(index.equals("FARM")) {
-                    animalWikiListView.setAdapter(animalAdapterFarm);
-                } else if(index.equals("PETS")) {
-                    animalWikiListView.setAdapter(animalAdapterPets);
-                } else {
-                    animalWikiListView.setAdapter(animalAdapter);
+                switch (index){
+                    case "WILD":
+                        animalWikiListView.setAdapter(animalAdapterWild);
+                        break;
+                    case "FARM":
+                        animalWikiListView.setAdapter(animalAdapterFarm);
+                        break;
+                    case "PETS":
+                        animalWikiListView.setAdapter(animalAdapterPets);
+                        break;
+                    default:
+                        animalWikiListView.setAdapter(animalAdapter);
+                        break;
                 }
             }
 
