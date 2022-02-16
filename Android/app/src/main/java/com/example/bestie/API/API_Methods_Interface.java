@@ -12,7 +12,7 @@ import retrofit2.http.POST;
 
 public interface API_Methods_Interface {
 
-    @GET("/users")
+    @GET("/login")
     Call<List<Utent_Table>> buttare();
 
     @POST("/delete")
