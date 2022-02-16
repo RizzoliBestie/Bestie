@@ -10,7 +10,7 @@
         android:id="@+id/animalInfoImageView"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="50dp"
         app:civ_border_color="#FF000000"
         app:civ_border_width="2dp"
@@ -23,6 +23,56 @@
         android:layout_marginLeft="15dp"
         android:layout_marginTop="10dp"
         android:textSize="60px"
+        android:textStyle="bold|italic"
         android:text="Volpe" />
+
+    <TextView
+        android:id="@+id/descriptionTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/animalInfoImageView"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:text="Nessuna descrizione" />
+
+    <TextView
+        android:id="@+id/speciesHeaderTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="50dp"
+        android:layout_toRightOf="@+id/animalInfoImageView"
+        android:fontFamily="sans-serif-light"
+        android:textColor="@color/grey"
+        android:text="Specie:" />
+
+    <TextView
+        android:id="@+id/speciesTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="50dp"
+        android:layout_toRightOf="@+id/animalInfoImageView"
+        android:text="NA" />
+
+    <TextView
+        android:id="@+id/raceHeaderTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="70dp"
+        android:layout_toRightOf="@+id/animalInfoImageView"
+        android:fontFamily="sans-serif-light"
+        android:textColor="@color/grey"
+        android:text="Razza:" />
+
+    <TextView
+        android:id="@+id/raceTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="70dp"
+        android:layout_toRightOf="@+id/animalInfoImageView"
+        android:text="NA" />
 
 </RelativeLayout>

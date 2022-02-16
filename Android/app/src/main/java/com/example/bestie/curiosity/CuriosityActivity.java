@@ -139,7 +139,7 @@ public class CuriosityActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int pos, long l) {
                 AnimalArrayAdapter animalRefAdapter = (AnimalArrayAdapter) animalWikiListView.getAdapter();
                 Animal p = animalRefAdapter.getItem(pos);
-                Toast.makeText(CuriosityActivity.this, p.name + ", " + p.race + ", " + p.specie, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(CuriosityActivity.this, p.name + ", " + p.race + ", " + p.specie, Toast.LENGTH_SHORT).show();
 
                 Intent infoIntent = new Intent(CuriosityActivity.this, AnimalInfoActivity.class);
                 infoIntent.putExtra("name", p.name);
