@@ -16,8 +16,10 @@ import android.widget.AdapterView;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.content.SharedPreferences;
+import android.widget.Toast;
 
 import com.example.bestie.R;
+import com.example.bestie.signin.SignInActivity;
 
 public class SettingsActivity extends AppCompatActivity {
 
@@ -41,21 +43,26 @@ public class SettingsActivity extends AppCompatActivity {
 
         SharedPreferences pref = this.getSharedPreferences("preferences", Context.MODE_PRIVATE);
 
-        //SharedPreferences.Editor edt = pref.edit();
+        SharedPreferences.Editor edt = pref.edit();
 
-        /* Cablaggio provvisorio */
-        /*edt.putString("username_key","username");
-        edt.putString("email_key","e-mail");
-        edt.putString("password_key","password");
-        edt.apply();*/
-        /* Cablaggio provvisorio */
+        aSwitch.setChecked(pref.getBoolean("notifications",true));
 
-        // aSwitch.setChecked(xxxx);
+        aSwitch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                edt.putBoolean("notifications",!pref.getBoolean("notifications",false));
+                edt.apply();
+                finish();
+                overridePendingTransition(0, 0);
+                startActivity(getIntent());
+                overridePendingTransition(0, 0);
+            }
+        });
 
         Item[] items = new Item[items_number];
 
-        items[0] = new Item("Username", pref.getString("username_key","-"));
-        items[1] = new Item("E-mail", pref.getString("email_key","-"));
+        items[0] = new Item("Username", pref.getString("username_key",null));
+        items[1] = new Item("E-mail", pref.getString("email_key",null));
         items[2] = new Item("Password", pref.getString("password_key",null));
 
 
@@ -76,12 +83,31 @@ public class SettingsActivity extends AppCompatActivity {
                     alert.setMessage(items[pos].getText());
 
                     final EditText input = new EditText(SettingsActivity.this);
+                    if(pos == 0)
+                        input.setText(pref.getString("username_key",null));
+                    if(pos == 1)
+                        input.setText(pref.getString("email_key",null));
                     alert.setView(input);
 
                     alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int whichButton) {
                             Editable value = input.getText();
-                            // Do something with value!
+                            if(pos == 0) {
+                                if(validUsername(value.toString())) {
+                                    edt.putString("username_key", value.toString());
+                                    edt.apply();
+                                }
+                            }
+                            if(pos == 1) {
+                                if(validEmail(value.toString())) {
+                                    edt.putString("email_key", value.toString());
+                                    edt.apply();
+                                }
+                            }
+                            finish();
+                            overridePendingTransition(0, 0);
+                            startActivity(getIntent());
+                            overridePendingTransition(0, 0);
                         }
                     });
 
@@ -120,5 +146,39 @@ public class SettingsActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private boolean validUsername(String username){
+        if(username.contains(" ")){
+            Toast.makeText(SettingsActivity.this, "Remove spaces and try again", Toast.LENGTH_LONG).show();
+            return false;
+        }
+        else if(username.length() == 0) {
+            Toast.makeText(SettingsActivity.this, "Username field empty", Toast.LENGTH_LONG).show();
+            return false;
+        }
+        else if(username.length() > 12){
+            Toast.makeText(SettingsActivity.this, "Invalid username: too long", Toast.LENGTH_LONG).show();
+            return false;
+        }
+        else
+            return true;
+    }
+
+    private boolean validEmail(String email){
+        if(email.contains(" ")){
+            Toast.makeText(SettingsActivity.this, "Remove spaces and try again", Toast.LENGTH_LONG).show();
+            return false;
+        }
+        else if(email.length() == 0) {
+            Toast.makeText(SettingsActivity.this, "E-mail field empty", Toast.LENGTH_LONG).show();
+            return false;
+        }
+        else if(email.length() > 100){
+            Toast.makeText(SettingsActivity.this, "Invalid E-mail: too long", Toast.LENGTH_LONG).show();
+            return false;
+        }
+        else
+            return  true;
     }
 }

@@ -42,15 +42,25 @@ public class SignInActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (tUsername.length()==0||tEmail.length()==0||tPsw.length()==0)
                     Toast.makeText(SignInActivity.this, "Please fill in all fields", Toast.LENGTH_LONG).show();
+                else if(tUsername.toString().contains(" ")||tEmail.toString().contains(" ")||tPsw.toString().contains(" "))
+                    Toast.makeText(SignInActivity.this, "Remove spaces from the fields", Toast.LENGTH_LONG).show();
+                else if(tUsername.toString().length() > 12)
+                    Toast.makeText(SignInActivity.this, "Incorrect field: Username\nToo long", Toast.LENGTH_LONG).show();
+                else if(tEmail.toString().length() > 100)
+                    Toast.makeText(SignInActivity.this, "Incorrect field: E-mail\nToo long", Toast.LENGTH_LONG).show();
+                else if(tPsw.toString().length() > 12)
+                    Toast.makeText(SignInActivity.this, "Incorrect field: Password\nToo long", Toast.LENGTH_LONG).show();
+                else if(tPsw.toString().length() < 5)
+                    Toast.makeText(SignInActivity.this, "Incorrect field: Password\nToo short", Toast.LENGTH_LONG).show();
                 else {
                     edt.putString("username_key", tUsername.toString());
                     edt.putString("email_key", tEmail.toString());
                     edt.putString("password_key", tPsw.toString());
                     edt.apply();
 
-                    Toast.makeText(SignInActivity.this, "You're signed up now", Toast.LENGTH_LONG).show();
+                    Toast.makeText(SignInActivity.this, "You're signed in now", Toast.LENGTH_LONG).show();
 
-                    Intent moveToSettings = new Intent(SignInActivity.this, SettingsActivity.class);
+                    Intent moveToSettings = new Intent(SignInActivity.this, LogInActivity.class);
                     startActivity(moveToSettings);
                 }
             }

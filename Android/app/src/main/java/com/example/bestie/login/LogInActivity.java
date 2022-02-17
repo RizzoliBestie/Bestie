@@ -25,12 +25,18 @@ public class LogInActivity extends AppCompatActivity {
 
         Button confirm_button = findViewById(R.id.confirm_button);
 
+        SharedPreferences pref = this.getSharedPreferences("preferences", Context.MODE_PRIVATE);
+
+        SharedPreferences.Editor edt = pref.edit();
+        edt.putBoolean("notifications",pref.getBoolean("notifications",true));
+        edt.apply();
+
         TextView sign_up = findViewById(R.id.sign_up);
         EditText username =  findViewById(R.id.username);
-        EditText email =  findViewById(R.id.email);
+        EditText password =  findViewById(R.id.password);
 
         CharSequence tUsername = username.getText();
-        CharSequence tEmail = email.getText();
+        CharSequence tPassword = password.getText();
 
         sign_up.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -43,10 +49,13 @@ public class LogInActivity extends AppCompatActivity {
         confirm_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (tUsername.length()==0||tEmail.length()==0)
-                    Toast.makeText(LogInActivity.this, "Please fill in all fields", Toast.LENGTH_LONG).show();
+                // Per ora controlla solo se i dati corrispondono a quelli memorizzati sul db interno
+                if (!tUsername.toString().equals(pref.getString("username_key",null)) || !tPassword.toString().equals(pref.getString("password_key",null)))
+                    Toast.makeText(LogInActivity.this, "Incorrect fields", Toast.LENGTH_LONG).show();
                 else {
-                    Toast.makeText(LogInActivity.this, "You're logged in now", Toast.LENGTH_LONG).show();
+                    Toast.makeText(LogInActivity.this, "Logged in", Toast.LENGTH_LONG).show();
+                    Intent moveToSettings = new Intent(LogInActivity.this, SettingsActivity.class);
+                    startActivity(moveToSettings);
                 }
             }
         });

@@ -61,6 +61,7 @@
         </activity>
         <activity
             android:name=".login.LogInActivity"
+            android:label="Bestie: Log in"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -70,7 +71,10 @@
         </activity>
         <activity
             android:name=".signin.SignInActivity"
-            android:exported="false"></activity>
+            android:label="Bestie: Sing in"
+            android:parentActivityName=".login.LogInActivity"
+            android:exported="false">
+        </activity>
     </application>
 
 </manifest>
