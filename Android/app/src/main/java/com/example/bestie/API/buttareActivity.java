@@ -2,7 +2,9 @@ package com.example.bestie.API;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.nfc.Tag;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -10,7 +12,9 @@ import com.example.bestie.R;
 import com.example.bestie.database.Utent_Table;
 import com.example.bestie.login.LogInActivity;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -32,6 +36,8 @@ public class buttareActivity extends AppCompatActivity {
         API_Methods_Interface apiMethodsInterface = retrofit.create(API_Methods_Interface.class);
         textView = findViewById(R.id.buttare);
 
+
+
         Call<String> call = apiMethodsInterface.checkLogin("luca","volpe!");//GET http://api.myservice.com/users/antolezzi
         call.enqueue(new Callback<String>() {
             @Override
@@ -41,9 +47,9 @@ public class buttareActivity extends AppCompatActivity {
 
                 textView.setText(ut);
             }
-
             @Override
             public void onFailure(Call<String> call, Throwable t) {
+                t.printStackTrace();
             }
         });
 
