@@ -2,11 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.bestie">
 
-
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <application
         android:name=".API.API_Connection_Bestie"
         android:allowBackup="true"
@@ -16,66 +16,67 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Bestie"
         android:usesCleartextTraffic="true">
+
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyBgqIaB8R9qEfUzCDVU-kpVLVCj_kemtBw" />
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
+
         <activity
             android:name=".curiosity.AnimalInfoActivity"
-            android:exported="false" ></activity>
+            android:exported="false" />
         <activity
             android:name=".settings.ChangePasswordActivity"
             android:exported="false"
             android:label="Change password"
-            android:parentActivityName=".settings.SettingsActivity"></activity>
+            android:parentActivityName=".settings.SettingsActivity" />
         <activity
             android:name=".curiosity.CuriosityActivity"
-            android:label="Bestie: Curiosity"
+            android:exported="false"
+            android:label="Bestie: Curiosity"></activity>
+        <activity
+            android:name=".API.buttareActivity"
             android:exported="false">
         </activity>
         <activity
-            android:name=".API.buttareActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity
             android:name=".pet.NewPetActivity"
-            android:exported="false"></activity>
+            android:exported="false" />
         <activity
             android:name=".pet.UpdatePetActivity"
-            android:exported="false"></activity>
+            android:exported="false" />
         <activity
             android:name=".pet.PetActivity"
-            android:exported="false"></activity>
+            android:exported="false" />
         <activity
             android:name=".home.HomeActivity"
-            android:exported="false"></activity>
+            android:exported="false" />
         <activity
             android:name=".map.MapActivity"
-            android:exported="false"></activity>
+            android:exported="false" />
         <activity
             android:name=".settings.SettingsActivity"
             android:exported="false"
             android:label="Settings"
-            android:parentActivityName=".home.HomeActivity" >
-        </activity>
+            android:parentActivityName=".home.HomeActivity"></activity>
         <activity
             android:name=".login.LogInActivity"
-            android:label="Bestie: Log in"
-            android:exported="false">
-
-        </activity>
+            android:exported="false"
+            android:label="Bestie: Log in"></activity>
         <activity
             android:name=".signin.SignInActivity"
+            android:exported="false"
             android:label="Bestie: Sing in"
-            android:parentActivityName=".login.LogInActivity"
-            android:exported="false">
+            android:parentActivityName=".login.LogInActivity"></activity>
+        <activity
+            android:name="MainActivity"
+            android:exported="true"
+            android:label="Bestie">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
         </activity>
     </application>
 
