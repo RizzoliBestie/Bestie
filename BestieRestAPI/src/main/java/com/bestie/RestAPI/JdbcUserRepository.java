@@ -39,8 +39,10 @@ public class JdbcUserRepository implements UserRepository{
 	@Override
 	public List<User> checkLogin(String username, String password) {
 
+		System.out.println(username);
+		//System.out.println(password);
 		return jdbcTemplate.query("SELECT * FROM User WHERE username = ? && password = ?",
-				BeanPropertyRowMapper.newInstance(User.class), username, password);
+				BeanPropertyRowMapper.newInstance(User.class),username,password);
 		
 	}
 

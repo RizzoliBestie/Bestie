@@ -20,7 +20,7 @@ import retrofit2.http.Query;
 
 public interface API_Methods_Interface {
 
-    @GET("/login/{username}{password}")
+    @GET("/login/{username}/{password}")
     Call<String> checkLogin(@Path("username") String username,  @Path("password") String password);
 
 

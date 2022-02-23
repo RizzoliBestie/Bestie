@@ -33,6 +33,10 @@
         <activity
             android:name=".curiosity.CuriosityActivity"
             android:label="Bestie: Curiosity"
+            android:exported="false">
+        </activity>
+        <activity
+            android:name=".API.buttareActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -40,9 +44,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".API.buttareActivity"
-            android:exported="false"></activity>
         <activity
             android:name=".pet.NewPetActivity"
             android:exported="false"></activity>

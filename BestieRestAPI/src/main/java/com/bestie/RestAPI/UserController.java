@@ -12,12 +12,14 @@ public class UserController {
 	@Autowired
 	UserRepository repo;
 	
-	@RequestMapping(method=RequestMethod.GET, value = "/login/{username}{password}")
+	@RequestMapping(method=RequestMethod.GET, value = "/login/{username}/{password}")
 	public String getUser(@PathVariable String username, @PathVariable String password) {
-		if(repo.checkLogin(username, password).size()==0)
+		if(repo.checkLogin(username, password).size()==0) {
 			return "Nome utente o password non corretti";
-		else 
+		}
+		else {
 			return "Credenziali corrette";
+		}
 	}
 	
 }

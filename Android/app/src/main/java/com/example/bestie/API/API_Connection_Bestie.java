@@ -17,13 +17,13 @@ public class API_Connection_Bestie extends Application {
     private Retrofit retrofit = null;
 
     public API_Connection_Bestie () {
-        Gson gson = new GsonBuilder().setLenient().create();
+        //Gson gson = new GsonBuilder().setLenient().create();
         OkHttpClient okHttpClient = new OkHttpClient();
 
         retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .client(okHttpClient)
-                .addConverterFactory(GsonConverterFactory.create(gson))
+                //.addConverterFactory(GsonConverterFactory.create(gson))
                 .addConverterFactory(ScalarsConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build();
