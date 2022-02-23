@@ -37,12 +37,7 @@
         </activity>
         <activity
             android:name=".API.buttareActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            android:exported="false">
         </activity>
         <activity
             android:name=".pet.NewPetActivity"
@@ -55,7 +50,8 @@
             android:exported="false"></activity>
         <activity
             android:name=".home.HomeActivity"
-            android:exported="false"></activity>
+            android:exported="false">
+        </activity>
         <activity
             android:name=".map.MapActivity"
             android:exported="false"></activity>
@@ -68,7 +64,13 @@
         <activity
             android:name=".login.LogInActivity"
             android:label="Bestie: Log in"
-            android:exported="false">
+            android:exported="true">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
 
         </activity>
         <activity

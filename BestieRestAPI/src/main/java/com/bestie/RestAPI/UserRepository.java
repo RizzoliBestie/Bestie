@@ -13,6 +13,23 @@ public interface UserRepository {
 	//Trova un utente tramite email
 	public List<User> findByMail(String email);
 	
-	//Controlla le credenziali dell'utente
+	
+	/*
+	 * 		METODI D'AUTENTICAZIONE
+	 */
+	
+    //Controlla che le credenziali del login siano corrette
 	public List<User> checkLogin(String username, String password);
+	
+    //Controlla che username ed email siano unici
+	public List<User> checkSignin(String username, String email);
+	
+	//Registrazione dell'utente
+	public boolean register(String username, String email, String password, String phone_number);
+	
+	/*
+	 * 		GESTIONE PET
+	 */
+	
+	
 }
