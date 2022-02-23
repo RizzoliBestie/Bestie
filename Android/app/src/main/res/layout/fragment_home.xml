@@ -7,41 +7,6 @@
     tools:context=".MainActivity"
     android:background="@drawable/sfondo_home"
     >
-
-    <TextView
-        android:id="@+id/header_title"
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:layout_gravity="center_horizontal"
-        android:background="#2CCA6C"
-        android:fontFamily="Georgia, Verdana, Times new Romans"
-        android:paddingVertical="10dp"
-        android:text="Pet a Pet!"
-        android:textAlignment="center"
-        android:textColor="#07610B"
-        android:textSize="40dp"
-        android:textStyle="bold"></TextView>
-    <Button
-        android:id="@+id/addPetButton"
-        android:layout_width="38dp"
-        android:layout_height="38dp"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="15dp"
-        android:background="@drawable/add_pet">
-    </Button>
-
-    <Button
-        android:id="@+id/menu_button"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="15dp"
-        android:background="@drawable/menu_pet">
-    </Button>
-
     <TextView
         android:id="@+id/testoPet"
         android:layout_width="300dp"
@@ -59,7 +24,6 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:src="@drawable/doggo"
-        android:layout_below="@+id/header_title"
         android:layout_marginTop="40dp"
         android:layout_centerHorizontal="true"
         />
