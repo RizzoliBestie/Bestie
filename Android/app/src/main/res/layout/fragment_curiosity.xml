@@ -4,13 +4,51 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    android:background="@drawable/doggo"
-    >
-    <TextView
-        android:layout_width="wrap_content"
+    tools:context=".curiosity.CuriosityActivity">
+
+    <EditText
+        android:id="@+id/searchEditText"
+        android:layout_width="125pt"
         android:layout_height="wrap_content"
-        android:text="Curiosity"
-        android:textSize="50dp"
-        android:layout_centerInParent="true"/>
+        android:layout_marginLeft="10pt"
+        android:layout_marginTop="100pt"
+        android:background="@drawable/et_style"
+        android:padding="10dp"
+        android:ems="10"
+        android:hint="Search by names"
+        android:inputType="textPersonName" />
+
+    <ListView
+        android:id="@+id/animalWikiListView"
+        android:layout_width="match_parent"
+        android:layout_height="760pt"
+        android:layout_marginTop="125pt" />
+
+    <TextView
+        android:id="@+id/sectionTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50pt"
+        android:gravity="center"
+        android:text="CURIOSITY"
+        android:textSize="20pt"
+        android:textStyle="bold|italic"
+        android:typeface="serif" />
+
+    <ImageView
+        android:id="@+id/sectionMenuImageView"
+        android:layout_width="50pt"
+        android:layout_height="20pt"
+        android:layout_marginLeft="0pt"
+        android:layout_marginTop="100pt"
+        android:layout_toRightOf="@+id/searchEditText"
+        app:srcCompat="@android:drawable/ic_menu_sort_by_size"
+        android:visibility="invisible"/>
+
+    <Spinner
+        android:id="@+id/sectionMenuSpinner"
+        android:layout_width="150pt"
+        android:layout_height="20pt"
+        android:layout_marginLeft="135pt"
+        android:layout_marginTop="100pt" />
 </RelativeLayout>

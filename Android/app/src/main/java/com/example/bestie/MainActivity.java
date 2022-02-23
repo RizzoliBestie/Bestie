@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
             getSupportActionBar().hide();
 
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
+            bottomNavigationView.setSelectedItemId(R.id.navigation_home);
             bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
                 @Override
                 public boolean onNavigationItemSelected(@NonNull MenuItem item) {
