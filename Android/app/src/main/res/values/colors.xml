@@ -21,6 +21,66 @@
     <color name="moss_green">#828C51</color>
     <color name="brunswick_green">#335145</color>
     <color name="phthalo_green">#1E352F</color>
+    <!--______________________-->
+    <color name="oxford_blu">#0A2239</color>
+    <color name="maximum_blue">#53A2BE</color>
+    <color name="blue_ncs">#1D84B5</color>
+    <color name="charleston_green">#132E32</color>
+    <color name="blue_sapphire">#176087</color>
+    <!--______________________-->
+    <color name="old_gold">#D5B942</color>
+    <color name="straw">#D9D375</color>
+    <color name="green_yellow_crayola">#E3DE8F</color>
+    <color name="cream">#EDFBC1</color>
+    <color name="ash_gray">#BFCBC2</color>
+    <!--______________________-->
+    <color name="glossy_grape">#B38CB4</color>
+    <color name="rosy_brown">#B7918C</color>
+    <color name="tumbleweed">#C5A48A</color>
+    <color name="buff">#DDC67B</color>
+    <color name="icterine">#F8F272</color>
+    <!--______________________-->
+    <color name="light_cyan">#E0FBFC</color>
+    <color name="powder_blue">#C2DFE3</color>
+    <color name="pewter_blue">#9DB4C0</color>
+    <color name="cadet">#5C6B73</color>
+    <color name="gunmetal">#253237</color>
+    <!--______________________-->
+    <color name="dark_purple">#2C1320</color>
+    <color name="english_violet">#5F4B66</color>
+    <color name="wild_blue_yonder">#A7ADC6</color>
+    <color name="shadow_blue">#8797AF</color>
+    <color name="dark_electric_blue">#56667A</color>
+    <!--______________________-->
+    <color name="lavender_blue">#BBBDF6</color>
+    <color name="blue_bell">#9893DA</color>
+    <color name="rhythm">#797A9E</color>
+    <color name="sonic_silver">#72727E</color>
+    <color name="granite_gray">#625F63</color>
+    <!--______________________-->
+    <color name="granny_smith_apple_clear">#B9FFB7</color>
+    <color name="magic_mint">#ABEDC6</color>
+    <color name="middle_blue_green">#98D9C2</color>
+    <color name="deep_saffron">#F19A3E</color>
+    <color name="black_coffee">#403233</color>
+    <!--______________________-->
+    <color name="eton_blue">#A1CCA5</color>
+    <color name="dark_sea_green">#8FB996</color>
+    <color name="russian_green">#709775</color>
+    <color name="hunter_green">#415D43</color>
+    <color name="dark_jungle_green">#111D13</color>
+    <!--______________________-->
+    <color name="indigo_dye">#134074</color>
+    <color name="prussian_blue">#13315C</color>
+    <color name="oxford_blue">#0B2545</color>
+    <color name="pewter_blue_clear">#8DA9C4</color>
+    <color name="mint_cream">#EEF4ED</color>
+    <!--______________________-->
+    <color name="deep_champagne">#FFD289</color>
+    <color name="maize_crayola">#FACC6B</color>
+    <color name="sunglow">#FFD131</color>
+    <color name="max_yellow_red">#F5B82E</color>
+    <color name="marigold">#F4AC32</color>
     <!--Colori per stile definitivo?-->
     <color name="principale"></color>
     <color name="testo_principale"></color>
