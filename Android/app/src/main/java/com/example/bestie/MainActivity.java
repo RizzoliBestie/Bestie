@@ -23,7 +23,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
             Button menuButton = findViewById(R.id.menu_button);
-            Button addPetButton = findViewById(R.id.addPetButton);
             BottomNavigationView bottomNavigationView=findViewById(R.id.bottom_nav);
             getSupportActionBar().hide();
 

@@ -26,21 +26,12 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         Button menuButton = findViewById(R.id.menu_button);
-        Button addPetButton = findViewById(R.id.addPetButton);
         LayoutInflater inflater = LayoutInflater.from(getApplicationContext());
         View drawer = inflater.inflate(R.layout.drawer_menu, null);
         TextView archivio = drawer.findViewById(R.id.archivio);
         TextView settings = drawer.findViewById(R.id.settings);
         TextView logout = drawer.findViewById(R.id.logout);
 
-
-
-        addPetButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(HomeActivity.this, "Aggiunto", Toast.LENGTH_SHORT).show();
-            }
-        });
 
         settings.setOnClickListener(new View.OnClickListener() {
             @Override

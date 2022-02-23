@@ -2,7 +2,6 @@ package com.example.bestie.curiosity;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.app.Activity;
@@ -18,16 +17,13 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.bestie.R;
 import com.example.bestie.animal.Animal;
 import com.example.bestie.animal.AnimalArrayAdapter;
-import com.google.android.material.navigation.NavigationBarView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,7 +48,7 @@ public class CuriosityFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        View v = inflater.inflate(R.layout.activity_curiosity, container, false);
+        View v = inflater.inflate(R.layout.fragment_curiosity, container, false);
 
         animalWikiListView = v.findViewById(R.id.animalWikiListView);
         sectionMenuImageView = v.findViewById(R.id.sectionMenuImageView);

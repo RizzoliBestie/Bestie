@@ -4,9 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    android:background="@drawable/sfondo_home"
-    >
+    tools:context=".MainActivity">
     <TextView
         android:id="@+id/testoPet"
         android:layout_width="300dp"
@@ -15,6 +13,7 @@
         android:layout_centerHorizontal="true"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="-20dp"
+        android:textColor="@color/testo_secondario"
         android:background="@drawable/text_view_home"
         android:text="\n\nIl tuo Pet il Tuo pet"
         android:textAlignment="center" />
