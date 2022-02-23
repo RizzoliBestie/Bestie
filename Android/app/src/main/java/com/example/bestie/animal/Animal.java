@@ -9,6 +9,16 @@ public class Animal {
     public String image_url;
     public String description;
 
+    //Classe da base (da utilizzare per l'estensione in Pet)
+    public Animal(String n, String r, String s){
+        this.name = n;
+        this.race = r;
+        this.specie = s;
+        this.section = null;
+        this.image_url = null;
+        this.description = null;
+    }
+
     //Senza Immagine o descrizione
     public Animal(String n, String r, String s, String sec){
         this.name = n;
