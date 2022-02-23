@@ -24,22 +24,18 @@ public class Pet extends Animal {
         this.nickname = nick;
         this.weight = weight;
         this.sex = sex;
+
+        addPetToOwner(n,r,s,owner,nick,weight,sex);
     }
 
     //Aggiorna Pasto più recente
-    public void setLastMeal(Date lastMeal) {
-        this.lastMeal = lastMeal;
-    }
+    public void setLastMeal(Date lastMeal) { this.lastMeal = lastMeal; }
 
     //Aggiorna Camminata più recente
-    public void setLastWalk(Date lastWalk) {
-        this.lastWalk = lastWalk;
-    }
+    public void setLastWalk(Date lastWalk) { this.lastWalk = lastWalk; }
 
     //Aggiorna il peso
-    public void setWeight(double weight) {
-        this.weight = weight;
-    }
+    public void setWeight(double weight) { this.weight = weight; }
 
     public String getNickname() { return nickname; }
 
@@ -54,6 +50,12 @@ public class Pet extends Animal {
         } else {
             return "Femmina";
         }
+    }
+
+    public void addPetToOwner(String n, String r, String s, Profile owner, String nick, double weight, boolean sex){
+        //Il Pet viene aggiunto alla ArrayList dei Pet del proprietario
+        Pet pet = new Pet(n,r,s,owner,nick,weight,sex);
+        this.owner.pet.add(pet);
     }
 
     //Ritorna sex se richiesto in stringa
