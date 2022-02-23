@@ -20,8 +20,16 @@ import retrofit2.http.Query;
 
 public interface API_Methods_Interface {
 
+    //Controlla che le credenziali del login siano corrette
     @GET("/login/{username}/{password}")
     Call<String> checkLogin(@Path("username") String username,  @Path("password") String password);
 
+    //Controlla che username ed email siano unici
+    @GET("/registrazione/{username}/{email}")
+    Call<String> checkSignin(@Path("username") String username, @Path("email") String email);
+
+    //Registrazione dell'utente
+    @POST
+    Call<String> register(String username, String email, String password, String phone_number);
 
 }
