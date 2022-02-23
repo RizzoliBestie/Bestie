@@ -38,7 +38,7 @@ public class buttareActivity extends AppCompatActivity {
 
 
 
-        Call<String> call = apiMethodsInterface.checkLogin("mike","1239");//GET http://api.myservice.com/users/antolezzi
+        /*Call<String> call = apiMethodsInterface.checkLogin("mike","1239");//GET http://api.myservice.com/users/antolezzi
         call.enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
@@ -51,7 +51,7 @@ public class buttareActivity extends AppCompatActivity {
             public void onFailure(Call<String> call, Throwable t) {
                 t.printStackTrace();
             }
-        });
+        });*/
 
     }
 }
