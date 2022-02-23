@@ -12,6 +12,8 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="10pt"
         android:layout_marginTop="100pt"
+        android:background="@drawable/et_style"
+        android:padding="10dp"
         android:ems="10"
         android:hint="Search by names"
         android:inputType="textPersonName" />
