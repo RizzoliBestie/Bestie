@@ -15,6 +15,7 @@
         android:layout_marginRight="20dp"
         android:fontFamily="sans-serif-medium"
         android:text="Volpe"
+        android:textColor="@color/testo_principale"
         android:textSize="60px" />
 
     <TextView
@@ -24,6 +25,7 @@
         android:layout_below="@+id/nameTextView"
         android:textSize="45px"
         android:text="Fennec"
+        android:textColor="@color/testo_secondario"
         android:layout_marginTop="10px"
         android:layout_marginLeft="110dp"
         android:layout_marginRight="20dp"/>
@@ -35,6 +37,7 @@
         android:layout_below="@+id/raceTextView"
         android:layout_marginLeft="110dp"
         android:layout_marginTop="10px"
+        android:textColor="@color/jolly"
         android:layout_marginRight="20dp"
         android:text="Mammifero"
         android:textSize="45px" />
@@ -60,6 +63,6 @@
         android:layout_marginBottom="0dp"
         app:srcCompat="@android:drawable/ic_menu_help"
         app:civ_border_width="2dp"
-        app:civ_border_color="#FF000000"/>
+        app:civ_border_color="@color/jolly"/>
 
 </RelativeLayout>

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".curiosity.CuriosityActivity">
+    tools:context=".curiosity.CuriosityFragment">
 
     <EditText
         android:id="@+id/searchEditText"
@@ -31,6 +31,7 @@
         android:layout_marginTop="50pt"
         android:gravity="center"
         android:text="CURIOSITY"
+        android:textColor="@color/testo_principale"
         android:textSize="20pt"
         android:textStyle="bold|italic"
         android:typeface="serif" />

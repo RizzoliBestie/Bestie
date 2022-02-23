@@ -6,7 +6,7 @@ import com.example.bestie.general.Profile;
 import java.util.Date;
 
 public class Pet extends Animal {
-    Profile owner; //Proprietario
+    public Profile owner; //Proprietario
     public String nickname; //Nickname Pet
     public double weight; //Peso
     public boolean sex; //Maschio o Femmina //SUGGERIMENTO: Forse stringa invece di boolean?

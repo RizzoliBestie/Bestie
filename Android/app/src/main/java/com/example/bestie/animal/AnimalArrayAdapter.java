@@ -1,8 +1,6 @@
 package com.example.bestie.animal;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,11 +13,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.bestie.R;
-import com.example.bestie.curiosity.CuriosityActivity;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 public class AnimalArrayAdapter extends ArrayAdapter<Animal> {
     Context ctx = null;

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:background="@drawable/sfondo_home">
+    android:background="@color/sfondo_primario">
 
     <FrameLayout
         android:id="@+id/fragment_container"
@@ -20,24 +20,14 @@
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:layout_gravity="center_horizontal"
-        android:background="#2CCA6C"
+        android:background="@color/sfondo_secondario"
         android:fontFamily="Georgia, Verdana, Times new Romans"
         android:paddingVertical="10dp"
         android:text="Bestie!"
         android:textAlignment="center"
-        android:textColor="#07610B"
+        android:textColor="@color/testo_principale"
         android:textSize="40dp"
         android:textStyle="bold"/>
-    <Button
-        android:id="@+id/addPetButton"
-        android:layout_width="38dp"
-        android:layout_height="38dp"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="15dp"
-        android:background="@drawable/add_pet">
-    </Button>
 
     <Button
         android:id="@+id/menu_button"
@@ -56,7 +46,7 @@
         android:layout_alignParentBottom="true"
         app:labelVisibilityMode="selected"
         app:menu="@menu/bottom_nav_menu"
-        android:background="#1DBC01"/>
+        android:background="@color/sfondo_secondario"/>
 
 </RelativeLayout>
 

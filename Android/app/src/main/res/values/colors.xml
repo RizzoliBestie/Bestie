@@ -82,9 +82,10 @@
     <color name="max_yellow_red">#F5B82E</color>
     <color name="marigold">#F4AC32</color>
     <!--Colori per stile definitivo?-->
-    <color name="principale"></color>
-    <color name="testo_principale"></color>
-    <color name="testo_secondario"></color>
-    <color name="sfondo_secondario"></color>
+    <color name="jolly">#F8F272</color>
+    <color name="testo_principale">#B38CB4</color>
+    <color name="testo_secondario">#B7918C</color>
+    <color name="sfondo_primario">#DDC67B</color>
+    <color name="sfondo_secondario">#B7918C</color>
 
 </resources>
