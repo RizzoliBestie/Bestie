@@ -85,6 +85,7 @@
     <color name="principale"></color>
     <color name="testo_principale"></color>
     <color name="testo_secondario"></color>
+    <color name="sfondo_primario"></color>
     <color name="sfondo_secondario"></color>
 
 </resources>
