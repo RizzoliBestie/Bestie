@@ -25,7 +25,6 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        GridView page_select = findViewById(R.id.page_select);
         Button menuButton = findViewById(R.id.menu_button);
         Button addPetButton = findViewById(R.id.addPetButton);
         LayoutInflater inflater = LayoutInflater.from(getApplicationContext());
@@ -34,9 +33,7 @@ public class HomeActivity extends AppCompatActivity {
         TextView settings = drawer.findViewById(R.id.settings);
         TextView logout = drawer.findViewById(R.id.logout);
 
-        String[] vociMenu = new String[]{"Home", "Map", "Curiosità"};
-        ListAdapter menuAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1, vociMenu);
-        page_select.setAdapter(menuAdapter);
+
 
         addPetButton.setOnClickListener(new View.OnClickListener() {
             @Override
