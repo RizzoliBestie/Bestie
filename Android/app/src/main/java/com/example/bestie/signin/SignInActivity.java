@@ -1,11 +1,6 @@
 package com.example.bestie.signin;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -14,11 +9,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.bestie.API.API_Connection_Bestie;
 import com.example.bestie.API.API_Methods_Interface;
 import com.example.bestie.R;
 import com.example.bestie.login.LogInActivity;
-import com.example.bestie.settings.SettingsActivity;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -29,7 +26,8 @@ public class SignInActivity extends AppCompatActivity {
 
     Button confirm_button;
     EditText username, email, psw;
-    String tUsername, tPsw,tEmail;
+    String tUsername = "", tPsw = "", tEmail = "";
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,9 +35,9 @@ public class SignInActivity extends AppCompatActivity {
 
         confirm_button = findViewById(R.id.confirm_button);
 
-        username =  findViewById(R.id.username);
-        email =  findViewById(R.id.email);
-        psw =  findViewById(R.id.psw);
+        username = findViewById(R.id.username);
+        email = findViewById(R.id.email);
+        psw = findViewById(R.id.psw);
 
         username.addTextChangedListener(new TextWatcher() {
             @Override
@@ -92,40 +90,37 @@ public class SignInActivity extends AppCompatActivity {
             }
         });
 
-
-
         confirm_button.setOnClickListener(new View.OnClickListener() {
-
-            Retrofit retrofit = ((API_Connection_Bestie)getApplication()).getRetrofit();
-            API_Methods_Interface api = retrofit.create(API_Methods_Interface.class);
 
             @Override
             public void onClick(View view) {
-                if(tUsername.length()==0||tPsw.length()==0||tEmail.length()==0)
+                Retrofit retrofit = ((API_Connection_Bestie) getApplication()).getRetrofit();
+                API_Methods_Interface api = retrofit.create(API_Methods_Interface.class);
+                if (tUsername.length() == 0 || tPsw.length() == 0 || tEmail.length() == 0)
                     Toast.makeText(SignInActivity.this, "Compila tutti i campi", Toast.LENGTH_LONG).show();
-                else if(tUsername.contains(" "))
-                    Toast.makeText(SignInActivity.this,"Lo username non può contenere spazi", Toast.LENGTH_LONG).show();
-                else if(tUsername.length()<=3)
+                else if (tUsername.contains(" "))
+                    Toast.makeText(SignInActivity.this, "Lo username non può contenere spazi", Toast.LENGTH_LONG).show();
+                else if (tUsername.length() <= 3)
                     Toast.makeText(SignInActivity.this, "Lo username deve avere una lunghezza minima di 4 caratteri", Toast.LENGTH_LONG).show();
-                else if(tPsw.length()<=5)
+                else if (tPsw.length() <= 5)
                     Toast.makeText(SignInActivity.this, "La password deve avere una lunghezza minima di 6 caratteri", Toast.LENGTH_LONG).show();
-                else if(tEmail.contains("@"))
+                else if (!tEmail.contains("@"))
                     Toast.makeText(SignInActivity.this, "Inserisci un indirizzo email valido", Toast.LENGTH_LONG).show();
-                else{
+                else {
                     Call<Boolean> checkSigninCall = api.checkSignin(tUsername, tEmail);
                     checkSigninCall.enqueue(new Callback<Boolean>() {
                         @Override
                         public void onResponse(Call<Boolean> call, Response<Boolean> response) {
                             if (response.body()) {
 
-                                Toast.makeText(SignInActivity.this, "Email o nome utente già utilizzati!",Toast.LENGTH_LONG).show();
+                                Toast.makeText(SignInActivity.this, "Email o nome utente già utilizzati!", Toast.LENGTH_LONG).show();
 
                             } else {
-                                Call<Boolean> registerCall = api.register(tUsername, tEmail, tPsw, null);
+                                Call<Boolean> registerCall = api.register(tUsername, tEmail, tPsw, "1234567890");
                                 registerCall.enqueue(new Callback<Boolean>() {
                                     @Override
                                     public void onResponse(Call<Boolean> call, Response<Boolean> response) {
-                                        if(response.body()){
+                                        if (response.body()) {
                                             Toast.makeText(SignInActivity.this, "Registrazione avvenuta con successo!", Toast.LENGTH_LONG).show();
 
                                             Intent moveToSettings = new Intent(SignInActivity.this, LogInActivity.class);
@@ -149,7 +144,6 @@ public class SignInActivity extends AppCompatActivity {
                         }
                     });
                 }
-
             }
         });
 

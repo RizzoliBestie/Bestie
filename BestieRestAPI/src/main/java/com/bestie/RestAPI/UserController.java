@@ -26,10 +26,10 @@ public class UserController {
 	
 	@GetMapping("/signin/{username}/{email}")
 	public boolean getUserSignin(@PathVariable String username, @PathVariable String email) {
-		if(repo.checkSignin(username, email).size()!=0)
-			return true;
-		else
+		if(repo.checkSignin(username, email).size()==0)
 			return false;
+		else
+			return true;
 	}
 	
 	@PostMapping("/signin/{username}/{email}/{password}/{phone_number}")

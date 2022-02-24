@@ -25,11 +25,11 @@ public interface API_Methods_Interface {
     Call<Boolean> checkLogin(@Path("username") String username,  @Path("password") String password);
 
     //Controlla che username ed email siano unici
-    @GET("/registrazione/{username}/{email}")
+    @GET("/signin/{username}/{email}")
     Call<Boolean> checkSignin(@Path("username") String username, @Path("email") String email);
 
     //Registrazione dell'utente
     @POST("/signin/{username}/{email}/{password}/{phone_number}")
-    Call<Boolean> register(@Path("unsername")String username,@Path("email") String email,@Path("password") String password,@Path("phone_number") String phone_number);
+    Call<Boolean> register(@Path("username")String username,@Path("email") String email,@Path("password") String password,@Path("phone_number") String phone_number);
 
 }

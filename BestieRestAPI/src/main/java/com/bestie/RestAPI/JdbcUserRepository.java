@@ -51,15 +51,15 @@ public class JdbcUserRepository implements UserRepository{
 
 		//System.out.println(username);
 		//System.out.println(password);
-		return jdbcTemplate.query("SELECT * FROM User WHERE username = ? && email = ?",
+		return jdbcTemplate.query("SELECT * FROM User WHERE username = ? || email = ?",
 				BeanPropertyRowMapper.newInstance(User.class),username,email);
 		
 	}
 
 	@Override
 	public boolean register(String username, String email, String password, String phone_number) {
-		jdbcTemplate.query("INSERT INTO User(username, email, password, phone_number) VALUES(?,?,?,?)", 
-				BeanPropertyRowMapper.newInstance(User.class), username,email,password,phone_number);
+		jdbcTemplate.update("INSERT INTO User(username, email, password, phone_number) VALUES( ? , ? , ? , ? )"
+				, username,email,password,phone_number);
 		if(checkSignin(username,email).size()==0) {
 			return false;
 		}else {

@@ -16,16 +16,16 @@ public class Pet extends Animal {
 
 
     //Costruttore per la creazione del Pet
-    public Pet(String n, String r, String s, Profile owner, String nick, double weight, boolean sex) {
+    public Pet(String name, String race, String specie, Profile owner, String nick, double weight, boolean sex) {
         //Tutti gli attributi dell'animale
-        super(n, r, s);
+        super(name, race, specie);
         //Attributi proprio Pet
         this.owner = owner;
         this.nickname = nick;
         this.weight = weight;
         this.sex = sex;
 
-        addPetToOwner(n,r,s,owner,nick,weight,sex);
+        addPetToOwner(name, race, specie,owner,nick,weight,sex);
     }
 
     //Aggiorna Pasto più recente
