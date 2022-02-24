@@ -19,7 +19,7 @@ USE `Bestie`;
 
 -- Dump della struttura di tabella Bestie.Pet
 CREATE TABLE IF NOT EXISTS `Pet` (
-  `id_pet` int NOT NULL,
+  `id_pet` int NOT NULL AUTO_INCREMENT,
   `id_user` int NOT NULL,
   `id_race` int NOT NULL,
   `name` varchar(50) NOT NULL,
@@ -29,7 +29,7 @@ CREATE TABLE IF NOT EXISTS `Pet` (
   KEY `id_user_PET` (`id_user`),
   KEY `id_race_PET` (`id_race`),
   CONSTRAINT `id_race_PET` FOREIGN KEY (`id_race`) REFERENCES `Race` (`id_race`),
-  CONSTRAINT `id_user_PET` FOREIGN KEY (`id_user`) REFERENCES `User` (`id_user`) ON DELETE RESTRICT ON UPDATE CASCADE
+  CONSTRAINT `id_user_PET` FOREIGN KEY (`id_user`) REFERENCES `User` (`id_user`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Dump dei dati della tabella Bestie.Pet: ~0 rows (circa)
@@ -67,18 +67,21 @@ CREATE TABLE IF NOT EXISTS `Specie` (
 
 -- Dump della struttura di tabella Bestie.User
 CREATE TABLE IF NOT EXISTS `User` (
-  `id_user` int NOT NULL,
+  `id_user` int NOT NULL AUTO_INCREMENT,
   `username` varchar(50) NOT NULL,
   `email` varchar(100) NOT NULL,
   `password` varchar(50) NOT NULL,
   `phone_number` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id_user`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dump dei dati della tabella Bestie.User: ~1 rows (circa)
+-- Dump dei dati della tabella Bestie.User: ~2 rows (circa)
 /*!40000 ALTER TABLE `User` DISABLE KEYS */;
 REPLACE INTO `User` (`id_user`, `username`, `email`, `password`, `phone_number`) VALUES
-	(1, 'mike', 'mike@', '1239', NULL);
+	(1, 'mike73', 'mike73@', '123456', '1234567890'),
+	(2, 'mike73', 'mike@', '098765', '1234567890'),
+	(3, 'luca', 'luca@', 'volpe!', '1234567890'),
+	(4, 'lorenzo', 'lorenzo@', 'giuseppesimone69', '3330987658');
 /*!40000 ALTER TABLE `User` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
