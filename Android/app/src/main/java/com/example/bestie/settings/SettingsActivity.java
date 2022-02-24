@@ -18,6 +18,7 @@ import android.widget.TextView;
 import android.content.SharedPreferences;
 import android.widget.Toast;
 
+import com.example.bestie.MainActivity;
 import com.example.bestie.R;
 import com.example.bestie.signin.SignInActivity;
 
@@ -180,5 +181,11 @@ public class SettingsActivity extends AppCompatActivity {
         }
         else
             return  true;
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent goBack = new Intent(this, MainActivity.class);
+        startActivity(goBack);
     }
 }

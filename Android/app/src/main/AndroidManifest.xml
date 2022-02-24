@@ -54,7 +54,7 @@
             android:name=".settings.SettingsActivity"
             android:exported="false"
             android:label="Settings"
-            android:parentActivityName=".home.HomeActivity" >
+            android:parentActivityName=".MainActivity" >
         </activity>
         <activity
             android:name=".login.LogInActivity"
