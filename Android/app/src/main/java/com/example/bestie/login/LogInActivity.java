@@ -49,7 +49,6 @@ public class LogInActivity extends AppCompatActivity {
         sign_up = (TextView) findViewById(R.id.sign_up);
         username =  (EditText) findViewById(R.id.username);
         password =  (EditText)findViewById(R.id.password);
-        badLogin = (TextView)findViewById(R.id.badLogin);
 
         username.addTextChangedListener(new TextWatcher() {
             @Override

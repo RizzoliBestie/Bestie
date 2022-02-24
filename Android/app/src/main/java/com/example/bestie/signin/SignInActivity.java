@@ -7,6 +7,7 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -24,9 +25,10 @@ import retrofit2.Retrofit;
 
 public class SignInActivity extends AppCompatActivity {
 
+    TextView login;
     Button confirm_button;
-    EditText username, email, psw;
-    String tUsername = "", tPsw = "", tEmail = "";
+    EditText username, email, psw, phoneNumber;
+    String tUsername = "", tPsw = "", tEmail = "", tPhoneNumber = "";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -38,6 +40,8 @@ public class SignInActivity extends AppCompatActivity {
         username = findViewById(R.id.username);
         email = findViewById(R.id.email);
         psw = findViewById(R.id.psw);
+        phoneNumber = findViewById(R.id.phone_number);
+        login = (TextView) findViewById(R.id.login);
 
         username.addTextChangedListener(new TextWatcher() {
             @Override
@@ -90,6 +94,31 @@ public class SignInActivity extends AppCompatActivity {
             }
         });
 
+        phoneNumber.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                tPhoneNumber = phoneNumber.getText().toString();
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+
+        login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent moveToLogin = new Intent(SignInActivity.this, LogInActivity.class);
+                startActivity(moveToLogin);
+            }
+        });
+
         confirm_button.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -116,7 +145,7 @@ public class SignInActivity extends AppCompatActivity {
                                 Toast.makeText(SignInActivity.this, "Email o nome utente già utilizzati!", Toast.LENGTH_LONG).show();
 
                             } else {
-                                Call<Boolean> registerCall = api.register(tUsername, tEmail, tPsw, "1234567890");
+                                Call<Boolean> registerCall = api.register(tUsername, tEmail, tPsw, tPhoneNumber);
                                 registerCall.enqueue(new Callback<Boolean>() {
                                     @Override
                                     public void onResponse(Call<Boolean> call, Response<Boolean> response) {

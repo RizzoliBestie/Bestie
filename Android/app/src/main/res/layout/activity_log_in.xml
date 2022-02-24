@@ -76,17 +76,6 @@
         app:backgroundTint="#00354188"
         android:textAlignment="center" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="#FFFAEBD7"
-        android:textColor="#FFFF0000"
-        android:id="@+id/badLogin"
-        android:visibility="invisible"
-        android:layout_above="@+id/login"
-
-        />
-
 
 
 </RelativeLayout>
