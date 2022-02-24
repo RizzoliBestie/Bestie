@@ -1,6 +1,7 @@
 package com.example.bestie;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -10,6 +11,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import com.example.bestie.curiosity.CuriosityFragment;
 import com.example.bestie.home.HomeFragment;
@@ -23,20 +25,19 @@ import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity {
 
+    private DrawerLayout drawerLayout =null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button menuButton = findViewById(R.id.menu_button);
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_nav);
         Toolbar toolbar = findViewById(R.id.toolbar);
         NavigationView navigationView=findViewById(R.id.nav_view);
-        //DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
+        DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
 
         setSupportActionBar(toolbar);
-        getSupportActionBar().hide();
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
         bottomNavigationView.setSelectedItemId(R.id.navigation_home);
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
@@ -78,7 +79,11 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
-
+        //
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar,
+                R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
     }
 
    /* @Override

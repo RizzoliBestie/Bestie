@@ -25,7 +25,7 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        Button menuButton = findViewById(R.id.menu_button);
+       // Button menuButton = findViewById(R.id.menu_button);
         LayoutInflater inflater = LayoutInflater.from(getApplicationContext());
         /*View drawer = inflater.inflate(R.layout.drawer_menu, null);
         TextView archivio = drawer.findViewById(R.id.archivio);

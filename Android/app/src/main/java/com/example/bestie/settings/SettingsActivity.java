@@ -46,12 +46,12 @@ public class SettingsActivity extends AppCompatActivity {
 
         SharedPreferences.Editor edt = pref.edit();
 
-        aSwitch.setChecked(pref.getBoolean("notifications",true));
+        aSwitch.setChecked(pref.getBoolean("notifications", true));
 
         aSwitch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                edt.putBoolean("notifications",!pref.getBoolean("notifications",false));
+                edt.putBoolean("notifications", !pref.getBoolean("notifications", false));
                 edt.apply();
                 finish();
                 overridePendingTransition(0, 0);
@@ -62,9 +62,9 @@ public class SettingsActivity extends AppCompatActivity {
 
         Item[] items = new Item[items_number];
 
-        items[0] = new Item("Username", pref.getString("username_key",null));
-        items[1] = new Item("E-mail", pref.getString("email_key",null));
-        items[2] = new Item("Password", pref.getString("password_key",null));
+        items[0] = new Item("Username", pref.getString("username_key", null));
+        items[1] = new Item("E-mail", pref.getString("email_key", null));
+        items[2] = new Item("Password", pref.getString("password_key", null));
 
 
         ItemListAdapter itemListAdapter = new ItemListAdapter(this, R.layout.activity_settings_item, items);
@@ -73,34 +73,33 @@ public class SettingsActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int pos, long l) {
-                if(pos == 2){
-                    Intent openCPA = new Intent(SettingsActivity.this,ChangePasswordActivity.class);
+                if (pos == 2) {
+                    Intent openCPA = new Intent(SettingsActivity.this, ChangePasswordActivity.class);
                     startActivity(openCPA);
-                }
-                else {
+                } else {
                     AlertDialog.Builder alert = new AlertDialog.Builder(SettingsActivity.this);
 
                     alert.setTitle("Settings");
                     alert.setMessage(items[pos].getText());
 
                     final EditText input = new EditText(SettingsActivity.this);
-                    if(pos == 0)
-                        input.setText(pref.getString("username_key",null));
-                    if(pos == 1)
-                        input.setText(pref.getString("email_key",null));
+                    if (pos == 0)
+                        input.setText(pref.getString("username_key", null));
+                    if (pos == 1)
+                        input.setText(pref.getString("email_key", null));
                     alert.setView(input);
 
                     alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int whichButton) {
                             Editable value = input.getText();
-                            if(pos == 0) {
-                                if(validUsername(value.toString())) {
+                            if (pos == 0) {
+                                if (validUsername(value.toString())) {
                                     edt.putString("username_key", value.toString());
                                     edt.apply();
                                 }
                             }
-                            if(pos == 1) {
-                                if(validEmail(value.toString())) {
+                            if (pos == 1) {
+                                if (validEmail(value.toString())) {
                                     edt.putString("email_key", value.toString());
                                     edt.apply();
                                 }
@@ -149,38 +148,32 @@ public class SettingsActivity extends AppCompatActivity {
 
     }
 
-    private boolean validUsername(String username){
-        if(username.contains(" ")){
+    private boolean validUsername(String username) {
+        if (username.contains(" ")) {
             Toast.makeText(SettingsActivity.this, "Remove spaces and try again", Toast.LENGTH_LONG).show();
             return false;
-        }
-        else if(username.length() == 0) {
+        } else if (username.length() == 0) {
             Toast.makeText(SettingsActivity.this, "Username field empty", Toast.LENGTH_LONG).show();
             return false;
-        }
-        else if(username.length() > 12){
+        } else if (username.length() > 12) {
             Toast.makeText(SettingsActivity.this, "Invalid username: too long", Toast.LENGTH_LONG).show();
             return false;
-        }
-        else
+        } else
             return true;
     }
 
-    private boolean validEmail(String email){
-        if(email.contains(" ")){
+    private boolean validEmail(String email) {
+        if (email.contains(" ")) {
             Toast.makeText(SettingsActivity.this, "Remove spaces and try again", Toast.LENGTH_LONG).show();
             return false;
-        }
-        else if(email.length() == 0) {
+        } else if (email.length() == 0) {
             Toast.makeText(SettingsActivity.this, "E-mail field empty", Toast.LENGTH_LONG).show();
             return false;
-        }
-        else if(email.length() > 100){
+        } else if (email.length() > 100) {
             Toast.makeText(SettingsActivity.this, "Invalid E-mail: too long", Toast.LENGTH_LONG).show();
             return false;
-        }
-        else
-            return  true;
+        } else
+            return true;
     }
 
     @Override
