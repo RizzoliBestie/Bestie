@@ -31,11 +31,6 @@
             android:label="Change password"
             android:parentActivityName=".settings.SettingsActivity"></activity>
         <activity
-            android:name=".curiosity.CuriosityActivity"
-            android:label="Bestie: Curiosity"
-            android:exported="false">
-        </activity>
-        <activity
             android:name=".API.buttareActivity"
             android:exported="false">
         </activity>
@@ -71,6 +66,11 @@
             android:name=".signin.SignInActivity"
             android:label="Bestie: Sing in"
             android:parentActivityName=".login.LogInActivity"
+            android:exported="false">
+        </activity>
+        <activity
+            android:name=".MainActivity"
+            android:label="Bestie: Main"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
