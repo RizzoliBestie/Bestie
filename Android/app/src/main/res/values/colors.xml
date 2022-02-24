@@ -81,12 +81,14 @@
     <color name="sunglow">#FFD131</color>
     <color name="max_yellow_red">#F5B82E</color>
     <color name="marigold">#F4AC32</color>
+
     <!--Colori per stile definitivo?-->
     <color name="jolly">#F8F272</color>
-    <color name="testo_principale">#B38CB4</color>
+    <color name="testo_principale">#2C1320</color>
     <color name="testo_secondario">#B7918C</color>
     <color name="sfondo_primario">#DDC67B</color>
     <color name="sfondo_secondario">#B7918C</color>
+
     <!--Colori settoriali-->
     <color name="settore_wild">#415D43</color>
     <color name="settore_wild_lista">#709775</color>
