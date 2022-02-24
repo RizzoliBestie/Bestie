@@ -15,7 +15,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="50dp"
         android:text="Sign in"
         android:textColor="#BA57B5"
         android:textSize="50dp" />
@@ -28,7 +28,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/txt1"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="10dp"
         android:gravity="center"
         android:hint="Username"
         android:textColor="@color/purple_200"
@@ -66,6 +66,19 @@
         android:textColor="@color/purple_200"
         android:textColorHint="@color/purple_200"
         android:textSize="20dp" />
+    <EditText
+        android:id="@+id/phone_number"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/psw"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:gravity="center"
+        android:hint="Cellulare"
+        android:inputType="phone"
+        android:textColor="@color/purple_200"
+        android:textColorHint="@color/purple_200"
+        android:textSize="20dp" />
 
 
     <Button
@@ -73,11 +86,26 @@
 
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/psw"
+        android:layout_below="@id/phone_number"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
         android:background="@color/teal_700"
-        android:text="Confirm"
+        android:text="Sign in"
         app:backgroundTint="#354188" />
+
+    <TextView
+        android:id="@+id/login"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/confirm_button"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:background="@color/teal_700"
+        android:text="@string/toLogin"
+        android:textColor="#BA57B5"
+        android:textSize="10dp"
+        app:backgroundTint="#00354188"
+        android:textAlignment="center" />
 
 </RelativeLayout>

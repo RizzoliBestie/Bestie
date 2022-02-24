@@ -17,10 +17,10 @@ import com.example.bestie.R;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AnimalArrayAdapter extends ArrayAdapter<Animal> {
+public class AnimalArrayAdapter extends ArrayAdapter<AnimalWiki> {
     Context ctx = null;
     int res = 0;
-    ArrayList<Animal> dati = new ArrayList<>();
+    ArrayList<AnimalWiki> dati = new ArrayList<>();
     private Filter filter;
 
     static class ViewHolder {
@@ -30,7 +30,7 @@ public class AnimalArrayAdapter extends ArrayAdapter<Animal> {
         TextView specieTextView;
     }
 
-    public AnimalArrayAdapter(@NonNull Context context, int resource, @NonNull List<Animal> objects) {
+    public AnimalArrayAdapter(@NonNull Context context, int resource, @NonNull List<AnimalWiki> objects) {
         super(context, resource, objects);
         ctx = context;
         res = resource;
@@ -43,7 +43,7 @@ public class AnimalArrayAdapter extends ArrayAdapter<Animal> {
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         //super.getView(position, convertView, parent);
-        Animal p = getItem(position);
+        AnimalWiki p = getItem(position);
 
         if (convertView == null) {
             LayoutInflater inflater = (LayoutInflater) ctx.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -129,7 +129,7 @@ public class AnimalArrayAdapter extends ArrayAdapter<Animal> {
             notifyDataSetChanged();
             clear();
             for (int i = 0, l = filtered.size(); i < l; i++){
-                add((Animal)filtered.get(i));
+                add((AnimalWiki)filtered.get(i));
             }
             notifyDataSetInvalidated();
         }

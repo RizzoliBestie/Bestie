@@ -25,6 +25,7 @@ import android.widget.TextView;
 import com.example.bestie.R;
 import com.example.bestie.animal.Animal;
 import com.example.bestie.animal.AnimalArrayAdapter;
+import com.example.bestie.animal.AnimalWiki;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -71,35 +72,35 @@ public class CuriosityFragment extends Fragment {
 
         //Input degli animali qui
 
-        List<Animal> animals = new ArrayList<Animal>();
-        animals.add(new Animal("Volpe", "Fennec", "Vulpes Zerda", "WILD", "https://www.parmadaily.it/wp-content/uploads/2016/09/fennec.jpg"));
-        animals.add(new Animal("Nittereute", "Cane Procione", "Nyctereutes procyonoides", "WILD", "https://upload.wikimedia.org/wikipedia/commons/8/85/Der_Marderhund%2C_Tanuki_oder_Enok_%28Nyctereutes_procyonoides%29%2C_bitte_nicht_zu_verwechseln_mit_einem_Waschb%C3%A4r%2C_hier_im_Wisentgehege_in_Springe_%28Kleiner_Deister%29.jpg"));
-        animals.add(new Animal("Volpe", "Volpe Rossa", "Vulpes Vulpes", "WILD","https://www.giornaletrentino.it/image/contentid/policy:1.2991162:1631209711/image%20(3).jpg?f=3x2&w=299&$p$f$w=c5a262c"));
-        animals.add(new Animal("Urocioni", "Volpe Grigia", "Urocyon", "WILD","https://static.kodami.it/wp-content/uploads/sites/31/2021/05/iStock-1264712034-638x425.jpg"));
-        animals.add(new Animal("Volpe", "Volpe Americana", "Vulpes Velox", "WILD","https://upload.wikimedia.org/wikipedia/commons/2/2a/Vulpes_velox.jpg"));
-        animals.add(new Animal("Otocione", "Otycion", "Otycion megalotis", "WILD","https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Bandit_%2835877900754%29.jpg/220px-Bandit_%2835877900754%29.jpg"));
-        animals.add(new Animal("Gallina", "Gallus", "Gallus gallus domesticus", "FARM","https://www.tuttosullegalline.it/newsite/wp-content/uploads/2019/01/gallina-Brucie-4.jpg"));
-        animals.add(new Animal("Toro", "Mucca", "Bos Taurus", "FARM", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRo3nFYjIbXjGoZQ5umhVFLdBLEEAHDP85yAw&usqp=CAU"));
-        animals.add(new Animal("Pecora", "Ovis", "Ovis aries", "FARM", "https://www.cibo360.it/images/alimentazione/cibi/pecora.jpg"));
-        animals.add(new Animal("Cane", "Canis lupus familiaris", "Siberian Husky", "PETS","https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Le%C3%AFko_au_bois_de_la_Cambre.jpg/330px-Le%C3%AFko_au_bois_de_la_Cambre.jpg"));
-        animals.add(new Animal("Cane", "Canis lupus familiaris", "Pastore Tedesco", "PETS","http://www.difossombrone.it/images/anatomia/difettitesta.jpg"));
-        animals.add(new Animal("Gatto", "Felis catus", "Persiano", "PETS","https://upload.wikimedia.org/wikipedia/it/thumb/3/3e/Prisca.jpg/390px-Prisca.jpg"));
+        List<AnimalWiki> animals = new ArrayList<AnimalWiki>();
+        animals.add(new AnimalWiki("Volpe", "Fennec", "Vulpes Zerda", "WILD", "https://www.parmadaily.it/wp-content/uploads/2016/09/fennec.jpg"));
+        animals.add(new AnimalWiki("Nittereute", "Cane Procione", "Nyctereutes procyonoides", "WILD", "https://upload.wikimedia.org/wikipedia/commons/8/85/Der_Marderhund%2C_Tanuki_oder_Enok_%28Nyctereutes_procyonoides%29%2C_bitte_nicht_zu_verwechseln_mit_einem_Waschb%C3%A4r%2C_hier_im_Wisentgehege_in_Springe_%28Kleiner_Deister%29.jpg"));
+        animals.add(new AnimalWiki("Volpe", "Volpe Rossa", "Vulpes Vulpes", "WILD","https://www.giornaletrentino.it/image/contentid/policy:1.2991162:1631209711/image%20(3).jpg?f=3x2&w=299&$p$f$w=c5a262c"));
+        animals.add(new AnimalWiki("Urocioni", "Volpe Grigia", "Urocyon", "WILD","https://static.kodami.it/wp-content/uploads/sites/31/2021/05/iStock-1264712034-638x425.jpg"));
+        animals.add(new AnimalWiki("Volpe", "Volpe Americana", "Vulpes Velox", "WILD","https://upload.wikimedia.org/wikipedia/commons/2/2a/Vulpes_velox.jpg"));
+        animals.add(new AnimalWiki("Otocione", "Otycion", "Otycion megalotis", "WILD","https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Bandit_%2835877900754%29.jpg/220px-Bandit_%2835877900754%29.jpg"));
+        animals.add(new AnimalWiki("Gallina", "Gallus", "Gallus gallus domesticus", "FARM","https://www.tuttosullegalline.it/newsite/wp-content/uploads/2019/01/gallina-Brucie-4.jpg"));
+        animals.add(new AnimalWiki("Toro", "Mucca", "Bos Taurus", "FARM", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRo3nFYjIbXjGoZQ5umhVFLdBLEEAHDP85yAw&usqp=CAU"));
+        animals.add(new AnimalWiki("Pecora", "Ovis", "Ovis aries", "FARM", "https://www.cibo360.it/images/alimentazione/cibi/pecora.jpg"));
+        animals.add(new AnimalWiki("Cane", "Canis lupus familiaris", "Siberian Husky", "PETS","https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Le%C3%AFko_au_bois_de_la_Cambre.jpg/330px-Le%C3%AFko_au_bois_de_la_Cambre.jpg"));
+        animals.add(new AnimalWiki("Cane", "Canis lupus familiaris", "Pastore Tedesco", "PETS","http://www.difossombrone.it/images/anatomia/difettitesta.jpg"));
+        animals.add(new AnimalWiki("Gatto", "Felis catus", "Persiano", "PETS","https://upload.wikimedia.org/wikipedia/it/thumb/3/3e/Prisca.jpg/390px-Prisca.jpg"));
 
-        List<Animal> animalsWild = new ArrayList<Animal>();
+        List<AnimalWiki> animalsWild = new ArrayList<AnimalWiki>();
         for(int wild=0; wild<animals.size(); wild++){
             if(animals.get(wild).section.equals("WILD")){
                 animalsWild.add(animals.get(wild));
             }
         }
 
-        List<Animal> animalsFarm = new ArrayList<Animal>();
+        List<AnimalWiki> animalsFarm = new ArrayList<AnimalWiki>();
         for(int farm=0; farm<animals.size(); farm++){
             if(animals.get(farm).section.equals("FARM")){
                 animalsFarm.add(animals.get(farm));
             }
         }
 
-        List<Animal> animalsPets = new ArrayList<Animal>();
+        List<AnimalWiki> animalsPets = new ArrayList<AnimalWiki>();
         for(int pets=0; pets<animals.size(); pets++){
             if(animals.get(pets).section.equals("PETS")){
                 animalsPets.add(animals.get(pets));
@@ -162,7 +163,7 @@ public class CuriosityFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int pos, long l) {
                 AnimalArrayAdapter animalRefAdapter = (AnimalArrayAdapter) animalWikiListView.getAdapter();
-                Animal p = animalRefAdapter.getItem(pos);
+                AnimalWiki p = animalRefAdapter.getItem(pos);
                 //Toast.makeText(CuriosityActivity.this, p.name + ", " + p.race + ", " + p.specie, Toast.LENGTH_SHORT).show();
 
                 Intent infoIntent = new Intent(act, AnimalInfoActivity.class);

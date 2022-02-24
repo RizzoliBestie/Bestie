@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Bestie</string>
-    <string name="toSignUp">You don\'t have any account?\n Sign up here!</string>
+    <string name="toSignUp">Non hai un account?\n Clicca qui!</string>
+    <string name="toLogin">Hai già un account?\n Clicca qui!</string>
     <string-array name="curiosity_sections">
         <item>WILD</item>
         <item>FARM</item>
