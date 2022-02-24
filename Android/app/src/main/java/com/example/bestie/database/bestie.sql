@@ -23,8 +23,11 @@ CREATE TABLE IF NOT EXISTS `Pet` (
   `id_user` int NOT NULL,
   `id_race` int NOT NULL,
   `name` varchar(50) NOT NULL,
+  `weight` double DEFAULT NULL,
+  `gender` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `birthdate` date DEFAULT NULL,
-  `gender` varchar(50) DEFAULT NULL,
+  `lastMeal` date DEFAULT NULL,
+  `lastWalk` date DEFAULT NULL,
   PRIMARY KEY (`id_pet`),
   KEY `id_user_PET` (`id_user`),
   KEY `id_race_PET` (`id_race`),
@@ -75,7 +78,7 @@ CREATE TABLE IF NOT EXISTS `User` (
   PRIMARY KEY (`id_user`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dump dei dati della tabella Bestie.User: ~2 rows (circa)
+-- Dump dei dati della tabella Bestie.User: ~4 rows (circa)
 /*!40000 ALTER TABLE `User` DISABLE KEYS */;
 REPLACE INTO `User` (`id_user`, `username`, `email`, `password`, `phone_number`) VALUES
 	(1, 'mike73', 'mike73@', '123456', '1234567890'),

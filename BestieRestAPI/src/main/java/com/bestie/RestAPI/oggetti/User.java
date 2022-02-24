@@ -1,4 +1,4 @@
-package com.bestie.RestAPI;
+package com.bestie.RestAPI.oggetti;
 
 public class User {
 

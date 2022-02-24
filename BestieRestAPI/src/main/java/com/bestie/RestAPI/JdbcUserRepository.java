@@ -7,6 +7,8 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.bestie.RestAPI.oggetti.User;
+
 
 @Repository(value="MySQL")
 public class JdbcUserRepository implements UserRepository{
@@ -17,19 +19,19 @@ public class JdbcUserRepository implements UserRepository{
 	//Metodi per trovare un utente
 	
 	@Override
-	public List<User> findById(Integer id) {
+	public List<User> findUserById(Integer id) {
 		return jdbcTemplate.query("SELECT * FROM User WHERE id_user = ?", BeanPropertyRowMapper.newInstance(User.class) ,id);
 		
 	}
 
 	@Override
-	public List<User> findByUsername(String username) {
+	public List<User> findUserByUsername(String username) {
 		// TODO Auto-generated method stub
 		return jdbcTemplate.query("SELECT * FROM User WHERE username = ?", BeanPropertyRowMapper.newInstance(User.class) ,username);
 	}
 
 	@Override
-	public List<User> findByMail(String email) {
+	public List<User> findUserByMail(String email) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -67,5 +69,26 @@ public class JdbcUserRepository implements UserRepository{
 		}
 		
 	}
+
+	@Override
+	public boolean newPet(String owner, String race, String nickname, double weight, boolean gender) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	
+	//Metodi PET
+	
+	/*public boolean newPet(String owner, String race, String nickname, double weight, boolean gender) {
+		int idUser;
+		try {
+			idUser = findUserByUsername(owner).get(0).getId_user();
+			idRace = 
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		jdbcTemplate.update("INSERT INTO Pet(id_user, id_race)")
+		return true;
+	}*/
 	
 }
