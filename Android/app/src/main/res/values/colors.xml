@@ -27,7 +27,7 @@
     <color name="blue_ncs">#1D84B5</color>
     <color name="charleston_green">#132E32</color>
     <color name="blue_sapphire">#176087</color>
-    <!--______________________-->
+    <!--______________________Buono:-->
     <color name="old_gold">#D5B942</color>
     <color name="straw">#D9D375</color>
     <color name="green_yellow_crayola">#E3DE8F</color>
@@ -87,5 +87,12 @@
     <color name="testo_secondario">#B7918C</color>
     <color name="sfondo_primario">#DDC67B</color>
     <color name="sfondo_secondario">#B7918C</color>
+    <!--Colori settoriali-->
+    <color name="settore_wild">#415D43</color>
+    <color name="settore_wild_lista">#709775</color>
+    <color name="settore_farm">#D9D375</color>
+    <color name="settore_farm_lista">#E3DE8F</color>
+    <color name="settore_pets">#9DB4C0</color>
+    <color name="settore_pets_lista">#C2DFE3</color>
 
 </resources>

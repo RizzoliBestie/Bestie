@@ -18,6 +18,7 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -30,11 +31,13 @@ import java.util.List;
 
 public class CuriosityFragment extends Fragment {
 
+    RelativeLayout curiosityFragmentRelativeLayout = null;
     ListView animalWikiListView = null;
     ImageView sectionMenuImageView = null;
     TextView sectionTextView = null;
     EditText searchEditText = null;
     Spinner sectionMenuSpinner = null;
+    View topBackground = null;
 
     Activity act = null;
 
@@ -50,11 +53,13 @@ public class CuriosityFragment extends Fragment {
 
         View v = inflater.inflate(R.layout.fragment_curiosity, container, false);
 
+        curiosityFragmentRelativeLayout = v.findViewById(R.id.curiosityFragmentRelativeLayout);
         animalWikiListView = v.findViewById(R.id.animalWikiListView);
         sectionMenuImageView = v.findViewById(R.id.sectionMenuImageView);
         sectionTextView = v.findViewById(R.id.sectionTextView);
         searchEditText = v.findViewById(R.id.searchEditText);
         sectionMenuSpinner = v.findViewById(R.id.sectionMenuSpinner);
+        topBackground = v.findViewById(R.id.top_background);
 
         //Setup della TextView che indica la sezione
         String [] SectionString = new String[] {"PETS", "FARM", "WILD"};
@@ -62,7 +67,6 @@ public class CuriosityFragment extends Fragment {
         final ArrayAdapter<CharSequence> spinnerAdapter = ArrayAdapter.createFromResource(act, R.array.curiosity_sections, android.R.layout.simple_spinner_item);
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         sectionMenuSpinner.setAdapter(spinnerAdapter);
-
 
 
         //Input degli animali qui
@@ -120,17 +124,25 @@ public class CuriosityFragment extends Fragment {
                 switch (index){
                     case "WILD":
                         animalWikiListView.setAdapter(animalAdapterWild);
+                        topBackground.setBackgroundResource(R.color.settore_wild);
+                        curiosityFragmentRelativeLayout.setBackgroundResource(R.color.settore_wild_lista);
                         break;
                     case "FARM":
                         animalWikiListView.setAdapter(animalAdapterFarm);
+                        topBackground.setBackgroundResource(R.color.settore_farm);
+                        curiosityFragmentRelativeLayout.setBackgroundResource(R.color.settore_farm_lista);
                         break;
                     case "PETS":
                         animalWikiListView.setAdapter(animalAdapterPets);
+                        topBackground.setBackgroundResource(R.color.settore_pets);
+                        curiosityFragmentRelativeLayout.setBackgroundResource(R.color.settore_pets_lista);
                         break;
                     default:
                         animalWikiListView.setAdapter(animalAdapter);
                         break;
                 }
+
+
             }
 
             @Override

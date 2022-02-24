@@ -4,7 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/curiosityFragmentRelativeLayout"
     tools:context=".curiosity.CuriosityFragment">
+
+    <View android:id="@+id/top_background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_above="@id/searchEditText"
+        android:layout_alignParentBottom="@+id/searchEditText"
+        android:layout_marginBottom="50dp"
+        android:layout_alignBottom="@id/searchEditText"
+        android:background="#DDDDDD"
+        android:visibility="visible"/>
 
     <EditText
         android:id="@+id/searchEditText"
@@ -13,10 +25,10 @@
         android:layout_marginLeft="10pt"
         android:layout_marginTop="100pt"
         android:background="@drawable/et_style"
-        android:padding="10dp"
         android:ems="10"
         android:hint="Search by names"
-        android:inputType="textPersonName" />
+        android:inputType="textPersonName"
+        android:padding="10dp" />
 
     <ListView
         android:id="@+id/animalWikiListView"
@@ -52,4 +64,5 @@
         android:layout_height="20pt"
         android:layout_marginLeft="135pt"
         android:layout_marginTop="100pt" />
+
 </RelativeLayout>
