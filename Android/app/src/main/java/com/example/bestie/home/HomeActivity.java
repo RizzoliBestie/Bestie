@@ -27,7 +27,7 @@ public class HomeActivity extends AppCompatActivity {
 
         Button menuButton = findViewById(R.id.menu_button);
         LayoutInflater inflater = LayoutInflater.from(getApplicationContext());
-        View drawer = inflater.inflate(R.layout.drawer_menu, null);
+        /*View drawer = inflater.inflate(R.layout.drawer_menu, null);
         TextView archivio = drawer.findViewById(R.id.archivio);
         TextView settings = drawer.findViewById(R.id.settings);
         TextView logout = drawer.findViewById(R.id.logout);
@@ -39,6 +39,6 @@ public class HomeActivity extends AppCompatActivity {
                 Intent openSettings = new Intent(HomeActivity.this, SettingsActivity.class);
                 startActivity(openSettings);
             }
-        });
+        });*/
     }
 }
