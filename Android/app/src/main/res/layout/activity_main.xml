@@ -23,7 +23,7 @@
         android:layout_height="65dp"
         android:background="@color/sfondo_secondario"
         app:titleTextColor="@color/testo_principale"
-        app:buttonGravity="center_vertical"/>
+        app:buttonGravity="center_vertical" />
 
     <androidx.drawerlayout.widget.DrawerLayout
         android:id="@+id/drawer_layout"
