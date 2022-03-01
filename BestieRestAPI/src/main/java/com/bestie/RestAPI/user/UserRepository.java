@@ -1,9 +1,8 @@
-package com.bestie.RestAPI;
+package com.bestie.RestAPI.user;
 
 import java.util.List;
 
 import com.bestie.RestAPI.oggetti.Pet;
-import com.bestie.RestAPI.oggetti.User;
 
 public interface UserRepository {
 

@@ -1,4 +1,4 @@
-package com.bestie.RestAPI;
+package com.bestie.RestAPI.user;
 
 import java.util.List;
 
@@ -7,10 +7,8 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import com.bestie.RestAPI.oggetti.User;
 
-
-@Repository(value="MySQL")
+@Repository(value="user")
 public class JdbcUserRepository implements UserRepository{
 	
 	@Autowired

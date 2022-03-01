@@ -1,4 +1,4 @@
-package com.bestie.RestAPI;
+package com.bestie.RestAPI.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
