@@ -2,11 +2,16 @@ package com.example.bestie.curiosity;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.content.res.AppCompatResources;
+import androidx.core.content.ContextCompat;
+import androidx.core.graphics.drawable.DrawableCompat;
 import androidx.fragment.app.Fragment;
 
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -127,22 +132,24 @@ public class CuriosityFragment extends Fragment {
                         animalWikiListView.setAdapter(animalAdapterWild);
                         topBackground.setBackgroundResource(R.color.settore_wild);
                         curiosityFragmentRelativeLayout.setBackgroundResource(R.color.settore_wild_lista);
-                        sectionTextView.setTextColor(getResources().getColor(R.color.settore_wild_testo_principale));
-                        //animalAdapterWild.getRaceTextView(getResources().getColor(R.color.settore_wild_testo_secondario));
+                        sectionTextView.setTextColor(ContextCompat.getColor(getContext(), R.color.settore_wild_testo_principale));
+                        //searchEditText.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.settore_pets_jolly));
+                        GradientDrawable drawable = (GradientDrawable)ContextCompat.getDrawable(getContext(), R.drawable.et_style);
+                        drawable.setStroke(2, ContextCompat.getColor(getContext(), R.color.settore_wild_testo_principale));
                         break;
                     case "FARM":
                         animalWikiListView.setAdapter(animalAdapterFarm);
                         topBackground.setBackgroundResource(R.color.settore_farm);
                         curiosityFragmentRelativeLayout.setBackgroundResource(R.color.settore_farm_lista);
-                        sectionTextView.setTextColor(getResources().getColor(R.color.settore_farm_testo_principale));
-                        //animalAdapterFarm.getRaceTextView(getResources().getColor(R.color.settore_farm_testo_secondario));
+                        sectionTextView.setTextColor(ContextCompat.getColor(getContext(), R.color.settore_farm_testo_principale));
+                        //searchEditText.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.settore_pets_jolly));
                         break;
                     case "PETS":
                         animalWikiListView.setAdapter(animalAdapterPets);
                         topBackground.setBackgroundResource(R.color.settore_pets);
                         curiosityFragmentRelativeLayout.setBackgroundResource(R.color.settore_pets_lista);
-                        sectionTextView.setTextColor(getResources().getColor(R.color.settore_pets_testo_principale));
-                        //animalAdapterFarm.getRaceTextView(getResources().getColor(R.color.settore_pets_testo_secondario));
+                        sectionTextView.setTextColor(ContextCompat.getColor(getContext(), R.color.settore_pets_testo_principale));
+                        //searchEditText.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.settore_pets_jolly));
                         break;
                     default:
                         animalWikiListView.setAdapter(animalAdapter);
@@ -178,6 +185,7 @@ public class CuriosityFragment extends Fragment {
                 infoIntent.putExtra("specie", p.specie);
                 infoIntent.putExtra("image_url", p.image_url);
                 infoIntent.putExtra("description", p.description);
+                infoIntent.putExtra("section", p.section);
                 startActivity(infoIntent);
             }
         });

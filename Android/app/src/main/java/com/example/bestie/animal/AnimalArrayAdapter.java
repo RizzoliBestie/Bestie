@@ -13,8 +13,10 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
+import androidx.core.content.res.ResourcesCompat;
 
 import com.example.bestie.R;
+import com.mikhaellopez.circularimageview.CircularImageView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +29,7 @@ public class AnimalArrayAdapter extends ArrayAdapter<AnimalWiki> {
 
     static class ViewHolder {
         ImageView animalImageView;
+        CircularImageView circular_animalImageView; //Per gestire l'immagine circolare
         TextView nameTextView;
         TextView raceTextView;
         TextView specieTextView;
@@ -35,8 +38,6 @@ public class AnimalArrayAdapter extends ArrayAdapter<AnimalWiki> {
             this.animalImageView = animalImageView;
         }
     }
-
-    //public ViewHolder vh;
 
     public AnimalArrayAdapter(@NonNull Context context, int resource, @NonNull List<AnimalWiki> objects) {
         super(context, resource, objects);
@@ -62,6 +63,7 @@ public class AnimalArrayAdapter extends ArrayAdapter<AnimalWiki> {
 
             ViewHolder vh = new ViewHolder();
             vh.animalImageView = convertView.findViewById(R.id.animalImageView);
+            vh.circular_animalImageView = convertView.findViewById(R.id.animalImageView);
             vh.nameTextView = convertView.findViewById(R.id.nameTextView);
             vh.raceTextView = convertView.findViewById(R.id.raceTextView);
             vh.specieTextView = convertView.findViewById(R.id.speciesTextView);
@@ -77,18 +79,20 @@ public class AnimalArrayAdapter extends ArrayAdapter<AnimalWiki> {
                 case "WILD":
                     vh.nameTextView.setTextColor(ContextCompat.getColor(getContext(), R.color.settore_wild_testo_principale));
                     vh.raceTextView.setTextColor(ContextCompat.getColor(getContext(), R.color.settore_wild_testo_secondario));
-                    vh.specieTextView.setTextColor(ContextCompat.getColor(getContext(), R.color.settore_wild_jolly));
-                    //Il circleimageview non ha un setBorder? da risolvere
+                    vh.specieTextView.setTextColor(ContextCompat.getColor(getContext(), R.color.settore_wild_testo_secondario));
+                    vh.circular_animalImageView.setBorderColor(ContextCompat.getColor(getContext(), R.color.settore_wild_jolly));
                     break;
                 case "FARM":
                     vh.nameTextView.setTextColor(ContextCompat.getColor(getContext(), R.color.settore_farm_testo_principale));
                     vh.raceTextView.setTextColor(ContextCompat.getColor(getContext(), R.color.settore_farm_testo_secondario));
-                    vh.specieTextView.setTextColor(ContextCompat.getColor(getContext(), R.color.settore_farm_jolly));
+                    vh.specieTextView.setTextColor(ContextCompat.getColor(getContext(), R.color.settore_farm_testo_secondario));
+                    vh.circular_animalImageView.setBorderColor(ContextCompat.getColor(getContext(), R.color.settore_farm_jolly));
                     break;
                 case "PETS":
                     vh.nameTextView.setTextColor(ContextCompat.getColor(getContext(), R.color.settore_pets_testo_principale));
                     vh.raceTextView.setTextColor(ContextCompat.getColor(getContext(), R.color.settore_pets_testo_secondario));
-                    vh.specieTextView.setTextColor(ContextCompat.getColor(getContext(), R.color.settore_pets_jolly));
+                    vh.specieTextView.setTextColor(ContextCompat.getColor(getContext(), R.color.settore_pets_testo_secondario));
+                    vh.circular_animalImageView.setBorderColor(ContextCompat.getColor(getContext(), R.color.settore_pets_jolly));
                     break;
             }
 
@@ -97,11 +101,9 @@ public class AnimalArrayAdapter extends ArrayAdapter<AnimalWiki> {
 
         ViewHolder vh = (ViewHolder) convertView.getTag();
 
-
         vh.nameTextView.setText(p.name);
         vh.raceTextView.setText(p.race);
         vh.specieTextView.setText(p.specie);
-
 
         return convertView;
     }

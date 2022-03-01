@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".curiosity.AnimalInfoActivity">
+    tools:context=".curiosity.AnimalInfoActivity"
+    android:id="@+id/animalInfoRelativeLayout"
+    android:background="@color/settore_wild">
 
     <com.mikhaellopez.circularimageview.CircularImageView
         android:id="@+id/animalInfoImageView"
@@ -12,8 +14,8 @@
         android:layout_height="150dp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="50dp"
-        app:civ_border_color="#FF000000"
-        app:civ_border_width="2dp"
+        app:civ_border_color="@color/settore_wild_jolly"
+        app:civ_border_width="4dp"
         app:srcCompat="@drawable/volpe"
         android:scaleType="centerCrop"/>
 
@@ -25,7 +27,8 @@
         android:layout_marginTop="10dp"
         android:textSize="60px"
         android:textStyle="bold|italic"
-        android:text="Volpe" />
+        android:text="Volpe"
+        android:textColor="@color/settore_wild_testo_principale"/>
 
     <TextView
         android:id="@+id/descriptionTextView"
@@ -34,7 +37,8 @@
         android:layout_below="@+id/animalInfoImageView"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
-        android:text="Nessuna descrizione" />
+        android:text="Nessuna descrizione"
+        android:textColor="@color/settore_wild_testo_principale"/>
 
     <TextView
         android:id="@+id/speciesHeaderTextView"
@@ -44,7 +48,7 @@
         android:layout_marginTop="50dp"
         android:layout_toRightOf="@+id/animalInfoImageView"
         android:fontFamily="sans-serif-light"
-        android:textColor="@color/grey"
+        android:textColor="@color/settore_wild_testo_secondario"
         android:text="Specie:" />
 
     <TextView
@@ -54,6 +58,7 @@
         android:layout_marginLeft="60dp"
         android:layout_marginTop="50dp"
         android:layout_toRightOf="@+id/animalInfoImageView"
+        android:textColor="@color/settore_wild_testo_principale"
         android:text="NA" />
 
     <TextView
@@ -64,7 +69,7 @@
         android:layout_marginTop="70dp"
         android:layout_toRightOf="@+id/animalInfoImageView"
         android:fontFamily="sans-serif-light"
-        android:textColor="@color/grey"
+        android:textColor="@color/settore_wild_testo_secondario"
         android:text="Razza:" />
 
     <TextView
@@ -74,6 +79,7 @@
         android:layout_marginLeft="60dp"
         android:layout_marginTop="70dp"
         android:layout_toRightOf="@+id/animalInfoImageView"
+        android:textColor="@color/settore_wild_testo_principale"
         android:text="NA" />
 
 </RelativeLayout>
