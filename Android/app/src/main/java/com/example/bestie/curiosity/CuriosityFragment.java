@@ -127,16 +127,22 @@ public class CuriosityFragment extends Fragment {
                         animalWikiListView.setAdapter(animalAdapterWild);
                         topBackground.setBackgroundResource(R.color.settore_wild);
                         curiosityFragmentRelativeLayout.setBackgroundResource(R.color.settore_wild_lista);
+                        sectionTextView.setTextColor(getResources().getColor(R.color.settore_wild_testo_principale));
+                        //animalAdapterWild.getRaceTextView(getResources().getColor(R.color.settore_wild_testo_secondario));
                         break;
                     case "FARM":
                         animalWikiListView.setAdapter(animalAdapterFarm);
                         topBackground.setBackgroundResource(R.color.settore_farm);
                         curiosityFragmentRelativeLayout.setBackgroundResource(R.color.settore_farm_lista);
+                        sectionTextView.setTextColor(getResources().getColor(R.color.settore_farm_testo_principale));
+                        //animalAdapterFarm.getRaceTextView(getResources().getColor(R.color.settore_farm_testo_secondario));
                         break;
                     case "PETS":
                         animalWikiListView.setAdapter(animalAdapterPets);
                         topBackground.setBackgroundResource(R.color.settore_pets);
                         curiosityFragmentRelativeLayout.setBackgroundResource(R.color.settore_pets_lista);
+                        sectionTextView.setTextColor(getResources().getColor(R.color.settore_pets_testo_principale));
+                        //animalAdapterFarm.getRaceTextView(getResources().getColor(R.color.settore_pets_testo_secondario));
                         break;
                     default:
                         animalWikiListView.setAdapter(animalAdapter);

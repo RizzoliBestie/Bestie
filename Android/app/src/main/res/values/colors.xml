@@ -9,6 +9,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="grey">#888</color>
+    <color name="grey_smoke">#D3D3D3</color>
     <!--Colori Candidati Stile-->
     <color name="gray_x11">#BBBAB8</color>
     <color name="unbleached_silk">#FCE1CC</color>
@@ -92,9 +93,18 @@
     <!--Colori settoriali-->
     <color name="settore_wild">#415D43</color>
     <color name="settore_wild_lista">#709775</color>
+    <color name="settore_wild_testo_principale">#1E352F</color>
+    <color name="settore_wild_testo_secondario">#39433B</color>
+    <color name="settore_wild_jolly">#A1CCA5</color>
     <color name="settore_farm">#D9D375</color>
     <color name="settore_farm_lista">#E3DE8F</color>
+    <color name="settore_farm_testo_principale">#706123</color>
+    <color name="settore_farm_testo_secondario">#77744B</color>
+    <color name="settore_farm_jolly">#BFCBC2</color>
     <color name="settore_pets">#9DB4C0</color>
     <color name="settore_pets_lista">#C2DFE3</color>
+    <color name="settore_pets_testo_principale">#253237</color>
+    <color name="settore_pets_testo_secondario">#5C6B73</color>
+    <color name="settore_pets_jolly">#625F63</color>
 
 </resources>

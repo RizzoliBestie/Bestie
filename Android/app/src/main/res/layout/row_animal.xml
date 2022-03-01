@@ -15,7 +15,7 @@
         android:layout_marginRight="20dp"
         android:fontFamily="sans-serif-medium"
         android:text="Volpe"
-        android:textColor="@color/testo_principale"
+        android:textColor="@color/settore_wild_testo_principale"
         android:textSize="60px" />
 
     <TextView
@@ -23,12 +23,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/nameTextView"
-        android:textSize="45px"
-        android:text="Fennec"
-        android:textColor="@color/testo_secondario"
-        android:layout_marginTop="10px"
         android:layout_marginLeft="110dp"
-        android:layout_marginRight="20dp"/>
+        android:layout_marginTop="10px"
+        android:layout_marginRight="20dp"
+        android:text="Fennec"
+        android:textColor="@color/settore_wild_testo_secondario"
+        android:textSize="45px" />
 
     <TextView
         android:id="@+id/speciesTextView"
@@ -37,9 +37,9 @@
         android:layout_below="@+id/raceTextView"
         android:layout_marginLeft="110dp"
         android:layout_marginTop="10px"
-        android:textColor="@color/jolly"
         android:layout_marginRight="20dp"
         android:text="Mammifero"
+        android:textColor="@color/settore_wild_jolly"
         android:textSize="45px" />
 
     <!-- Imageview Originale:-->
@@ -63,6 +63,8 @@
         android:layout_marginBottom="0dp"
         app:srcCompat="@android:drawable/ic_menu_help"
         app:civ_border_width="2dp"
-        app:civ_border_color="@color/jolly"/>
+        app:civ_border_color="@color/grey_smoke"/>
+    <!-- Il colore deve essere jolly tipo "@color/settore_wild_jolly",
+    temporaneamente rimpiazzato con grey-->
 
 </RelativeLayout>

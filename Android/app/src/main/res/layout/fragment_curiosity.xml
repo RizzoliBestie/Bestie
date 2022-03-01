@@ -43,7 +43,7 @@
         android:layout_marginTop="50pt"
         android:gravity="center"
         android:text="CURIOSITY"
-        android:textColor="@color/testo_principale"
+        android:textColor="@color/settore_wild_testo_principale"
         android:textSize="20pt"
         android:textStyle="bold|italic"
         android:typeface="serif" />

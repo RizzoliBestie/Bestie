@@ -1,6 +1,7 @@
 package com.example.bestie.animal;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 
 import com.example.bestie.R;
 
@@ -28,7 +30,13 @@ public class AnimalArrayAdapter extends ArrayAdapter<AnimalWiki> {
         TextView nameTextView;
         TextView raceTextView;
         TextView specieTextView;
+
+        public void setAnimalImageView(ImageView animalImageView) {
+            this.animalImageView = animalImageView;
+        }
     }
+
+    //public ViewHolder vh;
 
     public AnimalArrayAdapter(@NonNull Context context, int resource, @NonNull List<AnimalWiki> objects) {
         super(context, resource, objects);
@@ -37,7 +45,10 @@ public class AnimalArrayAdapter extends ArrayAdapter<AnimalWiki> {
         for (int i = 0; i < objects.size(); i++){
             dati.add(objects.get(i));
         }
+
+
     }
+
 
     @NonNull
     @Override
@@ -50,7 +61,6 @@ public class AnimalArrayAdapter extends ArrayAdapter<AnimalWiki> {
             convertView = inflater.inflate(res, parent, false);
 
             ViewHolder vh = new ViewHolder();
-
             vh.animalImageView = convertView.findViewById(R.id.animalImageView);
             vh.nameTextView = convertView.findViewById(R.id.nameTextView);
             vh.raceTextView = convertView.findViewById(R.id.raceTextView);
@@ -63,6 +73,25 @@ public class AnimalArrayAdapter extends ArrayAdapter<AnimalWiki> {
                 vh.animalImageView.setImageResource(R.drawable.volpe); //Fa solo l'immagine della volpe
             }
 
+            switch(p.section){
+                case "WILD":
+                    vh.nameTextView.setTextColor(ContextCompat.getColor(getContext(), R.color.settore_wild_testo_principale));
+                    vh.raceTextView.setTextColor(ContextCompat.getColor(getContext(), R.color.settore_wild_testo_secondario));
+                    vh.specieTextView.setTextColor(ContextCompat.getColor(getContext(), R.color.settore_wild_jolly));
+                    //Il circleimageview non ha un setBorder? da risolvere
+                    break;
+                case "FARM":
+                    vh.nameTextView.setTextColor(ContextCompat.getColor(getContext(), R.color.settore_farm_testo_principale));
+                    vh.raceTextView.setTextColor(ContextCompat.getColor(getContext(), R.color.settore_farm_testo_secondario));
+                    vh.specieTextView.setTextColor(ContextCompat.getColor(getContext(), R.color.settore_farm_jolly));
+                    break;
+                case "PETS":
+                    vh.nameTextView.setTextColor(ContextCompat.getColor(getContext(), R.color.settore_pets_testo_principale));
+                    vh.raceTextView.setTextColor(ContextCompat.getColor(getContext(), R.color.settore_pets_testo_secondario));
+                    vh.specieTextView.setTextColor(ContextCompat.getColor(getContext(), R.color.settore_pets_jolly));
+                    break;
+            }
+
             convertView.setTag(vh);
         }
 
@@ -73,6 +102,7 @@ public class AnimalArrayAdapter extends ArrayAdapter<AnimalWiki> {
         vh.raceTextView.setText(p.race);
         vh.specieTextView.setText(p.specie);
 
+
         return convertView;
     }
 
@@ -82,6 +112,8 @@ public class AnimalArrayAdapter extends ArrayAdapter<AnimalWiki> {
             filter = new AppFilter(dati);
         return filter;
     }
+
+
 
     private class AppFilter<T> extends Filter {
 
