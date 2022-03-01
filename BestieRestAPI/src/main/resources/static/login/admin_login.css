@@ -1,7 +1,9 @@
 
 body{
-    background-image: url("./img/puma_background.jpg");
+    background-repeat: no-repeat;
+    background-image: url("../img/puma_background.jpg");
     background-size: 100%;
+    background-attachment: fixed;
 }
 #login_box{
     background-color: none;
