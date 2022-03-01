@@ -3,6 +3,8 @@ package com.example.bestie.storage;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.Toolbar;
 
@@ -40,5 +42,12 @@ public class StorageActivity extends AppCompatActivity {
 
         ItemGridAdapter itemGridAdapter = new ItemGridAdapter(this, R.layout.activity_storage_item, items);
         gridView.setAdapter(itemGridAdapter);
+
+        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+            }
+        });
     }
 }
