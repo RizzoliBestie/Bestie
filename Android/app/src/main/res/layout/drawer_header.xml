@@ -7,11 +7,12 @@
     android:orientation="vertical"
     android:padding="16dp">
 
-    <de.hdodenhof.circleimageview.CircleImageView
+    <com.mikhaellopez.circularimageview.CircularImageView
         android:id="@+id/drawerProfileImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/doggo" />
+        android:src="@drawable/doggo"
+        android:scaleType="centerCrop"/>
 
     <TextView
         android:id="@+id/profileName"

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".curiosity.AnimalInfoActivity">
 
-    <de.hdodenhof.circleimageview.CircleImageView
+    <com.mikhaellopez.circularimageview.CircularImageView
         android:id="@+id/animalInfoImageView"
         android:layout_width="150dp"
         android:layout_height="150dp"
@@ -14,7 +14,8 @@
         android:layout_marginTop="50dp"
         app:civ_border_color="#FF000000"
         app:civ_border_width="2dp"
-        app:srcCompat="@drawable/volpe" />
+        app:srcCompat="@drawable/volpe"
+        android:scaleType="centerCrop"/>
 
     <TextView
         android:id="@+id/nameTextView"

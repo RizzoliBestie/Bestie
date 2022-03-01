@@ -54,7 +54,7 @@
         app:srcCompat="@android:drawable/ic_menu_help"
         tools:ignore="ImageContrastCheck" />
 -->
-    <de.hdodenhof.circleimageview.CircleImageView
+    <com.mikhaellopez.circularimageview.CircularImageView
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/animalImageView"
         android:layout_width="100dp"
@@ -63,7 +63,8 @@
         android:layout_marginBottom="0dp"
         app:srcCompat="@android:drawable/ic_menu_help"
         app:civ_border_width="2dp"
-        app:civ_border_color="@color/grey_smoke"/>
+        app:civ_border_color="@color/grey_smoke"
+        android:scaleType="centerCrop"/>
     <!-- Il colore deve essere jolly tipo "@color/settore_wild_jolly",
     temporaneamente rimpiazzato con grey-->
 

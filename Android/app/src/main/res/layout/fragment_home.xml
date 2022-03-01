@@ -18,14 +18,14 @@
         android:text="\n\nIl tuo Pet il Tuo pet"
         android:textAlignment="center" />
 
-    <de.hdodenhof.circleimageview.CircleImageView
+    <com.mikhaellopez.circularimageview.CircularImageView
         android:id="@+id/homeImage"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:src="@drawable/doggo"
         android:layout_marginTop="40dp"
         android:layout_centerHorizontal="true"
-        />
+        android:scaleType="centerCrop" />
 
 
 </RelativeLayout>
