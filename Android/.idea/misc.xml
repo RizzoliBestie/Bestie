@@ -14,41 +14,33 @@
         <entry key="..\:/Users/LorenzoArecco/Documents/GitHub/Bestie/Android/app/src/main/res/layout/activity_change_password.xml" value="0.1" />
         <entry key="..\:/Users/LorenzoArecco/Documents/GitHub/Bestie/Android/app/src/main/res/layout/activity_log_in.xml" value="0.1640625" />
         <entry key="..\:/Users/LorenzoArecco/Documents/GitHub/Bestie/Android/app/src/main/res/layout/activity_main.xml" value="0.165625" />
-        <entry key="..\:/Users/LucaFerrari/Documents/GitHub/Bestie/Android/app/src/main/res/drawable/et_style.xml" value="0.1245" />
         <entry key="..\:/Users/LucaFerrari/Documents/GitHub/Bestie/Android/app/src/main/res/layout/activity_animal_info.xml" value="0.536" />
         <entry key="..\:/Users/LucaFerrari/Documents/GitHub/Bestie/Android/app/src/main/res/layout/activity_animale.xml" value="0.25052083333333336" />
         <entry key="..\:/Users/LucaFerrari/Documents/GitHub/Bestie/Android/app/src/main/res/layout/activity_curiosity.xml" value="0.4" />
         <entry key="..\:/Users/LucaFerrari/Documents/GitHub/Bestie/Android/app/src/main/res/layout/activity_home.xml" value="0.25052083333333336" />
-        <entry key="..\:/Users/LucaFerrari/Documents/GitHub/Bestie/Android/app/src/main/res/layout/activity_main.xml" value="0.146875" />
-        <entry key="..\:/Users/LucaFerrari/Documents/GitHub/Bestie/Android/app/src/main/res/layout/activity_map.xml" value="0.146875" />
-        <entry key="..\:/Users/LucaFerrari/Documents/GitHub/Bestie/Android/app/src/main/res/layout/activity_new_pet.xml" value="0.1828125" />
-        <entry key="..\:/Users/LucaFerrari/Documents/GitHub/Bestie/Android/app/src/main/res/layout/activity_pet.xml" value="0.1828125" />
-        <entry key="..\:/Users/LucaFerrari/Documents/GitHub/Bestie/Android/app/src/main/res/layout/activity_settings.xml" value="0.1828125" />
-        <entry key="..\:/Users/LucaFerrari/Documents/GitHub/Bestie/Android/app/src/main/res/layout/activity_settings_item.xml" value="0.1828125" />
-        <entry key="..\:/Users/LucaFerrari/Documents/GitHub/Bestie/Android/app/src/main/res/layout/activity_sign.xml" value="0.1828125" />
-        <entry key="..\:/Users/LucaFerrari/Documents/GitHub/Bestie/Android/app/src/main/res/layout/activity_storage.xml" value="0.1828125" />
-        <entry key="..\:/Users/LucaFerrari/Documents/GitHub/Bestie/Android/app/src/main/res/layout/activity_update_pet.xml" value="0.1828125" />
-        <entry key="..\:/Users/LucaFerrari/Documents/GitHub/Bestie/Android/app/src/main/res/layout/drawer_header.xml" value="0.1828125" />
-        <entry key="..\:/Users/LucaFerrari/Documents/GitHub/Bestie/Android/app/src/main/res/layout/fragment_curiosity.xml" value="0.2" />
-        <entry key="..\:/Users/LucaFerrari/Documents/GitHub/Bestie/Android/app/src/main/res/layout/fragment_home.xml" value="0.4" />
-        <entry key="..\:/Users/LucaFerrari/Documents/GitHub/Bestie/Android/app/src/main/res/layout/fragment_map.xml" value="0.146875" />
         <entry key="..\:/Users/LucaFerrari/Documents/GitHub/Bestie/Android/app/src/main/res/layout/row_animal.xml" value="0.536" />
-        <entry key="..\:/Users/LucaFerrari/Documents/GitHub/Bestie/Android/app/src/main/res/layout/sliding_layout.xml" value="0.1828125" />
         <entry key="..\:/Users/MichaelBellotti/Documents/GitHub/Bestie/Android/app/src/main/res/layout/activity_buttare.xml" value="0.1796875" />
         <entry key="..\:/Users/MichaelBellotti/Documents/GitHub/Bestie/Android/app/src/main/res/layout/activity_log_in.xml" value="0.14130434782608695" />
         <entry key="..\:/Users/MichaelBellotti/Documents/GitHub/Bestie/Android/app/src/main/res/layout/activity_sign.xml" value="0.14130434782608695" />
         <entry key="..\:/Users/RiccardoMarcarini/Documents/GitHub/Bestie/Android/app/src/main/res/drawable/et_style.xml" value="0.1265" />
         <entry key="..\:/Users/RiccardoMarcarini/Documents/GitHub/Bestie/Android/app/src/main/res/drawable/text_view_home.xml" value="0.1265" />
+        <entry key="..\:/Users/RiccardoMarcarini/Documents/GitHub/Bestie/Android/app/src/main/res/layout-v21/fragment_new_pet.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/RiccardoMarcarini/Documents/GitHub/Bestie/Android/app/src/main/res/layout/activity_curiosity.xml" value="0.11302083333333333" />
         <entry key="..\:/Users/RiccardoMarcarini/Documents/GitHub/Bestie/Android/app/src/main/res/layout/activity_home.xml" value="0.1" />
         <entry key="..\:/Users/RiccardoMarcarini/Documents/GitHub/Bestie/Android/app/src/main/res/layout/activity_log_in.xml" value="0.1793478260869565" />
         <entry key="..\:/Users/RiccardoMarcarini/Documents/GitHub/Bestie/Android/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/RiccardoMarcarini/Documents/GitHub/Bestie/Android/app/src/main/res/layout/activity_map.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/RiccardoMarcarini/Documents/GitHub/Bestie/Android/app/src/main/res/layout/activity_new_pet.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/RiccardoMarcarini/Documents/GitHub/Bestie/Android/app/src/main/res/layout/drawer_header.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/RiccardoMarcarini/Documents/GitHub/Bestie/Android/app/src/main/res/layout/drawer_menu.xml" value="0.1" />
         <entry key="..\:/Users/RiccardoMarcarini/Documents/GitHub/Bestie/Android/app/src/main/res/layout/fragment_curiosity.xml" value="0.23854166666666668" />
         <entry key="..\:/Users/RiccardoMarcarini/Documents/GitHub/Bestie/Android/app/src/main/res/layout/fragment_map.xml" value="0.11322463768115942" />
+        <entry key="..\:/Users/RiccardoMarcarini/Documents/GitHub/Bestie/Android/app/src/main/res/layout/fragment_new_pet.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/RiccardoMarcarini/Documents/GitHub/Bestie/Android/app/src/main/res/layout/races_spinner_nothing_selected.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/RiccardoMarcarini/Documents/GitHub/Bestie/Android/app/src/main/res/layout/row_animal.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/RiccardoMarcarini/Documents/GitHub/Bestie/Android/app/src/main/res/layout/spinner_nothing_selected.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/RiccardoMarcarini/Documents/GitHub/Bestie/Android/app/src/main/res/menu/bottom_nav_menu.xml" value="0.21145833333333333" />
+        <entry key="..\:/Users/RiccardoMarcarini/Documents/GitHub/Bestie/Android/app/src/main/res/menu/drawer_menu.xml" value="0.25416666666666665" />
       </map>
     </option>
   </component>

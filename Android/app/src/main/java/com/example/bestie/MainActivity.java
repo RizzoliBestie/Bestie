@@ -18,6 +18,7 @@ import com.example.bestie.home.HomeFragment;
 import com.example.bestie.map.MapFragment;
 import com.example.bestie.pet.NewPetActivity;
 import com.example.bestie.settings.SettingsActivity;
+import com.example.bestie.storage.StorageActivity;
 import com.google.android.gms.auth.api.signin.internal.Storage;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
@@ -68,9 +69,9 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.add_pet:
                         selected=new Intent(MainActivity.this, NewPetActivity.class);
                         break;
-                   /* case R.id.archivio:
+                    case R.id.archivio:
                         selected=new Intent(MainActivity.this, StorageActivity.class);
-                        break;*/
+                        break;
                     case R.id.settings:
                         selected=new Intent(MainActivity.this, SettingsActivity.class);
                         break;

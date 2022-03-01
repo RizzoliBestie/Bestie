@@ -3,7 +3,7 @@
     <group>
         <item
             android:id="@+id/add_pet"
-            android:icon="@drawable/add_pet"
+            android:icon="@drawable/ic_baseline_pets_24"
             android:title="Aggiungi Pet" />
         <item
             android:id="@+id/archivio"
