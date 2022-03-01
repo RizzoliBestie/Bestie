@@ -11,14 +11,13 @@ import com.example.bestie.R;
 
 public class NewPetActivity extends Activity {
 
-    String peso[] = new String[202];
+    String peso[] = new String[201];
 
     public void caricaPeso(){
-        peso[0]="Seleziona peso";
-        for (int i=1; i<=200; i++){
+        for (int i=0; i<200; i++){
             peso[i]= Integer.toString(i);
         }
-        peso[201]= "200+";
+        peso[200]= "200+";
     }
 
     @Override
