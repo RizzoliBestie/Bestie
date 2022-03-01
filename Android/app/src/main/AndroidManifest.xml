@@ -26,7 +26,10 @@
 
         <activity
             android:name=".storage.StorageActivity"
-            android:exported="false" />
+            android:label="Your files"
+            android:parentActivityName=".MainActivity"
+            android:exported="false" >
+        </activity>
 
         <activity
             android:name=".curiosity.AnimalInfoActivity"
