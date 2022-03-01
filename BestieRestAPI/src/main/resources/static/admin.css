@@ -1,3 +1,75 @@
-#loginBox{
-    border: 2px solid red;;
+
+body{
+    background-image: url("./img/puma_background.jpg");
+    background-size: 100%;
+}
+#login_box{
+    background-color: none;
+    margin-top: 100px;
+    margin-left: 25%;
+    width: 49%;
+    height: 70%;
+    border: 1px solid none;
+    border-radius: 1em;
+    text-align: center;
+}
+
+#bestie{
+    margin-bottom: 0.5em;
+    margin-top: 0.5em;
+    margin-left: 25%;
+    margin-right: 25%;
+    height: 10%;
+    font-size: 5em;
+    font-weight: bold;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color:orangered;
+    text-decoration: underline;
+    background-color: none;
+    text-align: center;
+}
+
+/*#admin_title{
+    margin-bottom: 0.5em;
+    margin-top: 0.5em;
+    margin-left: 25%;
+    margin-right: 25%;
+    height: 10%;
+    font-size: 2em;
+    font-weight: bold;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color:orangered;
+    background-color: none;
+}*/
+
+#form_id{
+    margin-bottom: 2em;
+    margin-left: 25%;
+    margin-right: 25%;
+    height: 50%;
+    font-size: 15px;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background-color: none;
+    padding-top: 2em;
+}
+
+.keyboard_input{
+    border-radius: 7px;
+    border: 1px solid white;
+    background-color: greenyellow;
+    height: 3em;
+    width: 80%;
+    margin-bottom: 2em;
+    display: block;
+    margin-left: 2.4em;
+    text-align: center;
+}
+
+#checkLogin{
+    background-color: wheat;
+    border-radius: 7px;
+    border: 2px solid orangered;
+    width:60%;
+    height: fit-content;
+    padding: 1em;
 }
