@@ -125,7 +125,7 @@
 
         </RadioGroup>
 
-        <Button
+        <ImageButton
             android:id="@+id/confirm_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -133,7 +133,8 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="40dp"
             android:layout_marginBottom="50dp"
-            android:text="Aggiungi" />
+            android:text="Aggiungi"
+            android:src="@drawable/ic_add" />
 
     </RelativeLayout>
 </ScrollView>
