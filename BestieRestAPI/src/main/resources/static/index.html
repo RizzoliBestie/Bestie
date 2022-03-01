@@ -3,16 +3,18 @@
         <title>
             Admin
         </title>
+        <link rel="stylesheet" href="admin.css">
+        <script src="admin.js"></script>
     </head>
-    <body>
-        <div id="loginBox">
-            <p id="adminTitle">
-                ADMIN LOGIN
-            </p>
-            <form method="get">
-                <input type="text" class="keyboardInput" placeholder="Username..." required>
-                <input type="password" class="keyboardInput" placeholder="Password..." required>
-                <input type="submit" value="Accedi" id="checkLogin">
+    <body background>
+        <div id="bestie">
+            Bestie
+        </div>
+        <div id="login_box">
+            <form method="get" id="form_id">
+                <input type="text" class="keyboard_input" placeholder="Username..." title="Inserire username" id="username_id" required>
+                <input type="password" class="keyboard_input" placeholder="Password..." title="Inserire username" id="password_id" required>
+                <input type="submit" value="Accedi" id="checkLogin" onclick="CheckLogin()">
             </form>
         </div>
     </body>

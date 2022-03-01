@@ -13,7 +13,7 @@ import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 public class API_Connection_Bestie extends Application {
 
-    public static final String BASE_URL = "http://192.168.73.200:8080/";
+    public static final String BASE_URL = "http://192.168.96.200:8080/";
     private Retrofit retrofit = null;
 
     public API_Connection_Bestie () {
