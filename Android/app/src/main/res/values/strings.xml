@@ -9,4 +9,13 @@
         <item>FARM</item>
         <item>PETS</item>
     </string-array>
+
+    <string-array name="species">
+        <item>Cane</item>
+        <item>Gatto</item>
+        <item>Roditore</item>
+        <item>Pesce</item>
+        <item>Rettile</item>
+        <item>Volatile</item>
+    </string-array>
 </resources>
