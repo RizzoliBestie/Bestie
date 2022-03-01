@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#293133"
+    android:background="@color/sfondo_secondario"
     tools:context=".storage.StorageActivity">
 
   <GridView
