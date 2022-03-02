@@ -18,9 +18,12 @@ public class Item {
     }
 
     public String getFile_name() {
-        if(file_name.length() > 19){
+        if(file_name.length() > 19)
             return file_name.replaceAll(file_name.substring(16),"...");
-        }
+        return file_name;
+    }
+
+    public String getCompleteFile_name(){
         return file_name;
     }
 
@@ -31,6 +34,10 @@ public class Item {
     public String getDescription() {
         if(description.length() > 19)
             return description.replaceAll(description.substring(16),"...");
+        return  description;
+    }
+
+    public String getCompleteDescription(){
         return description;
     }
 
