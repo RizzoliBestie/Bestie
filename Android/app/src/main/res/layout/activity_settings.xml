@@ -17,10 +17,10 @@
 
     <TextView
         android:id="@+id/title_1"
-        android:layout_width="match_parent"
+        android:layout_width="350dp"
         android:layout_height="30dp"
+        android:layout_centerHorizontal="true"
         android:layout_below="@id/settings_toolbar"
-        android:background="@drawable/lines"
         android:text="Profile"
         android:textColor="@color/testo_principale"
         android:layout_marginTop="10dp"
@@ -29,16 +29,20 @@
 
     <ListView
         android:id="@+id/listView"
-        android:layout_width="match_parent"
+        android:layout_width="350dp"
+        android:background="@color/sfondo_primario"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="20dp"
+        android:layout_centerHorizontal="true"
         android:layout_height="wrap_content"
         android:layout_below="@+id/title_1" />
 
     <TextView
         android:id="@+id/title_2"
-        android:layout_width="match_parent"
+        android:layout_width="350dp"
         android:layout_height="30dp"
+        android:layout_centerHorizontal="true"
         android:layout_below="@id/listView"
-        android:background="@drawable/lines"
         android:text="App"
         android:textColor="@color/testo_principale"
         android:textAlignment="center"
@@ -46,11 +50,13 @@
 
     <Switch
         android:id="@+id/aSwitch"
-        android:layout_width="match_parent"
+        android:layout_width="350dp"
         android:layout_height="65dp"
         android:textSize="17dp"
         android:textStyle="bold"
         android:textColor="@color/testo_principale"
+        android:background="@color/sfondo_primario"
+        android:layout_centerHorizontal="true"
         android:layout_below="@id/title_2"
         android:layout_marginTop="10dp"
         android:textAlignment="center"

@@ -5,6 +5,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.view.View;
@@ -29,6 +30,7 @@ public class StorageActivity extends AppCompatActivity {
     Toolbar toolbar = null;
     TextView empty = null;
     ImageView addFileButton = null;
+    private int SELECT_FILE_CODE = 1;
     private int file_n = 12; // dimensionamento provvisorio
 
     @Override
@@ -48,7 +50,10 @@ public class StorageActivity extends AppCompatActivity {
         addFileButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(StorageActivity.this, "add button clicked", Toast.LENGTH_SHORT).show();
+                Intent imageIntent = new Intent();
+                imageIntent.setType("*/*");
+                imageIntent.setAction(Intent.ACTION_GET_CONTENT);
+                startActivityForResult(Intent.createChooser(imageIntent, "title"), SELECT_FILE_CODE);
             }
         });
 
