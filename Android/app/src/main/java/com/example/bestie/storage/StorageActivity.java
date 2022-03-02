@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.widget.Toolbar;
@@ -26,6 +27,7 @@ public class StorageActivity extends AppCompatActivity {
 
     GridView gridView = null;
     Toolbar toolbar = null;
+    TextView empty = null;
     ImageView addFileButton = null;
     private int file_n = 12; // dimensionamento provvisorio
 
@@ -34,6 +36,7 @@ public class StorageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_storage);
 
+        empty = findViewById(R.id.empty_tv);
         gridView = findViewById(R.id.gridView);
         addFileButton = findViewById(R.id.addFile_button);
         (new ItemImageDownload(this, "https://icon-library.com/images/plus-icon-png/plus-icon-png-15.jpg", addFileButton)).execute();
