@@ -15,6 +15,7 @@ import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,6 +31,8 @@ import android.widget.TextView;
 import com.example.bestie.R;
 import com.example.bestie.animal.Animal;
 import com.example.bestie.animal.AnimalArrayAdapter;
+import com.example.bestie.animal.AnimalSection;
+import com.example.bestie.animal.AnimalSectionSpinnerAdapter;
 import com.example.bestie.animal.AnimalWiki;
 
 import java.util.ArrayList;
@@ -46,6 +49,8 @@ public class CuriosityFragment extends Fragment {
     View topBackground = null;
 
     Activity act = null;
+
+    AnimalSectionSpinnerAdapter spinnerAdapter;
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -70,13 +75,14 @@ public class CuriosityFragment extends Fragment {
         //Setup della TextView che indica la sezione
         String [] SectionString = new String[] {"PETS", "FARM", "WILD"};
 
-        final ArrayAdapter<CharSequence> spinnerAdapter = ArrayAdapter.createFromResource(act, R.array.curiosity_sections, android.R.layout.simple_spinner_item);
-        spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        //final ArrayAdapter<CharSequence> spinnerAdapter = ArrayAdapter.createFromResource(act, R.array.curiosity_sections, android.R.layout.simple_spinner_item);
+        //spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        //sectionMenuSpinner.setAdapter(spinnerAdapter);
+
+        spinnerAdapter = new AnimalSectionSpinnerAdapter(getContext(), R.layout.row_section, R.id.sectionNameTextView, getSpinnerData());
         sectionMenuSpinner.setAdapter(spinnerAdapter);
 
-
         //Input degli animali qui
-
         List<AnimalWiki> animals = new ArrayList<AnimalWiki>();
         animals.add(new AnimalWiki("Volpe", "Fennec", "Vulpes Zerda", "WILD", "https://www.parmadaily.it/wp-content/uploads/2016/09/fennec.jpg"));
         animals.add(new AnimalWiki("Nittereute", "Cane Procione", "Nyctereutes procyonoides", "WILD", "https://upload.wikimedia.org/wikipedia/commons/8/85/Der_Marderhund%2C_Tanuki_oder_Enok_%28Nyctereutes_procyonoides%29%2C_bitte_nicht_zu_verwechseln_mit_einem_Waschb%C3%A4r%2C_hier_im_Wisentgehege_in_Springe_%28Kleiner_Deister%29.jpg"));
@@ -93,21 +99,21 @@ public class CuriosityFragment extends Fragment {
 
         List<AnimalWiki> animalsWild = new ArrayList<AnimalWiki>();
         for(int wild=0; wild<animals.size(); wild++){
-            if(animals.get(wild).section.equals("WILD")){
+            if(animals.get(wild).section.getSectionName().equals("WILD")){
                 animalsWild.add(animals.get(wild));
             }
         }
 
         List<AnimalWiki> animalsFarm = new ArrayList<AnimalWiki>();
         for(int farm=0; farm<animals.size(); farm++){
-            if(animals.get(farm).section.equals("FARM")){
+            if(animals.get(farm).section.getSectionName().equals("FARM")){
                 animalsFarm.add(animals.get(farm));
             }
         }
 
         List<AnimalWiki> animalsPets = new ArrayList<AnimalWiki>();
         for(int pets=0; pets<animals.size(); pets++){
-            if(animals.get(pets).section.equals("PETS")){
+            if(animals.get(pets).section.getSectionName().equals("PETS")){
                 animalsPets.add(animals.get(pets));
             }
         }
@@ -121,21 +127,27 @@ public class CuriosityFragment extends Fragment {
         sectionMenuSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                AnimalSection animalSect = (AnimalSection) spinnerAdapter.getItem(i);
+                String section = animalSect.section_name;
+
+                Log.v("CuriosityFragment", section);
                 //Toast.makeText(getApplicationContext(), spinnerAdapter.getItem(i).toString(), Toast.LENGTH_SHORT).show();
-                sectionTextView.setText(sectionMenuSpinner.getSelectedItem().toString());
+                //sectionTextView.setText(sectionMenuSpinner.getSelectedItem().toString());
+                //AnimalSection selectedSection = (AnimalSection) adapterView.getSelectedItem();
+                sectionTextView.setText(section);
 
                 //Imposta quale categoria di animali deve essere visualizzata
 
-                String index = sectionMenuSpinner.getSelectedItem().toString();
-                switch (index){
+                //String index = sectionMenuSpinner.getSelectedItem().toString();
+                switch (section){
                     case "WILD":
                         animalWikiListView.setAdapter(animalAdapterWild);
                         topBackground.setBackgroundResource(R.color.settore_wild);
                         curiosityFragmentRelativeLayout.setBackgroundResource(R.color.settore_wild_lista);
                         sectionTextView.setTextColor(ContextCompat.getColor(getContext(), R.color.settore_wild_testo_principale));
                         //searchEditText.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.settore_pets_jolly));
-                        GradientDrawable drawable = (GradientDrawable)ContextCompat.getDrawable(getContext(), R.drawable.et_style);
-                        drawable.setStroke(2, ContextCompat.getColor(getContext(), R.color.settore_wild_testo_principale));
+                        //GradientDrawable drawable = (GradientDrawable)ContextCompat.getDrawable(getContext(), R.drawable.et_style);
+                        //drawable.setStroke(2, ContextCompat.getColor(getContext(), R.color.settore_wild_testo_principale));
                         break;
                     case "FARM":
                         animalWikiListView.setAdapter(animalAdapterFarm);
@@ -185,7 +197,7 @@ public class CuriosityFragment extends Fragment {
                 infoIntent.putExtra("specie", p.specie);
                 infoIntent.putExtra("image_url", p.image_url);
                 infoIntent.putExtra("description", p.description);
-                infoIntent.putExtra("section", p.section);
+                infoIntent.putExtra("section", p.section.section_name);
                 startActivity(infoIntent);
             }
         });
@@ -225,9 +237,25 @@ public class CuriosityFragment extends Fragment {
 
 
 
-
-
         return v;
+    }
+
+    public static List<AnimalSection> getSpinnerData(){
+        List<AnimalSection> sectionList = new ArrayList<>();
+        AnimalSection Wild = new AnimalSection();
+        Wild.setSectionName("WILD");
+        Wild.setIcon(R.drawable.ic_baseline_pets_24);
+        sectionList.add(Wild);
+        AnimalSection Farm = new AnimalSection();
+        Farm.setSectionName("FARM");
+        Farm.setIcon(R.drawable.ic_baseline_pets_24);
+        sectionList.add(Farm);
+        AnimalSection Pets = new AnimalSection();
+        Pets.setSectionName("PETS");
+        Pets.setIcon(R.drawable.ic_baseline_pets_24);
+        sectionList.add(Pets);
+
+        return sectionList;
     }
 
 }

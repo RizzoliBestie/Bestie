@@ -63,9 +63,7 @@
         android:layout_marginBottom="0dp"
         app:srcCompat="@android:drawable/ic_menu_help"
         app:civ_border_width="4dp"
-        app:civ_border_color="@color/grey_smoke"
+        app:civ_border_color="@color/settore_wild_jolly"
         android:scaleType="centerCrop"/>
-    <!-- Il colore deve essere jolly tipo "@color/settore_wild_jolly",
-    temporaneamente rimpiazzato con grey-->
 
 </RelativeLayout>

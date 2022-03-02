@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".curiosity.AnimalInfoActivity"
     android:id="@+id/animalInfoRelativeLayout"
-    android:background="@color/settore_wild">
+    android:background="@color/settore_wild_lista">
 
     <com.mikhaellopez.circularimageview.CircularImageView
         android:id="@+id/animalInfoImageView"

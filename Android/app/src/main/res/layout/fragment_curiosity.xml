@@ -20,7 +20,7 @@
 
     <EditText
         android:id="@+id/searchEditText"
-        android:layout_width="125pt"
+        android:layout_width="115pt"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10pt"
         android:layout_marginTop="100pt"
@@ -28,7 +28,8 @@
         android:ems="10"
         android:hint="Search by names"
         android:inputType="textPersonName"
-        android:padding="10dp" />
+        android:padding="10dp"
+        android:textColorHint="@color/white" />
 
     <ListView
         android:id="@+id/animalWikiListView"
@@ -60,9 +61,10 @@
 
     <Spinner
         android:id="@+id/sectionMenuSpinner"
-        android:layout_width="150pt"
+        android:layout_width="160pt"
         android:layout_height="20pt"
-        android:layout_marginLeft="135pt"
-        android:layout_marginTop="100pt" />
+        android:layout_marginLeft="125pt"
+        android:layout_marginTop="100pt"
+        android:entries="@array/curiosity_sections"/>
 
 </RelativeLayout>

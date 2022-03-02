@@ -75,7 +75,7 @@ public class AnimalArrayAdapter extends ArrayAdapter<AnimalWiki> {
                 vh.animalImageView.setImageResource(R.drawable.volpe); //Fa solo l'immagine della volpe
             }
 
-            switch(p.section){
+            switch(p.section.section_name){
                 case "WILD":
                     vh.nameTextView.setTextColor(ContextCompat.getColor(getContext(), R.color.settore_wild_testo_principale));
                     vh.raceTextView.setTextColor(ContextCompat.getColor(getContext(), R.color.settore_wild_testo_secondario));

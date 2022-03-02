@@ -1,14 +1,14 @@
 package com.example.bestie.animal;
 
 public class AnimalWiki extends Animal{
-    public String section;
+    public AnimalSection section = new AnimalSection();
     public String image_url;
     public String description;
 
     //Senza Immagine o descrizione
     public AnimalWiki(String name, String race, String specie, String sec){
         super(name, race, specie);
-        this.section = sec;
+        this.section.setSectionName(sec);
         this.image_url = null;
         this.description = null;
     }
@@ -16,7 +16,7 @@ public class AnimalWiki extends Animal{
     //Con Immagine
     public AnimalWiki(String name, String race, String specie, String sec, String url){
         super(name, race, specie);
-        this.section = sec;
+        this.section.setSectionName(sec);
         this.image_url = url;
         this.description = null;
     }
@@ -24,7 +24,7 @@ public class AnimalWiki extends Animal{
     //Con Immagine e descrizione
     public AnimalWiki(String name, String race, String specie, String sec, String url, String desc){
         super(name, race, specie);
-        this.section = sec;
+        this.section.setSectionName(sec);
         this.image_url = url;
         this.description = desc;
     }
@@ -38,7 +38,7 @@ public class AnimalWiki extends Animal{
     }
 
     public void setSection(String section) {
-        this.section = section;
+        this.section.setSectionName(section);;
     }
 
     public String getDescription() {
@@ -50,11 +50,11 @@ public class AnimalWiki extends Animal{
     }
 
     public String getSection() {
-        return section;
+        return section.section_name;
     }
 
     @Override
     public String toString() {
-        return name + ' ' + race + ' ' + specie + ' ' + section + ' ' + description;
+        return name + ' ' + race + ' ' + specie + ' ' + section .section_name + ' ' + description;
     }
 }

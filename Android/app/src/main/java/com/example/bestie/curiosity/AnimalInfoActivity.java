@@ -27,7 +27,7 @@ public class AnimalInfoActivity extends AppCompatActivity {
     TextView raceTextView = null;
 
     String image_url;
-    String section;
+    String section_name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,10 +46,10 @@ public class AnimalInfoActivity extends AppCompatActivity {
         raceHeaderTextView = findViewById(R.id.raceHeaderTextView);
         raceTextView = findViewById(R.id.raceTextView);
 
-        section = getIntent().getExtras().getString("section");
-        switch (section) {
+        section_name = getIntent().getExtras().getString("section");
+        switch (section_name) {
             case "WILD":
-                animalInfoRelativeLayout.setBackgroundResource(R.color.settore_wild);
+                animalInfoRelativeLayout.setBackgroundResource(R.color.settore_wild_lista);
                 nameTextView.setTextColor(ContextCompat.getColor(getBaseContext(), R.color.settore_wild_testo_principale));
                 descriptionTextView.setTextColor(ContextCompat.getColor(getBaseContext(), R.color.settore_wild_testo_principale));
                 speciesHeaderTextView.setTextColor(ContextCompat.getColor(getBaseContext(), R.color.settore_wild_testo_secondario));
@@ -59,7 +59,7 @@ public class AnimalInfoActivity extends AppCompatActivity {
                 circular_animalInfoImageView.setBorderColor(ContextCompat.getColor(getBaseContext(), R.color.settore_wild_jolly));
                 break;
             case "FARM":
-                animalInfoRelativeLayout.setBackgroundResource(R.color.settore_farm);
+                animalInfoRelativeLayout.setBackgroundResource(R.color.settore_farm_lista);
                 nameTextView.setTextColor(ContextCompat.getColor(getBaseContext(), R.color.settore_farm_testo_principale));
                 descriptionTextView.setTextColor(ContextCompat.getColor(getBaseContext(), R.color.settore_farm_testo_principale));
                 speciesHeaderTextView.setTextColor(ContextCompat.getColor(getBaseContext(), R.color.settore_farm_testo_secondario));
@@ -69,7 +69,7 @@ public class AnimalInfoActivity extends AppCompatActivity {
                 circular_animalInfoImageView.setBorderColor(ContextCompat.getColor(getBaseContext(), R.color.settore_farm_jolly));
                 break;
             case "PETS":
-                animalInfoRelativeLayout.setBackgroundResource(R.color.settore_pets);
+                animalInfoRelativeLayout.setBackgroundResource(R.color.settore_pets_lista);
                 nameTextView.setTextColor(ContextCompat.getColor(getBaseContext(), R.color.settore_pets_testo_principale));
                 descriptionTextView.setTextColor(ContextCompat.getColor(getBaseContext(), R.color.settore_pets_testo_principale));
                 speciesHeaderTextView.setTextColor(ContextCompat.getColor(getBaseContext(), R.color.settore_pets_testo_secondario));
