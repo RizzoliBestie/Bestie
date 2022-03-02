@@ -12,6 +12,9 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
 import com.example.bestie.R;
 import com.mikhaellopez.circularimageview.CircularImageView;
 
@@ -19,7 +22,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class NewPetActivity extends Activity {
+public class NewPetActivity extends AppCompatActivity {
 
     //https://youtu.be/Q9XTqQbuavI questo non c'entra
 
@@ -34,6 +37,11 @@ public class NewPetActivity extends Activity {
         SeekBar pesoBar = findViewById(R.id.weight);
         TextView pesoTV = findViewById(R.id.weightKgTV);
         DatePicker datePicker = findViewById(R.id.birthdate);
+        Toolbar toolbar = findViewById(R.id.new_pet_toolbar);
+
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         //SETTO DATA MASSIMA PER DATEPICKER
         datePicker.setMaxDate(new Date().getTime());

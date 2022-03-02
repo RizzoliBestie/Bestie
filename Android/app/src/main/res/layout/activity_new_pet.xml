@@ -1,153 +1,167 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/sfondo_primario"
-        tools:context=".pet.NewPetActivity">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+android:layout_width="match_parent"
+android:layout_height="match_parent">
 
-        <com.mikhaellopez.circularimageview.CircularImageView
-            android:id="@+id/newPetImage"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="70dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/add_photo" />
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/sfondo_primario"
+    tools:context=".pet.NewPetActivity">
 
-        <EditText
-            android:id="@+id/nameET"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/newPetImage"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="40dp"
-            android:gravity="center_horizontal"
-            android:hint="Nome" />
+    <com.mikhaellopez.circularimageview.CircularImageView
+        android:id="@+id/newPetImage"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="80dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/add_photo" />
+
+    <EditText
+        android:id="@+id/nameET"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/newPetImage"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:gravity="center_horizontal"
+        android:hint="Nome" />
 
 
-        <Spinner
-            android:id="@+id/specieET"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/nameET"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="40dp"
-            android:spinnerMode="dropdown" />
+    <Spinner
+        android:id="@+id/specieET"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/nameET"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:spinnerMode="dropdown" />
 
-        <AutoCompleteTextView
-            android:id="@+id/razzaET"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/specieET"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="40dp"
-            android:gravity="center_horizontal"
-            android:hint="Razza" />
+    <AutoCompleteTextView
+        android:id="@+id/razzaET"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/specieET"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:gravity="center_horizontal"
+        android:hint="Razza" />
 
-        <TextView
-            android:id="@+id/weightTV"
+    <TextView
+        android:id="@+id/weightTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/razzaET"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="37dp"
+        android:text="Peso (kg): "
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/weightKgTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/razzaET"
+        android:layout_marginLeft="7dp"
+        android:layout_marginTop="37dp"
+        android:layout_toRightOf="@id/weightTV"
+        android:hint="0"
+        android:textSize="20dp" />
+
+    <SeekBar
+        android:id="@+id/weight"
+        android:layout_width="350dp"
+        android:layout_height="35dp"
+        android:layout_below="@id/weightTV"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        android:max="150"
+        android:progress="0"
+        android:progressTintMode="add" />
+
+    <TextView
+        android:id="@+id/birthdateTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/weight"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:text="Data di nascita:"
+        android:textSize="20dp" />
+
+    <DatePicker
+        android:id="@+id/birthdate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/birthdateTV"
+        android:layout_centerHorizontal="true"
+        android:calendarViewShown="false"
+        android:datePickerMode="spinner" />
+
+    <TextView
+        android:id="@+id/sexTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/birthdate"
+        android:layout_marginLeft="120dp"
+        android:layout_marginTop="30dp"
+        android:text="Sesso:"
+        android:textSize="20dp" />
+
+    <RadioGroup
+        android:id="@+id/sex"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/birthdate"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="25dp"
+        android:layout_toRightOf="@id/sexTV"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/male"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/razzaET"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="37dp"
-            android:text="Peso (kg): "
-            android:textSize="20dp" />
+            android:padding="10dp"
+            android:text="M" />
 
-        <TextView
+        <RadioButton
+            android:id="@+id/female"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/weightKgTV"
-            android:layout_toRightOf="@id/weightTV"
-            android:layout_below="@id/razzaET"
-            android:layout_marginTop="37dp"
-            android:hint="0"
-            android:textSize="20dp"
-            android:layout_marginLeft="7dp"/>
+            android:padding="10dp"
+            android:text="F" />
 
-        <SeekBar
-            android:id="@+id/weight"
-            android:layout_width="350dp"
-            android:layout_height="35dp"
-            android:layout_below="@id/weightTV"
-            android:layout_centerHorizontal="true"
-            android:max="150"
-            android:layout_marginTop="5dp"
-            android:progress="0"
-            android:progressTintMode="add"/>
+    </RadioGroup>
 
-        <TextView
-            android:id="@+id/birthdateTV"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/weight"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="40dp"
-            android:text="Data di nascita:"
-            android:textSize="20dp" />
+    <ImageButton
+        android:id="@+id/confirm_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/sex"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="50dp"
+        android:src="@drawable/ic_add"
+        android:text="Aggiungi" />
 
-        <DatePicker
-            android:id="@+id/birthdate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/birthdateTV"
-            android:layout_centerHorizontal="true"
-            android:calendarViewShown="false"
-            android:datePickerMode="spinner" />
-
-        <TextView
-            android:id="@+id/sexTV"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/birthdate"
-            android:layout_marginLeft="120dp"
-            android:layout_marginTop="30dp"
-            android:text="Sesso:"
-            android:textSize="20dp" />
-
-        <RadioGroup
-            android:id="@+id/sex"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/birthdate"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="25dp"
-            android:layout_toRightOf="@id/sexTV"
-            android:orientation="horizontal">
-
-            <RadioButton
-                android:id="@+id/male"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:text="M" />
-
-            <RadioButton
-                android:id="@+id/female"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:text="F" />
-
-        </RadioGroup>
-
-        <ImageButton
-            android:id="@+id/confirm_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/sex"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="40dp"
-            android:layout_marginBottom="50dp"
-            android:src="@drawable/ic_add"
-            android:text="Aggiungi" />
-
-    </RelativeLayout>
+</RelativeLayout>
 </ScrollView>
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/new_pet_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:background="@color/sfondo_secondario"
+        app:buttonGravity="center_vertical"
+        app:titleTextColor="@color/testo_principale" />
+</FrameLayout>

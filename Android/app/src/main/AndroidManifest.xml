@@ -44,7 +44,9 @@
             android:exported="false"></activity>
         <activity
             android:name=".pet.NewPetActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".MainActivity"
+            android:label="Aggiungi pet"/>
         <activity
             android:name=".pet.UpdatePetActivity"
             android:exported="false" />
