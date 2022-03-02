@@ -1,7 +1,7 @@
 body{
     margin:0px;
     font-family: cursive;
-    background-color: white;
+    background-color: rgb(200, 231, 200);
 }
 
 #top_bar{
@@ -44,15 +44,36 @@ body{
     padding-top:  5em;
     display: inline;
     left:0;
-    float:left
+    float:left;
+    margin-bottom: 2.8em;
 }
 
 #content{
-    background-color: white;
+    background-color: rgb(200, 231, 200);
     margin-top: 5em;
     height: 70%;
     width: 68.49%;
     display: inline;
     float: right;
     right: 0;
+    overflow: auto;
+    margin-bottom: 2.8em;
+}
+
+ul{
+    list-style-type: none;
+    height: fit-content;
+}
+
+a{
+    text-decoration: none;
+}
+
+li{
+    background-color: #524a4a93;
+    margin-bottom: 1em;
+    padding:1em;
+    font-weight: bold;
+    color:white;
+    font-size: 1em;
 }
