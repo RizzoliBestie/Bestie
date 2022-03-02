@@ -20,7 +20,7 @@
 
     <EditText
         android:id="@+id/searchEditText"
-        android:layout_width="115pt"
+        android:layout_width="110pt"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10pt"
         android:layout_marginTop="100pt"
@@ -62,9 +62,11 @@
     <Spinner
         android:id="@+id/sectionMenuSpinner"
         android:layout_width="160pt"
-        android:layout_height="20pt"
+        android:layout_height="22pt"
         android:layout_marginLeft="125pt"
+        android:layout_marginRight="5pt"
         android:layout_marginTop="100pt"
-        android:entries="@array/curiosity_sections"/>
+        android:dropDownVerticalOffset="40dp"
+        android:background="@drawable/bg_spinner_curiosity" />
 
 </RelativeLayout>
