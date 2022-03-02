@@ -2,6 +2,7 @@ package com.example.bestie.pet;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -15,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
@@ -28,6 +30,7 @@ import java.util.Date;
 public class NewPetActivity extends AppCompatActivity {
 
     int SELECT_IMAGE_CODE = 1;
+    CircularImageView addImage = null;
 
     //https://youtu.be/Q9XTqQbuavI questo non c'entra
 
@@ -38,7 +41,7 @@ public class NewPetActivity extends AppCompatActivity {
 
         Spinner specieACTV = findViewById(R.id.specieET);
         AutoCompleteTextView racesACTV = findViewById(R.id.razzaET);
-        CircularImageView addImage = findViewById(R.id.newPetImage);
+        addImage = findViewById(R.id.newPetImage);
         SeekBar pesoBar = findViewById(R.id.weight);
         TextView pesoTV = findViewById(R.id.weightKgTV);
         DatePicker datePicker = findViewById(R.id.birthdate);
@@ -82,11 +85,22 @@ public class NewPetActivity extends AppCompatActivity {
                 pickImage();
             }
         });
+
     }
 
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(requestCode==1){
+            Uri uri = data.getData();
+            addImage.setImageURI(uri);
+        }
     }
 
     void pickImage(){
