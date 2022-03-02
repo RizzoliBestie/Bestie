@@ -1,0 +1,58 @@
+body{
+    margin:0px;
+    font-family: cursive;
+    background-color: white;
+}
+
+#top_bar{
+    display: block;
+    height: fit-content;
+    width: 100%;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    background-image: url("../img/admin_background_bar.png");
+    background-repeat: repeat;
+    background-size: 35%;
+    color: wheat;
+    text-align: center;
+    font-size: 1.7em;
+    font-weight: bold;
+    position: fixed;
+    top: 0;
+    overflow: hidden;
+    border-bottom: 3px solid darkgreen;
+}
+
+#bottom_bar{
+    height: 2.7em;
+    width: 100%;
+    background-image: url("../img/admin_background_bar.png");
+    background-repeat: repeat;
+    background-size: 35%;
+    color: darkgreen;
+    border-top: 3px solid darkgreen;
+    position: fixed;
+    bottom: 0;
+    overflow: hidden;
+}
+
+#navbar{
+    background-color: lightgreen;
+    border-right: 3px solid darkgreen;
+    height: 100%;
+    width: 30%;
+    padding-top:  5em;
+    display: inline;
+    left:0;
+    float:left
+}
+
+#content{
+    background-color: white;
+    margin-top: 5em;
+    height: 70%;
+    width: 68.49%;
+    display: inline;
+    float: right;
+    right: 0;
+}
