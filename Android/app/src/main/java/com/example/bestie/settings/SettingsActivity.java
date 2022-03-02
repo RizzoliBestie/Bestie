@@ -21,7 +21,6 @@ import android.widget.Toast;
 
 import com.example.bestie.MainActivity;
 import com.example.bestie.R;
-import com.example.bestie.signin.SignInActivity;
 
 public class SettingsActivity extends AppCompatActivity {
 

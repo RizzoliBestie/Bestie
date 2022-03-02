@@ -50,6 +50,8 @@ public class Item {
             return "https://cdn-icons-png.flaticon.com/512/337/337946.png";
         if(getFile_name().contains(".doc") || getFile_name().contains(".docx"))
             return "https://icon-library.com/images/doc-icon-png/doc-icon-png-6.jpg";
+        if(getFile_name().contains(".xls") || getFile_name().contains(".xlsx"))
+            return "https://www.clipartmax.com/png/full/241-2414609_filename-extension-icon-xls-microsoft-excel-binary-excel-file-type.png";
         if(getFile_name().contains(".txt"))
             return "https://cdn-icons-png.flaticon.com/512/337/337956.png";
         if(getFile_name().contains(".png"))

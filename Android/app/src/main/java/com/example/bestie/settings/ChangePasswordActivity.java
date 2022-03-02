@@ -14,7 +14,6 @@ import android.widget.Toast;
 import androidx.appcompat.widget.Toolbar;
 
 import com.example.bestie.R;
-import com.example.bestie.signin.SignInActivity;
 
 public class ChangePasswordActivity extends AppCompatActivity {
 

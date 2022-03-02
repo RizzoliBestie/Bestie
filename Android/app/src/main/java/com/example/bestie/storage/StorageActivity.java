@@ -1,34 +1,26 @@
 package com.example.bestie.storage;
 
-import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Editable;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.EditText;
+import android.widget.AdapterView;;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.widget.Toolbar;
 
 import com.example.bestie.R;
-import com.example.bestie.settings.ChangePasswordActivity;
-import com.example.bestie.settings.SettingsActivity;
-import com.google.android.material.button.MaterialButton;
 
 public class StorageActivity extends AppCompatActivity {
 
     GridView gridView = null;
     Toolbar toolbar = null;
-    TextView empty = null;
+    TextView empty_1 = null;
     ImageView addFileButton = null;
     private int SELECT_FILE_CODE = 1;
     private int file_n = 12; // dimensionamento provvisorio
@@ -38,7 +30,7 @@ public class StorageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_storage);
 
-        empty = findViewById(R.id.empty_tv);
+        empty_1 = findViewById(R.id.empty_tv);
         gridView = findViewById(R.id.gridView);
         addFileButton = findViewById(R.id.addFile_button);
         (new ItemImageDownload(this, "https://icon-library.com/images/plus-icon-png/plus-icon-png-15.jpg", addFileButton)).execute();
@@ -70,7 +62,7 @@ public class StorageActivity extends AppCompatActivity {
         items[7] = new Item("immagine.png","foto fuffi che corre sul prato");
         items[8] = new Item("Visita.pdf","visita dal veterinario del 12/20");
         items[9] = new Item("file a caso.zip","file a caso");
-        items[10] = new Item("foto spiaggia.jpg","mare 2020");
+        items[10] = new Item("dati.xls","alcuni dati");
         items[11] = new Item("AppuntiVet.txt","");
         /*  cablaggio provvisorio */
 
@@ -100,5 +92,10 @@ public class StorageActivity extends AppCompatActivity {
                 alert.show();
             }
         });
+    }
+
+    @Override
+    protected void finalize() throws Throwable {
+        super.finalize();
     }
 }
