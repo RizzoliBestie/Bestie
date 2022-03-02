@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
-import android.widget.Toolbar;
+import androidx.appcompat.widget.Toolbar;
 
 import com.example.bestie.R;
 
@@ -22,6 +22,10 @@ public class StorageActivity extends AppCompatActivity {
         setContentView(R.layout.activity_storage);
 
         gridView = findViewById(R.id.gridView);
+        toolbar = findViewById(R.id.storage_toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         Item[] items = new Item[file_n];
 

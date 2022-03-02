@@ -2,6 +2,7 @@ package com.example.bestie.settings;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -30,6 +31,7 @@ public class SettingsActivity extends AppCompatActivity {
     ListView listView = null;
     Switch aSwitch = null;
     Button button = null;
+    Toolbar toolbar = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +43,10 @@ public class SettingsActivity extends AppCompatActivity {
         listView = findViewById(R.id.listView);
         aSwitch = findViewById(R.id.aSwitch);
         button = findViewById(R.id.button);
+        toolbar = findViewById(R.id.settings_toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         SharedPreferences pref = this.getSharedPreferences("preferences", Context.MODE_PRIVATE);
 

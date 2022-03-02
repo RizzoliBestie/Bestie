@@ -4,13 +4,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/sfondo_secondario"
+    android:background="@color/sfondo_3"
     tools:context=".storage.StorageActivity">
+
+  <androidx.appcompat.widget.Toolbar
+      android:id="@+id/storage_toolbar"
+      android:layout_width="match_parent"
+      android:layout_height="65dp"
+      app:titleTextColor="@color/testo_principale"
+      android:background="@color/sfondo_secondario"
+      app:buttonGravity="center_vertical"/>
 
   <GridView
       android:id="@+id/gridView"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
+      android:layout_marginTop="5dp"
+      android:layout_below="@id/storage_toolbar"
       android:padding="1dp"
       android:numColumns="2" />
 
