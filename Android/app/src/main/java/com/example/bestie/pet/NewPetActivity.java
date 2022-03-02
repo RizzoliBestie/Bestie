@@ -5,38 +5,57 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.DatePicker;
+import android.widget.EditText;
+import android.widget.SeekBar;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.bestie.R;
 import com.mikhaellopez.circularimageview.CircularImageView;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class NewPetActivity extends Activity {
 
-    String[] peso = new String[201];
-
-    public void caricaPeso(){
-        for (int i=0; i<200; i++){
-            peso[i]= Integer.toString(i);
-        }
-        peso[200]= "200+";
-    }
+    //https://youtu.be/Q9XTqQbuavI questo non c'entra
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_pet);
-        caricaPeso();
 
-        Spinner specieACTV = (Spinner) findViewById(R.id.specieET);
-        Spinner spinnerPeso = (Spinner) findViewById(R.id.weight);
-        AutoCompleteTextView racesACTV = (AutoCompleteTextView)findViewById(R.id.razzaET);
-        CircularImageView addImage = (CircularImageView) findViewById(R.id.newPetImage);
+        Spinner specieACTV = findViewById(R.id.specieET);
+        AutoCompleteTextView racesACTV = findViewById(R.id.razzaET);
+        CircularImageView addImage = findViewById(R.id.newPetImage);
+        SeekBar pesoBar = findViewById(R.id.weight);
+        TextView pesoTV = findViewById(R.id.weightKgTV);
+        DatePicker datePicker = findViewById(R.id.birthdate);
 
-        //CARICO SPINNER PER IL PESO
-        ArrayAdapter pesoAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, peso);
-        pesoAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerPeso.setAdapter(pesoAdapter);
+        //SETTO DATA MASSIMA PER DATEPICKER
+        datePicker.setMaxDate(new Date().getTime());
+
+        //FUNZIONAMENTO SEEKBAR PESO
+        pesoBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+                int kg = pesoBar.getProgress();
+                CharSequence kgText = Integer.toString(kg);
+                pesoTV.setText(kgText);
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+            }
+        });
 
         //CARICO SPINNER PER LA SPECIE CON VALORE DI DEFAULT
         ArrayAdapter<CharSequence> specieAdapter1 = ArrayAdapter.createFromResource(this, R.array.species, android.R.layout.simple_dropdown_item_1line);
@@ -50,13 +69,10 @@ public class NewPetActivity extends Activity {
                 Toast.makeText(NewPetActivity.this, "Aggiungi immagine", Toast.LENGTH_SHORT).show();
             }
         });
-
     }
 
     @Override
     public void onBackPressed() {
         super.onBackPressed();
     }
-
-
 }
