@@ -11,12 +11,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+import androidx.appcompat.widget.Toolbar;
 
 import com.example.bestie.R;
 import com.example.bestie.signin.SignInActivity;
 
 public class ChangePasswordActivity extends AppCompatActivity {
 
+    Toolbar toolbar = null;
     TextView textView_1 = null;
     EditText editText_1 = null;
     TextView textView_2 = null;
@@ -28,6 +30,11 @@ public class ChangePasswordActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_change_password);
+
+        toolbar = findViewById(R.id.changePwd_toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         SharedPreferences pref = this.getSharedPreferences("preferences", Context.MODE_PRIVATE);
         SharedPreferences.Editor edt = pref.edit();

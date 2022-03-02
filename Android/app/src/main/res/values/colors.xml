@@ -84,6 +84,7 @@
     <color name="marigold">#F4AC32</color>
 
     <!--Colori per stile definitivo?-->
+    <color name="testo_grigino">#D2D2D2</color>
     <color name="jolly">#F8F272</color>
     <color name="sfondo_3">#9893DA</color>
     <color name="testo_principale">#2C1320</color>
