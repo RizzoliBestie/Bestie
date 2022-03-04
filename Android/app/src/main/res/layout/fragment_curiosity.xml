@@ -26,7 +26,7 @@
         android:layout_marginTop="100pt"
         android:background="@drawable/et_style"
         android:ems="10"
-        android:hint="Search by names"
+        android:hint="Search"
         android:inputType="textPersonName"
         android:padding="10dp"
         android:textColorHint="@color/white" />

@@ -7,10 +7,7 @@ public class AnimalSection implements Serializable {
     public int icon; //solo interno come drawable
     //Esempio: R.drawable.icon
 
-    /*public AnimalSection(String section_name, int icon){
-        this.section_name = section_name;
-        this.icon = icon;
-    } */ //NON forzare l'uso del costruttore in questo caso
+    //NON forzare l'uso del costruttore in questo caso
 
     public String getSectionName() {
         return section_name;

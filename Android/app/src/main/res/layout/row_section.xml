@@ -8,14 +8,15 @@
         android:layout_width="32dp"
         android:layout_height="32dp"
         android:src="@drawable/ic_baseline_pets_24"
-        android:layout_marginStart="8dp"/>
+        android:layout_marginStart="4dp"/>
 
     <TextView
         android:id="@+id/sectionNameTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Section Name"
+        android:textStyle="bold"
         android:layout_toRightOf="@+id/animalSectionSpinnerImageview"
         android:layout_centerVertical="true"
-        android:layout_marginStart="8dp"/>
+        android:layout_marginStart="4dp"/>
 </RelativeLayout>
