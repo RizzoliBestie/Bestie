@@ -1,4 +1,4 @@
-package com.example.bestie.storage;
+package com.example.bestie;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -12,20 +12,20 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ItemImageDownload extends AsyncTask<Void, Void, Bitmap> {
+public class ImageDownloader extends AsyncTask<Void, Void, Bitmap> {
     private static Map<String, Bitmap> cache = new HashMap<>();
 
     private Context mContext;
     private String mUrl;
     private ImageView mView;
 
-    public ItemImageDownload(Context context, String url, ImageView view) {
+    public ImageDownloader(Context context, String url, ImageView view) {
         mContext = context;
         mUrl = url;
         mView = view;
     }
 
-    public ItemImageDownload(String url, ImageView view) {
+    public ImageDownloader(String url, ImageView view) {
         mUrl = url;
         mView = view;
     }

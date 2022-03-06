@@ -33,6 +33,21 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        /* Inserimento di alcune immagini utili per l'app in un oggetto ImageBox */
+        /*Image[] images = new Image[10];
+        images[0] = new Image("https://cdn-icons-png.flaticon.com/512/337/337946.png","pdf");
+        images[1] = new Image("https://icon-library.com/images/doc-icon-png/doc-icon-png-6.jpg","doc");
+        images[2] = new Image("https://www.clipartmax.com/png/full/241-2414609_filename-extension-icon-xls-microsoft-excel-binary-excel-file-type.png","xls");
+        images[3] = new Image("https://cdn-icons-png.flaticon.com/512/337/337956.png","txt");
+        images[4] = new Image("https://icons.iconarchive.com/icons/graphicloads/filetype/256/png-icon.png","png");
+        images[5] = new Image("https://icons.iconarchive.com/icons/pelfusion/flat-file-type/256/jpg-icon.png","jpg");
+        images[6] = new Image("https://cdn-icons-png.flaticon.com/512/337/337936.png","gif");
+        images[7] = new Image("https://cdn.iconscout.com/icon/free/png-256/image-file-2014989-1700537.png","img");
+        images[8] = new Image("https://icons.iconarchive.com/icons/pelfusion/flat-file-type/256/zip-icon.png","zip");
+        images[9] = new Image("https://cdn.icon-icons.com/icons2/2753/PNG/512/ext_file_generic_filetype_icon_176256.png","generic");
+        ImageBox imageBox = new ImageBox(this,images);*/
+        /* Inserimento di alcune immagini utili per l'app in un oggetto ImageBox */
+
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_nav);
         Toolbar toolbar = findViewById(R.id.toolbar);
         NavigationView navigationView=findViewById(R.id.nav_view);

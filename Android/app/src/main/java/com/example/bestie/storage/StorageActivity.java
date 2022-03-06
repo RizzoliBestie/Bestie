@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.widget.Toolbar;
 
+import com.example.bestie.ImageDownloader;
 import com.example.bestie.R;
 
 public class StorageActivity extends AppCompatActivity {
@@ -33,7 +34,7 @@ public class StorageActivity extends AppCompatActivity {
         empty_1 = findViewById(R.id.empty_tv);
         gridView = findViewById(R.id.gridView);
         addFileButton = findViewById(R.id.addFile_button);
-        (new ItemImageDownload(this, "https://icon-library.com/images/plus-icon-png/plus-icon-png-15.jpg", addFileButton)).execute();
+        (new ImageDownloader(this, "https://icon-library.com/images/plus-icon-png/plus-icon-png-15.jpg", addFileButton)).execute();
         toolbar = findViewById(R.id.storage_toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

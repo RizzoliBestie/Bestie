@@ -54,11 +54,11 @@ public class ItemGridAdapter extends ArrayAdapter<Item> {
 
         ViewHolder vh = (ViewHolder) convertView.getTag();
 
-        Item items = getItem(position);
+        Item item = getItem(position);
 
-        (new ItemImageDownload(context, items.getImage_url(), vh.file_imageView)).execute();
-        vh.file_nameTextView.setText(items.getFile_name());
-        vh.descriptionTextView.setText(items.getDescription());
+        vh.file_imageView = com.example.bestie.ImageBox.getImage(item.getIcon_id());
+        vh.file_nameTextView.setText(item.getFile_name());
+        vh.descriptionTextView.setText(item.getDescription());
 
         return convertView;
     }
