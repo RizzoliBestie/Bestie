@@ -38,18 +38,13 @@
         android:textColor="@color/testo_secondario"
         android:textSize="20dp" />
 
-    <LinearLayout
-        android:id="@+id/pet_info_container"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/your_pet_image"
-        android:layout_marginTop="30dp"
-        android:orientation="vertical">
 
         <TextView
             android:id="@+id/infoPetTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@id/petNameTV"
+            android:layout_marginTop="30dp"
             android:fontFamily="sans-serif-black"
             android:text=" Informazioni"
             android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
@@ -59,17 +54,20 @@
         <ImageView
             android:id="@+id/petActvityHR"
             android:layout_width="match_parent"
+            android:layout_below="@id/infoPetTV"
             android:layout_height="1dp"
             android:layout_marginTop="5dp"
             android:src="@color/testo_secondario" />
 
-        <ListView
-            android:id="@+id/infoPetLV"
+        <androidx.fragment.app.FragmentContainerView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_below="@id/petActvityHR"
+            android:id="@+id/info_pet_fragment_container"
             />
 
-    </LinearLayout>
+
+
 
 
 </RelativeLayout>
