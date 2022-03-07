@@ -2,9 +2,7 @@ package com.example.bestie.curiosity;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.content.res.AppCompatResources;
 import androidx.core.content.ContextCompat;
-import androidx.core.graphics.drawable.DrawableCompat;
 import androidx.fragment.app.Fragment;
 
 import android.app.Activity;
@@ -20,11 +18,9 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -34,7 +30,6 @@ import android.widget.TextView;
 
 import com.example.bestie.OnSwipeTouchListener;
 import com.example.bestie.R;
-import com.example.bestie.animal.Animal;
 import com.example.bestie.animal.AnimalArrayAdapter;
 import com.example.bestie.animal.AnimalSection;
 import com.example.bestie.animal.AnimalSectionSpinnerAdapter;
@@ -60,8 +55,7 @@ public class CuriosityFragment extends Fragment {
 
     AnimalSectionSpinnerAdapter spinnerAdapter;
 
-    float x1,x2,y1,y2;
-    int swipeEntry = 0;
+    int sectionIndex = 0;
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -141,6 +135,9 @@ public class CuriosityFragment extends Fragment {
                 //Log.v("CuriosityFragment", section);
                 //Toast.makeText(getApplicationContext(), spinnerAdapter.getItem(i).toString(), Toast.LENGTH_SHORT).show();
                 sectionTextView.setText(section);
+
+                //Aggiorna l'indice sezione
+                sectionIndex = sectionMenuSpinner.getSelectedItemPosition();
 
                 //Imposta quale categoria di animali deve essere visualizzata
 
@@ -247,18 +244,18 @@ public class CuriosityFragment extends Fragment {
 
             }
             public void onSwipeRight() {
-                if(swipeEntry > 0){
-                    swipeEntry--;
-                    sectionMenuSpinner.setSelection(swipeEntry);
+                if(sectionIndex > 0){
+                    sectionIndex--;
+                    sectionMenuSpinner.setSelection(sectionIndex);
                 }
-                Log.v("CuriosityFragment", "Right " + swipeEntry);
+                Log.v("CuriosityFragment", "Right " + sectionIndex);
             }
             public void onSwipeLeft() {
-                if(swipeEntry < sectionMenuSpinner.getAdapter().getCount() - 1){
-                    swipeEntry++;
-                    sectionMenuSpinner.setSelection(swipeEntry);
+                if(sectionIndex < sectionMenuSpinner.getAdapter().getCount() - 1){
+                    sectionIndex++;
+                    sectionMenuSpinner.setSelection(sectionIndex);
                 }
-                Log.v("CuriosityFragment", "Left " + swipeEntry);
+                Log.v("CuriosityFragment", "Left " + sectionIndex);
             }
             public void onSwipeBottom() {
 
