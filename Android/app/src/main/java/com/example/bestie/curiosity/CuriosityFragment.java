@@ -20,6 +20,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -57,7 +58,7 @@ public class CuriosityFragment extends Fragment {
     Activity act = null;
 
     AnimalSectionSpinnerAdapter spinnerAdapter;
-    
+
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
@@ -154,7 +155,7 @@ public class CuriosityFragment extends Fragment {
                         topBackground.setBackgroundResource(R.color.settore_farm);
                         curiosityFragmentRelativeLayout.setBackgroundResource(R.color.settore_farm_lista);
                         sectionTextView.setTextColor(ContextCompat.getColor(getContext(), R.color.settore_farm_testo_principale));
-                        backgroundGradient.setStroke(8, ContextCompat.getColor(getContext(), R.color.settore_farm_jolly));
+                        backgroundGradient.setStroke(6, ContextCompat.getColor(getContext(), R.color.settore_farm_jolly));
                         backgroundSpinnerDrawable.setColor(ContextCompat.getColor(getContext(), R.color.settore_farm_jolly));
                         break;
                     case "PETS":
@@ -162,7 +163,7 @@ public class CuriosityFragment extends Fragment {
                         topBackground.setBackgroundResource(R.color.settore_pets);
                         curiosityFragmentRelativeLayout.setBackgroundResource(R.color.settore_pets_lista);
                         sectionTextView.setTextColor(ContextCompat.getColor(getContext(), R.color.settore_pets_testo_principale));
-                        backgroundGradient.setStroke(8, ContextCompat.getColor(getContext(), R.color.settore_pets_jolly));
+                        backgroundGradient.setStroke(6, ContextCompat.getColor(getContext(), R.color.settore_pets_jolly));
                         backgroundSpinnerDrawable.setColor(ContextCompat.getColor(getContext(), R.color.settore_pets_jolly));
                         break;
                     default:
