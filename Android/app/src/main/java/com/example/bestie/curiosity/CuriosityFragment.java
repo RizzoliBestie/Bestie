@@ -230,15 +230,6 @@ public class CuriosityFragment extends Fragment {
         });
 
 
-        //Click della tendina (Hamburger Menu)
-        /*sectionMenuImageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(CuriosityActivity.this, "Tendina premuta", Toast.LENGTH_SHORT).show();
-            }
-        }); */
-
-
         topBackground.setOnTouchListener(new OnSwipeTouchListener(getActivity()){
             public void onSwipeTop() {
 

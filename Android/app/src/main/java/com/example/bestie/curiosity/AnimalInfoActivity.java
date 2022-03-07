@@ -26,6 +26,9 @@ public class AnimalInfoActivity extends AppCompatActivity {
     TextView raceHeaderTextView = null;
     TextView raceTextView = null;
 
+    TextView furTypeHeaderTextView = null;
+    TextView furTypeTextView = null;
+
     String image_url;
     String section_name;
 
@@ -45,6 +48,10 @@ public class AnimalInfoActivity extends AppCompatActivity {
 
         raceHeaderTextView = findViewById(R.id.raceHeaderTextView);
         raceTextView = findViewById(R.id.raceTextView);
+
+        furTypeHeaderTextView = findViewById(R.id.furTypeHeaderTextView);
+        furTypeTextView = findViewById(R.id.furTypeTextView);
+
 
         section_name = getIntent().getExtras().getString("section");
         switch (section_name) {

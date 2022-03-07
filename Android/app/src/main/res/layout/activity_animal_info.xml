@@ -48,38 +48,65 @@
         android:layout_marginTop="50dp"
         android:layout_toRightOf="@+id/animalInfoImageView"
         android:fontFamily="sans-serif-light"
+        android:text="Specie:"
         android:textColor="@color/settore_wild_testo_secondario"
-        android:text="Specie:" />
+        android:textSize="20dp" />
 
     <TextView
         android:id="@+id/speciesTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="60dp"
+        android:layout_marginLeft="5dp"
         android:layout_marginTop="50dp"
-        android:layout_toRightOf="@+id/animalInfoImageView"
-        android:textColor="@color/settore_wild_testo_principale"
-        android:text="NA" />
+        android:layout_toRightOf="@+id/speciesHeaderTextView"
+        android:text="NA"
+        android:textSize="20dp"
+        android:textColor="@color/settore_wild_testo_principale" />
 
     <TextView
         android:id="@+id/raceHeaderTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="80dp"
         android:layout_toRightOf="@+id/animalInfoImageView"
         android:fontFamily="sans-serif-light"
+        android:text="Razza:"
         android:textColor="@color/settore_wild_testo_secondario"
-        android:text="Razza:" />
+        android:textSize="20dp" />
 
     <TextView
         android:id="@+id/raceTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="60dp"
-        android:layout_marginTop="70dp"
-        android:layout_toRightOf="@+id/animalInfoImageView"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="80dp"
+        android:layout_toRightOf="@+id/raceHeaderTextView"
+        android:text="NA"
         android:textColor="@color/settore_wild_testo_principale"
-        android:text="NA" />
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/furTypeHeaderTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="110dp"
+        android:layout_toRightOf="@+id/animalInfoImageView"
+        android:fontFamily="sans-serif-light"
+        android:text="Pelo:"
+        android:textColor="@color/settore_wild_testo_secondario"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/furTypeTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="110dp"
+        android:layout_toRightOf="@+id/furTypeHeaderTextView"
+        android:text="NA"
+        android:textColor="@color/settore_wild_testo_principale"
+        android:textSize="20dp" />
 
 </RelativeLayout>
