@@ -51,9 +51,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-black"
-            android:textColor="@color/testo_secondario"
-            android:text="Informazioni"
+            android:text=" Informazioni"
             android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+            android:textColor="@color/testo_secondario"
             android:textSize="25dp" />
 
         <ImageView
@@ -62,6 +62,12 @@
             android:layout_height="1dp"
             android:layout_marginTop="5dp"
             android:src="@color/testo_secondario" />
+
+        <ListView
+            android:id="@+id/infoPetLV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
 
     </LinearLayout>
 
