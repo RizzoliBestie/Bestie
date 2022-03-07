@@ -124,7 +124,7 @@ android:layout_height="match_parent">
         android:layout_height="wrap_content"
         android:layout_below="@id/birthdate"
         android:layout_marginLeft="5dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="22dp"
         android:layout_toRightOf="@id/sexTV"
         android:orientation="horizontal">
 
@@ -144,15 +144,15 @@ android:layout_height="match_parent">
 
     </RadioGroup>
 
-    <ImageButton
+    <ImageView
         android:id="@+id/confirm_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:layout_below="@id/sex"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="40dp"
         android:layout_marginBottom="50dp"
-        android:src="@drawable/ic_add"
+        android:src="@drawable/confirm_new_pet"
         android:text="Aggiungi" />
 
 </RelativeLayout>
