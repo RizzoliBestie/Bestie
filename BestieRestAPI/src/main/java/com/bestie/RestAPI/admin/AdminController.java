@@ -34,17 +34,17 @@ public class AdminController {
 		return false;
 	}
 	
-	@GetMapping("/element_list/users")
+	@GetMapping("/list/users")
 	public List<User> getUserList(){
 		return userRepo.getAllUsers();
 	}
 	
-	@GetMapping("/element_list/species")
+	@GetMapping("/list/species")
 	public List<Specie> getRaceList(){
 		return specieRepo.getAllSpecie();
 	}
 	
-	@GetMapping("/element_list/races")
+	@GetMapping("/list/races")
 	public List<Race> getSpecieList(){
 		return raceRepo.getAllRaces();
 	}

@@ -100,11 +100,11 @@ public class LogInActivity extends AppCompatActivity {
                 API_Methods_Interface api = retrofit.create(API_Methods_Interface.class);
 
                 if(!(tUsername.equals("") || tPassword.equals(""))) {
-                    Call<Boolean> checkLoginCall = api.checkLogin(tUsername, tPassword);
+                    Call<Boolean> checkLoginCall = api.checkLogin(tUsername, tPassword);//qui avviene la chiamata alla funzione con retrofit (springoot)
                     checkLoginCall.enqueue(new Callback<Boolean>() {
                         @Override
                         public void onResponse(Call<Boolean> call, Response<Boolean> response) {
-                            if (response.body()) {
+                            if (response.body()) {//response.body ritorna il valore di ritorno della funziona chiamata
 
                                 Intent moveToSettings = new Intent(LogInActivity.this, SettingsActivity.class);
                                 startActivity(moveToSettings);

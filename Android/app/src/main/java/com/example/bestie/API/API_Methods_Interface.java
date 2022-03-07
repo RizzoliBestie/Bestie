@@ -3,6 +3,9 @@ package com.example.bestie.API;
 import androidx.versionedparcelable.NonParcelField;
 
 import com.example.bestie.database.Utent_Table;
+import com.example.bestie.general.Race;
+import com.example.bestie.general.Specie;
+import com.example.bestie.general.User;
 
 import java.util.HashMap;
 import java.util.List;
@@ -32,4 +35,15 @@ public interface API_Methods_Interface {
     @POST("/signin/{username}/{email}/{password}/{phone_number}")
     Call<Boolean> register(@Path("username")String username,@Path("email") String email,@Path("password") String password,@Path("phone_number") String phone_number);
 
+    //Ritorna tutti gli utenti presenti nel DB
+    @GET("/list/users")
+    Call<List<User>> getAllUsers();
+
+    //Ritorna tutte le razze presenti nel DB
+    @GET("/list/races")
+    Call<List<Race>> getAllRaces();
+
+    //Ritorna tutte le specie presenti nel DB
+    @GET("/list/species")
+    Call<List<Specie>> getAllSpecies();
 }

@@ -5,7 +5,7 @@ function Menu_Selection(){
     document.getElementById(check.get('selected')).style.color = "#524a4a"
 
     var xhttp = new XMLHttpRequest();
-    var URIAddr = "../element_list/"+check.get('selected');
+    var URIAddr = "../list/"+check.get('selected');
     var jsonResponse;
     xhttp.onreadystatechange = function() {
         if (this.status == 200 && xhttp.readyState == 4) {
@@ -66,7 +66,7 @@ function Menu_Selection(){
                         }
                         break;
                     case "races":
-                        document.getElementById("dynamic_list").innerHTML="<th>ID_USER</th><th>USERNAME</th><th>EMAIL</th><th>PHONE_NUMBER</th>";
+                        document.getElementById("dynamic_list").innerHTML="<th>ID_RACE</th><th>ID_SPECIE</th><th>NAME</th><th>INFORMATIONS</th><th>SIZE</th><th>FUR_TYPE</th>";
                         while(jsonResponse[i] != null){
                             //alert(jsonResponse[i].username);
                             var idRace_col = document.createElement("td");
@@ -76,22 +76,26 @@ function Menu_Selection(){
                             var size_col = document.createElement("td");
                             var fur_type_col = document.createElement("td");
 
-                            var idRace_txt = document.createTextNode(jsonResponse[i].id_user);
-                            var idSpecie_txt = document.createTextNode(jsonResponse[i].username);
-                            var name_txt = document.createTextNode(jsonResponse[i].email);
-                            var inforation_txt = document.createTextNode(jsonResponse[i].phone_number);
-                            var phone_number_txt = document.createTextNode(jsonResponse[i].phone_number);
-                            var phone_number_txt = document.createTextNode(jsonResponse[i].phone_number);
+                            var idRace_txt = document.createTextNode(jsonResponse[i].id_race);
+                            var idSpecie_txt = document.createTextNode(jsonResponse[i].id_specie);
+                            var name_txt = document.createTextNode(jsonResponse[i].name);
+                            var information_txt = document.createTextNode(jsonResponse[i].information);
+                            var size_txt = document.createTextNode(jsonResponse[i].size);
+                            var fur_type_txt = document.createTextNode(jsonResponse[i].fur_type);
 
-                            id_col.appendChild(id_txt);
-                            username_col.appendChild(username_txt);
-                            email_col.append(email_txt);
-                            phone_number_col.appendChild(phone_number_txt);
+                            idRace_col.appendChild(idRace_txt);
+                            idSpecie_col.appendChild(idSpecie_txt);
+                            name_col.append(name_txt);
+                            information_col.appendChild(information_txt);
+                            size_col.appendChild(size_txt);
+                            fur_type_col.appendChild(fur_type_txt);
 
-                            document.getElementById("dynamic_list").appendChild(id_col);
-                            document.getElementById("dynamic_list").appendChild(username_col);
-                            document.getElementById("dynamic_list").appendChild(email_col);
-                            document.getElementById("dynamic_list").appendChild(phone_number_col);
+                            document.getElementById("dynamic_list").appendChild(idRace_col);
+                            document.getElementById("dynamic_list").appendChild(idSpecie_col);
+                            document.getElementById("dynamic_list").appendChild(name_col);
+                            document.getElementById("dynamic_list").appendChild(information_col);
+                            document.getElementById("dynamic_list").appendChild(size_col);
+                            document.getElementById("dynamic_list").appendChild(fur_type_col);
                             document.getElementById("dynamic_list").appendChild(document.createElement("tr"));
 
                             i++;
