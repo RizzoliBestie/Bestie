@@ -52,10 +52,8 @@
             android:exported="false" />
         <activity
             android:name=".pet.PetActivity"
+            android:label="Il tuo pet"
             android:exported="false" />
-        <activity
-            android:name=".home.HomeActivity"
-            android:exported="false"></activity>
         <activity
             android:name=".map.MapActivity"
             android:exported="false" />

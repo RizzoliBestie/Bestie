@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 
@@ -17,16 +18,19 @@ import com.example.bestie.curiosity.CuriosityFragment;
 import com.example.bestie.home.HomeFragment;
 import com.example.bestie.map.MapFragment;
 import com.example.bestie.pet.NewPetActivity;
+import com.example.bestie.pet.PetActivity;
 import com.example.bestie.settings.SettingsActivity;
 import com.example.bestie.storage.StorageActivity;
 import com.google.android.gms.auth.api.signin.internal.Storage;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.navigation.NavigationView;
+import com.mikhaellopez.circularimageview.CircularImageView;
 
 public class MainActivity extends AppCompatActivity {
 
-    private DrawerLayout drawerLayout =null;
+    private DrawerLayout drawerLayout = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -48,13 +52,18 @@ public class MainActivity extends AppCompatActivity {
         ImageBox imageBox = new ImageBox(this,images);*/
         /* Inserimento di alcune immagini utili per l'app in un oggetto ImageBox */
 
+        //IMPORTO ELEMENTI DALL'XML
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_nav);
         Toolbar toolbar = findViewById(R.id.toolbar);
-        NavigationView navigationView=findViewById(R.id.nav_view);
+        NavigationView navigationView = findViewById(R.id.nav_view);
         DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
+        CircularImageView homePetImage = findViewById(R.id.homeImage);
 
+        //SETTO TOOLBAR E FRAGMENT MANAGER
         setSupportActionBar(toolbar);
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
+
+        //SETTO IL FUNZIONAMENTO DELLA BOTTOM NAVIGATION
         bottomNavigationView.setSelectedItemId(R.id.navigation_home);
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
@@ -76,30 +85,33 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //SETTO IL FUNZIONAMENTO DEL DRAWER MENù
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 Intent selected = null;
-                switch (item.getItemId()){
+                switch (item.getItemId()) {
                     case R.id.add_pet:
-                        selected=new Intent(MainActivity.this, NewPetActivity.class);
+                        selected = new Intent(MainActivity.this, NewPetActivity.class);
                         break;
                     case R.id.archivio:
-                        selected=new Intent(MainActivity.this, StorageActivity.class);
+                        selected = new Intent(MainActivity.this, StorageActivity.class);
                         break;
                     case R.id.settings:
-                        selected=new Intent(MainActivity.this, SettingsActivity.class);
+                        selected = new Intent(MainActivity.this, SettingsActivity.class);
                         break;
                 }
                 startActivity(selected);
                 return true;
             }
         });
-        //
+
+        //SETTO IL BUTTON HAMBURGER MENù NELLA TOOLBAR
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar,
                 R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
+
     }
 
    /* @Override
