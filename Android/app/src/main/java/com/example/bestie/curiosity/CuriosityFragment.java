@@ -32,6 +32,7 @@ import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.example.bestie.OnSwipeTouchListener;
 import com.example.bestie.R;
 import com.example.bestie.animal.Animal;
 import com.example.bestie.animal.AnimalArrayAdapter;
@@ -58,6 +59,9 @@ public class CuriosityFragment extends Fragment {
     Activity act = null;
 
     AnimalSectionSpinnerAdapter spinnerAdapter;
+
+    float x1,x2,y1,y2;
+    int swipeEntry = 0;
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -238,6 +242,28 @@ public class CuriosityFragment extends Fragment {
         }); */
 
 
+        topBackground.setOnTouchListener(new OnSwipeTouchListener(getActivity()){
+            public void onSwipeTop() {
+
+            }
+            public void onSwipeRight() {
+                if(swipeEntry > 0){
+                    swipeEntry--;
+                    sectionMenuSpinner.setSelection(swipeEntry);
+                }
+                Log.v("CuriosityFragment", "Right " + swipeEntry);
+            }
+            public void onSwipeLeft() {
+                if(swipeEntry < sectionMenuSpinner.getAdapter().getCount() - 1){
+                    swipeEntry++;
+                    sectionMenuSpinner.setSelection(swipeEntry);
+                }
+                Log.v("CuriosityFragment", "Left " + swipeEntry);
+            }
+            public void onSwipeBottom() {
+
+            }
+        });
 
 
         return v;
