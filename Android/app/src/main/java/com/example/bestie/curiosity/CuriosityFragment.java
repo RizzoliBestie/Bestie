@@ -119,10 +119,8 @@ public class CuriosityFragment extends Fragment {
                 AnimalSection animalSect = (AnimalSection) spinnerAdapter.getItem(i);
                 String section = animalSect.getSectionName();
 
-                Log.v("CuriosityFragment", section);
+                //Log.v("CuriosityFragment", section);
                 //Toast.makeText(getApplicationContext(), spinnerAdapter.getItem(i).toString(), Toast.LENGTH_SHORT).show();
-                //sectionTextView.setText(sectionMenuSpinner.getSelectedItem().toString());
-                //AnimalSection selectedSection = (AnimalSection) adapterView.getSelectedItem();
                 sectionTextView.setText(section);
 
                 //Imposta quale categoria di animali deve essere visualizzata
