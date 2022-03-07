@@ -57,7 +57,7 @@ public class CuriosityFragment extends Fragment {
     Activity act = null;
 
     AnimalSectionSpinnerAdapter spinnerAdapter;
-
+    
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
@@ -146,7 +146,7 @@ public class CuriosityFragment extends Fragment {
                         topBackground.setBackgroundResource(R.color.settore_wild);
                         curiosityFragmentRelativeLayout.setBackgroundResource(R.color.settore_wild_lista);
                         sectionTextView.setTextColor(ContextCompat.getColor(getContext(), R.color.settore_wild_testo_principale));
-                        backgroundGradient.setStroke(8, ContextCompat.getColor(getContext(), R.color.settore_wild_jolly));
+                        backgroundGradient.setStroke(6, ContextCompat.getColor(getContext(), R.color.settore_wild_jolly));
                         backgroundSpinnerDrawable.setColor(ContextCompat.getColor(getContext(), R.color.settore_wild_jolly));
                         break;
                     case "FARM":
