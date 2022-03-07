@@ -4,6 +4,8 @@ body{
     background-color: rgb(200, 231, 200);
 }
 
+/*   CONTENITORI   */
+
 #top_bar{
     display: block;
     height: fit-content;
@@ -23,7 +25,7 @@ body{
     border-bottom: 3px solid darkgreen;
 }
 
-#bottom_bar{
+/*#bottom_bar{
     height: 2.7em;
     width: 100%;
     background-image: url("../img/admin_background_bar.png");
@@ -34,39 +36,30 @@ body{
     position: fixed;
     bottom: 0;
     overflow: hidden;
-}
+}*/
 
 #navbar{
     background-color: lightgreen;
     border-right: 3px solid darkgreen;
     height: 100%;
-    width: 30%;
+    width: 20%;
     padding-top:  5em;
     display: inline;
-    left:0;
     float:left;
-    margin-bottom: 2.8em;
+}
+
+::-webkit-scrollbar{
+    width: 0px;
 }
 
 #content{
     background-color: rgb(200, 231, 200);
     margin-top: 5em;
-    height: 70%;
-    width: 68.49%;
+    height: 100%;
+    width: 78.49%;
     display: inline;
     float: right;
     right: 0;
-    overflow: auto;
-    margin-bottom: 2.8em;
-}
-
-ul{
-    list-style-type: none;
-    height: fit-content;
-}
-
-a{
-    text-decoration: none;
 }
 
 .left_menu{
@@ -77,3 +70,25 @@ a{
     color:white;
     font-size: 1em;
 }
+
+/*     ELEMENTI     */
+
+ul{
+    list-style-type: none;
+}
+
+a{
+    text-decoration: none;
+}
+
+th{
+    color: red;
+}
+
+th, td{
+    padding-left: 3em;
+    height: 5em;
+    text-align: center;
+}
+
+/*   LISTA OGGETTI   */

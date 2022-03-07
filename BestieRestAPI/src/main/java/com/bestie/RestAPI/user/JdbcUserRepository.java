@@ -17,6 +17,11 @@ public class JdbcUserRepository implements UserRepository{
 	//Metodi per trovare un utente
 	
 	@Override
+	public List<User> getAllUsers(){
+		return jdbcTemplate.query("SELECT * FROM User", BeanPropertyRowMapper.newInstance(User.class));
+	}
+	
+	@Override
 	public List<User> findUserById(Integer id) {
 		return jdbcTemplate.query("SELECT * FROM User WHERE id_user = ?", BeanPropertyRowMapper.newInstance(User.class) ,id);
 		

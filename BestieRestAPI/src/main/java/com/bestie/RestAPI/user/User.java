@@ -9,7 +9,7 @@ public class User {
 	private String phone_number;
 	
 	public User() {
-		this.id_user = 0;
+		this.id_user = -1;
 		this.username = "";
 		this.email = "";
 		this.password = "";

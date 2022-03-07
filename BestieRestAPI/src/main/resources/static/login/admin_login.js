@@ -6,7 +6,7 @@ function CheckLogin(){
     xhttp.onreadystatechange = function() {
         if (this.status == 200 && xhttp.readyState == 4) {
             if(this.responseText == "true")
-                location.replace("../home/admin_home.html?users");
+                location.replace("../home/admin_home.html?selected=users");
             else
                 alert("Credenziali errate");
         }

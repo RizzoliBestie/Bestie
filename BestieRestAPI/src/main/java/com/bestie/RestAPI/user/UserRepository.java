@@ -7,6 +7,8 @@ import com.bestie.RestAPI.oggetti.Pet;
 public interface UserRepository {
 
 	//Trova un utente tramite id 
+	public List<User> getAllUsers();
+	
 	public List<User> findUserById(Integer id);
 		
 	//Trova un utente tramite username

@@ -8,12 +8,12 @@ import org.springframework.stereotype.Repository;
 import com.bestie.RestAPI.user.User;
 
 @Repository(value="admin")
-public class JdbcAdminRepository implements AdminRepository{
+public class JdbcAdminRepository /*implements AdminRepository*/{
 
 	@Autowired
 	JdbcTemplate jdbcTemplate;
 	
-	@Override
+	/*@Override
 	public boolean checkAdmin(String username, String password) {
 		if(jdbcTemplate.query("SELECT * FROM User WHERE username = ? AND password = ?",
 				BeanPropertyRowMapper.newInstance(User.class),
@@ -21,6 +21,6 @@ public class JdbcAdminRepository implements AdminRepository{
 			return false;
 		}
 		return true;
-	}
+	}*/
 
 }
