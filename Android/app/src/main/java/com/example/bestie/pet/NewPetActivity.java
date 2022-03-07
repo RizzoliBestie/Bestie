@@ -46,6 +46,7 @@ public class NewPetActivity extends AppCompatActivity {
         TextView pesoTV = findViewById(R.id.weightKgTV);
         DatePicker datePicker = findViewById(R.id.birthdate);
         Toolbar toolbar = findViewById(R.id.new_pet_toolbar);
+        ImageView addPet = findViewById(R.id.confirm_button);
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -83,6 +84,13 @@ public class NewPetActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 pickImage();
+            }
+        });
+
+        addPet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(NewPetActivity.this, "Aggiunto", Toast.LENGTH_SHORT).show();
             }
         });
 
