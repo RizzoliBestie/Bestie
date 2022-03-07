@@ -11,7 +11,10 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.graphics.drawable.DrawableContainer;
 import android.graphics.drawable.GradientDrawable;
+import android.graphics.drawable.LayerDrawable;
+import android.graphics.drawable.StateListDrawable;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -48,6 +51,9 @@ public class CuriosityFragment extends Fragment {
     Spinner sectionMenuSpinner = null;
     View topBackground = null;
 
+    GradientDrawable backgroundGradient = null;
+    StateListDrawable backgroundSpinner = null;
+
     Activity act = null;
 
     AnimalSectionSpinnerAdapter spinnerAdapter;
@@ -71,6 +77,14 @@ public class CuriosityFragment extends Fragment {
         searchEditText = v.findViewById(R.id.searchEditText);
         sectionMenuSpinner = v.findViewById(R.id.sectionMenuSpinner);
         topBackground = v.findViewById(R.id.top_background);
+
+        backgroundGradient = (GradientDrawable) searchEditText.getBackground();
+
+        backgroundSpinner = (StateListDrawable) sectionMenuSpinner.getBackground();
+        DrawableContainer.DrawableContainerState drawableContainerState = (DrawableContainer.DrawableContainerState) backgroundSpinner.getConstantState();
+        Drawable[] children = drawableContainerState.getChildren();
+        LayerDrawable backgroundSpinnerItem = (LayerDrawable) children[0];
+        GradientDrawable backgroundSpinnerDrawable = (GradientDrawable) backgroundSpinnerItem.getDrawable(0);
 
         //Setup della TextView che indica la sezione
         String [] SectionString = new String[] {"PETS", "FARM", "WILD"};
@@ -132,23 +146,24 @@ public class CuriosityFragment extends Fragment {
                         topBackground.setBackgroundResource(R.color.settore_wild);
                         curiosityFragmentRelativeLayout.setBackgroundResource(R.color.settore_wild_lista);
                         sectionTextView.setTextColor(ContextCompat.getColor(getContext(), R.color.settore_wild_testo_principale));
-                        //searchEditText.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.settore_pets_jolly));
-                        //GradientDrawable drawable = (GradientDrawable)ContextCompat.getDrawable(getContext(), R.drawable.et_style);
-                        //drawable.setStroke(2, ContextCompat.getColor(getContext(), R.color.settore_wild_testo_principale));
+                        backgroundGradient.setStroke(8, ContextCompat.getColor(getContext(), R.color.settore_wild_jolly));
+                        backgroundSpinnerDrawable.setColor(ContextCompat.getColor(getContext(), R.color.settore_wild_jolly));
                         break;
                     case "FARM":
                         animalWikiListView.setAdapter(animalAdapterFarm);
                         topBackground.setBackgroundResource(R.color.settore_farm);
                         curiosityFragmentRelativeLayout.setBackgroundResource(R.color.settore_farm_lista);
                         sectionTextView.setTextColor(ContextCompat.getColor(getContext(), R.color.settore_farm_testo_principale));
-                        //searchEditText.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.settore_pets_jolly));
+                        backgroundGradient.setStroke(8, ContextCompat.getColor(getContext(), R.color.settore_farm_jolly));
+                        backgroundSpinnerDrawable.setColor(ContextCompat.getColor(getContext(), R.color.settore_farm_jolly));
                         break;
                     case "PETS":
                         animalWikiListView.setAdapter(animalAdapterPets);
                         topBackground.setBackgroundResource(R.color.settore_pets);
                         curiosityFragmentRelativeLayout.setBackgroundResource(R.color.settore_pets_lista);
                         sectionTextView.setTextColor(ContextCompat.getColor(getContext(), R.color.settore_pets_testo_principale));
-                        //searchEditText.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.settore_pets_jolly));
+                        backgroundGradient.setStroke(8, ContextCompat.getColor(getContext(), R.color.settore_pets_jolly));
+                        backgroundSpinnerDrawable.setColor(ContextCompat.getColor(getContext(), R.color.settore_pets_jolly));
                         break;
                     default:
                         animalWikiListView.setAdapter(animalAdapter);
