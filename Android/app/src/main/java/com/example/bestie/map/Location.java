@@ -18,7 +18,7 @@ public class Location {
     }
 
     //Costruttore per indicare la posizione di una struttura come Veterinario o Negozio di animali
-    public Location(String type, double latitude, double longitude ) {
+    public Location(String type, double latitude, double longitude) {
         this.user = null;
         this.latitude = latitude;
         this.longitude = longitude;

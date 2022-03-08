@@ -12,12 +12,16 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.bestie.R;
+import com.example.bestie.animal.AnimalWiki;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MapFragment extends Fragment implements OnMapReadyCallback {
 
@@ -56,15 +60,24 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
      * it inside the SupportMapFragment. This method will only be triggered once the user has
      * installed Google Play services and returned to the app.
      */
+
+    List<Location> locationslist = new ArrayList<Location>();
+    //Location milan = new Location("Milano", 45.4654219, 9.1859243);
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
+        
+        locationslist.add(new Location("Milano", 45.4654219, 9.1859243));
+        locationslist.add(new Location("Ambulatorio Veterinario Centro", 45.07255418517881, 7.682647026773152));
 
-        // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions()
-                .position(sydney)
-                .title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        for(int mkindex = 0; mkindex < locationslist.size(); mkindex++){
+            // Add a marker and move the camera
+            LatLng marker = new LatLng(locationslist.get(mkindex).getLatitude(), locationslist.get(mkindex).getLongitude());
+            mMap.addMarker(new MarkerOptions()
+                    .position(marker)
+                    .title(locationslist.get(mkindex).getType()));
+            mMap.moveCamera(CameraUpdateFactory.newLatLng(marker));
+        }
+
     }
 }
