@@ -199,9 +199,11 @@ public class CuriosityFragment extends Fragment {
                 Intent infoIntent = new Intent(act, AnimalInfoActivity.class);
                 infoIntent.putExtra("name", p.getName());
                 infoIntent.putExtra("race", p.getRace().getName());
+                infoIntent.putExtra("information", p.getRace().getInformation());
+                infoIntent.putExtra("size", p.getRace().getSize());
+                infoIntent.putExtra("fur_type", p.getRace().getFurType());
                 infoIntent.putExtra("specie", p.getSpecie());
                 infoIntent.putExtra("image_url", p.getImageUrl());
-                infoIntent.putExtra("description", p.getDescription());
                 infoIntent.putExtra("section", p.getSection());
                 startActivity(infoIntent);
             }
@@ -281,7 +283,8 @@ public class CuriosityFragment extends Fragment {
     public List<AnimalWiki> getAnimalData(){
         //Input manuale senza database
         List<AnimalWiki> animals = new ArrayList<AnimalWiki>();
-        animals.add(new AnimalWiki("Volpe", new Race("Fennec"), "Vulpes Zerda", "WILD", "https://www.parmadaily.it/wp-content/uploads/2016/09/fennec.jpg"));
+        animals.add(new AnimalWiki("Volpe", new Race("Fennec", "Il fennec è il più piccolo canide del mondo: il suo peso si aggira intorno a 1 kg. In media è alto 20 cm e lungo circa 30 cm, la coda è lunga 25 cm.\n" +
+                "\n" + "Le lunghe orecchie, che possono raggiungere 15 cm, servono per disperdere il calore e gli offrono un ottimo udito. Il pelo respinge la luce del sole di giorno grazie al colore e conserva calore durante la notte; inoltre gli permette di mimetizzarsi perfettamente nel deserto. Le zampe nella parte inferiore sono coperte da un pelo molto spesso che le protegge dal calore della sabbia.","20/30 cm", "Color Sabbia"), "Vulpes Zerda", "WILD", "https://www.parmadaily.it/wp-content/uploads/2016/09/fennec.jpg"));
         animals.add(new AnimalWiki("Nittereute", new Race("Cane Procione"), "Nyctereutes procyonoides", "WILD", "https://upload.wikimedia.org/wikipedia/commons/8/85/Der_Marderhund%2C_Tanuki_oder_Enok_%28Nyctereutes_procyonoides%29%2C_bitte_nicht_zu_verwechseln_mit_einem_Waschb%C3%A4r%2C_hier_im_Wisentgehege_in_Springe_%28Kleiner_Deister%29.jpg"));
         animals.add(new AnimalWiki("Volpe", new Race("Volpe Rossa"), "Vulpes Vulpes", "WILD","https://www.giornaletrentino.it/image/contentid/policy:1.2991162:1631209711/image%20(3).jpg?f=3x2&w=299&$p$f$w=c5a262c"));
         animals.add(new AnimalWiki("Urocioni", new Race("Volpe Grigia"), "Urocyon", "WILD","https://static.kodami.it/wp-content/uploads/sites/31/2021/05/iStock-1264712034-638x425.jpg"));

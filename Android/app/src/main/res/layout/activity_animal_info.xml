@@ -14,21 +14,21 @@
         android:layout_height="150dp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="50dp"
+        android:scaleType="centerCrop"
         app:civ_border_color="@color/settore_wild_jolly"
         app:civ_border_width="4dp"
-        app:srcCompat="@drawable/volpe"
-        android:scaleType="centerCrop"/>
+        app:srcCompat="@drawable/volpe" />
 
     <TextView
         android:id="@+id/nameTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="15dp"
+        android:layout_marginLeft="20dp"
         android:layout_marginTop="10dp"
-        android:textSize="60px"
-        android:textStyle="bold|italic"
         android:text="Volpe"
-        android:textColor="@color/settore_wild_testo_principale"/>
+        android:textColor="@color/settore_wild_testo_principale"
+        android:textSize="60px"
+        android:textStyle="bold|italic" />
 
     <TextView
         android:id="@+id/descriptionTextView"
@@ -36,9 +36,10 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/animalInfoImageView"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="30dp"
         android:text="Nessuna descrizione"
-        android:textColor="@color/settore_wild_testo_principale"/>
+        android:textColor="@color/settore_wild_testo_principale" />
 
     <TextView
         android:id="@+id/speciesHeaderTextView"
@@ -68,7 +69,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="90dp"
         android:layout_toRightOf="@+id/animalInfoImageView"
         android:fontFamily="sans-serif-light"
         android:text="Razza:"
@@ -80,18 +81,42 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="90dp"
         android:layout_toRightOf="@+id/raceHeaderTextView"
         android:text="NA"
         android:textColor="@color/settore_wild_testo_principale"
         android:textSize="20dp" />
 
     <TextView
+        android:id="@+id/sizeHeaderTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="130dp"
+        android:layout_toRightOf="@+id/animalInfoImageView"
+        android:fontFamily="sans-serif-light"
+        android:text="Dimensione:"
+        android:textColor="@color/settore_wild_testo_secondario"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/sizeTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="130dp"
+        android:layout_toRightOf="@+id/sizeHeaderTextView"
+        android:text="NA"
+        android:textColor="@color/settore_wild_testo_principale"
+        android:textSize="20dp" />
+
+
+    <TextView
         android:id="@+id/furTypeHeaderTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="110dp"
+        android:layout_marginTop="170dp"
         android:layout_toRightOf="@+id/animalInfoImageView"
         android:fontFamily="sans-serif-light"
         android:text="Pelo:"
@@ -103,7 +128,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
-        android:layout_marginTop="110dp"
+        android:layout_marginTop="170dp"
         android:layout_toRightOf="@+id/furTypeHeaderTextView"
         android:text="NA"
         android:textColor="@color/settore_wild_testo_principale"
