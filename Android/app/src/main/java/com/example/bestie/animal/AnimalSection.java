@@ -3,8 +3,8 @@ package com.example.bestie.animal;
 import java.io.Serializable;
 
 public class AnimalSection implements Serializable {
-    public String section_name;
-    public int icon; //solo interno come drawable
+    private String section_name;
+    private int icon; //solo interno come drawable
     //Esempio: R.drawable.icon
 
     //NON forzare l'uso del costruttore in questo caso

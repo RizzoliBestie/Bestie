@@ -37,9 +37,7 @@ public class AnimalWiki extends Animal{
         this.image_url = image_url;
     }
 
-    public void setSection(String section) {
-        this.section.setSectionName(section);;
-    }
+    public void setSection(String section) { this.section.setSectionName(section); }
 
     public String getDescription() {
         return description;
@@ -50,11 +48,11 @@ public class AnimalWiki extends Animal{
     }
 
     public String getSection() {
-        return section.section_name;
+        return section.getSectionName();
     }
 
     @Override
     public String toString() {
-        return getName() + ' ' + getRace() + ' ' + getSpecie() + ' ' + section .section_name + ' ' + description;
+        return getName() + ' ' + getRace() + ' ' + getSpecie() + ' ' + section.getSectionName() + ' ' + description;
     }
 }

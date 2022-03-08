@@ -4,7 +4,7 @@ public class Animal {
     //Classe base per gli animali
     private String name;
     private Race race;
-    private String specie;
+    private String specie; //anche come nome scientifico
 
 
     //Classe da base (da utilizzare per l'estensione in Pet)

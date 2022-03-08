@@ -290,9 +290,9 @@ public class CuriosityFragment extends Fragment {
         animals.add(new AnimalWiki("Gallina", new Race("Gallus"), "Gallus gallus domesticus", "FARM","https://www.tuttosullegalline.it/newsite/wp-content/uploads/2019/01/gallina-Brucie-4.jpg"));
         animals.add(new AnimalWiki("Toro", new Race("Mucca"), "Bos Taurus", "FARM", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRo3nFYjIbXjGoZQ5umhVFLdBLEEAHDP85yAw&usqp=CAU"));
         animals.add(new AnimalWiki("Pecora", new Race("Ovis"), "Ovis aries", "FARM", "https://www.cibo360.it/images/alimentazione/cibi/pecora.jpg"));
-        animals.add(new AnimalWiki("Cane", new Race("Canis lupus familiaris"), "Siberian Husky", "PETS","https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Le%C3%AFko_au_bois_de_la_Cambre.jpg/330px-Le%C3%AFko_au_bois_de_la_Cambre.jpg"));
-        animals.add(new AnimalWiki("Cane", new Race("Canis lupus familiaris"), "Pastore Tedesco", "PETS","http://www.difossombrone.it/images/anatomia/difettitesta.jpg"));
-        animals.add(new AnimalWiki("Gatto", new Race("Felis catus"), "Persiano", "PETS","https://upload.wikimedia.org/wikipedia/it/thumb/3/3e/Prisca.jpg/390px-Prisca.jpg"));
+        animals.add(new AnimalWiki("Cane", new Race("Siberian Husky"), "Canis lupus familiaris", "PETS","https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Le%C3%AFko_au_bois_de_la_Cambre.jpg/330px-Le%C3%AFko_au_bois_de_la_Cambre.jpg"));
+        animals.add(new AnimalWiki("Cane", new Race("Pastore Tedesco"), "Canis lupus familiaris", "PETS","http://www.difossombrone.it/images/anatomia/difettitesta.jpg"));
+        animals.add(new AnimalWiki("Gatto", new Race("Persiano"), "Felis catus", "PETS","https://upload.wikimedia.org/wikipedia/it/thumb/3/3e/Prisca.jpg/390px-Prisca.jpg"));
 
         return animals;
     }

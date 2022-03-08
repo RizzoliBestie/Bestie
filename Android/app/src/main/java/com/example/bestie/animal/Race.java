@@ -37,24 +37,22 @@ public class Race {
         this.fur_type = fur_type;
     }
 
-    public String getName() {
-        return name;
-    }
+    public String getName() { return name; }
 
-    public String getInformation() {
-        return information;
-    }
+    public String getInformation() { return information; }
 
-    public String getSize() {
-        return size;
-    }
+    public String getSize() { return size; }
 
-    public String getFurType() {
-        return fur_type;
-    }
+    public String getFurType() { return fur_type; }
+
+    public void setName(String name) { this.name = name; }
+
+    public void setInformation(String information) { this.information = information; }
+
+    public void setSize(String size) { this.size = size; }
+
+    public void setFurType(String fur_type) { this.fur_type = fur_type; }
 
     @Override
-    public String toString() {
-        return name + ' ' + information + ' ' + size + ' ' + fur_type;
-    }
+    public String toString() { return name + ' ' + information + ' ' + size + ' ' + fur_type; }
 }
