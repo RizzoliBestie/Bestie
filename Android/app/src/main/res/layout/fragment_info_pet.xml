@@ -19,8 +19,40 @@
             android:id="@+id/info_pet_date"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="-30dp"
+            android:layout_marginTop="-25dp"
              />
+
+        <com.example.bestie.NonScrollListView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/infoPetLV2"
+            android:layout_marginTop="-80dp"/>
+
+        <LinearLayout
+            android:layout_marginTop="-20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="100"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@color/charleston_green"
+                android:layout_weight="50"
+                android:padding="20dp"
+                android:id="@+id/info_pet_sex_m"/>
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@color/cream"
+                android:layout_weight="50"
+                android:padding="20dp"
+                android:id="@+id/info_pet_sex_f"/>
+
+        </LinearLayout>
 
     </LinearLayout>
 </ScrollView>

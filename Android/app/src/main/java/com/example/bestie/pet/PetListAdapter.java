@@ -20,8 +20,8 @@ public class PetListAdapter extends ArrayAdapter<InfoPetListItem> {
     Context context;
     int resource;
 
-    public PetListAdapter(@NonNull Context context, int resource, int textViewId, @NonNull ArrayList<InfoPetListItem> objects) {
-        super(context, resource, textViewId, objects);
+    public PetListAdapter(@NonNull Context context, int resource, @NonNull ArrayList<InfoPetListItem> objects) {
+        super(context, resource, objects);
         this.context=context;
         this.resource=resource;
     }
