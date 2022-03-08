@@ -2,17 +2,22 @@ package com.example.bestie.pet;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.CalendarView;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
 import com.example.bestie.R;
@@ -32,6 +37,8 @@ public class InfoPetFragment extends Fragment {
     String femaleUri = "@drawable/female";
     int imageResourceM;
     int imageResourceF;
+    EditText editTextField;
+    DialogInterface dialogInterface;
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -43,6 +50,8 @@ public class InfoPetFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_info_pet, container, false);
+
+        isMale=false;
 
         ListView infoPetLV = (ListView) view.findViewById(R.id.infoPetLV);
         ListView infoPetLV2 = (ListView) view.findViewById(R.id.infoPetLV2);
@@ -60,7 +69,6 @@ public class InfoPetFragment extends Fragment {
 
         calendarView.setDate(new Date().getTime());
 
-        isMale=false;
         //SETTO IMMAGINI SE MASCHIO O FEMMINA
         if(isMale){
             imageResourceM = getResources().getIdentifier(maleOnUri, null, act.getPackageName());
@@ -81,7 +89,7 @@ public class InfoPetFragment extends Fragment {
             female.setImageDrawable(drawableF);
         }
 
-        //SETTO METODO ON CLICK PER CAMBIARE SESSO (???)
+        //SETTO METODI ON CLICK PER CAMBIARE SESSO (???)
         male.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -98,7 +106,6 @@ public class InfoPetFragment extends Fragment {
                 }
             }
         });
-
         female.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -113,6 +120,16 @@ public class InfoPetFragment extends Fragment {
 
                     isMale=false;
                 }
+            }
+        });
+
+        infoPetLV.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                InfoPetListItem item = (InfoPetListItem) adapterView.getItemAtPosition(i);
+                String title = item.getTitle();
+                alertDialog(title, editTextField);
+               // onClick(dialogInterface, );
             }
         });
 
@@ -151,5 +168,29 @@ public class InfoPetFragment extends Fragment {
         arrayList.add(hr);
         arrayList.add(sesso);
         return arrayList;
+    }
+
+    private EditText alertDialog(String title, EditText editTextField) {
+        editTextField = new EditText(this.getContext());
+         AlertDialog dialog = new AlertDialog.Builder(act)
+                .setTitle(title)
+                .setView(editTextField)
+                .setPositiveButton("OK", null)
+                .setNegativeButton("ANNULLA", null)
+                .create();
+        dialog.show();
+
+        return  editTextField;
+    }
+
+    public void onClick(DialogInterface dialogInterface, int i){
+        switch(i){
+            case DialogInterface.BUTTON_POSITIVE:
+                String name = String.valueOf(editTextField.getText());
+                Toast.makeText(act, name, Toast.LENGTH_SHORT).show();
+                break;
+            case DialogInterface.BUTTON_NEGATIVE:
+                break;
+        }
     }
 }
