@@ -39,35 +39,31 @@
         android:textSize="20dp" />
 
 
-        <TextView
-            android:id="@+id/infoPetTV"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/petNameTV"
-            android:layout_marginTop="30dp"
-            android:fontFamily="sans-serif-black"
-            android:text=" Informazioni"
-            android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
-            android:textColor="@color/testo_secondario"
-            android:textSize="25dp" />
+    <TextView
+        android:id="@+id/infoPetTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/petNameTV"
+        android:layout_marginTop="30dp"
+        android:fontFamily="sans-serif-black"
+        android:text=" Informazioni"
+        android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+        android:textColor="@color/testo_secondario"
+        android:textSize="25dp" />
 
-        <ImageView
-            android:id="@+id/petActvityHR"
-            android:layout_width="match_parent"
-            android:layout_below="@id/infoPetTV"
-            android:layout_height="1dp"
-            android:layout_marginTop="5dp"
-            android:src="@color/testo_secondario" />
+    <ImageView
+        android:id="@+id/petActvityHR"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/infoPetTV"
+        android:layout_marginTop="5dp"
+        android:src="@color/testo_secondario" />
 
-        <androidx.fragment.app.FragmentContainerView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@id/petActvityHR"
-            android:id="@+id/info_pet_fragment_container"
-            />
-
-
-
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/info_pet_fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/petActvityHR" />
 
 
 </RelativeLayout>

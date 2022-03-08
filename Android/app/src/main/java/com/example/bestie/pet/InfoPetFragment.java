@@ -55,12 +55,14 @@ public class InfoPetFragment extends Fragment {
         InfoPetListItem peso = new InfoPetListItem("Peso", null);
         InfoPetListItem pelo = new InfoPetListItem("Pelo", null);
         InfoPetListItem sterile = new InfoPetListItem("Sterilizzazione", null);
+        InfoPetListItem dataDiNascita = new InfoPetListItem("Data di nascita", null);
 
         arrayList.add(specie);
         arrayList.add(razza);
         arrayList.add(peso);
         arrayList.add(pelo);
         arrayList.add(sterile);
+        arrayList.add(dataDiNascita);
 
         return arrayList;
     }

@@ -10,6 +10,7 @@ import android.widget.CalendarView;
 import android.widget.ListView;
 
 import com.example.bestie.R;
+import com.example.bestie.home.HomeFragment;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -21,9 +22,11 @@ public class PetActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pet);
 
-        
+
         Toolbar toolbar = findViewById(R.id.pet_toolbar);
         setSupportActionBar(toolbar);
+
+        getSupportFragmentManager().beginTransaction().replace(R.id.info_pet_fragment_container, new InfoPetFragment()).commit();
 
 
     }
