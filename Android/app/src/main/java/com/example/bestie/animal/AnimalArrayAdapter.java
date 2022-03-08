@@ -68,14 +68,14 @@ public class AnimalArrayAdapter extends ArrayAdapter<AnimalWiki> {
             vh.raceTextView = convertView.findViewById(R.id.raceTextView);
             vh.specieTextView = convertView.findViewById(R.id.speciesTextView);
 
-            if(p.image_url != null) {
-                String urlImgS = p.image_url;
-                (new AnimalDownloadImage(ctx, p.image_url, vh.animalImageView)).execute();
+            if(p.getImageUrl() != null) {
+                String urlImgS = p.getImageUrl();
+                (new AnimalDownloadImage(ctx, p.getImageUrl(), vh.animalImageView)).execute();
             } else {
                 vh.animalImageView.setImageResource(R.drawable.volpe); //Fa solo l'immagine della volpe
             }
 
-            switch(p.section.section_name){
+            switch(p.getSection()){
                 case "WILD":
                     vh.nameTextView.setTextColor(ContextCompat.getColor(getContext(), R.color.settore_wild_testo_principale));
                     vh.raceTextView.setTextColor(ContextCompat.getColor(getContext(), R.color.settore_wild_testo_secondario));
@@ -101,9 +101,9 @@ public class AnimalArrayAdapter extends ArrayAdapter<AnimalWiki> {
 
         ViewHolder vh = (ViewHolder) convertView.getTag();
 
-        vh.nameTextView.setText(p.name);
-        vh.raceTextView.setText(p.race);
-        vh.specieTextView.setText(p.specie);
+        vh.nameTextView.setText(p.getName());
+        vh.raceTextView.setText(p.getRace().getName());
+        vh.specieTextView.setText(p.getSpecie());
 
         return convertView;
     }

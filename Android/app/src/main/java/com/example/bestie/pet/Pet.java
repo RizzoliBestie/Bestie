@@ -1,6 +1,7 @@
 package com.example.bestie.pet;
 
 import com.example.bestie.animal.Animal;
+import com.example.bestie.animal.Race;
 import com.example.bestie.general.Profile;
 
 import java.util.Date;
@@ -16,7 +17,7 @@ public class Pet extends Animal {
 
 
     //Costruttore per la creazione del Pet
-    public Pet(String name, String race, String specie, Profile owner, String nick, double weight, boolean sex) {
+    public Pet(String name, Race race, String specie, Profile owner, String nick, double weight, boolean sex) {
         //Tutti gli attributi dell'animale
         super(name, race, specie);
         //Attributi proprio Pet
@@ -52,7 +53,7 @@ public class Pet extends Animal {
         }
     }
 
-    public void addPetToOwner(String n, String r, String s, Profile owner, String nick, double weight, boolean sex){
+    public void addPetToOwner(String n, Race r, String s, Profile owner, String nick, double weight, boolean sex){
         //Il Pet viene aggiunto alla ArrayList dei Pet del proprietario
         Pet pet = new Pet(n,r,s,owner,nick,weight,sex);
         this.owner.pet.add(pet);

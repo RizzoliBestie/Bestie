@@ -1,12 +1,12 @@
 package com.example.bestie.animal;
 
 public class AnimalWiki extends Animal{
-    public AnimalSection section = new AnimalSection();
-    public String image_url;
-    public String description;
+    private AnimalSection section = new AnimalSection();
+    private String image_url;
+    private String description;
 
     //Senza Immagine o descrizione
-    public AnimalWiki(String name, String race, String specie, String sec){
+    public AnimalWiki(String name, Race race, String specie, String sec){
         super(name, race, specie);
         this.section.setSectionName(sec);
         this.image_url = null;
@@ -14,7 +14,7 @@ public class AnimalWiki extends Animal{
     }
 
     //Con Immagine
-    public AnimalWiki(String name, String race, String specie, String sec, String url){
+    public AnimalWiki(String name, Race race, String specie, String sec, String url){
         super(name, race, specie);
         this.section.setSectionName(sec);
         this.image_url = url;
@@ -22,7 +22,7 @@ public class AnimalWiki extends Animal{
     }
 
     //Con Immagine e descrizione
-    public AnimalWiki(String name, String race, String specie, String sec, String url, String desc){
+    public AnimalWiki(String name, Race race, String specie, String sec, String url, String desc){
         super(name, race, specie);
         this.section.setSectionName(sec);
         this.image_url = url;
@@ -45,7 +45,7 @@ public class AnimalWiki extends Animal{
         return description;
     }
 
-    public String getImage_url() {
+    public String getImageUrl() {
         return image_url;
     }
 
@@ -55,6 +55,6 @@ public class AnimalWiki extends Animal{
 
     @Override
     public String toString() {
-        return name + ' ' + race + ' ' + specie + ' ' + section .section_name + ' ' + description;
+        return getName() + ' ' + getRace() + ' ' + getSpecie() + ' ' + section .section_name + ' ' + description;
     }
 }
