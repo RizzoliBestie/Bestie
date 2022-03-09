@@ -44,16 +44,18 @@ CREATE TABLE IF NOT EXISTS `Race` (
   `id_race` int NOT NULL AUTO_INCREMENT,
   `id_specie` int NOT NULL,
   `name` varchar(50) NOT NULL,
-  `information` varchar(50) NOT NULL,
+  `information` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `size` varchar(50) NOT NULL,
   `fur_type` varchar(50) NOT NULL,
   PRIMARY KEY (`id_race`),
   KEY `id_specie_RACE` (`id_specie`),
   CONSTRAINT `id_specie_RACE` FOREIGN KEY (`id_specie`) REFERENCES `Specie` (`id_specie`) ON DELETE RESTRICT ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dump dei dati della tabella Bestie.Race: ~0 rows (circa)
+-- Dump dei dati della tabella Bestie.Race: ~1 rows (circa)
 /*!40000 ALTER TABLE `Race` DISABLE KEYS */;
+REPLACE INTO `Race` (`id_race`, `id_specie`, `name`, `information`, `size`, `fur_type`) VALUES
+	(1, 1, 'golden_retriver', 'bello_e_biondo', 'XL', 'long');
 /*!40000 ALTER TABLE `Race` ENABLE KEYS */;
 
 -- Dump della struttura di tabella Bestie.Specie
@@ -62,10 +64,13 @@ CREATE TABLE IF NOT EXISTS `Specie` (
   `common_name` varchar(50) NOT NULL,
   `scientific_name` varchar(50) NOT NULL,
   PRIMARY KEY (`id_specie`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dump dei dati della tabella Bestie.Specie: ~0 rows (circa)
+-- Dump dei dati della tabella Bestie.Specie: ~2 rows (circa)
 /*!40000 ALTER TABLE `Specie` DISABLE KEYS */;
+REPLACE INTO `Specie` (`id_specie`, `common_name`, `scientific_name`) VALUES
+	(1, 'dog', 'canis_familiaris'),
+	(2, 'cat', 'cattttttttt');
 /*!40000 ALTER TABLE `Specie` ENABLE KEYS */;
 
 -- Dump della struttura di tabella Bestie.User
@@ -76,15 +81,17 @@ CREATE TABLE IF NOT EXISTS `User` (
   `password` varchar(50) NOT NULL,
   `phone_number` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id_user`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dump dei dati della tabella Bestie.User: ~4 rows (circa)
+-- Dump dei dati della tabella Bestie.User: ~6 rows (circa)
 /*!40000 ALTER TABLE `User` DISABLE KEYS */;
 REPLACE INTO `User` (`id_user`, `username`, `email`, `password`, `phone_number`) VALUES
 	(1, 'mike73', 'mike73@', '123456', '1234567890'),
 	(2, 'mike73', 'mike@', '098765', '1234567890'),
 	(3, 'luca', 'luca@', 'volpe!', '1234567890'),
-	(4, 'lorenzo', 'lorenzo@', 'giuseppesimone69', '3330987658');
+	(4, 'lorenzo', 'lorenzo@', 'giuseppesimone69', '3330987658'),
+	(5, 'ricky', 'ricky@', '101010', '0372729999'),
+	(6, 'maiale', 'maiale@', '124536sffg', '12455314313');
 /*!40000 ALTER TABLE `User` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;

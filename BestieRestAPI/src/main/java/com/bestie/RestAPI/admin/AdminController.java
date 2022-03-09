@@ -34,6 +34,10 @@ public class AdminController {
 		return false;
 	}
 	
+	///////////////////////////////////////////////
+	////// 	 Restituzione Tabelle Intere	 //////
+	///////////////////////////////////////////////
+	
 	@GetMapping("/list/users")
 	public List<User> getUserList(){
 		return userRepo.getAllUsers();
@@ -48,6 +52,5 @@ public class AdminController {
 	public List<Race> getSpecieList(){
 		return raceRepo.getAllRaces();
 	}
-	
 	
 }

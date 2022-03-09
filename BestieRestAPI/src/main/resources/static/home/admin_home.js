@@ -1,3 +1,22 @@
+/////////////////////////////
+/////   REST Buttons    /////
+/////////////////////////////
+
+function Rest_Request(call){
+    switch(call){
+        case "C":
+            break;
+        case "U":
+            break;
+        case "D":
+            break;
+    }
+}
+
+/////////////////////////////
+/////   Page Creation   /////
+/////////////////////////////
+
 function Menu_Selection(){
     var check = new URLSearchParams(window.location.search);
     //alert(check.get('selected'));
@@ -21,11 +40,14 @@ function Menu_Selection(){
                             var username_col = document.createElement("td");
                             var email_col = document.createElement("td");
                             var phone_number_col = document.createElement("td");
+                            
 
                             var id_txt = document.createTextNode(jsonResponse[i].id_user);
                             var username_txt = document.createTextNode(jsonResponse[i].username);
                             var email_txt = document.createTextNode(jsonResponse[i].email);
                             var phone_number_txt = document.createTextNode(jsonResponse[i].phone_number);
+
+                            document.getElementById("dynamic_list").innerHTML="<td><input type='button' value='&#x270e'</td><td><input type='button' value='&#128465'</td>";
 
                             id_col.appendChild(id_txt);
                             username_col.appendChild(username_txt);
