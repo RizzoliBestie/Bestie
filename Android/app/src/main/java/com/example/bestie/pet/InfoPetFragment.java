@@ -9,11 +9,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.CalendarView;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.Toast;
+import android.widget.Spinner;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -24,7 +25,6 @@ import com.example.bestie.R;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 public class InfoPetFragment extends Fragment {
     ArrayList<InfoPetListItem> infoArrayList = new ArrayList<>();
@@ -50,6 +50,8 @@ public class InfoPetFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_info_pet, container, false);
 
+    //______________INIZIALIZZAZIONE VARIABILI_____________________________________________
+
         isMale = false;
 
         ListView infoPetLV = (ListView) view.findViewById(R.id.infoPetLV);
@@ -67,6 +69,8 @@ public class InfoPetFragment extends Fragment {
         infoPetLV2.setAdapter(adapter2);
 
         calendarView.setDate(new Date().getTime());
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         //SETTO IMMAGINI SE MASCHIO O FEMMINA
         if (isMale) {
@@ -129,14 +133,15 @@ public class InfoPetFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 InfoPetListItem item = (InfoPetListItem) adapterView.getItemAtPosition(i);
-                String title = item.getTitle();
-                alertDialog(title, item);
-                // onClick(dialogInterface, );
+                setDialog(item);
             }
         });
 
         return view;
     }
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
     //METODO PER CARICARE ARRAY PRINCIPALE
@@ -169,17 +174,47 @@ public class InfoPetFragment extends Fragment {
         return arrayList;
     }
 
-    private EditText alertDialog(String title, InfoPetListItem item) {
-        final EditText editTextField = new EditText(this.getContext());
+    //SETTA UN IMMAGINE IN RISALTO
+    void switchSize(ImageView bigger, ImageView smaller) {
+        bigger.setScaleX((float) 1);
+        bigger.setScaleY((float) 1);
+        smaller.setScaleX((float) 0.5);
+        smaller.setScaleY((float) 0.5);
+    }
+
+//------------------------------------------------------------------------------------------------//
+    //METODO PER SETTARE IL TIPO DI DIALOG IN BASE ALL'ITEM SELEZIONATO
+    void setDialog(InfoPetListItem item) {
+        String type = item.getTitle();
+        switch (type) {
+            case "Specie:":
+                alertDialogSpecie(type, item);
+                break;
+            case "Razza:":
+                alertDialogRace(type, item);
+                break;
+            case "Pelo:":
+                //
+                break;
+            case "Sterilizzazione:":
+                //
+                break;
+        }
+
+    }
+
+    //DIALOG ITEM RAZZA
+    private AutoCompleteTextView alertDialogRace(String title, InfoPetListItem item) {
+        final AutoCompleteTextView autoCompleteTextField = new AutoCompleteTextView(this.getContext());
         AlertDialog dialog = new AlertDialog.Builder(act)
                 .setTitle(title)
-                .setView(editTextField)
+                .setView(autoCompleteTextField)
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         switch (i) {
                             case DialogInterface.BUTTON_POSITIVE:
-                                String name = String.valueOf(editTextField.getText());
+                                String name = String.valueOf(autoCompleteTextField.getText());
                                 item.setSubtitle(name);
                                 adapter.notifyDataSetChanged();
                                 break;
@@ -192,13 +227,39 @@ public class InfoPetFragment extends Fragment {
                 .create();
         dialog.show();
 
-        return editTextField;
+        return autoCompleteTextField;
     }
 
-    void switchSize(ImageView bigger, ImageView smaller) {
-        bigger.setScaleX((float) 1);
-        bigger.setScaleY((float) 1);
-        smaller.setScaleX((float) 0.5);
-        smaller.setScaleY((float) 0.5);
+    //DIALOG ITEM SPECIE
+    private Spinner alertDialogSpecie(String title, InfoPetListItem item) {
+        final Spinner spinnerField = new Spinner(this.getContext());
+        ArrayAdapter<CharSequence> specieAdapter1 = ArrayAdapter.createFromResource(act, R.array.species, android.R.layout.simple_dropdown_item_1line);
+        specieAdapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        NothingSelectedSpinnerAdapter specieAdapter2 = new NothingSelectedSpinnerAdapter(specieAdapter1, R.layout.species_spinner_nothing_selected, act);
+        spinnerField.setAdapter(specieAdapter2);
+
+        AlertDialog dialog = new AlertDialog.Builder(act)
+                .setTitle(title)
+                .setView(spinnerField)
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        switch (i) {
+                            case DialogInterface.BUTTON_POSITIVE:
+                                String name = spinnerField.getSelectedItem().toString();
+                                item.setSubtitle(name);
+                                adapter.notifyDataSetChanged();
+                                break;
+                            case DialogInterface.BUTTON_NEGATIVE:
+                                break;
+                        }
+                    }
+                })
+                .setNegativeButton("ANNULLA", null)
+                .create();
+        dialog.show();
+
+        return spinnerField;
     }
+
 }
