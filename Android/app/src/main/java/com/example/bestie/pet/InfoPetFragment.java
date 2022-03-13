@@ -27,9 +27,9 @@ import java.util.Date;
 import java.util.List;
 
 public class InfoPetFragment extends Fragment {
-    ArrayList<InfoPetListItem> infoArrayList= new ArrayList<>();
-    ArrayList<InfoPetListItem> infoArrayList2= new ArrayList<>();
-    Activity act=null;
+    ArrayList<InfoPetListItem> infoArrayList = new ArrayList<>();
+    ArrayList<InfoPetListItem> infoArrayList2 = new ArrayList<>();
+    Activity act = null;
     boolean isMale;
     String maleOnUri = "@drawable/male_on";
     String maleUri = "@drawable/male";
@@ -37,8 +37,7 @@ public class InfoPetFragment extends Fragment {
     String femaleUri = "@drawable/female";
     int imageResourceM;
     int imageResourceF;
-    EditText editTextField;
-    DialogInterface dialogInterface;
+    PetListAdapter adapter;
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -51,7 +50,7 @@ public class InfoPetFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_info_pet, container, false);
 
-        isMale=false;
+        isMale = false;
 
         ListView infoPetLV = (ListView) view.findViewById(R.id.infoPetLV);
         ListView infoPetLV2 = (ListView) view.findViewById(R.id.infoPetLV2);
@@ -60,7 +59,7 @@ public class InfoPetFragment extends Fragment {
         ImageView female = view.findViewById(R.id.info_pet_female);
 
         loadArray(infoArrayList);
-        PetListAdapter adapter = new PetListAdapter(act, R.layout.info_pet_list_item, infoArrayList);
+        adapter = new PetListAdapter(act, R.layout.info_pet_list_item, infoArrayList);
         infoPetLV.setAdapter(adapter);
 
         loadArray2(infoArrayList2);
@@ -70,7 +69,7 @@ public class InfoPetFragment extends Fragment {
         calendarView.setDate(new Date().getTime());
 
         //SETTO IMMAGINI SE MASCHIO O FEMMINA
-        if(isMale){
+        if (isMale) {
             imageResourceM = getResources().getIdentifier(maleOnUri, null, act.getPackageName());
             Drawable drawableM = getResources().getDrawable(imageResourceM, null);
             male.setImageDrawable(drawableM);
@@ -78,8 +77,8 @@ public class InfoPetFragment extends Fragment {
             imageResourceF = getResources().getIdentifier(femaleUri, null, act.getPackageName());
             Drawable drawableF = getResources().getDrawable(imageResourceF, null);
             female.setImageDrawable(drawableF);
-        }
-        else{
+            switchSize(male, female);
+        } else {
             imageResourceM = getResources().getIdentifier(maleUri, null, act.getPackageName());
             Drawable drawableM = getResources().getDrawable(imageResourceM, null);
             male.setImageDrawable(drawableM);
@@ -87,13 +86,14 @@ public class InfoPetFragment extends Fragment {
             imageResourceF = getResources().getIdentifier(femaleOnUri, null, act.getPackageName());
             Drawable drawableF = getResources().getDrawable(imageResourceF, null);
             female.setImageDrawable(drawableF);
+            switchSize(female, male);
         }
 
         //SETTO METODI ON CLICK PER CAMBIARE SESSO (???)
         male.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(!isMale){
+                if (!isMale) {
                     imageResourceM = getResources().getIdentifier(maleOnUri, null, act.getPackageName());
                     Drawable drawableM = getResources().getDrawable(imageResourceM, null);
                     male.setImageDrawable(drawableM);
@@ -102,14 +102,15 @@ public class InfoPetFragment extends Fragment {
                     Drawable drawableF = getResources().getDrawable(imageResourceF, null);
                     female.setImageDrawable(drawableF);
 
-                    isMale=true;
+                    isMale = true;
+                    switchSize(male, female);
                 }
             }
         });
         female.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(isMale){
+                if (isMale) {
                     imageResourceM = getResources().getIdentifier(maleUri, null, act.getPackageName());
                     Drawable drawableM = getResources().getDrawable(imageResourceM, null);
                     male.setImageDrawable(drawableM);
@@ -118,7 +119,8 @@ public class InfoPetFragment extends Fragment {
                     Drawable drawableF = getResources().getDrawable(imageResourceF, null);
                     female.setImageDrawable(drawableF);
 
-                    isMale=false;
+                    isMale = false;
+                    switchSize(female, male);
                 }
             }
         });
@@ -128,8 +130,8 @@ public class InfoPetFragment extends Fragment {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 InfoPetListItem item = (InfoPetListItem) adapterView.getItemAtPosition(i);
                 String title = item.getTitle();
-                alertDialog(title, editTextField);
-               // onClick(dialogInterface, );
+                alertDialog(title, item);
+                // onClick(dialogInterface, );
             }
         });
 
@@ -137,11 +139,8 @@ public class InfoPetFragment extends Fragment {
     }
 
 
-
-
-
     //METODO PER CARICARE ARRAY PRINCIPALE
-    ArrayList<InfoPetListItem> loadArray(ArrayList<InfoPetListItem> arrayList){
+    ArrayList<InfoPetListItem> loadArray(ArrayList<InfoPetListItem> arrayList) {
         InfoPetListItem specie = new InfoPetListItem("Specie:", null);
         InfoPetListItem razza = new InfoPetListItem("Razza:", null);
         InfoPetListItem peso = new InfoPetListItem("Peso:", null);
@@ -170,27 +169,36 @@ public class InfoPetFragment extends Fragment {
         return arrayList;
     }
 
-    private EditText alertDialog(String title, EditText editTextField) {
-        editTextField = new EditText(this.getContext());
-         AlertDialog dialog = new AlertDialog.Builder(act)
+    private EditText alertDialog(String title, InfoPetListItem item) {
+        final EditText editTextField = new EditText(this.getContext());
+        AlertDialog dialog = new AlertDialog.Builder(act)
                 .setTitle(title)
                 .setView(editTextField)
-                .setPositiveButton("OK", null)
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        switch (i) {
+                            case DialogInterface.BUTTON_POSITIVE:
+                                String name = String.valueOf(editTextField.getText());
+                                item.setSubtitle(name);
+                                adapter.notifyDataSetChanged();
+                                break;
+                            case DialogInterface.BUTTON_NEGATIVE:
+                                break;
+                        }
+                    }
+                })
                 .setNegativeButton("ANNULLA", null)
                 .create();
         dialog.show();
 
-        return  editTextField;
+        return editTextField;
     }
 
-    public void onClick(DialogInterface dialogInterface, int i){
-        switch(i){
-            case DialogInterface.BUTTON_POSITIVE:
-                String name = String.valueOf(editTextField.getText());
-                Toast.makeText(act, name, Toast.LENGTH_SHORT).show();
-                break;
-            case DialogInterface.BUTTON_NEGATIVE:
-                break;
-        }
+    void switchSize(ImageView bigger, ImageView smaller) {
+        bigger.setScaleX((float) 1);
+        bigger.setScaleY((float) 1);
+        smaller.setScaleX((float) 0.5);
+        smaller.setScaleY((float) 0.5);
     }
 }

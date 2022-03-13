@@ -36,15 +36,15 @@
 
             <ImageView
                 android:id="@+id/info_pet_male"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="66dp"
+                android:layout_height="66dp"
                 android:layout_weight="50"
                 android:src="@drawable/male" />
 
             <ImageView
                 android:id="@+id/info_pet_female"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
                 android:layout_weight="50"
                 android:src="@drawable/female" />
 
