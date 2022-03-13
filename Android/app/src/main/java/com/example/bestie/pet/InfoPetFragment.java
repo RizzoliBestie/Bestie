@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,8 +13,10 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.CalendarView;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 
 import androidx.annotation.NonNull;
@@ -38,6 +41,7 @@ public class InfoPetFragment extends Fragment {
     int imageResourceM;
     int imageResourceF;
     PetListAdapter adapter;
+    String[] peloType = {"Corto", "Medio", "Lungo"};
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -148,7 +152,7 @@ public class InfoPetFragment extends Fragment {
     ArrayList<InfoPetListItem> loadArray(ArrayList<InfoPetListItem> arrayList) {
         InfoPetListItem specie = new InfoPetListItem("Specie:", null);
         InfoPetListItem razza = new InfoPetListItem("Razza:", null);
-        InfoPetListItem peso = new InfoPetListItem("Peso:", null);
+        InfoPetListItem peso = new InfoPetListItem("Peso (Kg):", null);
         InfoPetListItem pelo = new InfoPetListItem("Pelo:", null);
         InfoPetListItem sterile = new InfoPetListItem("Sterilizzazione:", null);
         InfoPetListItem dataDiNascita = new InfoPetListItem("Data di nascita:", null);
@@ -193,11 +197,14 @@ public class InfoPetFragment extends Fragment {
             case "Razza:":
                 alertDialogRace(type, item);
                 break;
+            case "Peso (Kg):":
+                alertDialogWeight(type, item);
+                break;
             case "Pelo:":
-                //
+                alertDialogPelo(type, item);
                 break;
             case "Sterilizzazione:":
-                //
+                alertDialogBalls(type, item);
                 break;
         }
 
@@ -236,6 +243,95 @@ public class InfoPetFragment extends Fragment {
         ArrayAdapter<CharSequence> specieAdapter1 = ArrayAdapter.createFromResource(act, R.array.species, android.R.layout.simple_dropdown_item_1line);
         specieAdapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         NothingSelectedSpinnerAdapter specieAdapter2 = new NothingSelectedSpinnerAdapter(specieAdapter1, R.layout.species_spinner_nothing_selected, act);
+        spinnerField.setAdapter(specieAdapter2);
+
+        AlertDialog dialog = new AlertDialog.Builder(act)
+                .setTitle(title)
+                .setView(spinnerField)
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        switch (i) {
+                            case DialogInterface.BUTTON_POSITIVE:
+                                String name = spinnerField.getSelectedItem().toString();
+                                item.setSubtitle(name);
+                                adapter.notifyDataSetChanged();
+                                break;
+                            case DialogInterface.BUTTON_NEGATIVE:
+                                break;
+                        }
+                    }
+                })
+                .setNegativeButton("ANNULLA", null)
+                .create();
+        dialog.show();
+
+        return spinnerField;
+    }
+
+    private EditText alertDialogWeight(String title, InfoPetListItem item) {
+        final EditText editTextField = new EditText(this.getContext());
+        editTextField.setInputType(InputType.TYPE_CLASS_NUMBER);
+        AlertDialog dialog = new AlertDialog.Builder(act)
+                .setTitle(title)
+                .setView(editTextField)
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        switch (i) {
+                            case DialogInterface.BUTTON_POSITIVE:
+                                String name = String.valueOf(editTextField.getText());
+                                item.setSubtitle(name);
+                                adapter.notifyDataSetChanged();
+                                break;
+                            case DialogInterface.BUTTON_NEGATIVE:
+                                break;
+                        }
+                    }
+                })
+                .setNegativeButton("ANNULLA", null)
+                .create();
+        dialog.show();
+
+        return editTextField;
+    }
+
+    private Spinner alertDialogPelo(String title, InfoPetListItem item) {
+        final Spinner spinnerField = new Spinner(this.getContext());
+        ArrayAdapter<CharSequence> specieAdapter1 = ArrayAdapter.createFromResource(act, R.array.peloType, android.R.layout.simple_dropdown_item_1line);
+        specieAdapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        NothingSelectedSpinnerAdapter specieAdapter2 = new NothingSelectedSpinnerAdapter(specieAdapter1, R.layout.pelo_spinner_nothing_selected, act);
+        spinnerField.setAdapter(specieAdapter2);
+
+        AlertDialog dialog = new AlertDialog.Builder(act)
+                .setTitle(title)
+                .setView(spinnerField)
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        switch (i) {
+                            case DialogInterface.BUTTON_POSITIVE:
+                                String name = spinnerField.getSelectedItem().toString();
+                                item.setSubtitle(name);
+                                adapter.notifyDataSetChanged();
+                                break;
+                            case DialogInterface.BUTTON_NEGATIVE:
+                                break;
+                        }
+                    }
+                })
+                .setNegativeButton("ANNULLA", null)
+                .create();
+        dialog.show();
+
+        return spinnerField;
+    }
+
+    private Spinner alertDialogBalls(String title, InfoPetListItem item) {
+        final Spinner spinnerField = new Spinner(this.getContext());
+        ArrayAdapter<CharSequence> specieAdapter1 = ArrayAdapter.createFromResource(act, R.array.si_no, android.R.layout.simple_dropdown_item_1line);
+        specieAdapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        NothingSelectedSpinnerAdapter specieAdapter2 = new NothingSelectedSpinnerAdapter(specieAdapter1, R.layout.default_spinner_nothing_selected, act);
         spinnerField.setAdapter(specieAdapter2);
 
         AlertDialog dialog = new AlertDialog.Builder(act)
