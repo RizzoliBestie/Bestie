@@ -3,14 +3,14 @@ package com.example.bestie.map;
 import com.example.bestie.general.Profile;
 import com.example.bestie.general.User;
 
-public class Location {
+public class MapLocation {
     public User user;
     public double latitude;
     public double longitude;
     public String type; //Tipo di location, per esempio Veterinario o Negozio di animali
 
     //Costruttore generale
-    public Location(double latitude, double longitude) {
+    public MapLocation(double latitude, double longitude) {
         this.user = null;
         this.latitude = latitude;
         this.longitude = longitude;
@@ -18,7 +18,7 @@ public class Location {
     }
 
     //Costruttore per indicare la posizione di una struttura come Veterinario o Negozio di animali
-    public Location(String type, double latitude, double longitude) {
+    public MapLocation(String type, double latitude, double longitude) {
         this.user = null;
         this.latitude = latitude;
         this.longitude = longitude;
@@ -26,7 +26,7 @@ public class Location {
     }
 
     //Costruttore per indicare la posizione di un utente
-    public Location(User user, double latitude, double longitude) {
+    public MapLocation(User user, double latitude, double longitude) {
         this.user = user;
         this.latitude = latitude;
         this.longitude = longitude;
