@@ -4,6 +4,7 @@
     <string name="toLogin">Hai già un account?\n Clicca qui!</string>
     <string name="navigation_drawer_open">Open drawer navigation</string>
     <string name="navigation_drawer_close">Close drawer navigation</string>
+    <string name="google_map_key">AIzaSyBgqIaB8R9qEfUzCDVU-kpVLVCj_kemtBw</string>
     <string-array name="curiosity_sections">
         <item>WILD</item>
         <item>FARM</item>
