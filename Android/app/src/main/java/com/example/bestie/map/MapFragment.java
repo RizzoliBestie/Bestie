@@ -4,6 +4,9 @@ import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
 import android.location.Location;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -24,6 +27,8 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptor;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -37,6 +42,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
     private GoogleMap mMap;
 
     Activity act = null;
+    Context ctx = null;
 
     Location currentLocation;
     FusedLocationProviderClient fusedLocationProviderClient;
@@ -46,6 +52,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         act = (Activity) context;
+        ctx = getContext();
 
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(getContext());
         fetchLastLocation();
@@ -98,25 +105,31 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
      */
 
     List<MapLocation> locationslist = new ArrayList<MapLocation>();
+
+    //https://developers.google.com/maps/documentation/android-sdk/marker
     //Location milan = new Location("Milano", 45.4654219, 9.1859243);
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
+
+        //Posizione attuale
         LatLng currLoc = new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude());
-        MarkerOptions markerOptions = new MarkerOptions().position(currLoc).title("I am Here");
+        Bitmap icon = BitmapFactory.decodeResource(ctx.getResources(),R.drawable.ic_baseline_pets_24);
+        MarkerOptions markerOptions = new MarkerOptions().position(currLoc).title("Posizione Attuale").snippet("La tua posizione").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE));//.icon(BitmapDescriptorFactory.fromBitmap(icon));
+                //.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE));
         googleMap.animateCamera(CameraUpdateFactory.newLatLng(currLoc));
         googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(currLoc, 12));
         googleMap.addMarker(markerOptions);
         
-        locationslist.add(new MapLocation("Milano", 45.4654219, 9.1859243));
-        locationslist.add(new MapLocation("Ambulatorio Veterinario Centro", 45.07255418517881, 7.682647026773152));
+        locationslist.add(new MapLocation("Ambulatorio Veterinario Risorgimento", "Veterinario", "Milano", 45.469503314883355, 9.20761260002182));
+        locationslist.add(new MapLocation("Ambulatorio Veterinario Centro", "Veterinario", "Torino", 45.07255418517881, 7.682647026773152));
 
         for(int mkindex = 0; mkindex < locationslist.size(); mkindex++){
             // Add a marker and move the camera
             LatLng marker = new LatLng(locationslist.get(mkindex).getLatitude(), locationslist.get(mkindex).getLongitude());
             mMap.addMarker(new MarkerOptions()
                     .position(marker)
-                    .title(locationslist.get(mkindex).getType()));
+                    .title(locationslist.get(mkindex).getName()).snippet(locationslist.get(mkindex).getType() + " " + locationslist.get(mkindex).getCity()));
             //mMap.moveCamera(CameraUpdateFactory.newLatLng(marker));
         }
 
