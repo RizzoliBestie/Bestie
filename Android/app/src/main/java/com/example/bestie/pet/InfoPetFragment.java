@@ -5,15 +5,19 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.CalendarView;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.Toast;
+import android.widget.RadioGroup;
+import android.widget.Spinner;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -24,12 +28,11 @@ import com.example.bestie.R;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 public class InfoPetFragment extends Fragment {
-    ArrayList<InfoPetListItem> infoArrayList= new ArrayList<>();
-    ArrayList<InfoPetListItem> infoArrayList2= new ArrayList<>();
-    Activity act=null;
+    ArrayList<InfoPetListItem> infoArrayList = new ArrayList<>();
+    ArrayList<InfoPetListItem> infoArrayList2 = new ArrayList<>();
+    Activity act = null;
     boolean isMale;
     String maleOnUri = "@drawable/male_on";
     String maleUri = "@drawable/male";
@@ -37,8 +40,8 @@ public class InfoPetFragment extends Fragment {
     String femaleUri = "@drawable/female";
     int imageResourceM;
     int imageResourceF;
-    EditText editTextField;
-    DialogInterface dialogInterface;
+    PetListAdapter adapter;
+    String[] peloType = {"Corto", "Medio", "Lungo"};
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -51,7 +54,9 @@ public class InfoPetFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_info_pet, container, false);
 
-        isMale=false;
+    //______________INIZIALIZZAZIONE VARIABILI_____________________________________________
+
+        isMale = false;
 
         ListView infoPetLV = (ListView) view.findViewById(R.id.infoPetLV);
         ListView infoPetLV2 = (ListView) view.findViewById(R.id.infoPetLV2);
@@ -60,7 +65,7 @@ public class InfoPetFragment extends Fragment {
         ImageView female = view.findViewById(R.id.info_pet_female);
 
         loadArray(infoArrayList);
-        PetListAdapter adapter = new PetListAdapter(act, R.layout.info_pet_list_item, infoArrayList);
+        adapter = new PetListAdapter(act, R.layout.info_pet_list_item, infoArrayList);
         infoPetLV.setAdapter(adapter);
 
         loadArray2(infoArrayList2);
@@ -69,8 +74,10 @@ public class InfoPetFragment extends Fragment {
 
         calendarView.setDate(new Date().getTime());
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
         //SETTO IMMAGINI SE MASCHIO O FEMMINA
-        if(isMale){
+        if (isMale) {
             imageResourceM = getResources().getIdentifier(maleOnUri, null, act.getPackageName());
             Drawable drawableM = getResources().getDrawable(imageResourceM, null);
             male.setImageDrawable(drawableM);
@@ -78,8 +85,8 @@ public class InfoPetFragment extends Fragment {
             imageResourceF = getResources().getIdentifier(femaleUri, null, act.getPackageName());
             Drawable drawableF = getResources().getDrawable(imageResourceF, null);
             female.setImageDrawable(drawableF);
-        }
-        else{
+            switchSize(male, female);
+        } else {
             imageResourceM = getResources().getIdentifier(maleUri, null, act.getPackageName());
             Drawable drawableM = getResources().getDrawable(imageResourceM, null);
             male.setImageDrawable(drawableM);
@@ -87,13 +94,14 @@ public class InfoPetFragment extends Fragment {
             imageResourceF = getResources().getIdentifier(femaleOnUri, null, act.getPackageName());
             Drawable drawableF = getResources().getDrawable(imageResourceF, null);
             female.setImageDrawable(drawableF);
+            switchSize(female, male);
         }
 
         //SETTO METODI ON CLICK PER CAMBIARE SESSO (???)
         male.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(!isMale){
+                if (!isMale) {
                     imageResourceM = getResources().getIdentifier(maleOnUri, null, act.getPackageName());
                     Drawable drawableM = getResources().getDrawable(imageResourceM, null);
                     male.setImageDrawable(drawableM);
@@ -102,14 +110,15 @@ public class InfoPetFragment extends Fragment {
                     Drawable drawableF = getResources().getDrawable(imageResourceF, null);
                     female.setImageDrawable(drawableF);
 
-                    isMale=true;
+                    isMale = true;
+                    switchSize(male, female);
                 }
             }
         });
         female.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(isMale){
+                if (isMale) {
                     imageResourceM = getResources().getIdentifier(maleUri, null, act.getPackageName());
                     Drawable drawableM = getResources().getDrawable(imageResourceM, null);
                     male.setImageDrawable(drawableM);
@@ -118,7 +127,8 @@ public class InfoPetFragment extends Fragment {
                     Drawable drawableF = getResources().getDrawable(imageResourceF, null);
                     female.setImageDrawable(drawableF);
 
-                    isMale=false;
+                    isMale = false;
+                    switchSize(female, male);
                 }
             }
         });
@@ -127,9 +137,7 @@ public class InfoPetFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 InfoPetListItem item = (InfoPetListItem) adapterView.getItemAtPosition(i);
-                String title = item.getTitle();
-                alertDialog(title, editTextField);
-               // onClick(dialogInterface, );
+                setDialog(item);
             }
         });
 
@@ -137,14 +145,14 @@ public class InfoPetFragment extends Fragment {
     }
 
 
-
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
     //METODO PER CARICARE ARRAY PRINCIPALE
-    ArrayList<InfoPetListItem> loadArray(ArrayList<InfoPetListItem> arrayList){
+    ArrayList<InfoPetListItem> loadArray(ArrayList<InfoPetListItem> arrayList) {
         InfoPetListItem specie = new InfoPetListItem("Specie:", null);
         InfoPetListItem razza = new InfoPetListItem("Razza:", null);
-        InfoPetListItem peso = new InfoPetListItem("Peso:", null);
+        InfoPetListItem peso = new InfoPetListItem("Peso (Kg):", null);
         InfoPetListItem pelo = new InfoPetListItem("Pelo:", null);
         InfoPetListItem sterile = new InfoPetListItem("Sterilizzazione:", null);
         InfoPetListItem dataDiNascita = new InfoPetListItem("Data di nascita:", null);
@@ -170,27 +178,184 @@ public class InfoPetFragment extends Fragment {
         return arrayList;
     }
 
-    private EditText alertDialog(String title, EditText editTextField) {
-        editTextField = new EditText(this.getContext());
-         AlertDialog dialog = new AlertDialog.Builder(act)
+    //SETTA UN IMMAGINE IN RISALTO
+    void switchSize(ImageView bigger, ImageView smaller) {
+        bigger.setScaleX((float) 1);
+        bigger.setScaleY((float) 1);
+        smaller.setScaleX((float) 0.5);
+        smaller.setScaleY((float) 0.5);
+    }
+
+//------------------------------------------------------------------------------------------------//
+    //METODO PER SETTARE IL TIPO DI DIALOG IN BASE ALL'ITEM SELEZIONATO
+    void setDialog(InfoPetListItem item) {
+        String type = item.getTitle();
+        switch (type) {
+            case "Specie:":
+                alertDialogSpecie(type, item);
+                break;
+            case "Razza:":
+                alertDialogRace(type, item);
+                break;
+            case "Peso (Kg):":
+                alertDialogWeight(type, item);
+                break;
+            case "Pelo:":
+                alertDialogPelo(type, item);
+                break;
+            case "Sterilizzazione:":
+                alertDialogBalls(type, item);
+                break;
+        }
+
+    }
+
+    //DIALOG ITEM RAZZA
+    private AutoCompleteTextView alertDialogRace(String title, InfoPetListItem item) {
+        final AutoCompleteTextView autoCompleteTextField = new AutoCompleteTextView(this.getContext());
+        AlertDialog dialog = new AlertDialog.Builder(act)
                 .setTitle(title)
-                .setView(editTextField)
-                .setPositiveButton("OK", null)
+                .setView(autoCompleteTextField)
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        switch (i) {
+                            case DialogInterface.BUTTON_POSITIVE:
+                                String name = String.valueOf(autoCompleteTextField.getText());
+                                item.setSubtitle(name);
+                                adapter.notifyDataSetChanged();
+                                break;
+                            case DialogInterface.BUTTON_NEGATIVE:
+                                break;
+                        }
+                    }
+                })
                 .setNegativeButton("ANNULLA", null)
                 .create();
         dialog.show();
 
-        return  editTextField;
+        return autoCompleteTextField;
     }
 
-    public void onClick(DialogInterface dialogInterface, int i){
-        switch(i){
-            case DialogInterface.BUTTON_POSITIVE:
-                String name = String.valueOf(editTextField.getText());
-                Toast.makeText(act, name, Toast.LENGTH_SHORT).show();
-                break;
-            case DialogInterface.BUTTON_NEGATIVE:
-                break;
-        }
+    //DIALOG ITEM SPECIE
+    private Spinner alertDialogSpecie(String title, InfoPetListItem item) {
+        final Spinner spinnerField = new Spinner(this.getContext());
+        ArrayAdapter<CharSequence> specieAdapter1 = ArrayAdapter.createFromResource(act, R.array.species, android.R.layout.simple_dropdown_item_1line);
+        specieAdapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        NothingSelectedSpinnerAdapter specieAdapter2 = new NothingSelectedSpinnerAdapter(specieAdapter1, R.layout.species_spinner_nothing_selected, act);
+        spinnerField.setAdapter(specieAdapter2);
+
+        AlertDialog dialog = new AlertDialog.Builder(act)
+                .setTitle(title)
+                .setView(spinnerField)
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        switch (i) {
+                            case DialogInterface.BUTTON_POSITIVE:
+                                String name = spinnerField.getSelectedItem().toString();
+                                item.setSubtitle(name);
+                                adapter.notifyDataSetChanged();
+                                break;
+                            case DialogInterface.BUTTON_NEGATIVE:
+                                break;
+                        }
+                    }
+                })
+                .setNegativeButton("ANNULLA", null)
+                .create();
+        dialog.show();
+
+        return spinnerField;
     }
+
+    private EditText alertDialogWeight(String title, InfoPetListItem item) {
+        final EditText editTextField = new EditText(this.getContext());
+        editTextField.setInputType(InputType.TYPE_CLASS_NUMBER);
+        AlertDialog dialog = new AlertDialog.Builder(act)
+                .setTitle(title)
+                .setView(editTextField)
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        switch (i) {
+                            case DialogInterface.BUTTON_POSITIVE:
+                                String name = String.valueOf(editTextField.getText());
+                                item.setSubtitle(name);
+                                adapter.notifyDataSetChanged();
+                                break;
+                            case DialogInterface.BUTTON_NEGATIVE:
+                                break;
+                        }
+                    }
+                })
+                .setNegativeButton("ANNULLA", null)
+                .create();
+        dialog.show();
+
+        return editTextField;
+    }
+
+    private Spinner alertDialogPelo(String title, InfoPetListItem item) {
+        final Spinner spinnerField = new Spinner(this.getContext());
+        ArrayAdapter<CharSequence> specieAdapter1 = ArrayAdapter.createFromResource(act, R.array.peloType, android.R.layout.simple_dropdown_item_1line);
+        specieAdapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        NothingSelectedSpinnerAdapter specieAdapter2 = new NothingSelectedSpinnerAdapter(specieAdapter1, R.layout.pelo_spinner_nothing_selected, act);
+        spinnerField.setAdapter(specieAdapter2);
+
+        AlertDialog dialog = new AlertDialog.Builder(act)
+                .setTitle(title)
+                .setView(spinnerField)
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        switch (i) {
+                            case DialogInterface.BUTTON_POSITIVE:
+                                String name = spinnerField.getSelectedItem().toString();
+                                item.setSubtitle(name);
+                                adapter.notifyDataSetChanged();
+                                break;
+                            case DialogInterface.BUTTON_NEGATIVE:
+                                break;
+                        }
+                    }
+                })
+                .setNegativeButton("ANNULLA", null)
+                .create();
+        dialog.show();
+
+        return spinnerField;
+    }
+
+    private Spinner alertDialogBalls(String title, InfoPetListItem item) {
+        final Spinner spinnerField = new Spinner(this.getContext());
+        ArrayAdapter<CharSequence> specieAdapter1 = ArrayAdapter.createFromResource(act, R.array.si_no, android.R.layout.simple_dropdown_item_1line);
+        specieAdapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        NothingSelectedSpinnerAdapter specieAdapter2 = new NothingSelectedSpinnerAdapter(specieAdapter1, R.layout.default_spinner_nothing_selected, act);
+        spinnerField.setAdapter(specieAdapter2);
+
+        AlertDialog dialog = new AlertDialog.Builder(act)
+                .setTitle(title)
+                .setView(spinnerField)
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        switch (i) {
+                            case DialogInterface.BUTTON_POSITIVE:
+                                String name = spinnerField.getSelectedItem().toString();
+                                item.setSubtitle(name);
+                                adapter.notifyDataSetChanged();
+                                break;
+                            case DialogInterface.BUTTON_NEGATIVE:
+                                break;
+                        }
+                    }
+                })
+                .setNegativeButton("ANNULLA", null)
+                .create();
+        dialog.show();
+
+        return spinnerField;
+    }
+
 }

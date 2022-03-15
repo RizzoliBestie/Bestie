@@ -10,6 +10,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RadioGroup;
 import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -31,22 +32,27 @@ public class NewPetActivity extends AppCompatActivity {
 
     int SELECT_IMAGE_CODE = 1;
     CircularImageView addImage = null;
-
-    //https://youtu.be/Q9XTqQbuavI questo non c'entra
+    Spinner specieACTV;
+    AutoCompleteTextView racesACTV;
+    SeekBar pesoBar;
+    TextView pesoTV;
+    DatePicker datePicker;
+    Toolbar toolbar;
+    ImageView addPet;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_pet);
 
-        Spinner specieACTV = findViewById(R.id.specieET);
-        AutoCompleteTextView racesACTV = findViewById(R.id.razzaET);
+        specieACTV = findViewById(R.id.specieET);
+        racesACTV = findViewById(R.id.razzaET);
         addImage = findViewById(R.id.newPetImage);
-        SeekBar pesoBar = findViewById(R.id.weight);
-        TextView pesoTV = findViewById(R.id.weightKgTV);
-        DatePicker datePicker = findViewById(R.id.birthdate);
-        Toolbar toolbar = findViewById(R.id.new_pet_toolbar);
-        ImageView addPet = findViewById(R.id.confirm_button);
+        pesoBar = findViewById(R.id.weight);
+        pesoTV = findViewById(R.id.weightKgTV);
+        datePicker = findViewById(R.id.birthdate);
+        toolbar = findViewById(R.id.new_pet_toolbar);
+        addPet = findViewById(R.id.confirm_button);
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
