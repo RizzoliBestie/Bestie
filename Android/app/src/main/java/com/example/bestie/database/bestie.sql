@@ -47,6 +47,7 @@ CREATE TABLE IF NOT EXISTS `Race` (
   `information` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `size` varchar(50) NOT NULL,
   `fur_type` varchar(50) NOT NULL,
+  `url` varchar(50) NOT NULL,
   PRIMARY KEY (`id_race`),
   KEY `id_specie_RACE` (`id_specie`),
   CONSTRAINT `id_specie_RACE` FOREIGN KEY (`id_specie`) REFERENCES `Specie` (`id_specie`) ON DELETE RESTRICT ON UPDATE CASCADE
@@ -54,8 +55,8 @@ CREATE TABLE IF NOT EXISTS `Race` (
 
 -- Dump dei dati della tabella Bestie.Race: ~1 rows (circa)
 /*!40000 ALTER TABLE `Race` DISABLE KEYS */;
-REPLACE INTO `Race` (`id_race`, `id_specie`, `name`, `information`, `size`, `fur_type`) VALUES
-	(1, 1, 'golden_retriver', 'bello_e_biondo', 'XL', 'long');
+REPLACE INTO `Race` (`id_race`, `id_specie`, `name`, `information`, `size`, `fur_type`, `url`) VALUES
+	(1, 1, 'golden_retriver', 'bello_e_biondo', 'XL', 'long', '');
 /*!40000 ALTER TABLE `Race` ENABLE KEYS */;
 
 -- Dump della struttura di tabella Bestie.Specie

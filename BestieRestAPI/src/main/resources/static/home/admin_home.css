@@ -41,6 +41,7 @@ body{
 #navbar{
     background-color: lightgreen;
     border-right: 3px solid darkgreen;
+    border-bottom: 3px solid darkgreen;
     height: 100%;
     width: 20%;
     padding-top:  5em;
@@ -86,7 +87,7 @@ th{
 }
 
 th, td{
-    padding-left: 3em;
+    padding-left: 2em;
     height: 5em;
     text-align: center;
 }

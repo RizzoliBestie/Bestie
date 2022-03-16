@@ -36,28 +36,64 @@ function Menu_Selection(){
                         document.getElementById("dynamic_list").innerHTML="<th>ID_USER</th><th>USERNAME</th><th>EMAIL</th><th>PHONE_NUMBER</th>";
                         while(jsonResponse[i] != null){
                             //alert(jsonResponse[i].username);
+
+                            //Creazione elementi
+
                             var id_col = document.createElement("td");
                             var username_col = document.createElement("td");
                             var email_col = document.createElement("td");
                             var phone_number_col = document.createElement("td");
-                            
+                            var update_row = document.createElement("td");
+                            var delete_row = document.createElement("td");
+                            var update_input = document.createElement("input");
+                            var delete_input = document.createElement("input");
 
+                            //Creazione attributi
+                            var update_type = document.createAttribute("type");
+                            var delete_type = document.createAttribute("type");
+                            var update_value = document.createAttribute("src");
+                            var delete_value = document.createAttribute("src");
+
+                            //Assegnamento attributi
+                            update_type.value="image";
+                            delete_type.value="image";
+                            update_value.value="../img/icons/pencil.png";
+                            delete_value.value="../img/icons/trash.png";
+
+                            //Aggiunta attributi
+                            update_input.setAttributeNode(update_type);
+                            update_input.setAttributeNode(update_value);
+                            delete_input.setAttributeNode(delete_type);
+                            delete_input.setAttributeNode(delete_value);
+                            
+                            //Creazione nodi di testo
                             var id_txt = document.createTextNode(jsonResponse[i].id_user);
                             var username_txt = document.createTextNode(jsonResponse[i].username);
                             var email_txt = document.createTextNode(jsonResponse[i].email);
                             var phone_number_txt = document.createTextNode(jsonResponse[i].phone_number);
 
-                            document.getElementById("dynamic_list").innerHTML="<td><input type='button' value='&#x270e'</td><td><input type='button' value='&#128465'</td>";
+                            //var x=  "<td><input type='button' value='&#x270e'></td><td><input type='button' value='&#128465'></td>";
+                            //console.log(x);
+                            //document.getElementById("dynamic_list").innerHTML=x;
 
+
+                            //Aggiunta elementi secondari
                             id_col.appendChild(id_txt);
                             username_col.appendChild(username_txt);
                             email_col.append(email_txt);
                             phone_number_col.appendChild(phone_number_txt);
 
+                            update_row.appendChild(update_input);
+                            delete_row.appendChild(delete_input);
+
+                            //Stampa elementi primncipali
                             document.getElementById("dynamic_list").appendChild(id_col);
                             document.getElementById("dynamic_list").appendChild(username_col);
                             document.getElementById("dynamic_list").appendChild(email_col);
                             document.getElementById("dynamic_list").appendChild(phone_number_col);
+                            document.getElementById("dynamic_list").appendChild(update_row);
+                            document.getElementById("dynamic_list").appendChild(delete_row);
+
                             document.getElementById("dynamic_list").appendChild(document.createElement("tr"));
 
                             i++;
@@ -70,6 +106,28 @@ function Menu_Selection(){
                             var id_col = document.createElement("td");
                             var common_name_col = document.createElement("td");
                             var scientific_name_col = document.createElement("td");
+                            var update_row = document.createElement("td");
+                            var delete_row = document.createElement("td");
+                            var update_input = document.createElement("input");
+                            var delete_input = document.createElement("input");
+
+                            //Creazione attributi
+                            var update_type = document.createAttribute("type");
+                            var delete_type = document.createAttribute("type");
+                            var update_value = document.createAttribute("src");
+                            var delete_value = document.createAttribute("src");
+
+                            //Assegnamento attributi
+                            update_type.value="image";
+                            delete_type.value="image";
+                            update_value.value="../img/icons/pencil.png";
+                            delete_value.value="../img/icons/trash.png";
+
+                            //Aggiunta attributi
+                            update_input.setAttributeNode(update_type);
+                            update_input.setAttributeNode(update_value);
+                            delete_input.setAttributeNode(delete_type);
+                            delete_input.setAttributeNode(delete_value);
 
                             var id_txt = document.createTextNode(jsonResponse[i].id_specie);
                             var common_name_txt = document.createTextNode(jsonResponse[i].common_name);
@@ -79,9 +137,14 @@ function Menu_Selection(){
                             common_name_col.appendChild(common_name_txt);
                             scientific_name_col.append(scientific_name_txt);
 
+                            update_row.appendChild(update_input);
+                            delete_row.appendChild(delete_input);
+
                             document.getElementById("dynamic_list").appendChild(id_col);
                             document.getElementById("dynamic_list").appendChild(common_name_col);
                             document.getElementById("dynamic_list").appendChild(scientific_name_col);
+                            document.getElementById("dynamic_list").appendChild(update_row);
+                            document.getElementById("dynamic_list").appendChild(delete_row);
                             document.getElementById("dynamic_list").appendChild(document.createElement("tr"));
 
                             i++;
@@ -97,6 +160,28 @@ function Menu_Selection(){
                             var information_col = document.createElement("td");
                             var size_col = document.createElement("td");
                             var fur_type_col = document.createElement("td");
+                            var update_row = document.createElement("td");
+                            var delete_row = document.createElement("td");
+                            var update_input = document.createElement("input");
+                            var delete_input = document.createElement("input");
+
+                            //Creazione attributi
+                            var update_type = document.createAttribute("type");
+                            var delete_type = document.createAttribute("type");
+                            var update_value = document.createAttribute("src");
+                            var delete_value = document.createAttribute("src");
+
+                            //Assegnamento attributi
+                            update_type.value="image";
+                            delete_type.value="image";
+                            update_value.value="../img/icons/pencil.png";
+                            delete_value.value="../img/icons/trash.png";
+
+                            //Aggiunta attributi
+                            update_input.setAttributeNode(update_type);
+                            update_input.setAttributeNode(update_value);
+                            delete_input.setAttributeNode(delete_type);
+                            delete_input.setAttributeNode(delete_value);
 
                             var idRace_txt = document.createTextNode(jsonResponse[i].id_race);
                             var idSpecie_txt = document.createTextNode(jsonResponse[i].id_specie);
@@ -112,12 +197,17 @@ function Menu_Selection(){
                             size_col.appendChild(size_txt);
                             fur_type_col.appendChild(fur_type_txt);
 
+                            update_row.appendChild(update_input);
+                            delete_row.appendChild(delete_input);
+
                             document.getElementById("dynamic_list").appendChild(idRace_col);
                             document.getElementById("dynamic_list").appendChild(idSpecie_col);
                             document.getElementById("dynamic_list").appendChild(name_col);
                             document.getElementById("dynamic_list").appendChild(information_col);
                             document.getElementById("dynamic_list").appendChild(size_col);
                             document.getElementById("dynamic_list").appendChild(fur_type_col);
+                            document.getElementById("dynamic_list").appendChild(update_row);
+                            document.getElementById("dynamic_list").appendChild(delete_row);
                             document.getElementById("dynamic_list").appendChild(document.createElement("tr"));
 
                             i++;
