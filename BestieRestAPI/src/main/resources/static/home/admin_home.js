@@ -43,28 +43,57 @@ function Menu_Selection(){
                             var username_col = document.createElement("td");
                             var email_col = document.createElement("td");
                             var phone_number_col = document.createElement("td");
+
                             var update_row = document.createElement("td");
                             var delete_row = document.createElement("td");
                             var update_input = document.createElement("input");
                             var delete_input = document.createElement("input");
+                            var ok_row = document.createElement("td");
+                            var cross_row = document.createElement("td");
+                            var ok_input = document.createElement("input");
+                            var cross_input = document.createElement("input");
 
                             //Creazione attributi
                             var update_type = document.createAttribute("type");
                             var delete_type = document.createAttribute("type");
-                            var update_value = document.createAttribute("src");
-                            var delete_value = document.createAttribute("src");
+                            var ok_type = document.createAttribute("type");
+                            var cross_type = document.createAttribute("type");
+                            var update_src = document.createAttribute("src");
+                            var delete_src = document.createAttribute("src");
+                            var ok_src = document.createAttribute("src");
+                            var cross_src = document.createAttribute("src");
+                            var update_class = document.createAttribute("class");
+                            var delete_class = document.createAttribute("class");
+                            var ok_class = document.createAttribute("class");
+                            var cross_class = document.createAttribute("class");
 
                             //Assegnamento attributi
                             update_type.value="image";
                             delete_type.value="image";
-                            update_value.value="../img/icons/pencil.png";
-                            delete_value.value="../img/icons/trash.png";
+                            ok_type.value="image";
+                            cross_type.value="image";
+                            update_src.value="../img/icons/pencil.png";
+                            delete_src.value="../img/icons/trash.png";
+                            ok_src.value="../img/icons/ok.png";
+                            cross_src.value="../img/icons/cross.png";
+                            update_class.value = "pencil";
+                            delete_class.value = "trash";
+                            ok_class.value = "ok";
+                            cross_class.value = "cross";
 
                             //Aggiunta attributi
                             update_input.setAttributeNode(update_type);
-                            update_input.setAttributeNode(update_value);
+                            update_input.setAttributeNode(update_src);
+                            update_row.setAttributeNode(update_class);
                             delete_input.setAttributeNode(delete_type);
-                            delete_input.setAttributeNode(delete_value);
+                            delete_input.setAttributeNode(delete_src);
+                            delete_row.setAttributeNode(delete_class);
+                            ok_input.setAttributeNode(ok_type);
+                            ok_input.setAttributeNode(ok_src);
+                            ok_row.setAttributeNode(ok_class);
+                            cross_input.setAttributeNode(cross_type);
+                            cross_input.setAttributeNode(cross_src);
+                            cross_row.setAttributeNode(cross_class);
                             
                             //Creazione nodi di testo
                             var id_txt = document.createTextNode(jsonResponse[i].id_user);
@@ -85,6 +114,8 @@ function Menu_Selection(){
 
                             update_row.appendChild(update_input);
                             delete_row.appendChild(delete_input);
+                            ok_row.appendChild(ok_input);
+                            cross_row.appendChild(cross_input);
 
                             //Stampa elementi primncipali
                             document.getElementById("dynamic_list").appendChild(id_col);
@@ -93,6 +124,8 @@ function Menu_Selection(){
                             document.getElementById("dynamic_list").appendChild(phone_number_col);
                             document.getElementById("dynamic_list").appendChild(update_row);
                             document.getElementById("dynamic_list").appendChild(delete_row);
+                            document.getElementById("dynamic_list").appendChild(ok_row);
+                            document.getElementById("dynamic_list").appendChild(cross_row);
 
                             document.getElementById("dynamic_list").appendChild(document.createElement("tr"));
 
@@ -106,28 +139,57 @@ function Menu_Selection(){
                             var id_col = document.createElement("td");
                             var common_name_col = document.createElement("td");
                             var scientific_name_col = document.createElement("td");
+                            
                             var update_row = document.createElement("td");
                             var delete_row = document.createElement("td");
                             var update_input = document.createElement("input");
                             var delete_input = document.createElement("input");
+                            var ok_row = document.createElement("td");
+                            var cross_row = document.createElement("td");
+                            var ok_input = document.createElement("input");
+                            var cross_input = document.createElement("input");
 
                             //Creazione attributi
                             var update_type = document.createAttribute("type");
                             var delete_type = document.createAttribute("type");
-                            var update_value = document.createAttribute("src");
-                            var delete_value = document.createAttribute("src");
+                            var ok_type = document.createAttribute("type");
+                            var cross_type = document.createAttribute("type");
+                            var update_src = document.createAttribute("src");
+                            var delete_src = document.createAttribute("src");
+                            var ok_src = document.createAttribute("src");
+                            var cross_src = document.createAttribute("src");
+                            var update_class = document.createAttribute("class");
+                            var delete_class = document.createAttribute("class");
+                            var ok_class = document.createAttribute("class");
+                            var cross_class = document.createAttribute("class");
 
                             //Assegnamento attributi
                             update_type.value="image";
                             delete_type.value="image";
-                            update_value.value="../img/icons/pencil.png";
-                            delete_value.value="../img/icons/trash.png";
+                            ok_type.value="image";
+                            cross_type.value="image";
+                            update_src.value="../img/icons/pencil.png";
+                            delete_src.value="../img/icons/trash.png";
+                            ok_src.value="../img/icons/ok.png";
+                            cross_src.value="../img/icons/cross.png";
+                            update_class.value = "pencil";
+                            delete_class.value = "trash";
+                            ok_class.value = "ok";
+                            cross_class.value = "cross";
 
                             //Aggiunta attributi
                             update_input.setAttributeNode(update_type);
-                            update_input.setAttributeNode(update_value);
+                            update_input.setAttributeNode(update_src);
+                            update_row.setAttributeNode(update_class);
                             delete_input.setAttributeNode(delete_type);
-                            delete_input.setAttributeNode(delete_value);
+                            delete_input.setAttributeNode(delete_src);
+                            delete_row.setAttributeNode(delete_class);
+                            ok_input.setAttributeNode(ok_type);
+                            ok_input.setAttributeNode(ok_src);
+                            ok_row.setAttributeNode(ok_class);
+                            cross_input.setAttributeNode(cross_type);
+                            cross_input.setAttributeNode(cross_src);
+                            cross_row.setAttributeNode(cross_class);
 
                             var id_txt = document.createTextNode(jsonResponse[i].id_specie);
                             var common_name_txt = document.createTextNode(jsonResponse[i].common_name);
@@ -139,12 +201,16 @@ function Menu_Selection(){
 
                             update_row.appendChild(update_input);
                             delete_row.appendChild(delete_input);
+                            ok_row.appendChild(ok_input);
+                            cross_row.appendChild(cross_input);
 
                             document.getElementById("dynamic_list").appendChild(id_col);
                             document.getElementById("dynamic_list").appendChild(common_name_col);
                             document.getElementById("dynamic_list").appendChild(scientific_name_col);
                             document.getElementById("dynamic_list").appendChild(update_row);
                             document.getElementById("dynamic_list").appendChild(delete_row);
+                            document.getElementById("dynamic_list").appendChild(ok_row);
+                            document.getElementById("dynamic_list").appendChild(cross_row);
                             document.getElementById("dynamic_list").appendChild(document.createElement("tr"));
 
                             i++;
@@ -160,28 +226,57 @@ function Menu_Selection(){
                             var information_col = document.createElement("td");
                             var size_col = document.createElement("td");
                             var fur_type_col = document.createElement("td");
+
                             var update_row = document.createElement("td");
                             var delete_row = document.createElement("td");
                             var update_input = document.createElement("input");
                             var delete_input = document.createElement("input");
+                            var ok_row = document.createElement("td");
+                            var cross_row = document.createElement("td");
+                            var ok_input = document.createElement("input");
+                            var cross_input = document.createElement("input");
 
                             //Creazione attributi
                             var update_type = document.createAttribute("type");
                             var delete_type = document.createAttribute("type");
-                            var update_value = document.createAttribute("src");
-                            var delete_value = document.createAttribute("src");
+                            var ok_type = document.createAttribute("type");
+                            var cross_type = document.createAttribute("type");
+                            var update_src = document.createAttribute("src");
+                            var delete_src = document.createAttribute("src");
+                            var ok_src = document.createAttribute("src");
+                            var cross_src = document.createAttribute("src");
+                            var update_class = document.createAttribute("class");
+                            var delete_class = document.createAttribute("class");
+                            var ok_class = document.createAttribute("class");
+                            var cross_class = document.createAttribute("class");
 
                             //Assegnamento attributi
                             update_type.value="image";
                             delete_type.value="image";
-                            update_value.value="../img/icons/pencil.png";
-                            delete_value.value="../img/icons/trash.png";
+                            ok_type.value="image";
+                            cross_type.value="image";
+                            update_src.value="../img/icons/pencil.png";
+                            delete_src.value="../img/icons/trash.png";
+                            ok_src.value="../img/icons/ok.png";
+                            cross_src.value="../img/icons/cross.png";
+                            update_class.value = "pencil";
+                            delete_class.value = "trash";
+                            ok_class.value = "ok";
+                            cross_class.value = "cross";
 
                             //Aggiunta attributi
                             update_input.setAttributeNode(update_type);
-                            update_input.setAttributeNode(update_value);
+                            update_input.setAttributeNode(update_src);
+                            update_row.setAttributeNode(update_class);
                             delete_input.setAttributeNode(delete_type);
-                            delete_input.setAttributeNode(delete_value);
+                            delete_input.setAttributeNode(delete_src);
+                            delete_row.setAttributeNode(delete_class);
+                            ok_input.setAttributeNode(ok_type);
+                            ok_input.setAttributeNode(ok_src);
+                            ok_row.setAttributeNode(ok_class);
+                            cross_input.setAttributeNode(cross_type);
+                            cross_input.setAttributeNode(cross_src);
+                            cross_row.setAttributeNode(cross_class);
 
                             var idRace_txt = document.createTextNode(jsonResponse[i].id_race);
                             var idSpecie_txt = document.createTextNode(jsonResponse[i].id_specie);
@@ -199,6 +294,8 @@ function Menu_Selection(){
 
                             update_row.appendChild(update_input);
                             delete_row.appendChild(delete_input);
+                            ok_row.appendChild(ok_input);
+                            cross_row.appendChild(cross_input);
 
                             document.getElementById("dynamic_list").appendChild(idRace_col);
                             document.getElementById("dynamic_list").appendChild(idSpecie_col);
@@ -208,6 +305,8 @@ function Menu_Selection(){
                             document.getElementById("dynamic_list").appendChild(fur_type_col);
                             document.getElementById("dynamic_list").appendChild(update_row);
                             document.getElementById("dynamic_list").appendChild(delete_row);
+                            document.getElementById("dynamic_list").appendChild(ok_row);
+                            document.getElementById("dynamic_list").appendChild(cross_row);
                             document.getElementById("dynamic_list").appendChild(document.createElement("tr"));
 
                             i++;

@@ -87,9 +87,25 @@ th{
 }
 
 th, td{
-    padding-left: 2em;
+    padding-left: 3em;
     height: 5em;
     text-align: center;
 }
 
 /*   LISTA OGGETTI   */
+
+.pencil{
+    display:inline;
+}
+
+.trash{
+    display:inline;
+}
+
+.ok{
+    display: none;
+}
+
+.cross{
+    display: none;
+}
