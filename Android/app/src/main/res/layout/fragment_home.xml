@@ -5,27 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
-    <TextView
-        android:id="@+id/testoPet"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
-        android:layout_below="@+id/homeImage"
-        android:layout_centerHorizontal="true"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="-20dp"
-        android:textColor="@color/testo_secondario"
-        android:background="@drawable/text_view_home"
-        android:text="\n\nIl tuo Pet il Tuo pet"
-        android:textAlignment="center" />
 
-    <com.mikhaellopez.circularimageview.CircularImageView
-        android:id="@+id/homeImage"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:src="@drawable/doggo"
-        android:layout_marginTop="40dp"
-        android:layout_centerHorizontal="true"
-        android:scaleType="centerCrop" />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/home_pets_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/sfondo_primario"
+        android:layout_centerHorizontal="true">
+
+    </androidx.recyclerview.widget.RecyclerView>
 
 
 </RelativeLayout>

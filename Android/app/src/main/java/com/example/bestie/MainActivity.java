@@ -10,22 +10,22 @@ import androidx.fragment.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.widget.ImageButton;
 
 import com.example.bestie.curiosity.CuriosityFragment;
 import com.example.bestie.home.HomeFragment;
+import com.example.bestie.home.PetCard;
+import com.example.bestie.login.LogInActivity;
 import com.example.bestie.map.MapFragment;
 import com.example.bestie.pet.NewPetActivity;
-import com.example.bestie.pet.PetActivity;
 import com.example.bestie.settings.SettingsActivity;
 import com.example.bestie.storage.StorageActivity;
-import com.google.android.gms.auth.api.signin.internal.Storage;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.navigation.NavigationView;
 import com.mikhaellopez.circularimageview.CircularImageView;
+
+import java.io.Serializable;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -36,21 +36,6 @@ public class MainActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        /* Inserimento di alcune immagini utili per l'app in un oggetto ImageBox */
-        /*Image[] images = new Image[10];
-        images[0] = new Image("https://cdn-icons-png.flaticon.com/512/337/337946.png","pdf");
-        images[1] = new Image("https://icon-library.com/images/doc-icon-png/doc-icon-png-6.jpg","doc");
-        images[2] = new Image("https://www.clipartmax.com/png/full/241-2414609_filename-extension-icon-xls-microsoft-excel-binary-excel-file-type.png","xls");
-        images[3] = new Image("https://cdn-icons-png.flaticon.com/512/337/337956.png","txt");
-        images[4] = new Image("https://icons.iconarchive.com/icons/graphicloads/filetype/256/png-icon.png","png");
-        images[5] = new Image("https://icons.iconarchive.com/icons/pelfusion/flat-file-type/256/jpg-icon.png","jpg");
-        images[6] = new Image("https://cdn-icons-png.flaticon.com/512/337/337936.png","gif");
-        images[7] = new Image("https://cdn.iconscout.com/icon/free/png-256/image-file-2014989-1700537.png","img");
-        images[8] = new Image("https://icons.iconarchive.com/icons/pelfusion/flat-file-type/256/zip-icon.png","zip");
-        images[9] = new Image("https://cdn.icon-icons.com/icons2/2753/PNG/512/ext_file_generic_filetype_icon_176256.png","generic");
-        ImageBox imageBox = new ImageBox(this,images);*/
-        /* Inserimento di alcune immagini utili per l'app in un oggetto ImageBox */
 
         //IMPORTO ELEMENTI DALL'XML
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_nav);
@@ -93,6 +78,7 @@ public class MainActivity extends AppCompatActivity {
                 switch (item.getItemId()) {
                     case R.id.add_pet:
                         selected = new Intent(MainActivity.this, NewPetActivity.class);
+                        selected.putExtra("pets", (Serializable) pets);
                         break;
                     case R.id.archivio:
                         selected = new Intent(MainActivity.this, StorageActivity.class);
@@ -100,6 +86,8 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.settings:
                         selected = new Intent(MainActivity.this, SettingsActivity.class);
                         break;
+                    case R.id.logout:
+                        selected = new Intent(MainActivity.this, LogInActivity.class);
                 }
                 startActivity(selected);
                 return true;
@@ -114,9 +102,30 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-   /* @Override
+    public List<PetCard> getPets() {
+        return pets;
+    }
+
+    /* @Override
     public void onBackPressed() {
         if ()
         super.onBackPressed();
     }*/
 }
+
+
+
+/* Inserimento di alcune immagini utili per l'app in un oggetto ImageBox */
+        /*Image[] images = new Image[10];
+        images[0] = new Image("https://cdn-icons-png.flaticon.com/512/337/337946.png","pdf");
+        images[1] = new Image("https://icon-library.com/images/doc-icon-png/doc-icon-png-6.jpg","doc");
+        images[2] = new Image("https://www.clipartmax.com/png/full/241-2414609_filename-extension-icon-xls-microsoft-excel-binary-excel-file-type.png","xls");
+        images[3] = new Image("https://cdn-icons-png.flaticon.com/512/337/337956.png","txt");
+        images[4] = new Image("https://icons.iconarchive.com/icons/graphicloads/filetype/256/png-icon.png","png");
+        images[5] = new Image("https://icons.iconarchive.com/icons/pelfusion/flat-file-type/256/jpg-icon.png","jpg");
+        images[6] = new Image("https://cdn-icons-png.flaticon.com/512/337/337936.png","gif");
+        images[7] = new Image("https://cdn.iconscout.com/icon/free/png-256/image-file-2014989-1700537.png","img");
+        images[8] = new Image("https://icons.iconarchive.com/icons/pelfusion/flat-file-type/256/zip-icon.png","zip");
+        images[9] = new Image("https://cdn.icon-icons.com/icons2/2753/PNG/512/ext_file_generic_filetype_icon_176256.png","generic");
+        ImageBox imageBox = new ImageBox(this,images);*/
+/* Inserimento di alcune immagini utili per l'app in un oggetto ImageBox */

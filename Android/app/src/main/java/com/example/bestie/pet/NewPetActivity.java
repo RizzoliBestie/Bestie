@@ -1,6 +1,5 @@
 package com.example.bestie.pet;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -8,25 +7,25 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.DatePicker;
-import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.RadioGroup;
 import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import com.example.bestie.R;
+import com.example.bestie.home.CardAdapter;
+import com.example.bestie.home.HomeFragment;
+import com.example.bestie.home.PetCard;
 import com.mikhaellopez.circularimageview.CircularImageView;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.LinkedList;
+import java.util.List;
 
 public class NewPetActivity extends AppCompatActivity {
 
@@ -123,4 +122,5 @@ public class NewPetActivity extends AppCompatActivity {
         imageIntent.setAction(Intent.ACTION_GET_CONTENT);
         startActivityForResult(Intent.createChooser(imageIntent, "title"), SELECT_IMAGE_CODE);
     }
+
 }

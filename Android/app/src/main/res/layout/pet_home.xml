@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragment_pet_home"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:layout_centerHorizontal="true"
+    app:cardElevation="10dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <TextView
+            android:id="@+id/testoPet"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:layout_below="@+id/homeImage"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="-20dp"
+            android:background="@drawable/text_view_home"
+            android:text="\n\nIl tuo Pet il Tuo pet"
+            android:textAlignment="center"
+            android:textColor="@color/testo_secondario" />
+
+        <com.mikhaellopez.circularimageview.CircularImageView
+            android:id="@+id/homeImage"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="40dp"
+            android:scaleType="centerCrop"
+             />
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

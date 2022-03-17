@@ -55,9 +55,6 @@
             android:label="Il tuo pet"
             android:exported="false" />
         <activity
-            android:name=".map.MapActivity"
-            android:exported="false" />
-        <activity
             android:name=".settings.SettingsActivity"
             android:exported="false"
             android:label="Settings"
