@@ -78,7 +78,6 @@ public class MainActivity extends AppCompatActivity {
                 switch (item.getItemId()) {
                     case R.id.add_pet:
                         selected = new Intent(MainActivity.this, NewPetActivity.class);
-                        selected.putExtra("pets", (Serializable) pets);
                         break;
                     case R.id.archivio:
                         selected = new Intent(MainActivity.this, StorageActivity.class);
@@ -100,17 +99,13 @@ public class MainActivity extends AppCompatActivity {
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 
-    }
-
-    public List<PetCard> getPets() {
-        return pets;
-    }
 
     /* @Override
     public void onBackPressed() {
         if ()
         super.onBackPressed();
     }*/
+    }
 }
 
 
