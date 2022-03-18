@@ -14,6 +14,8 @@ public class Pet extends Animal {
     public Date birthDate; //Data di nascita
     public Date lastMeal; //Pasto recente
     public Date lastWalk; //Camminata recente
+    public boolean sterilized;
+    public String furType;
 
 
     //Costruttore per la creazione del Pet
