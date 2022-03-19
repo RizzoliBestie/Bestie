@@ -4,14 +4,12 @@ public class Race {
     private String name;
     private String information;
     private String size;
-    private String fur_type;
 
     //Solo nome della razza
     public Race(String name){
         this.name = name;
         this.information = "";
         this.size = "";
-        this.fur_type = "";
     }
 
     //Informazioni generali
@@ -19,14 +17,12 @@ public class Race {
         this.name = name;
         this.information = information;
         this.size = "";
-        this.fur_type = "";
     }
 
     //Tutto senza informazioni generali
     public Race(String name, String size, String fur_type){
         this.name = name;
         this.size = size;
-        this.fur_type = fur_type;
     }
 
     //Tutte le informazioni
@@ -34,7 +30,6 @@ public class Race {
         this.name = name;
         this.information = information;
         this.size = size;
-        this.fur_type = fur_type;
     }
 
     public String getName() { return name; }
@@ -43,7 +38,6 @@ public class Race {
 
     public String getSize() { return size; }
 
-    public String getFurType() { return fur_type; }
 
     public void setName(String name) { this.name = name; }
 
@@ -51,8 +45,6 @@ public class Race {
 
     public void setSize(String size) { this.size = size; }
 
-    public void setFurType(String fur_type) { this.fur_type = fur_type; }
-
     @Override
-    public String toString() { return name + ' ' + information + ' ' + size + ' ' + fur_type; }
+    public String toString() { return name + ' ' + information + ' ' + size; }
 }

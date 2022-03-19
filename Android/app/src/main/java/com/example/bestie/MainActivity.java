@@ -9,9 +9,11 @@ import androidx.fragment.app.Fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.MenuItem;
 
 import com.example.bestie.curiosity.CuriosityFragment;
+import com.example.bestie.general.Profile;
 import com.example.bestie.home.HomeFragment;
 import com.example.bestie.home.PetCard;
 import com.example.bestie.login.LogInActivity;
@@ -30,7 +32,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     private DrawerLayout drawerLayout = null;
-
+    public Profile owner = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -78,6 +80,7 @@ public class MainActivity extends AppCompatActivity {
                 switch (item.getItemId()) {
                     case R.id.add_pet:
                         selected = new Intent(MainActivity.this, NewPetActivity.class);
+                        selected.putExtra("owner", (Parcelable) owner);
                         break;
                     case R.id.archivio:
                         selected = new Intent(MainActivity.this, StorageActivity.class);
@@ -105,6 +108,10 @@ public class MainActivity extends AppCompatActivity {
         if ()
         super.onBackPressed();
     }*/
+    }
+
+    public Profile getOwner() {
+        return owner;
     }
 }
 

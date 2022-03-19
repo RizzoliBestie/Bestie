@@ -7,6 +7,7 @@ import com.example.bestie.general.Profile;
 import java.util.Date;
 
 public class Pet extends Animal {
+    long id_pet;
     public Profile owner; //Proprietario
     public String nickname; //Nickname Pet
     public double weight; //Peso
@@ -19,16 +20,17 @@ public class Pet extends Animal {
 
 
     //Costruttore per la creazione del Pet
-    public Pet(String name, Race race, String specie, Profile owner, String nick, double weight, boolean sex) {
+    public Pet(long id_pet,Race race, String specie, Profile owner, String nick, double weight, boolean sex, boolean sterilized, String furType) {
         //Tutti gli attributi dell'animale
-        super(name, race, specie);
+        super(race, specie);
         //Attributi proprio Pet
+        this.id_pet=id_pet;
         this.owner = owner;
         this.nickname = nick;
         this.weight = weight;
         this.sex = sex;
-
-        addPetToOwner(name, race, specie,owner,nick,weight,sex);
+        this.sterilized=sterilized;
+        this.furType=furType;
     }
 
     //Aggiorna Pasto più recente
@@ -48,22 +50,28 @@ public class Pet extends Animal {
 
     //Converte il boolean in stringa
     private String sexToString(boolean sex) {
-        if(sex == false){
+        if(sex){
             return "Maschio";
         } else {
             return "Femmina";
         }
     }
 
-    public void addPetToOwner(String n, Race r, String s, Profile owner, String nick, double weight, boolean sex){
-        //Il Pet viene aggiunto alla ArrayList dei Pet del proprietario
-        Pet pet = new Pet(n,r,s,owner,nick,weight,sex);
+    public void addPetToOwner(Pet pet){
         this.owner.pet.add(pet);
     }
 
     //Ritorna sex se richiesto in stringa
     public String getSextoString(){
         return sexToString(this.sex);
+    }
+
+    public boolean isSterilized() {
+        return sterilized;
+    }
+
+    public void setSterilized(boolean sterilized) {
+        this.sterilized = sterilized;
     }
 
     public void remind(){

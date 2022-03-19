@@ -17,4 +17,20 @@ public class Profile {
         this.password = pass;
         this.address = address;
     }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public String getAddress() {
+        return address;
+    }
 }

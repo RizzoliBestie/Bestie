@@ -8,8 +8,7 @@ public class Animal {
 
 
     //Classe da base (da utilizzare per l'estensione in Pet)
-    public Animal(String n, Race r, String s){
-        this.name = n;
+    public Animal(Race r, String s){
         this.race = r;
         this.specie = s;
     }
