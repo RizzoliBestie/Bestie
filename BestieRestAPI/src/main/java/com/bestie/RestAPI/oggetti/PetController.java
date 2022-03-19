@@ -2,7 +2,10 @@ package com.bestie.RestAPI.oggetti;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -14,12 +17,18 @@ public class PetController {
 	
 	@RequestMapping("/pets")
 	public List<Pet> getAllPets(){
+		System.out.println("Okollloll");
 		return petService.getAllPets();
 	}
 	
 	@RequestMapping("/pets/{id}")
-	public List<Pet> getPetById(@PathVariable long id) {
-		return petService.getPetById(id);
+	public Pet findPetById(@PathVariable long id) {
+		Pet pet= petService.findPetById(id).get(0);
+		return pet;
 	}
-
+	
+	@PostMapping ("/newPet/{pet}")
+	public boolean newPet(@RequestBody Pet pet) {
+		return petService.newPet(pet);
+	}
 }

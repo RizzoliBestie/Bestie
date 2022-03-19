@@ -73,15 +73,11 @@ public class JdbcUserRepository implements UserRepository{
 		
 	}
 
-	@Override
-	public boolean newPet(String owner, String race, String nickname, double weight, boolean gender) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+	
 	
 	//Metodi PET
 	
-	/*public boolean newPet(String owner, String race, String nickname, double weight, boolean gender) {
+	/*public boolean newPet(String owner, String race, String nickname, double weight, byte gender) {
 		int idUser;
 		try {
 			idUser = findUserByUsername(owner).get(0).getId_user();

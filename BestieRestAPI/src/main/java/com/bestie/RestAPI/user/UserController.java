@@ -15,17 +15,16 @@ public class UserController {
 
 	@Autowired
 	UserRepository repo;
-	
+
 	@GetMapping("/login/{username}/{password}")
-	public boolean getUserLogin(@PathVariable String username, @PathVariable String password) {
-		if(repo.checkLogin(username, password).size()==0) {
-			return false;
+	public User getUserLogin(@PathVariable String username, @PathVariable String password) {
+		if(username!=null && password!=null) {
+			User user = repo.checkLogin(username, password).get(0);
+			return user;
 		}
-		else {
-			return true;
-		}
+		return null;
 	}
-	
+
 	@GetMapping("/signin/{username}/{email}")
 	public boolean getUserSignin(@PathVariable String username, @PathVariable String email) {
 		if(repo.checkSignin(username, email).size()==0)
@@ -33,10 +32,11 @@ public class UserController {
 		else
 			return true;
 	}
-	
+
 	@PostMapping("/signin/{username}/{email}/{password}/{phone_number}")
 	public boolean newUser(@PathVariable("username") String username,@PathVariable("email") String email,@PathVariable("password") String password,@PathVariable("phone_number") String phone_number) {
 		return repo.register(username, email, password, phone_number);
 	}
-	
+
+
 }

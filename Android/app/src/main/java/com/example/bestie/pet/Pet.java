@@ -1,84 +1,76 @@
 package com.example.bestie.pet;
 
-import com.example.bestie.animal.Animal;
-import com.example.bestie.animal.Race;
-import com.example.bestie.general.Profile;
-
 import java.util.Date;
 
-public class Pet extends Animal {
-    long id_pet;
-    public Profile owner; //Proprietario
-    public String nickname; //Nickname Pet
-    public double weight; //Peso
-    public boolean sex; //Maschio o Femmina //SUGGERIMENTO: Forse stringa invece di boolean?
-    public Date birthDate; //Data di nascita
-    public Date lastMeal; //Pasto recente
-    public Date lastWalk; //Camminata recente
-    public boolean sterilized;
-    public String furType;
+public class Pet {
+    private int id_pet;
+    private int id_user;
+    private int id_race;
+    private String name;
+    private double weight;
+    private boolean gender;
+    private Date birthDate;
+    private Date lastMeal;
+    private Date lastWalk;
+    private boolean sterilized;
+    private String fur_type;
 
 
-    //Costruttore per la creazione del Pet
-    public Pet(long id_pet,Race race, String specie, Profile owner, String nick, double weight, boolean sex, boolean sterilized, String furType) {
-        //Tutti gli attributi dell'animale
-        super(race, specie);
-        //Attributi proprio Pet
-        this.id_pet=id_pet;
-        this.owner = owner;
-        this.nickname = nick;
+    public Pet(int id_pet, int id_user, int id_race, String name, double weight, boolean gender, Date birthDate, Date lastMeal, Date lastWalk, boolean sterilized, String fur_type) {
+        this.id_pet = id_pet;
+        this.id_user = id_user;
+        this.id_race = id_race;
+        this.name = name;
         this.weight = weight;
-        this.sex = sex;
-        this.sterilized=sterilized;
-        this.furType=furType;
+        this.gender = gender;
+        this.birthDate = birthDate;
+        this.lastMeal = lastMeal;
+        this.lastWalk = lastWalk;
+        this.sterilized = sterilized;
+        this.fur_type = fur_type;
     }
 
-    //Aggiorna Pasto più recente
-    public void setLastMeal(Date lastMeal) { this.lastMeal = lastMeal; }
-
-    //Aggiorna Camminata più recente
-    public void setLastWalk(Date lastWalk) { this.lastWalk = lastWalk; }
-
-    //Aggiorna il peso
-    public void setWeight(double weight) { this.weight = weight; }
-
-    public String getNickname() { return nickname; }
-
-    public Date getBirthDate() { return birthDate; }
-
-    public double getWeight() { return weight; }
-
-    //Converte il boolean in stringa
-    private String sexToString(boolean sex) {
-        if(sex){
-            return "Maschio";
-        } else {
-            return "Femmina";
-        }
+    public boolean getGender() {
+        return gender;
     }
 
-    public void addPetToOwner(Pet pet){
-        this.owner.pet.add(pet);
+    public int getId_race() {
+        return id_race;
     }
 
-    //Ritorna sex se richiesto in stringa
-    public String getSextoString(){
-        return sexToString(this.sex);
+    public long getId_pet() {
+        return id_pet;
     }
 
-    public boolean isSterilized() {
+    public long getId_user() {
+        return id_user;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public double getWeight() {
+        return weight;
+    }
+
+    public Date getBirthDate() {
+        return birthDate;
+    }
+
+    public Date getLastMeal() {
+        return lastMeal;
+    }
+
+    public Date getLastWalk() {
+        return lastWalk;
+    }
+
+    public boolean getSterilized() {
         return sterilized;
     }
 
-    public void setSterilized(boolean sterilized) {
-        this.sterilized = sterilized;
-    }
-
-    public void remind(){
-        //DOPO
-    }
-
-    public void inform(){
-        //DOPO
+    public String getFur_type() {
+        return fur_type;
     }
 }

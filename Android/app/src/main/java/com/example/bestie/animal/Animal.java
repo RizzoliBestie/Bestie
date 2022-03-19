@@ -13,6 +13,12 @@ public class Animal {
         this.specie = s;
     }
 
+    public Animal(String name,Race r, String s){
+        this.name=name;
+        this.race = r;
+        this.specie = s;
+    }
+
     public String getName() {
         return name;
     }

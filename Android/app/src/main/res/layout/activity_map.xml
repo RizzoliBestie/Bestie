@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal"
-    tools:context="com.example.bestie.map.MapActivity">
+    tools:context="com.example.bestie.map.MapFragment">
     <LinearLayout
         android:id="@+id/search_bar"
         android:layout_width="match_parent"

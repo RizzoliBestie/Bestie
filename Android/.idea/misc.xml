@@ -28,6 +28,9 @@
         <entry key="..\:/Users/RiccardoMarcarini/Documents/GitHub/Bestie/Android/app/src/main/res/drawable/pet_activity_image.xml" value="0.1265" />
         <entry key="..\:/Users/RiccardoMarcarini/Documents/GitHub/Bestie/Android/app/src/main/res/drawable/text_view_home.xml" value="0.1265" />
         <entry key="..\:/Users/RiccardoMarcarini/Documents/GitHub/Bestie/Android/app/src/main/res/layout-v21/fragment_new_pet.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/RiccardoMarcarini/Documents/GitHub/Bestie/Android/app/src/main/res/layout/activity_animal_info.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/RiccardoMarcarini/Documents/GitHub/Bestie/Android/app/src/main/res/layout/activity_buttare.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/RiccardoMarcarini/Documents/GitHub/Bestie/Android/app/src/main/res/layout/activity_change_password.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/RiccardoMarcarini/Documents/GitHub/Bestie/Android/app/src/main/res/layout/activity_curiosity.xml" value="0.11302083333333333" />
         <entry key="..\:/Users/RiccardoMarcarini/Documents/GitHub/Bestie/Android/app/src/main/res/layout/activity_home.xml" value="0.1" />
         <entry key="..\:/Users/RiccardoMarcarini/Documents/GitHub/Bestie/Android/app/src/main/res/layout/activity_log_in.xml" value="0.1793478260869565" />
@@ -36,6 +39,7 @@
         <entry key="..\:/Users/RiccardoMarcarini/Documents/GitHub/Bestie/Android/app/src/main/res/layout/activity_new_pet.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/RiccardoMarcarini/Documents/GitHub/Bestie/Android/app/src/main/res/layout/activity_pet.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/RiccardoMarcarini/Documents/GitHub/Bestie/Android/app/src/main/res/layout/activity_storage.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/RiccardoMarcarini/Documents/GitHub/Bestie/Android/app/src/main/res/layout/activity_storage_item.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/RiccardoMarcarini/Documents/GitHub/Bestie/Android/app/src/main/res/layout/drawer_header.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/RiccardoMarcarini/Documents/GitHub/Bestie/Android/app/src/main/res/layout/drawer_menu.xml" value="0.1" />
         <entry key="..\:/Users/RiccardoMarcarini/Documents/GitHub/Bestie/Android/app/src/main/res/layout/fragment_curiosity.xml" value="0.23854166666666668" />

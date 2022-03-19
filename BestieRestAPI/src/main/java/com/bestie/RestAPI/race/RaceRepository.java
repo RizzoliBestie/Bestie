@@ -6,5 +6,7 @@ public interface RaceRepository {
 	
 	//Restituisce tutte le razze
 	public List<Race> getAllRaces();
-
+	
+	public List<Race> getRaceByName(String name);
+		
 }

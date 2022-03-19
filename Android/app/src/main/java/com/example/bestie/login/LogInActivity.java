@@ -17,6 +17,7 @@ import android.widget.TextView;
 import com.example.bestie.API.API_Connection_Bestie;
 import com.example.bestie.API.API_Methods_Interface;
 import com.example.bestie.R;
+import com.example.bestie.general.Profile;
 import com.example.bestie.settings.SettingsActivity;
 import com.example.bestie.signin.SignInActivity;
 
@@ -100,11 +101,23 @@ public class LogInActivity extends AppCompatActivity {
                 API_Methods_Interface api = retrofit.create(API_Methods_Interface.class);
 
                 if(!(tUsername.equals("") || tPassword.equals(""))) {
-                    Call<Boolean> checkLoginCall = api.checkLogin(tUsername, tPassword);//qui avviene la chiamata alla funzione con retrofit (springoot)
-                    checkLoginCall.enqueue(new Callback<Boolean>() {
+                    Call<Profile> checkLoginCall = api.checkLogin(tUsername, tPassword);//qui avviene la chiamata alla funzione con retrofit (springoot)
+                    checkLoginCall.enqueue(new Callback<Profile>() {
                         @Override
-                        public void onResponse(Call<Boolean> call, Response<Boolean> response) {
-                            if (response.body()) {//response.body ritorna il valore di ritorno della funziona chiamata
+                        public void onResponse(Call<Profile> call, Response<Profile> response) {
+                            if (response.code()!=500) {//response.body ritorna il valore di ritorno della funziona chiamata
+
+                                //Salvo username id e password nelle shared preferences per utilizzarli dopo
+                                Profile profile = response.body();
+                                int id_user = profile.getId_user();
+                                String username = profile.getUsername();
+                                String password = profile.getPassword();
+                                SharedPreferences pref = LogInActivity.this.getSharedPreferences("preferences", Context.MODE_PRIVATE);
+                                SharedPreferences.Editor editor = pref.edit();
+                                editor.putInt("id_user", id_user);
+                                editor.putString("username", username);
+                                editor.putString("password", password);
+                                editor.apply();
 
                                 Intent moveToSettings = new Intent(LogInActivity.this, SettingsActivity.class);
                                 startActivity(moveToSettings);
@@ -116,7 +129,7 @@ public class LogInActivity extends AppCompatActivity {
                         }
 
                         @Override
-                        public void onFailure(Call<Boolean> call, Throwable t) {
+                        public void onFailure(Call<Profile> call, Throwable t) {
                             t.printStackTrace();
                         }
                     });

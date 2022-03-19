@@ -13,17 +13,18 @@ import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 public class API_Connection_Bestie extends Application {
 
-    public static final String BASE_URL = "http://192.168.1.170:8080/";
+    public static final String BASE_URL = "http://192.168.43.110:8080/";
     private Retrofit retrofit = null;
 
     public API_Connection_Bestie () {
         //Gson gson = new GsonBuilder().setLenient().create();
         OkHttpClient okHttpClient = new OkHttpClient();
 
+        Gson gson = new Gson();
         retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .client(okHttpClient)
-                //.addConverterFactory(GsonConverterFactory.create(gson))
+                .addConverterFactory(GsonConverterFactory.create(gson))
                 .addConverterFactory(ScalarsConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build();

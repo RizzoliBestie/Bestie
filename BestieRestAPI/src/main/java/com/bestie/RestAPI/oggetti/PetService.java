@@ -18,7 +18,21 @@ public class PetService {
 		return jdbcTemplate.query("SELECT * FROM Pet", BeanPropertyRowMapper.newInstance(Pet.class));
 	}
 	
-	public List<Pet> getPetById(long id) {
+	public List<Pet> findPetById(long id) {
 		return jdbcTemplate.query("SELECT * FROM Pet WHERE id_pet=?", BeanPropertyRowMapper.newInstance(Pet.class), id);
 	}
+	
+	public boolean newPet(Pet pet) {
+		final int id_user = pet.getId_user();
+		final int race = pet.getId_race();
+		final String name = pet.getName();
+		final double weight = pet.getWeight();
+		final byte gender = pet.getGender();
+		
+		jdbcTemplate.update("INSERT INTO Pet(id_user, race, name, weight, gender) VALUES( ? , ? , ? , ? , ? )"
+				, id_user, race, name, weight, gender);
+		return true;
+	}
+	
+	
 }

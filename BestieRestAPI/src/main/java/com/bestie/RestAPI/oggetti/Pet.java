@@ -14,7 +14,16 @@ public class Pet {
 	private Date lastMeal; 
 	private Date lastWalk; 
 	private byte sterilized;
+	private byte fur_type;
 	
+	public byte getFur_type() {
+		return fur_type;
+	}
+
+	public void setFur_type(byte fur_type) {
+		this.fur_type = fur_type;
+	}
+
 	public byte getGender() {
 		return gender;
 	}
@@ -55,7 +64,7 @@ public class Pet {
 	public void setWeight(double weight) {
 		this.weight = weight;
 	}
-	public String isGender() {
+	public byte isGender() {
 		return gender;
 	}
 	public void setGender(byte gender) {

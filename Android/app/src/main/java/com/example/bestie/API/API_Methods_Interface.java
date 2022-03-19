@@ -1,31 +1,24 @@
 package com.example.bestie.API;
 
-import androidx.versionedparcelable.NonParcelField;
-
-import com.example.bestie.database.Utent_Table;
+import com.example.bestie.general.Profile;
 import com.example.bestie.general.Race;
 import com.example.bestie.general.Specie;
 import com.example.bestie.general.User;
+import com.example.bestie.pet.Pet;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
-import retrofit2.http.DELETE;
-import retrofit2.http.FieldMap;
-import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
-import retrofit2.http.Query;
 
 public interface API_Methods_Interface {
 
     //Controlla che le credenziali del login siano corrette
     @GET("/login/{username}/{password}")
-    Call<Boolean> checkLogin(@Path("username") String username,  @Path("password") String password);
+    Call<Profile> checkLogin(@Path("username") String username, @Path("password") String password);
 
     //Controlla che username ed email siano unici
     @GET("/signin/{username}/{email}")
@@ -46,4 +39,15 @@ public interface API_Methods_Interface {
     //Ritorna tutte le specie presenti nel DB
     @GET("/list/species")
     Call<List<Specie>> getAllSpecies();
+
+    @GET("/pets")
+    Call<List<Pet>> getAllPets();
+
+    //Aggiunge pet al DB
+    @POST
+    Call<Boolean> addPet(@Body Pet pet);
+
+    @GET("/race/name")
+    Call<Race> getRaceByName(@Body String name);
+
 }

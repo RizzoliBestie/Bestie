@@ -4,6 +4,7 @@ public class Race {
     private String name;
     private String information;
     private String size;
+    private String fur_type;
 
     //Solo nome della razza
     public Race(String name){
@@ -23,6 +24,7 @@ public class Race {
     public Race(String name, String size, String fur_type){
         this.name = name;
         this.size = size;
+        this.fur_type=fur_type;
     }
 
     //Tutte le informazioni
@@ -38,6 +40,9 @@ public class Race {
 
     public String getSize() { return size; }
 
+    public String getFur_type() {
+        return fur_type;
+    }
 
     public void setName(String name) { this.name = name; }
 

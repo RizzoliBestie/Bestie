@@ -1,12 +1,27 @@
 package com.example.bestie.general;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 public class Race {
 
+    @SerializedName("id_race")
+    @Expose
     int id_race;
+    @SerializedName("id_specie")
+    @Expose
     int id_specie;
+    @SerializedName("name")
+    @Expose
     String name;
+    @SerializedName("information")
+    @Expose
     String information;
+    @SerializedName("size")
+    @Expose
     String size;
+    @SerializedName("fur_type")
+    @Expose
     String fur_type;
 
     public Race() {

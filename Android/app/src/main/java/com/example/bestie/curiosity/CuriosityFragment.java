@@ -201,7 +201,7 @@ public class CuriosityFragment extends Fragment {
                 infoIntent.putExtra("race", p.getRace().getName());
                 infoIntent.putExtra("information", p.getRace().getInformation());
                 infoIntent.putExtra("size", p.getRace().getSize());
-                infoIntent.putExtra("fur_type", p.getRace().getFurType());
+                infoIntent.putExtra("fur_type", p.getRace().getFur_type());
                 infoIntent.putExtra("specie", p.getSpecie());
                 infoIntent.putExtra("image_url", p.getImageUrl());
                 infoIntent.putExtra("section", p.getSection());

@@ -37,8 +37,7 @@ public interface UserRepository {
 	 * 		GESTIONE PET
 	 */
 	
-	public boolean newPet(String owner, String race, String nickname, double weight, boolean gender);
+	//public boolean newPet(String owner, String race, String nickname, double weight, byte gender);
 	
-	//public List<Pet> getPet();
 	
 }
