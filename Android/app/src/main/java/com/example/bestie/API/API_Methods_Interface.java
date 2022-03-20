@@ -50,4 +50,7 @@ public interface API_Methods_Interface {
     @GET("/race/name")
     Call<Race> getRaceByName(@Body String name);
 
+    @GET("/races/{id_specie}")
+    Call<List<Race>> getRaceBySpecie(@Path("id_specie") int id_specie);
+
 }

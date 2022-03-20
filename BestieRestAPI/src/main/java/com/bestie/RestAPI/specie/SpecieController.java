@@ -14,7 +14,7 @@ public class SpecieController {
 	
 	@RequestMapping("/list/species")
 	public List<Specie> getAllSpecies(){
-		System.out.println("okokokokok");
+		System.out.println("Get all species");
 		return jdbcSpecieRepository.getAllSpecie();
 	}
 

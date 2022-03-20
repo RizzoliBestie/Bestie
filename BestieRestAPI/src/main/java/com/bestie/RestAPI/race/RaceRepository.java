@@ -8,5 +8,7 @@ public interface RaceRepository {
 	public List<Race> getAllRaces();
 	
 	public List<Race> getRaceByName(String name);
+	
+	public List<Race> getRaceBySpecie(int id_specie);
 		
 }

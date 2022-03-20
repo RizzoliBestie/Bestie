@@ -17,7 +17,7 @@ public class PetController {
 	
 	@RequestMapping("/pets")
 	public List<Pet> getAllPets(){
-		System.out.println("Okollloll");
+		System.out.println("Pet successo");
 		return petService.getAllPets();
 	}
 	

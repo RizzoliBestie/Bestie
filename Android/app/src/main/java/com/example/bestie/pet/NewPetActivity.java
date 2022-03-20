@@ -7,6 +7,7 @@ import android.icu.number.NumberRangeFormatter;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.DatePicker;
@@ -65,8 +66,8 @@ public class NewPetActivity extends AppCompatActivity {
     RadioGroup fur_type;
     RadioButton selectedFur;
     int id_user;
-    int id_pet=0;
-    String raceText=null;
+    int id_pet = 0;
+    String raceText = null;
     List<Specie> specieList = new LinkedList<>();
 
 
@@ -79,9 +80,9 @@ public class NewPetActivity extends AppCompatActivity {
         API_Methods_Interface api = retrofit.create(API_Methods_Interface.class);
 
         SharedPreferences preferences = this.getSharedPreferences("preferences", Context.MODE_PRIVATE);
-        id_user = preferences.getInt("id_user",0);
+        id_user = preferences.getInt("id_user", 0);
 
-        nameET=findViewById(R.id.nameET);
+        nameET = findViewById(R.id.nameET);
         specieSpinner = findViewById(R.id.specieET);
         races = findViewById(R.id.razzaET);
         addImage = findViewById(R.id.newPetImage);
@@ -92,10 +93,10 @@ public class NewPetActivity extends AppCompatActivity {
         addPet = findViewById(R.id.confirm_button);
         gender = findViewById(R.id.sex);
         selectedSex = findViewById(gender.getCheckedRadioButtonId());
-        sterilized=findViewById(R.id.sterilizzazione_pet);
-        sterilizzato=findViewById(sterilized.getCheckedRadioButtonId());
-        fur_type=findViewById(R.id.pelo_group);
-        selectedFur=findViewById(fur_type.getCheckedRadioButtonId());
+        sterilized = findViewById(R.id.sterilizzazione_pet);
+        sterilizzato = findViewById(sterilized.getCheckedRadioButtonId());
+        fur_type = findViewById(R.id.pelo_group);
+        selectedFur = findViewById(fur_type.getCheckedRadioButtonId());
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -136,7 +137,7 @@ public class NewPetActivity extends AppCompatActivity {
         getAllSpecies.enqueue(new Callback<List<Specie>>() {
             @Override
             public void onResponse(Call<List<Specie>> call, Response<List<Specie>> response) {
-                specieList =response.body();
+                specieList = response.body();
                 Toast.makeText(NewPetActivity.this, "Specie successo", Toast.LENGTH_SHORT).show();
                 caricaSpecie(specieList);
             }
@@ -148,22 +149,43 @@ public class NewPetActivity extends AppCompatActivity {
             }
         });
 
-/*
-        Call<Race> getRaceByName = api.getRaceByName(raceText);
-        getRaceByName.enqueue(new Callback<Race>() {
+        specieSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onResponse(Call<Race> call, Response<Race> response) {
-                Race race =response.body();
-                addPetListener(race);
-                Toast.makeText(NewPetActivity.this, "Race response ok", Toast.LENGTH_SHORT).show();
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                Specie selectedSpecie=null;
+                int id_specie;
+                if (!(specieSpinner.getSelectedItem() ==null)) {
+                    for (int j=0; j<specieList.size(); j++){
+                        String nome = specieList.get(j).getCommon_name();
+                        if (nome.equals(specieSpinner.getSelectedItem()))
+                            selectedSpecie=specieList.get(j);
+                    }
+                    id_specie = selectedSpecie.getId_specie();
+
+                    Call<List<Race>> getRaceBySpecie = api.getRaceBySpecie(id_specie);
+                    getRaceBySpecie.enqueue(new Callback<List<Race>>() {
+                        @Override
+                        public void onResponse(Call<List<Race>> call, Response<List<Race>> response) {
+                            List<Race> raceList = response.body();
+                            caricaRazze(raceList);
+                            Toast.makeText(NewPetActivity.this, "Race response ok", Toast.LENGTH_SHORT).show();
+                        }
+
+                        @Override
+                        public void onFailure(Call<List<Race>> call, Throwable t) {
+                            Toast.makeText(NewPetActivity.this, "Race response fail", Toast.LENGTH_SHORT).show();
+                            t.printStackTrace();
+                        }
+                    });
+                }
             }
 
             @Override
-            public void onFailure(Call<Race> call, Throwable t) {
-                Toast.makeText(NewPetActivity.this, "Race response fail", Toast.LENGTH_SHORT).show();
-                t.printStackTrace();
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
             }
-        });*/
+        });
+
 
     }
 
@@ -171,11 +193,11 @@ public class NewPetActivity extends AppCompatActivity {
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-    protected void addPetListener(Race race){
+    protected void addPetListener(Race race) {
         addPet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                raceText=races.getSelectedItem().toString();
+                raceText = races.getSelectedItem().toString();
                 id_pet++;
                 Pet pet = createNewPet(race);
                 String prova = pet.getName();
@@ -194,33 +216,33 @@ public class NewPetActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if(requestCode==1){
+        if (requestCode == 1) {
             Uri uri = data.getData();
             addImage.setImageURI(uri);
         }
     }
 
-    void pickImage(){
+    void pickImage() {
         Intent imageIntent = new Intent();
         imageIntent.setType("image/*");
         imageIntent.setAction(Intent.ACTION_GET_CONTENT);
         startActivityForResult(Intent.createChooser(imageIntent, "title"), SELECT_IMAGE_CODE);
     }
 
-    boolean getBooleanSexFromText(String sex){
+    boolean getBooleanSexFromText(String sex) {
         if (sex.equals("M"))
             return true;
         else return false;
     }
 
-    boolean getBooleanSterilizedFromText(String sterilized){
+    boolean getBooleanSterilizedFromText(String sterilized) {
         if (sterilized.equals("Sì"))
             return true;
         else return false;
     }
 
-    protected Pet createNewPet(Race race){
-        String name=nameET.getText().toString();
+    protected Pet createNewPet(Race race) {
+        String name = nameET.getText().toString();
         int id_race = race.getId_race();
         String specie = specieSpinner.getSelectedItem().toString();
         double weight = pesoBar.getProgress();
@@ -229,14 +251,14 @@ public class NewPetActivity extends AppCompatActivity {
         String furType = selectedFur.getText().toString();
         Date birthdate = getDateFromDatePicker(datePicker);
 
-        Pet pet = new Pet(id_pet, id_user, id_race, name,weight, sex, birthdate, null, null, sterilized, furType);
+        Pet pet = new Pet(id_pet, id_user, id_race, name, weight, sex, birthdate, null, null, sterilized, furType);
         return pet;
     }
 
-    public static java.util.Date getDateFromDatePicker(DatePicker datePicker){
+    public static java.util.Date getDateFromDatePicker(DatePicker datePicker) {
         int day = datePicker.getDayOfMonth();
         int month = datePicker.getMonth();
-        int year =  datePicker.getYear();
+        int year = datePicker.getYear();
 
         Calendar calendar = Calendar.getInstance();
         calendar.set(year, month, day);
@@ -244,15 +266,26 @@ public class NewPetActivity extends AppCompatActivity {
         return calendar.getTime();
     }
 
-    public void caricaSpecie(List<Specie> specieList){
+    public void caricaSpecie(List<Specie> specieList) {
         //CARICO SPINNER PER LA SPECIE CON VALORE DI DEFAULT
         String[] nomiSpecie = new String[specieList.size()];
-        for(int i=0; i<specieList.size(); i++){
-            nomiSpecie[i]=specieList.get(i).getCommon_name();
+        for (int i = 0; i < specieList.size(); i++) {
+            nomiSpecie[i] = specieList.get(i).getCommon_name();
         }
         ArrayAdapter<CharSequence> specieAdapter1 = new ArrayAdapter<CharSequence>(this, android.R.layout.simple_dropdown_item_1line, nomiSpecie);
         specieAdapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         NothingSelectedSpinnerAdapter specieAdapter2 = new NothingSelectedSpinnerAdapter(specieAdapter1, R.layout.species_spinner_nothing_selected, this);
         specieSpinner.setAdapter(specieAdapter2);
+    }
+
+    public void caricaRazze(List<Race> raceList) {
+        String[] nomiRazze = new String[raceList.size()];
+        for (int i = 0; i < raceList.size(); i++) {
+            nomiRazze[i] = raceList.get(i).getName();
+        }
+        ArrayAdapter<CharSequence> specieAdapter1 = new ArrayAdapter<CharSequence>(this, android.R.layout.simple_dropdown_item_1line, nomiRazze);
+        specieAdapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        NothingSelectedSpinnerAdapter specieAdapter2 = new NothingSelectedSpinnerAdapter(specieAdapter1, R.layout.species_spinner_nothing_selected, this);
+        races.setAdapter(specieAdapter2);
     }
 }

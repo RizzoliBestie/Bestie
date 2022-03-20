@@ -7,11 +7,13 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity"
     android:layout_centerHorizontal="true"
+    android:background="@color/sfondo_primario"
     app:cardElevation="10dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:background="@color/sfondo_primario"
         >
 
         <TextView
@@ -20,12 +22,24 @@
             android:layout_height="300dp"
             android:layout_below="@+id/homeImage"
             android:layout_centerHorizontal="true"
+            android:textSize="20dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="-20dp"
             android:background="@drawable/text_view_home"
             android:text="\n\nIl tuo Pet il Tuo pet"
             android:textAlignment="center"
-            android:textColor="@color/testo_secondario" />
+            android:paddingTop="30dp"
+            android:textColor="@color/testo_secondario"/>
+
+        <TextView
+            android:id="@+id/infoPetCard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="Info pet"
+            android:layout_below="@+id/testoPet"
+            android:layout_marginTop="-230dp"/>
+
 
         <com.mikhaellopez.circularimageview.CircularImageView
             android:id="@+id/homeImage"

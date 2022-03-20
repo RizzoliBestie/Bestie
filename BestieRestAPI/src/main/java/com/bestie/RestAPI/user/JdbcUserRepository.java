@@ -22,7 +22,7 @@ public class JdbcUserRepository implements UserRepository{
 	}
 	
 	@Override
-	public List<User> findUserById(int id) {
+	public List<User> findUserById(Integer id) {
 		return jdbcTemplate.query("SELECT * FROM User WHERE id_user = ?", BeanPropertyRowMapper.newInstance(User.class) ,id);
 		
 	}
