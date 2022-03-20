@@ -21,6 +21,7 @@ import com.example.bestie.R;
 import com.example.bestie.pet.Pet;
 import com.mikhaellopez.circularimageview.CircularImageView;
 
+import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -46,6 +47,9 @@ public class HomeFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_home, container, false);
 
+        CircularImageView homePetImage = v.findViewById(R.id.homeImage);
+        TextView homePetText = v.findViewById(R.id.testoPet);
+
 
         Retrofit retrofit = ((API_Connection_Bestie) act.getApplication()).getRetrofit();
         API_Methods_Interface api = retrofit.create(API_Methods_Interface.class);
@@ -67,22 +71,23 @@ public class HomeFragment extends Fragment {
                     String title = pet.getName();
                     petCards.add(new PetCard(title, R.drawable.doggo));
                 }
+                RecyclerView recyclerView = v.findViewById(R.id.home_pets_container);
+                recyclerView.setLayoutManager(new LinearLayoutManager(act));
+                CardAdapter adapter = new CardAdapter(petCards);
+                recyclerView.setAdapter(adapter);
             }
             @Override
             public void onFailure(Call<List<Pet>> call, Throwable t) {
-                Toast.makeText(act, "Failed", Toast.LENGTH_SHORT).show();
+                if(t instanceof IOException)
+                    Toast.makeText(act, "Connection error", Toast.LENGTH_SHORT).show();
+                else
+                Toast.makeText(act, "Conversion Error!!", Toast.LENGTH_SHORT).show();
+
                 t.printStackTrace();
             }
         });
 
 
-        CircularImageView homePetImage = v.findViewById(R.id.homeImage);
-        TextView homePetText = v.findViewById(R.id.testoPet);
-        RecyclerView recyclerView = v.findViewById(R.id.home_pets_container);
-
-        recyclerView.setLayoutManager(new LinearLayoutManager(act));
-        CardAdapter adapter = new CardAdapter(petCards);
-        recyclerView.setAdapter(adapter);
 
         //METODO ONCLICK SU HOME IMAGE
 /*        homePetImage.setOnClickListener(new View.OnClickListener() {

@@ -75,12 +75,11 @@ public class NewPetActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_pet);
 
+        Retrofit retrofit = ((API_Connection_Bestie) getApplication()).getRetrofit();
+        API_Methods_Interface api = retrofit.create(API_Methods_Interface.class);
+
         SharedPreferences preferences = this.getSharedPreferences("preferences", Context.MODE_PRIVATE);
         id_user = preferences.getInt("id_user",0);
-
-        //RICHIAMO IL PPROFILO UTENTE CHE SERVIRà NEL COSTRUTTORE DEL PET
-        Bundle bundle = getIntent().getExtras();
-        owner = bundle.getParcelable("owner");
 
         nameET=findViewById(R.id.nameET);
         specieSpinner = findViewById(R.id.specieET);
@@ -101,9 +100,6 @@ public class NewPetActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-
-        Retrofit retrofit = ((API_Connection_Bestie) getApplication()).getRetrofit();
-        API_Methods_Interface api = retrofit.create(API_Methods_Interface.class);
 
         //SETTO DATA MASSIMA PER DATEPICKER
         datePicker.setMaxDate(new Date().getTime());
@@ -135,8 +131,9 @@ public class NewPetActivity extends AppCompatActivity {
             }
         });
 
-        Call<List<Specie>> getSpecies = api.getAllSpecies();
-        getSpecies.enqueue(new Callback<List<Specie>>() {
+
+        Call<List<Specie>> getAllSpecies = api.getAllSpecies();
+        getAllSpecies.enqueue(new Callback<List<Specie>>() {
             @Override
             public void onResponse(Call<List<Specie>> call, Response<List<Specie>> response) {
                 specieList =response.body();

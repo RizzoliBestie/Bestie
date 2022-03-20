@@ -27,7 +27,7 @@ public class PetService {
 		final int race = pet.getId_race();
 		final String name = pet.getName();
 		final double weight = pet.getWeight();
-		final byte gender = pet.getGender();
+		final boolean gender = pet.getGender();
 		
 		jdbcTemplate.update("INSERT INTO Pet(id_user, race, name, weight, gender) VALUES( ? , ? , ? , ? , ? )"
 				, id_user, race, name, weight, gender);

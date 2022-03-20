@@ -9,11 +9,11 @@ public class Pet {
 	private int id_race;
 	private String name;
 	private double weight;
-	private byte gender; 
+	private boolean gender; 
 	private Date birthDate;
 	private Date lastMeal; 
 	private Date lastWalk; 
-	private byte sterilized;
+	private boolean sterilized;
 	private byte fur_type;
 	
 	public byte getFur_type() {
@@ -24,14 +24,14 @@ public class Pet {
 		this.fur_type = fur_type;
 	}
 
-	public byte getGender() {
+	public boolean getGender() {
 		return gender;
 	}
 	
-	public byte getSterilized() {
+	public boolean getSterilized() {
 		return sterilized;
 	}
-	public void setSterilized(byte sterilized) {
+	public void setSterilized(boolean sterilized) {
 		this.sterilized = sterilized;
 	}
 	public int getId_pet() {
@@ -64,10 +64,10 @@ public class Pet {
 	public void setWeight(double weight) {
 		this.weight = weight;
 	}
-	public byte isGender() {
+	public boolean isGender() {
 		return gender;
 	}
-	public void setGender(byte gender) {
+	public void setGender(boolean gender) {
 		this.gender = gender;
 	}
 	public Date getBirthDate() {
