@@ -60,7 +60,7 @@ public class NewPetActivity extends AppCompatActivity {
     RadioGroup furTypeRadioGroup;
     RadioButton selectedFurButton;
     int id_user;
-    int id_pet = 1;
+    int id_pet = 4;
     List<Specie> specieList = new LinkedList<>();
     List<Race> raceList=new LinkedList<>();
     Race selectedRace;
@@ -243,6 +243,7 @@ public class NewPetActivity extends AppCompatActivity {
         });
 
         birthdate=getDateFromDatePicker(datePicker);
+        birthdate=null;
 
         sexRadioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -260,7 +261,20 @@ public class NewPetActivity extends AppCompatActivity {
                     Pet pet = new Pet(id_pet, id_user, id_race, name, weight, sex, birthdate, null, null, sterilized, pelo);
                     ownersPets.add(pet);
                     id_pet++;
-                    Toast.makeText(NewPetActivity.this, name, Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(NewPetActivity.this, name, Toast.LENGTH_SHORT).show();
+
+                    Call<Boolean> addNewPet = api.addPet(pet);
+                    addNewPet.enqueue(new Callback<Boolean>() {
+                        @Override
+                        public void onResponse(Call<Boolean> call, Response<Boolean> response) {
+                            Toast.makeText(NewPetActivity.this, "Aggiunto", Toast.LENGTH_SHORT).show();
+                        }
+
+                        @Override
+                        public void onFailure(Call<Boolean> call, Throwable t) {
+
+                        }
+                    });
                 }
                 else Toast.makeText(NewPetActivity.this, "Compila tutti i campi", Toast.LENGTH_SHORT).show();
             }

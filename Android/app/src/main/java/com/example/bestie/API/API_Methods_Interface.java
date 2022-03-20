@@ -44,7 +44,7 @@ public interface API_Methods_Interface {
     Call<List<Pet>> getAllPets();
 
     //Aggiunge pet al DB
-    @POST
+    @POST("/newPet/{pet}")
     Call<Boolean> addPet(@Body Pet pet);
 
     @GET("/race/name")

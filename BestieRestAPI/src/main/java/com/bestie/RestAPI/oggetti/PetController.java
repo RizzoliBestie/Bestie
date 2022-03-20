@@ -29,6 +29,7 @@ public class PetController {
 	
 	@PostMapping ("/newPet/{pet}")
 	public boolean newPet(@RequestBody Pet pet) {
+		System.out.println("Pet aggiunto");
 		return petService.newPet(pet);
 	}
 }

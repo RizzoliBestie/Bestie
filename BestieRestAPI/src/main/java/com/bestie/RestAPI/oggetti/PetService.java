@@ -28,11 +28,12 @@ public class PetService {
 		final String name = pet.getName();
 		final double weight = pet.getWeight();
 		final boolean gender = pet.getGender();
+		final boolean sterilized = pet.getSterilized();
+		final String fur_type = pet.getFur_type();
 		
-		jdbcTemplate.update("INSERT INTO Pet(id_user, race, name, weight, gender) VALUES( ? , ? , ? , ? , ? )"
-				, id_user, race, name, weight, gender);
+		jdbcTemplate.update("INSERT INTO Pet(id_user, id_race, name, weight, gender, sterilized, fur_type) VALUES( ? , ? , ? , ? , ?, ?, ? )"
+				, id_user, race, name, weight, gender, sterilized, fur_type);
 		return true;
 	}
-	
 	
 }

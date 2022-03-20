@@ -14,13 +14,13 @@ public class Pet {
 	private Date lastMeal; 
 	private Date lastWalk; 
 	private boolean sterilized;
-	private byte fur_type;
+	private String fur_type;
 	
-	public byte getFur_type() {
+	public String getFur_type() {
 		return fur_type;
 	}
 
-	public void setFur_type(byte fur_type) {
+	public void setFur_type(String fur_type) {
 		this.fur_type = fur_type;
 	}
 
