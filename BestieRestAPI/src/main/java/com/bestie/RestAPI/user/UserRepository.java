@@ -9,7 +9,7 @@ public interface UserRepository {
 	//Trova un utente tramite id 
 	public List<User> getAllUsers();
 	
-	public List<User> findUserById(Integer id);
+	public List<User> findUserById(int id);
 		
 	//Trova un utente tramite username
 	public List<User> findUserByUsername(String username);
