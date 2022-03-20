@@ -39,7 +39,7 @@ public class UserController {
 	}
 
 	@GetMapping("/users/{id}")
-	public List<User> findById(@PathVariable("id") int id) {
+	public List<User> findById(@PathVariable("id") Integer id) {
 		System.out.println("ci siamooooo");
 		return repo.findUserById(id);
 	}
