@@ -2,6 +2,7 @@ package com.example.bestie.home;
 
 import android.app.Activity;
 import android.content.Context;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -69,7 +70,9 @@ public class HomeFragment extends Fragment {
                 for (int i = 0; i < pets.size(); i++) {
                     Pet pet = pets.get(i);
                     String title = pet.getName();
-                    petCards.add(new PetCard(title, R.drawable.doggo));
+                    String uriString=pet.getUri_image();
+                    Uri uri = Uri.parse(uriString);
+                    petCards.add(new PetCard(title, uri));
                 }
                 RecyclerView recyclerView = v.findViewById(R.id.home_pets_container);
                 recyclerView.setLayoutManager(new LinearLayoutManager(act));

@@ -33,7 +33,8 @@ public class CardAdapter extends RecyclerView.Adapter<CardVH> {
     @Override
     public void onBindViewHolder(@NonNull CardVH holder, int position) {
         holder.textView.setText(items.get(position).title);
-        holder.imageView.setImageResource(items.get(position).imgId);
+        //holder.imageView.setImageResource(items.get(position).imgId);
+        holder.imageView.setImageURI(items.get(position).uri);
     }
 
     @Override

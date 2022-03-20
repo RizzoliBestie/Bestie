@@ -16,7 +16,6 @@ public class Pet {
     private String fur_type;
     private String uri_image;
 
-
     public Pet(int id_pet, int id_user, int id_race, String name, double weight, boolean gender, Date birthDate, Date lastMeal, Date lastWalk, boolean sterilized, String fur_type, String uri_image) {
         this.id_pet = id_pet;
         this.id_user = id_user;
@@ -31,7 +30,17 @@ public class Pet {
         this.fur_type = fur_type;
         this.uri_image= uri_image;
     }
+    public boolean isGender() {
+        return gender;
+    }
 
+    public boolean isSterilized() {
+        return sterilized;
+    }
+
+    public String getUri_image() {
+        return uri_image;
+    }
     public boolean getGender() {
         return gender;
     }
