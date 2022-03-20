@@ -257,7 +257,7 @@ public class NewPetActivity extends AppCompatActivity {
         addPet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(name!=null && pelo!=null){
+                if(name!=null && pelo!=null && uri_image!=null){
                     int id_race = selectedRace.getId_race();
                     Pet pet = new Pet(id_pet, id_user, id_race, name, weight, sex, birthdate, null, null, sterilized, pelo, uri_image);
                     ownersPets.add(pet);
@@ -277,7 +277,7 @@ public class NewPetActivity extends AppCompatActivity {
                         }
                     });
                 }
-                else Toast.makeText(NewPetActivity.this, "Compila tutti i campi", Toast.LENGTH_SHORT).show();
+                else Toast.makeText(NewPetActivity.this, "Compila tutti i campi e assicurati di inserire un'immagine", Toast.LENGTH_SHORT).show();
             }
         });
 

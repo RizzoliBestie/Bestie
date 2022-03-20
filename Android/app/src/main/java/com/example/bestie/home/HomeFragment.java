@@ -71,8 +71,10 @@ public class HomeFragment extends Fragment {
                     Pet pet = pets.get(i);
                     String title = pet.getName();
                     String uriString=pet.getUri_image();
+                    if(uriString!=null){
                     Uri uri = Uri.parse(uriString);
-                    petCards.add(new PetCard(title, uri));
+                    petCards.add(new PetCard(title, uri));}
+                    else petCards.add(new PetCard(title, R.drawable.doggo));
                 }
                 RecyclerView recyclerView = v.findViewById(R.id.home_pets_container);
                 recyclerView.setLayoutManager(new LinearLayoutManager(act));
