@@ -30,9 +30,10 @@ public class PetService {
 		final boolean gender = pet.getGender();
 		final boolean sterilized = pet.getSterilized();
 		final String fur_type = pet.getFur_type();
+		final String uri_image = pet.getUri_image();
 		
-		jdbcTemplate.update("INSERT INTO Pet(id_user, id_race, name, weight, gender, sterilized, fur_type) VALUES( ? , ? , ? , ? , ?, ?, ? )"
-				, id_user, race, name, weight, gender, sterilized, fur_type);
+		jdbcTemplate.update("INSERT INTO Pet(id_user, id_race, name, weight, gender, sterilized, fur_type, uri_image) VALUES( ? , ? , ? , ? , ?, ?, ?, ? )"
+				, id_user, race, name, weight, gender, sterilized, fur_type, uri_image);
 		return true;
 	}
 	

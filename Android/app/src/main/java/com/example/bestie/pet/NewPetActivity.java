@@ -71,6 +71,7 @@ public class NewPetActivity extends AppCompatActivity {
     boolean sex;
     Date birthdate;
     List<Pet> ownersPets = new LinkedList<>();
+    String uri_image=null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -258,7 +259,7 @@ public class NewPetActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if(name!=null && pelo!=null){
                     int id_race = selectedRace.getId_race();
-                    Pet pet = new Pet(id_pet, id_user, id_race, name, weight, sex, birthdate, null, null, sterilized, pelo);
+                    Pet pet = new Pet(id_pet, id_user, id_race, name, weight, sex, birthdate, null, null, sterilized, pelo, uri_image);
                     ownersPets.add(pet);
                     id_pet++;
                     //Toast.makeText(NewPetActivity.this, name, Toast.LENGTH_SHORT).show();
@@ -298,6 +299,7 @@ public class NewPetActivity extends AppCompatActivity {
         if (requestCode == 1) {
             Uri uri = data.getData();
             addImage.setImageURI(uri);
+            uri_image=uri.toString();
         }
     }
 
@@ -318,19 +320,6 @@ public class NewPetActivity extends AppCompatActivity {
         if (sterilized.equals("Sì"))
             return true;
         else return false;
-    }
-
-    protected Pet createNewPet(Race race) {
-        String name = nameET.getText().toString();
-        int id_race = race.getId_race();
-        double weight = pesoBar.getProgress();
-        boolean sterilized = getBooleanSterilizedFromText(sterilizedSelected.getText().toString());
-        boolean sex = getBooleanSexFromText(selectedSexButton.getText().toString());
-        String furType = selectedFurButton.getText().toString();
-        Date birthdate = getDateFromDatePicker(datePicker);
-
-        Pet pet = new Pet(id_pet, id_user, id_race, name, weight, sex, birthdate, null, null, sterilized, furType);
-        return pet;
     }
 
     public static java.util.Date getDateFromDatePicker(DatePicker datePicker) {
