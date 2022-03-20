@@ -38,5 +38,10 @@ public class UserController {
 		return repo.register(username, email, password, phone_number);
 	}
 
-
+	@GetMapping("/users/{id}")
+	public List<User> findById(@PathVariable("id") int id) {
+		System.out.println("ci siamooooo");
+		return repo.findUserById(id);
+	}
+	
 }

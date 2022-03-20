@@ -43,7 +43,7 @@ public class AdminController {
 		return userRepo.getAllUsers();
 	}
 	
-	/*@GetMapping("/list/species")
+	@GetMapping("/list/species")
 	public List<Specie> getSpecieList(){
 		return specieRepo.getAllSpecie();
 	}
@@ -51,6 +51,6 @@ public class AdminController {
 	@GetMapping("/list/races")
 	public List<Race> getRaceList(){
 		return raceRepo.getAllRaces();
-	}*/
+	}
 	
 }

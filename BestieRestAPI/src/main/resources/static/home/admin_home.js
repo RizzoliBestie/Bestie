@@ -1,19 +1,4 @@
 /////////////////////////////
-/////   REST Buttons    /////
-/////////////////////////////
-
-function Rest_Request(call){
-    switch(call){
-        case "C":
-            break;
-        case "U":
-            break;
-        case "D":
-            break;
-    }
-}
-
-/////////////////////////////
 /////   Page Creation   /////
 /////////////////////////////
 
@@ -58,6 +43,7 @@ function Menu_Selection(){
                             var update_class = document.createAttribute("class");
                             var delete_class = document.createAttribute("class");
                             var update_onclick = document.createAttribute("onclick");
+                            var delete_onclick = document.createAttribute("onclick");
 
                             //Assegnamento attributi
 
@@ -67,7 +53,8 @@ function Menu_Selection(){
                             delete_src.value="../img/icons/trash.png";
                             update_class.value = "pencil";
                             delete_class.value = "trash";
-                            update_onclick.value = "switchPage()";
+                            update_onclick.value = "switchPage('type=users&id="+ jsonResponse[i].id_user + "')";
+                            delete_onclick.value= "deleteRow('"+ jsonResponse[i].id_user+"')";
 
                             //Aggiunta attributi
 
@@ -75,6 +62,7 @@ function Menu_Selection(){
                             update_input.setAttributeNode(update_src);
                             update_row.setAttributeNode(update_class);
                             update_input.setAttributeNode(update_onclick);
+                            delete_input.setAttributeNode(delete_onclick);
                             delete_input.setAttributeNode(delete_type);
                             delete_input.setAttributeNode(delete_src);
                             delete_row.setAttributeNode(delete_class);
@@ -132,6 +120,8 @@ function Menu_Selection(){
                             var delete_src = document.createAttribute("src");
                             var update_class = document.createAttribute("class");
                             var delete_class = document.createAttribute("class");
+                            var update_onclick = document.createAttribute("onclick");
+                            var delete_onclick = document.createAttribute("onclick");
 
                             //Assegnamento attributi
                             update_type.value="image";
@@ -140,11 +130,15 @@ function Menu_Selection(){
                             delete_src.value="../img/icons/trash.png";
                             update_class.value = "pencil";
                             delete_class.value = "trash";
+                            update_onclick.value = "switchPage('type=species&id="+ jsonResponse[i].id_user + "')";
+                            delete_onclick.value= "deleteRow('"+ jsonResponse[i].id_specie+"')";
 
                             //Aggiunta attributi
                             update_input.setAttributeNode(update_type);
                             update_input.setAttributeNode(update_src);
                             update_row.setAttributeNode(update_class);
+                            update_input.setAttributeNode(update_onclick);
+                            delete_input.setAttributeNode(delete_onclick);
                             delete_input.setAttributeNode(delete_type);
                             delete_input.setAttributeNode(delete_src);
                             delete_row.setAttributeNode(delete_class);
@@ -193,6 +187,8 @@ function Menu_Selection(){
                             var delete_src = document.createAttribute("src");
                             var update_class = document.createAttribute("class");
                             var delete_class = document.createAttribute("class");
+                            var update_onclick = document.createAttribute("onclick");
+                            var delete_onclick = document.createAttribute("onclick");
 
                             //Assegnamento attributi
                             update_type.value="image";
@@ -201,11 +197,15 @@ function Menu_Selection(){
                             delete_src.value="../img/icons/trash.png";
                             update_class.value = "pencil";
                             delete_class.value = "trash";
+                            update_onclick.value = "switchPage('type=races&id="+ jsonResponse[i].id_user + "')";
+                            delete_onclick.value= "deleteRow('"+ jsonResponse[i].id_race+"')";
 
                             //Aggiunta attributi
                             update_input.setAttributeNode(update_type);
                             update_input.setAttributeNode(update_src);
                             update_row.setAttributeNode(update_class);
+                            update_input.setAttributeNode(update_onclick);
+                            delete_input.setAttributeNode(delete_onclick);
                             delete_input.setAttributeNode(delete_type);
                             delete_input.setAttributeNode(delete_src);
                             delete_row.setAttributeNode(delete_class);
@@ -249,4 +249,15 @@ function Menu_Selection(){
     };
     xhttp.open("GET", URIAddr);
     xhttp.send(null);
+}
+
+function switchPage(query){
+    location.href = "../home/update_page/admin_update.html?" + query;
+}
+
+function deleteRow(id){
+    var choice = confirm("Vuoi davvero eliminare questa riga (id -> "+id+")?");
+    if(choice){
+        alert("miao");
+    }
 }
