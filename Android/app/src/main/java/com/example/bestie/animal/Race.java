@@ -51,6 +51,8 @@ public class Race {
 
     public void setSize(String size) { this.size = size; }
 
+    public void setFur_type(String fur_type) { this.fur_type = fur_type; }
+
     @Override
     public String toString() { return name + ' ' + information + ' ' + size; }
 }
