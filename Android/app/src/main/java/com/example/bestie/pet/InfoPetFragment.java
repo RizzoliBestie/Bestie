@@ -28,10 +28,12 @@ import androidx.fragment.app.Fragment;
 import com.example.bestie.API.API_Connection_Bestie;
 import com.example.bestie.API.API_Methods_Interface;
 import com.example.bestie.R;
+import com.example.bestie.general.Race;
 import com.example.bestie.general.Specie;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -57,7 +59,11 @@ public class InfoPetFragment extends Fragment {
     String furType;
     boolean sterilized;
     boolean isMale;
-
+    int id_race;
+    int id_specie;
+    Race selectedRace=null;
+    String specieText;
+    String raceText;
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -86,6 +92,7 @@ public class InfoPetFragment extends Fragment {
         furType=getArguments().getString("furType");
         sterilized=getArguments().getBoolean("sterilized");
         isMale=getArguments().getBoolean("isMale");
+        id_race=getArguments().getInt("id_specie");
 
         loadArray(infoArrayList);
         adapter = new PetListAdapter(act, R.layout.info_pet_list_item, infoArrayList);
@@ -98,6 +105,51 @@ public class InfoPetFragment extends Fragment {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
+        Retrofit retrofit = ((API_Connection_Bestie) act.getApplication()).getRetrofit();
+        API_Methods_Interface api = retrofit.create(API_Methods_Interface.class);
+
+        Call<List<Race>> getAllRace = api.getAllRaces();
+        getAllRace.enqueue(new Callback<List<Race>>() {
+            @Override
+            public void onResponse(Call<List<Race>> call, Response<List<Race>> response) {
+                List<Race> raceList = response.body();
+                razze=new String[raceList.size()];
+                for (int i=0; i<raceList.size(); i++){
+                    razze[i]=raceList.get(i).getName();
+                    if(id_race==raceList.get(i).getId_race()) {
+                        selectedRace = raceList.get(i);
+                        id_specie = selectedRace.getId_specie();
+                        raceText = selectedRace.getName();
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Race>> call, Throwable t) {
+                Toast.makeText(act, "Caricamento razze fallito", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        if(selectedRace!=null) {
+            Call<List<Specie>> getAllSpecie = api.getAllSpecies();
+            getAllSpecie.enqueue(new Callback<List<Specie>>() {
+                @Override
+                public void onResponse(Call<List<Specie>> call, Response<List<Specie>> response) {
+                    List<Specie> specieList = response.body();
+                    specie= new String[specieList.size()];
+                    for (int i = 0; i < specieList.size(); i++) {
+                        specie[i] = specieList.get(i).getCommon_name();
+                        if (id_specie == specieList.get(i).getId_specie())
+                            specieText = specieList.get(i).getCommon_name();
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<List<Specie>> call, Throwable t) {
+                    Toast.makeText(act, "Caricamento specie fallito", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
 
         //SETTO IMMAGINI SE MASCHIO O FEMMINA
         if (isMale) {

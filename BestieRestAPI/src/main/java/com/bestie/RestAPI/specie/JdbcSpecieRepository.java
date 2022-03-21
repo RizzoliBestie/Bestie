@@ -32,5 +32,11 @@ public class JdbcSpecieRepository implements SpecieRepository{
 	public void deleteSpecie(int id_specie) {
 		jdbcTemplate.update("DELETE FROM Specie WHERE id_specie = ?", id_specie);
 	}
+
+	@Override
+	public List<Specie> findSpecieById(int id_specie) {
+		return jdbcTemplate.query("SELECT * FROM Specie WHERE id_specie=?", BeanPropertyRowMapper.newInstance(Specie.class), id_specie);
+		
+	}
 	
 }

@@ -34,6 +34,7 @@ public class PetActivity extends AppCompatActivity {
     String furType;
     boolean sterilized;
     boolean isMale;
+    int id_race;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,6 +60,7 @@ public class PetActivity extends AppCompatActivity {
                 furType=pet.getFur_type();
                 sterilized=pet.getSterilized();
                 isMale=pet.getGender();
+                id_race=pet.getId_race();
 
                 sendDataToFragment();
                 namePet.setText(name);
@@ -84,6 +86,7 @@ public class PetActivity extends AppCompatActivity {
         bundle.putBoolean("sterilized", sterilized);
         bundle.putBoolean("isMale", isMale);
         bundle.putString("furType", furType);
+        bundle.putInt("id_race", id_race);
         infoPetFragment.setArguments(bundle);
     }
 

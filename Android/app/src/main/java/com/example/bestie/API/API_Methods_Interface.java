@@ -47,13 +47,16 @@ public interface API_Methods_Interface {
     @POST("/newPet/{pet}")
     Call<Boolean> addPet(@Body Pet pet);
 
-    @GET("/race/name")
-    Call<Race> getRaceByName(@Body String name);
+    @GET("/race/{id_race}")
+    Call<Race> getRaceById(@Path("id_race") int id_race);
 
     @GET("/races/{id_specie}")
     Call<List<Race>> getRaceBySpecie(@Path("id_specie") int id_specie);
 
     @GET("/pets/{id}")
     Call<Pet> getPetById(@Path("id") long id_pet);
+
+    @GET("/specie/{id_specie}")
+    Call<Specie> getSpecieById(@Path("id_specie") int id_specie);
 
 }

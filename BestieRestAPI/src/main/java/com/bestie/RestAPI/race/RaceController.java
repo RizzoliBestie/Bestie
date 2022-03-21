@@ -32,5 +32,11 @@ public class RaceController {
 	public List<Race> getRaceBySpecie (@PathVariable int id_specie) {
 		return raceRepository.getRaceBySpecie(id_specie);
 	}
+	
+	@RequestMapping("/race/{id_race}")
+	public Race getRaceById (@PathVariable int id_race) {
+		Race race = raceRepository.getRaceById(id_race).get(0);
+		return race;
+	}
 
 }

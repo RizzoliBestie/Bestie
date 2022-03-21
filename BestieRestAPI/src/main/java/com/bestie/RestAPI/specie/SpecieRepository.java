@@ -16,4 +16,6 @@ public interface SpecieRepository {
 	//Elimina una specie
 	public void deleteSpecie(int id_specie);
 	
+	public List<Specie> findSpecieById(int id_specie);
+	
 }
