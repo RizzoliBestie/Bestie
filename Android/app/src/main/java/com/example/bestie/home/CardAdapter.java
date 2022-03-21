@@ -22,7 +22,6 @@ import kotlin.jvm.internal.Lambda;
 public class CardAdapter extends RecyclerView.Adapter<CardVH> {
 
     List<PetCard> items;
-    Intent petActivityIntent;
     Context ctx;
 
     public CardAdapter(List<PetCard> items, Context ctx) {
@@ -41,24 +40,26 @@ public class CardAdapter extends RecyclerView.Adapter<CardVH> {
     public void onBindViewHolder(@NonNull CardVH holder, int position) {
         holder.textView.setText(items.get(position).title);
         holder.imageView.setImageResource(items.get(position).imgId);
+        holder.id_pet=items.get(position).id_pet;
         //METODO ONCLICK SU HOME IMAGE
         holder.imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                setPetActivityIntent( new Intent(ctx, PetActivity.class));
+                Intent petActivityIntent= new Intent(ctx, PetActivity.class);
+                long id_pet= holder.id_pet;
+                petActivityIntent.putExtra("id_pet", id_pet);
                 ctx.startActivity(petActivityIntent);
+
+
+
             }
         });
         //holder.imageView.setImageURI(items.get(position).uri);
     }
 
-    public void setPetActivityIntent(Intent petActivityIntent) {
-        this.petActivityIntent = petActivityIntent;
-    }
 
-    public Intent getPetActivityIntent() {
-        return petActivityIntent;
-    }
+
+
 
     @Override
     public int getItemCount() {
@@ -71,6 +72,7 @@ class CardVH extends RecyclerView.ViewHolder{
     TextView textView;
     CircularImageView imageView;
     private CardAdapter adapter;
+    long id_pet;
 
     public CardVH(@NonNull View itemView) {
         super(itemView);

@@ -12,10 +12,12 @@ public class PetCard {
     String title;
     int imgId;
     Uri uri;
+    long id_pet;
 
-    public PetCard(String title, int imgId){
+    public PetCard(String title, int imgId, long id_pet){
         this.title=title;
         this.imgId= imgId;
+        this.id_pet=id_pet;
     }
 
     public PetCard(String title, Uri uri){

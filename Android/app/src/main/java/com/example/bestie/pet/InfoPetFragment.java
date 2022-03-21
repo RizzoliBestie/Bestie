@@ -18,22 +18,30 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
+import com.example.bestie.API.API_Connection_Bestie;
+import com.example.bestie.API.API_Methods_Interface;
 import com.example.bestie.R;
+import com.example.bestie.general.Specie;
 
 import java.util.ArrayList;
 import java.util.Date;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
 
 public class InfoPetFragment extends Fragment {
     ArrayList<InfoPetListItem> infoArrayList = new ArrayList<>();
     ArrayList<InfoPetListItem> infoArrayList2 = new ArrayList<>();
     Activity act = null;
-    boolean isMale;
     String maleOnUri = "@drawable/male_on";
     String maleUri = "@drawable/male";
     String femaleOnUri = "@drawable/female_on";
@@ -41,7 +49,15 @@ public class InfoPetFragment extends Fragment {
     int imageResourceM;
     int imageResourceF;
     PetListAdapter adapter;
-    String[] peloType = {"Corto", "Medio", "Lungo"};
+
+    String name=null;
+    String[] specie;
+    String[] razze;
+    double weight;
+    String furType;
+    boolean sterilized;
+    boolean isMale;
+
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -56,13 +72,20 @@ public class InfoPetFragment extends Fragment {
 
     //______________INIZIALIZZAZIONE VARIABILI_____________________________________________
 
-        isMale = false;
 
         ListView infoPetLV = (ListView) view.findViewById(R.id.infoPetLV);
         ListView infoPetLV2 = (ListView) view.findViewById(R.id.infoPetLV2);
         CalendarView calendarView = view.findViewById(R.id.info_pet_date);
         ImageView male = view.findViewById(R.id.info_pet_male);
         ImageView female = view.findViewById(R.id.info_pet_female);
+
+        calendarView.setDate(new Date().getTime());
+
+        name=getArguments().getString("name");
+        weight=getArguments().getDouble("weight");
+        furType=getArguments().getString("furType");
+        sterilized=getArguments().getBoolean("sterilized");
+        isMale=getArguments().getBoolean("isMale");
 
         loadArray(infoArrayList);
         adapter = new PetListAdapter(act, R.layout.info_pet_list_item, infoArrayList);
@@ -72,9 +95,9 @@ public class InfoPetFragment extends Fragment {
         PetListAdapter adapter2 = new PetListAdapter(act, R.layout.info_pet_list_item, infoArrayList2);
         infoPetLV2.setAdapter(adapter2);
 
-        calendarView.setDate(new Date().getTime());
-
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
 
         //SETTO IMMAGINI SE MASCHIO O FEMMINA
         if (isMale) {
@@ -146,16 +169,18 @@ public class InfoPetFragment extends Fragment {
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
     //METODO PER CARICARE ARRAY PRINCIPALE
     ArrayList<InfoPetListItem> loadArray(ArrayList<InfoPetListItem> arrayList) {
         InfoPetListItem specie = new InfoPetListItem("Specie:", null);
         InfoPetListItem razza = new InfoPetListItem("Razza:", null);
-        InfoPetListItem peso = new InfoPetListItem("Peso (Kg):", null);
-        InfoPetListItem pelo = new InfoPetListItem("Pelo:", null);
-        InfoPetListItem sterile = new InfoPetListItem("Sterilizzazione:", null);
+        InfoPetListItem peso = new InfoPetListItem("Peso (Kg):", weight);
+        InfoPetListItem pelo = new InfoPetListItem("Pelo:", furType);
+        InfoPetListItem sterile = new InfoPetListItem("Sterilizzazione:", sterilized);
         InfoPetListItem dataDiNascita = new InfoPetListItem("Data di nascita:", null);
+
 
         arrayList.add(specie);
         arrayList.add(razza);
@@ -172,7 +197,8 @@ public class InfoPetFragment extends Fragment {
     ArrayList<InfoPetListItem> loadArray2(ArrayList<InfoPetListItem> arrayList) {
 
         InfoPetListItem hr = new InfoPetListItem(null, null);
-        InfoPetListItem sesso = new InfoPetListItem("Sesso:", null);
+        InfoPetListItem sesso = new InfoPetListItem("Sesso:", isMale);
+        sesso.subtitle="";
         arrayList.add(hr);
         arrayList.add(sesso);
         return arrayList;

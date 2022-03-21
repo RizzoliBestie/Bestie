@@ -53,4 +53,7 @@ public interface API_Methods_Interface {
     @GET("/races/{id_specie}")
     Call<List<Race>> getRaceBySpecie(@Path("id_specie") int id_specie);
 
+    @GET("/pets/{id}")
+    Call<Pet> getPetById(@Path("id") long id_pet);
+
 }
