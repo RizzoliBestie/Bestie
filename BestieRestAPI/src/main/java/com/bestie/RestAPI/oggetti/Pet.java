@@ -15,15 +15,15 @@ public class Pet {
 	private Date lastWalk; 
 	private boolean sterilized;
 	private String fur_type;
-	private String uri_image;
+	//private String uri_image;
 	
-	public String getUri_image() {
+	/*public String getUri_image() {
 		return uri_image;
 	}
 
 	public void setUri_image(String uri_image) {
 		this.uri_image = uri_image;
-	}
+	}*/
 
 	public String getFur_type() {
 		return fur_type;

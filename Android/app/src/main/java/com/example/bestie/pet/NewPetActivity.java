@@ -5,8 +5,10 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.FileUtils;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -31,11 +33,17 @@ import com.example.bestie.general.Race;
 import com.example.bestie.general.Specie;
 import com.mikhaellopez.circularimageview.CircularImageView;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
-
+import java.util.logging.Logger;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -257,9 +265,9 @@ public class NewPetActivity extends AppCompatActivity {
         addPet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(name!=null && pelo!=null && uri_image!=null){
+                if(name!=null && pelo!=null){
                     int id_race = selectedRace.getId_race();
-                    Pet pet = new Pet(id_pet, id_user, id_race, name, weight, sex, birthdate, null, null, sterilized, pelo, uri_image);
+                    Pet pet = new Pet(id_pet, id_user, id_race, name, weight, sex, birthdate, null, null, sterilized, pelo);
                     ownersPets.add(pet);
                     id_pet++;
                     //Toast.makeText(NewPetActivity.this, name, Toast.LENGTH_SHORT).show();
@@ -277,7 +285,7 @@ public class NewPetActivity extends AppCompatActivity {
                         }
                     });
                 }
-                else Toast.makeText(NewPetActivity.this, "Compila tutti i campi e assicurati di inserire un'immagine", Toast.LENGTH_SHORT).show();
+                else Toast.makeText(NewPetActivity.this, "Compila tutti i campi", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -304,11 +312,70 @@ public class NewPetActivity extends AppCompatActivity {
     }
 
     void pickImage() {
-        Intent imageIntent = new Intent();
-        imageIntent.setType("image/*");
-        imageIntent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(Intent.createChooser(imageIntent, "title"), SELECT_IMAGE_CODE);
+        Intent galleryIntent = new Intent(Intent.ACTION_GET_CONTENT);
+        galleryIntent.setType("image/*");
+        if (galleryIntent.resolveActivity(getPackageManager()) != null) {
+            startActivityForResult(Intent.createChooser(galleryIntent, "Select File"), SELECT_IMAGE_CODE);
+        }
     }
+
+   /* public static String getPathFromInputStreamUri(Context context, Uri uri) {
+        InputStream inputStream = null;
+        String filePath = null;
+
+        if (uri.getAuthority() != null) {
+            try {
+                inputStream = context.getContentResolver().openInputStream(uri);
+                File photoFile = createTemporalFileFrom(inputStream);
+
+                filePath = photoFile.getPath();
+
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } finally {
+                try {
+                    if (inputStream != null) {
+                        inputStream.close();
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+        return filePath;
+    }
+
+    private static File createTemporalFileFrom(InputStream inputStream) throws IOException {
+        File targetFile = null;
+
+        if (inputStream != null) {
+            int read;
+            byte[] buffer = new byte[8 * 1024];
+
+            targetFile = createTemporalFile();
+            OutputStream outputStream = new FileOutputStream(targetFile);
+
+            while ((read = inputStream.read(buffer)) != -1) {
+                outputStream.write(buffer, 0, read);
+            }
+            outputStream.flush();
+
+            try {
+                outputStream.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return targetFile;
+    }
+
+    private static File createTemporalFile() {
+        return new File(, "tempPicture.jpg");
+    }*/
 
     boolean getBooleanSexFromText(String sex) {
         if (sex.equals("M"))

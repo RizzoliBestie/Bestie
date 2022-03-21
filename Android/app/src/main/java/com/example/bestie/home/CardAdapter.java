@@ -1,14 +1,18 @@
 package com.example.bestie.home;
 
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.bestie.R;
+import com.example.bestie.pet.PetActivity;
 import com.mikhaellopez.circularimageview.CircularImageView;
 
 import java.util.List;
@@ -18,9 +22,12 @@ import kotlin.jvm.internal.Lambda;
 public class CardAdapter extends RecyclerView.Adapter<CardVH> {
 
     List<PetCard> items;
+    Intent petActivityIntent;
+    Context ctx;
 
-    public CardAdapter(List<PetCard> items) {
+    public CardAdapter(List<PetCard> items, Context ctx) {
         this.items = items;
+        this.ctx=ctx;
     }
 
     @NonNull
@@ -33,8 +40,24 @@ public class CardAdapter extends RecyclerView.Adapter<CardVH> {
     @Override
     public void onBindViewHolder(@NonNull CardVH holder, int position) {
         holder.textView.setText(items.get(position).title);
-        //holder.imageView.setImageResource(items.get(position).imgId);
-        holder.imageView.setImageURI(items.get(position).uri);
+        holder.imageView.setImageResource(items.get(position).imgId);
+        //METODO ONCLICK SU HOME IMAGE
+        holder.imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setPetActivityIntent( new Intent(ctx, PetActivity.class));
+                ctx.startActivity(petActivityIntent);
+            }
+        });
+        //holder.imageView.setImageURI(items.get(position).uri);
+    }
+
+    public void setPetActivityIntent(Intent petActivityIntent) {
+        this.petActivityIntent = petActivityIntent;
+    }
+
+    public Intent getPetActivityIntent() {
+        return petActivityIntent;
     }
 
     @Override

@@ -14,9 +14,9 @@ public class Pet {
     private Date lastWalk;
     private boolean sterilized;
     private String fur_type;
-    private String uri_image;
+   // private String uri_image;
 
-    public Pet(int id_pet, int id_user, int id_race, String name, double weight, boolean gender, Date birthDate, Date lastMeal, Date lastWalk, boolean sterilized, String fur_type, String uri_image) {
+    public Pet(int id_pet, int id_user, int id_race, String name, double weight, boolean gender, Date birthDate, Date lastMeal, Date lastWalk, boolean sterilized, String fur_type) {
         this.id_pet = id_pet;
         this.id_user = id_user;
         this.id_race = id_race;
@@ -28,7 +28,7 @@ public class Pet {
         this.lastWalk = lastWalk;
         this.sterilized = sterilized;
         this.fur_type = fur_type;
-        this.uri_image= uri_image;
+        //this.uri_image= uri_image;
     }
     public boolean isGender() {
         return gender;
@@ -38,9 +38,9 @@ public class Pet {
         return sterilized;
     }
 
-    public String getUri_image() {
+   /* public String getUri_image() {
         return uri_image;
-    }
+    }*/
     public boolean getGender() {
         return gender;
     }
