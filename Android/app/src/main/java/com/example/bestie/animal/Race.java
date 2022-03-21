@@ -32,6 +32,7 @@ public class Race {
         this.name = name;
         this.information = information;
         this.size = size;
+        this.fur_type = fur_type;
     }
 
     public String getName() { return name; }
