@@ -37,4 +37,17 @@ public class PetService {
 		return true;
 	}
 	
+	public void updatePet(Pet pet) {
+		final int id_pet=pet.getId_pet();
+		final int race = pet.getId_race();
+		final String name = pet.getName();
+		final double weight = pet.getWeight();
+		final boolean gender = pet.getGender();
+		final boolean sterilized = pet.getSterilized();
+		final String fur_type = pet.getFur_type();
+		
+		jdbcTemplate.update("UPDATE Pet SET id_race = ?, name = ?, weight = ?, gender = ?, sterilized = ?, fur_type = ? WHERE id_pet = ?",
+				race, name, weight, gender, sterilized, fur_type, id_pet);
+	}
+	
 }

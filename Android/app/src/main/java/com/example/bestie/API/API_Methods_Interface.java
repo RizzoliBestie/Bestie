@@ -12,6 +12,7 @@ import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
 public interface API_Methods_Interface {
@@ -28,10 +29,6 @@ public interface API_Methods_Interface {
     @POST("/signin/{username}/{email}/{password}/{phone_number}")
     Call<Boolean> register(@Path("username")String username,@Path("email") String email,@Path("password") String password,@Path("phone_number") String phone_number);
 
-    //Ritorna tutti gli utenti presenti nel DB
-    @GET("/list/users")
-    Call<List<User>> getAllUsers();
-
     //Ritorna tutte le razze presenti nel DB
     @GET("/list/races")
     Call<List<Race>> getAllRaces();
@@ -47,14 +44,24 @@ public interface API_Methods_Interface {
     @POST("/newPet/{pet}")
     Call<Boolean> addPet(@Body Pet pet);
 
-    @GET("/race/{id_race}")
-    Call<Race> getRaceById(@Path("id_race") int id_race);
-
     @GET("/races/{id_specie}")
     Call<List<Race>> getRaceBySpecie(@Path("id_specie") int id_specie);
 
     @GET("/pets/{id}")
     Call<Pet> getPetById(@Path("id") long id_pet);
+
+    @GET("/specie/{common_name}")
+    Call<Specie> getSpecieByName(@Path("common_name") String common_name);
+
+    @PUT("/update/pet/{petObject}")
+    Call<Boolean> updatePet(@Body Pet pet);
+
+    //Ritorna tutti gli utenti presenti nel DB
+    @GET("/list/users")
+    Call<List<User>> getAllUsers();
+
+    @GET("/race/{id_race}")
+    Call<Race> getRaceById(@Path("id_race") int id_race);
 
     @GET("/specie/{id_specie}")
     Call<Specie> getSpecieById(@Path("id_specie") int id_specie);

@@ -38,5 +38,10 @@ public class JdbcSpecieRepository implements SpecieRepository{
 		return jdbcTemplate.query("SELECT * FROM Specie WHERE id_specie=?", BeanPropertyRowMapper.newInstance(Specie.class), id_specie);
 
 	}
+
+	@Override
+	public List<Specie> findSpecieByName(String common_name) {
+		return jdbcTemplate.query("SELECT * FROM Specie WHERE common_name=?", BeanPropertyRowMapper.newInstance(Specie.class), common_name);
+	}
 	
 }

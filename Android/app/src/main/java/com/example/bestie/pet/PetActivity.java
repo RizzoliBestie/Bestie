@@ -5,8 +5,10 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.icu.text.IDNA;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.CalendarView;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -35,12 +37,20 @@ public class PetActivity extends AppCompatActivity {
     boolean sterilized;
     boolean isMale;
     int id_race;
+
+    boolean isEdited=false;
+    boolean fragmentExists=false;
+
+    ImageView editPetButton;
+    InfoPetFragment infoPetFragment;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pet);
 
         TextView namePet = findViewById(R.id.petNameTV);
+        editPetButton= findViewById(R.id.edit_pet_button);
+        infoPetFragment  = new InfoPetFragment();
 
         id_pet = getIntent().getExtras().getLong("id_pet");
         Toolbar toolbar = findViewById(R.id.pet_toolbar);
@@ -70,14 +80,13 @@ public class PetActivity extends AppCompatActivity {
 
             }
         });
+    }
 
-
-
-
+    public ImageView getEditPetButton() {
+        return editPetButton;
     }
 
     public void sendDataToFragment(){
-        InfoPetFragment infoPetFragment = new InfoPetFragment();
         Bundle bundle = new Bundle();
         bundle.putString("name", name);
         bundle.putDouble("weight", weight);
@@ -87,7 +96,7 @@ public class PetActivity extends AppCompatActivity {
         bundle.putInt("id_race", id_race);
         infoPetFragment.setArguments(bundle);
         getSupportFragmentManager().beginTransaction().replace(R.id.info_pet_fragment_container, infoPetFragment).commit();
-
+        fragmentExists=true;
     }
 
 }

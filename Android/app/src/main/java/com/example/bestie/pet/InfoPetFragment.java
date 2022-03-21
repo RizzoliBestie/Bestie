@@ -11,12 +11,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
 import android.widget.CalendarView;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -57,7 +55,7 @@ public class InfoPetFragment extends Fragment {
     ImageView female;
     PetListAdapter adapter;
 
-    String name = null;
+    String petName;
     String[] specie;
     String[] razze;
     double weight;
@@ -67,8 +65,13 @@ public class InfoPetFragment extends Fragment {
     int id_race;
     int id_specie;
     Race selectedRace = null;
+    String selectedSpecieText="";
     String specieText = "";
     String raceText = "";
+
+    ImageView editPetButton;
+    boolean mainCodeExecuted=false;
+    API_Methods_Interface api;
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -81,16 +84,28 @@ public class InfoPetFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_info_pet, container, false);
 
-        name = getArguments().getString("name");
+        petName = getArguments().getString("name");
         weight = getArguments().getDouble("weight");
         furType = getArguments().getString("furType");
         sterilized = getArguments().getBoolean("sterilized");
         isMale = getArguments().getBoolean("isMale");
         id_race = getArguments().getInt("id_race");
 
+        PetActivity petActivity = (PetActivity) getActivity();
+        editPetButton=petActivity.getEditPetButton();
+
+        editPetButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (mainCodeExecuted){
+                    Toast.makeText(act, "Modificato!", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
 
         Retrofit retrofit = ((API_Connection_Bestie) act.getApplication()).getRetrofit();
-        API_Methods_Interface api = retrofit.create(API_Methods_Interface.class);
+        api = retrofit.create(API_Methods_Interface.class);
 
             Call<List<Race>> getAllRace = api.getAllRaces();
            getAllRace.enqueue(new Callback<List<Race>>() {
@@ -121,6 +136,7 @@ public class InfoPetFragment extends Fragment {
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                          //FINE ON CREATE//                                                   //
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     void inizialize(View view){
@@ -135,8 +151,6 @@ public class InfoPetFragment extends Fragment {
     }
 
     void callSpecies(API_Methods_Interface api, View view){
-
-            Toast.makeText(act, "Razza selezionata!", Toast.LENGTH_SHORT).show();
             Call<List<Specie>> getAllSpecie = api.getAllSpecies();
             getAllSpecie.enqueue(new Callback<List<Specie>>() {
                 @Override
@@ -149,6 +163,7 @@ public class InfoPetFragment extends Fragment {
                             specieText = specieList.get(i).getCommon_name();
                             inizialize(view);
                             mainCode();
+                            mainCodeExecuted=true;
                         }
                     }
                 }
@@ -203,8 +218,10 @@ public class InfoPetFragment extends Fragment {
             infoPetLV2.setAdapter(adapter2);
     }
 
-    //RACCHIUDO IL CODICE IN UNA FUNZIONE PER INSERIRLO NELLA CALL DI RETROFIT
 
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                  //RACCHIUDO IL CODICE IN UNA FUNZIONE PER INSERIRLO NELLA CALL DI RETROFIT                     //
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     void mainCode(){
         //SETTO IMMAGINI SE MASCHIO O FEMMINA
         if (isMale) {
@@ -272,15 +289,13 @@ public class InfoPetFragment extends Fragment {
         });
     }
 
-    //SETTA UN IMMAGINE IN RISALTO
-    void switchSize(ImageView bigger, ImageView smaller) {
-        bigger.setScaleX((float) 1);
-        bigger.setScaleY((float) 1);
-        smaller.setScaleX((float) 0.5);
-        smaller.setScaleY((float) 0.5);
-    }
+////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    //------------------------------------------------------------------------------------------------//
+
+                                  //METODI ALERT DIALOG//
+//------------------------------------------------------------------------------------------------//
+
     //METODO PER SETTARE IL TIPO DI DIALOG IN BASE ALL'ITEM SELEZIONATO
     void setDialog(InfoPetListItem item) {
         String type = item.getTitle();
@@ -298,43 +313,21 @@ public class InfoPetFragment extends Fragment {
                 alertDialogPelo(type, item);
                 break;
             case "Sterilizzazione:":
-                alertDialogBalls(type, item);
+                alertDialogGender(type, item);
                 break;
         }
 
     }
 
     //DIALOG ITEM RAZZA
-    private AutoCompleteTextView alertDialogRace(String title, InfoPetListItem item) {
-        final AutoCompleteTextView autoCompleteTextField = new AutoCompleteTextView(this.getContext());
-        AlertDialog dialog = new AlertDialog.Builder(act)
-                .setTitle(title)
-                .setView(autoCompleteTextField)
-                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        switch (i) {
-                            case DialogInterface.BUTTON_POSITIVE:
-                                String name = String.valueOf(autoCompleteTextField.getText());
-                                item.setSubtitle(name);
-                                adapter.notifyDataSetChanged();
-                                break;
-                            case DialogInterface.BUTTON_NEGATIVE:
-                                break;
-                        }
-                    }
-                })
-                .setNegativeButton("ANNULLA", null)
-                .create();
-        dialog.show();
-
-        return autoCompleteTextField;
+    private Spinner alertDialogRace(String title, InfoPetListItem item) {
+        return mainCallCode(title, item);
     }
 
     //DIALOG ITEM SPECIE
     private Spinner alertDialogSpecie(String title, InfoPetListItem item) {
         final Spinner spinnerField = new Spinner(this.getContext());
-        ArrayAdapter<CharSequence> specieAdapter1 = ArrayAdapter.createFromResource(act, R.array.species, android.R.layout.simple_dropdown_item_1line);
+        ArrayAdapter<CharSequence> specieAdapter1 = new ArrayAdapter<>(act, R.layout.support_simple_spinner_dropdown_item, specie);
         specieAdapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         NothingSelectedSpinnerAdapter specieAdapter2 = new NothingSelectedSpinnerAdapter(specieAdapter1, R.layout.species_spinner_nothing_selected, act);
         spinnerField.setAdapter(specieAdapter2);
@@ -347,9 +340,12 @@ public class InfoPetFragment extends Fragment {
                     public void onClick(DialogInterface dialogInterface, int i) {
                         switch (i) {
                             case DialogInterface.BUTTON_POSITIVE:
-                                String name = spinnerField.getSelectedItem().toString();
-                                item.setSubtitle(name);
+                                selectedSpecieText = spinnerField.getSelectedItem().toString();
+                                item.setSubtitle(selectedSpecieText);
                                 adapter.notifyDataSetChanged();
+                                if(!selectedSpecieText.equals("")) {
+                                    getStringRacesBySelectedSpecie(selectedSpecieText);
+                                }
                                 break;
                             case DialogInterface.BUTTON_NEGATIVE:
                                 break;
@@ -421,7 +417,7 @@ public class InfoPetFragment extends Fragment {
         return spinnerField;
     }
 
-    private Spinner alertDialogBalls(String title, InfoPetListItem item) {
+    private Spinner alertDialogGender(String title, InfoPetListItem item) {
         final Spinner spinnerField = new Spinner(this.getContext());
         ArrayAdapter<CharSequence> specieAdapter1 = ArrayAdapter.createFromResource(act, R.array.si_no, android.R.layout.simple_dropdown_item_1line);
         specieAdapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -450,5 +446,86 @@ public class InfoPetFragment extends Fragment {
         dialog.show();
 
         return spinnerField;
+    }
+
+    void getStringRacesBySelectedSpecie(String specieString){
+        Call<Specie> getSpecieByName=api.getSpecieByName(specieString);
+        getSpecieByName.enqueue(new Callback<Specie>() {
+            @Override
+            public void onResponse(Call<Specie> call, Response<Specie> response) {
+                Specie selectedSpecie= response.body();
+                int id_selectedSpecie=selectedSpecie.getId_specie();
+                getListRacesBySpecie(id_selectedSpecie);
+            }
+
+            @Override
+            public void onFailure(Call<Specie> call, Throwable t) {
+                Toast.makeText(act, "Specie selezionata non trovata", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    String[] getListRacesBySpecie(int id_selectedSpecie){
+        Call<List<Race>> getRaceBySpecie = api.getRaceBySpecie(id_selectedSpecie);
+        getRaceBySpecie.enqueue(new Callback<List<Race>>() {
+            @Override
+            public void onResponse(Call<List<Race>> call, Response<List<Race>> response) {
+                List<Race> raceList = response.body();
+                String[] razze_prova= new String[raceList.size()];
+                for(int i=0; i<raceList.size(); i++){
+                   razze_prova[i] =raceList.get(i).getName();
+                }
+                setRazze(razze_prova);
+            }
+
+            @Override
+            public void onFailure(Call<List<Race>> call, Throwable t) {
+
+            }
+        });
+        return razze;
+    }
+
+        public Spinner mainCallCode(String title, InfoPetListItem item){
+            final Spinner spinnerField = new Spinner(this.getContext());
+            ArrayAdapter<CharSequence> specieAdapter1 = new ArrayAdapter<>(act, R.layout.support_simple_spinner_dropdown_item, razze);
+            specieAdapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            NothingSelectedSpinnerAdapter specieAdapter2 = new NothingSelectedSpinnerAdapter(specieAdapter1, R.layout.species_spinner_nothing_selected, act);
+            spinnerField.setAdapter(specieAdapter2);
+            AlertDialog dialog = new AlertDialog.Builder(act)
+                    .setTitle(title)
+                    .setView(spinnerField)
+                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            switch (i) {
+                                case DialogInterface.BUTTON_POSITIVE:
+                                    String name = spinnerField.getSelectedItem().toString();
+                                    item.setSubtitle(name);
+                                    adapter.notifyDataSetChanged();
+                                    break;
+                                case DialogInterface.BUTTON_NEGATIVE:
+                                    break;
+                            }
+                        }
+                    })
+                    .setNegativeButton("ANNULLA", null)
+                    .create();
+            dialog.show();
+        return spinnerField;
+        }
+
+    public void setRazze(String[] razze) {
+        this.razze = razze;
+    }
+
+    //METODI GENERAL PURPOSE//
+//------------------------------------------------------------------------------------------------//
+    //SETTA UN IMMAGINE IN RISALTO
+    void switchSize(ImageView bigger, ImageView smaller) {
+        bigger.setScaleX((float) 1);
+        bigger.setScaleY((float) 1);
+        smaller.setScaleX((float) 0.5);
+        smaller.setScaleY((float) 0.5);
     }
 }

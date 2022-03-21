@@ -46,5 +46,12 @@ public class SpecieController {
 	public void deleteSpecie(@PathVariable("id_specie") int id_specie) {
 		jdbcSpecieRepository.deleteSpecie(id_specie);
 	}
+	
+	@RequestMapping("/specie/{common_name}")
+	public Specie getSpecieByName(@PathVariable String common_name) {
+		Specie specie = jdbcSpecieRepository.findSpecieByName(common_name).get(0);
+		return specie;
+		
+	}
 
 }
