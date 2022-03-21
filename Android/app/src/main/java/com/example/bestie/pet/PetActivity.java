@@ -43,7 +43,6 @@ public class PetActivity extends AppCompatActivity {
         TextView namePet = findViewById(R.id.petNameTV);
 
         id_pet = getIntent().getExtras().getLong("id_pet");
-        if (id_pet==11) Toast.makeText(this, "id pet corretto", Toast.LENGTH_SHORT).show();
         Toolbar toolbar = findViewById(R.id.pet_toolbar);
         setSupportActionBar(toolbar);
 
@@ -79,7 +78,6 @@ public class PetActivity extends AppCompatActivity {
 
     public void sendDataToFragment(){
         InfoPetFragment infoPetFragment = new InfoPetFragment();
-        getSupportFragmentManager().beginTransaction().replace(R.id.info_pet_fragment_container, infoPetFragment).commit();
         Bundle bundle = new Bundle();
         bundle.putString("name", name);
         bundle.putDouble("weight", weight);
@@ -88,6 +86,8 @@ public class PetActivity extends AppCompatActivity {
         bundle.putString("furType", furType);
         bundle.putInt("id_race", id_race);
         infoPetFragment.setArguments(bundle);
+        getSupportFragmentManager().beginTransaction().replace(R.id.info_pet_fragment_container, infoPetFragment).commit();
+
     }
 
 }

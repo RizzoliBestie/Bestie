@@ -50,9 +50,14 @@ public class InfoPetFragment extends Fragment {
     String femaleUri = "@drawable/female";
     int imageResourceM;
     int imageResourceF;
+    ListView infoPetLV;
+    ListView infoPetLV2;
+    CalendarView calendarView;
+    ImageView male;
+    ImageView female;
     PetListAdapter adapter;
 
-    String name=null;
+    String name = null;
     String[] specie;
     String[] razze;
     double weight;
@@ -61,9 +66,9 @@ public class InfoPetFragment extends Fragment {
     boolean isMale;
     int id_race;
     int id_specie;
-    Race selectedRace=null;
-    String specieText;
-    String raceText;
+    Race selectedRace = null;
+    String specieText = "";
+    String raceText = "";
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -76,71 +81,75 @@ public class InfoPetFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_info_pet, container, false);
 
-    //______________INIZIALIZZAZIONE VARIABILI_____________________________________________
-
-
-        ListView infoPetLV = (ListView) view.findViewById(R.id.infoPetLV);
-        ListView infoPetLV2 = (ListView) view.findViewById(R.id.infoPetLV2);
-        CalendarView calendarView = view.findViewById(R.id.info_pet_date);
-        ImageView male = view.findViewById(R.id.info_pet_male);
-        ImageView female = view.findViewById(R.id.info_pet_female);
-
-        calendarView.setDate(new Date().getTime());
-
-        name=getArguments().getString("name");
-        weight=getArguments().getDouble("weight");
-        furType=getArguments().getString("furType");
-        sterilized=getArguments().getBoolean("sterilized");
-        isMale=getArguments().getBoolean("isMale");
-        id_race=getArguments().getInt("id_specie");
-
-        loadArray(infoArrayList);
-        adapter = new PetListAdapter(act, R.layout.info_pet_list_item, infoArrayList);
-        infoPetLV.setAdapter(adapter);
-
-        loadArray2(infoArrayList2);
-        PetListAdapter adapter2 = new PetListAdapter(act, R.layout.info_pet_list_item, infoArrayList2);
-        infoPetLV2.setAdapter(adapter2);
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        name = getArguments().getString("name");
+        weight = getArguments().getDouble("weight");
+        furType = getArguments().getString("furType");
+        sterilized = getArguments().getBoolean("sterilized");
+        isMale = getArguments().getBoolean("isMale");
+        id_race = getArguments().getInt("id_race");
 
 
         Retrofit retrofit = ((API_Connection_Bestie) act.getApplication()).getRetrofit();
         API_Methods_Interface api = retrofit.create(API_Methods_Interface.class);
 
-        Call<List<Race>> getAllRace = api.getAllRaces();
-        getAllRace.enqueue(new Callback<List<Race>>() {
-            @Override
-            public void onResponse(Call<List<Race>> call, Response<List<Race>> response) {
-                List<Race> raceList = response.body();
-                razze=new String[raceList.size()];
-                for (int i=0; i<raceList.size(); i++){
-                    razze[i]=raceList.get(i).getName();
-                    if(id_race==raceList.get(i).getId_race()) {
-                        selectedRace = raceList.get(i);
-                        id_specie = selectedRace.getId_specie();
-                        raceText = selectedRace.getName();
+            Call<List<Race>> getAllRace = api.getAllRaces();
+           getAllRace.enqueue(new Callback<List<Race>>() {
+                @Override
+                public void onResponse(Call<List<Race>> call, Response<List<Race>> response) {
+                    List<Race> raceList = response.body();
+                    razze = new String[raceList.size()];
+                    for (int i = 0; i < raceList.size(); i++) {
+                        razze[i] = raceList.get(i).getName();
+                        if (id_race == raceList.get(i).getId_race()) {
+                            selectedRace = raceList.get(i);
+                            id_specie = selectedRace.getId_specie();
+                            raceText = selectedRace.getName();
+                        }
+                        if (selectedRace != null) {
+                            callSpecies(api, view);
+                        }
                     }
                 }
-            }
 
-            @Override
-            public void onFailure(Call<List<Race>> call, Throwable t) {
-                Toast.makeText(act, "Caricamento razze fallito", Toast.LENGTH_SHORT).show();
-            }
-        });
+                @Override
+                public void onFailure(Call<List<Race>> call, Throwable t) {
+                    Toast.makeText(act, "Caricamento razze fallito", Toast.LENGTH_SHORT).show();
+                }
+            });
+        return view;
+    }
 
-        if(selectedRace!=null) {
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    void inizialize(View view){
+        infoPetLV = (ListView) view.findViewById(R.id.infoPetLV);
+        infoPetLV2 = (ListView) view.findViewById(R.id.infoPetLV2);
+        calendarView = view.findViewById(R.id.info_pet_date);
+        male = view.findViewById(R.id.info_pet_male);
+        female = view.findViewById(R.id.info_pet_female);
+
+        calendarView.setDate(new Date().getTime());
+        loadArraies();
+    }
+
+    void callSpecies(API_Methods_Interface api, View view){
+
+            Toast.makeText(act, "Razza selezionata!", Toast.LENGTH_SHORT).show();
             Call<List<Specie>> getAllSpecie = api.getAllSpecies();
             getAllSpecie.enqueue(new Callback<List<Specie>>() {
                 @Override
                 public void onResponse(Call<List<Specie>> call, Response<List<Specie>> response) {
                     List<Specie> specieList = response.body();
-                    specie= new String[specieList.size()];
+                    specie = new String[specieList.size()];
                     for (int i = 0; i < specieList.size(); i++) {
                         specie[i] = specieList.get(i).getCommon_name();
-                        if (id_specie == specieList.get(i).getId_specie())
+                        if (id_specie == specieList.get(i).getId_specie()) {
                             specieText = specieList.get(i).getCommon_name();
+                            inizialize(view);
+                            mainCode();
+                        }
                     }
                 }
 
@@ -149,8 +158,54 @@ public class InfoPetFragment extends Fragment {
                     Toast.makeText(act, "Caricamento specie fallito", Toast.LENGTH_SHORT).show();
                 }
             });
-        }
+    }
 
+    //METODO PER CARICARE ARRAY PRINCIPALE
+    ArrayList<InfoPetListItem> loadArray(ArrayList<InfoPetListItem> arrayList) {
+        InfoPetListItem specie = new InfoPetListItem("Specie:", specieText);
+        InfoPetListItem razza = new InfoPetListItem("Razza:", raceText);
+        InfoPetListItem peso = new InfoPetListItem("Peso (Kg):", weight);
+        InfoPetListItem pelo = new InfoPetListItem("Pelo:", furType);
+        InfoPetListItem sterile = new InfoPetListItem("Sterilizzazione:", sterilized);
+        InfoPetListItem dataDiNascita = new InfoPetListItem("Data di nascita:", null);
+
+
+        arrayList.add(specie);
+        arrayList.add(razza);
+        arrayList.add(peso);
+        arrayList.add(pelo);
+        arrayList.add(sterile);
+        arrayList.add(dataDiNascita);
+
+        return arrayList;
+    }
+
+    //METODO PER CARICARE ARRAY SECONDARIO
+    // lo uso escluivamente per una questione grafica in modo che sembrerà una list view continua anche se interrotta da una calendar view
+    ArrayList<InfoPetListItem> loadArray2(ArrayList<InfoPetListItem> arrayList) {
+
+        InfoPetListItem hr = new InfoPetListItem(null, null);
+        InfoPetListItem sesso = new InfoPetListItem("Sesso:", isMale);
+        sesso.subtitle = "";
+        arrayList.add(hr);
+        arrayList.add(sesso);
+        return arrayList;
+    }
+
+    //METODO PER CARICARE ENTRAMBI GLI ARRAY CONTEMPORANEAMENTE
+    public void loadArraies() {
+            loadArray(infoArrayList);
+            adapter = new PetListAdapter(act, R.layout.info_pet_list_item, infoArrayList);
+            infoPetLV.setAdapter(adapter);
+
+            loadArray2(infoArrayList2);
+            PetListAdapter adapter2 = new PetListAdapter(act, R.layout.info_pet_list_item, infoArrayList2);
+            infoPetLV2.setAdapter(adapter2);
+    }
+
+    //RACCHIUDO IL CODICE IN UNA FUNZIONE PER INSERIRLO NELLA CALL DI RETROFIT
+
+    void mainCode(){
         //SETTO IMMAGINI SE MASCHIO O FEMMINA
         if (isMale) {
             imageResourceM = getResources().getIdentifier(maleOnUri, null, act.getPackageName());
@@ -215,45 +270,6 @@ public class InfoPetFragment extends Fragment {
                 setDialog(item);
             }
         });
-
-        return view;
-    }
-
-
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-    //METODO PER CARICARE ARRAY PRINCIPALE
-    ArrayList<InfoPetListItem> loadArray(ArrayList<InfoPetListItem> arrayList) {
-        InfoPetListItem specie = new InfoPetListItem("Specie:", null);
-        InfoPetListItem razza = new InfoPetListItem("Razza:", null);
-        InfoPetListItem peso = new InfoPetListItem("Peso (Kg):", weight);
-        InfoPetListItem pelo = new InfoPetListItem("Pelo:", furType);
-        InfoPetListItem sterile = new InfoPetListItem("Sterilizzazione:", sterilized);
-        InfoPetListItem dataDiNascita = new InfoPetListItem("Data di nascita:", null);
-
-
-        arrayList.add(specie);
-        arrayList.add(razza);
-        arrayList.add(peso);
-        arrayList.add(pelo);
-        arrayList.add(sterile);
-        arrayList.add(dataDiNascita);
-
-        return arrayList;
-    }
-
-    //METODO PER CARICARE ARRAY SECONDARIO,
-    // lo uso escluivamente per una questione grafica in modo che sembrerà una list view continua anche se interrotta da una calendar view
-    ArrayList<InfoPetListItem> loadArray2(ArrayList<InfoPetListItem> arrayList) {
-
-        InfoPetListItem hr = new InfoPetListItem(null, null);
-        InfoPetListItem sesso = new InfoPetListItem("Sesso:", isMale);
-        sesso.subtitle="";
-        arrayList.add(hr);
-        arrayList.add(sesso);
-        return arrayList;
     }
 
     //SETTA UN IMMAGINE IN RISALTO
@@ -264,7 +280,7 @@ public class InfoPetFragment extends Fragment {
         smaller.setScaleY((float) 0.5);
     }
 
-//------------------------------------------------------------------------------------------------//
+    //------------------------------------------------------------------------------------------------//
     //METODO PER SETTARE IL TIPO DI DIALOG IN BASE ALL'ITEM SELEZIONATO
     void setDialog(InfoPetListItem item) {
         String type = item.getTitle();
@@ -435,5 +451,4 @@ public class InfoPetFragment extends Fragment {
 
         return spinnerField;
     }
-
 }
