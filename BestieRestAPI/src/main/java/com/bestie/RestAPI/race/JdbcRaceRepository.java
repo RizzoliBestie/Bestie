@@ -25,7 +25,7 @@ public class JdbcRaceRepository implements RaceRepository{
 
 	@Override
 	public List<Race> getRaceBySpecie(int id_specie) {
-		return jdbcTemplate.query("SELECT * FROM Race WHERE id_specie=? ", BeanPropertyRowMapper.newInstance(Race.class), id_specie);	
+		return jdbcTemplate.query("SELECT * FROM Race WHERE id_specie = ? ", BeanPropertyRowMapper.newInstance(Race.class), id_specie);	
 	}
 
 	@Override

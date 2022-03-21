@@ -25,11 +25,12 @@ public class SpecieController {
 		return jdbcSpecieRepository.getAllSpecie();
 	}
 	
-	/*@GetMapping("/specie/{id_specie}")
-	public Specie findSpeciById(@PathVariable("id_specie") int id_specie) {
-		Specie specie = jdbcSpecieRepository.findSpecieById(id_specie).get(0);
-		return specie;
-	}*/
+
+	@GetMapping("/species/{id}")
+	public List<Specie> findById(@PathVariable("id") Integer id) {
+		System.out.println("ci lele");
+		return jdbcSpecieRepository.findSpecieById(id);
+	}
 	
 	@PostMapping("/addSpecie/{common_name}/{scientific_name}")
 	public void addSpecie(@PathVariable("common_name") String common_name, @PathVariable("scientific_name") String scientific_name) {

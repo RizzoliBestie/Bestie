@@ -36,7 +36,7 @@ public class JdbcSpecieRepository implements SpecieRepository{
 	@Override
 	public List<Specie> findSpecieById(int id_specie) {
 		return jdbcTemplate.query("SELECT * FROM Specie WHERE id_specie=?", BeanPropertyRowMapper.newInstance(Specie.class), id_specie);
-		
+
 	}
 	
 }
