@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.bestie.RestAPI.user.User;
+
 @RestController
 public class SpecieController {
 	
@@ -22,6 +24,12 @@ public class SpecieController {
 		System.out.println("Get all species");
 		return jdbcSpecieRepository.getAllSpecie();
 	}
+	
+	/*@GetMapping("/species/{id}")
+	public List<User> findById(@PathVariable("id") Integer id) {
+		System.out.println("ci siamooooo");
+		return repo.findUserById(id);
+	}*/
 	
 	@PostMapping("/addSpecie/{common_name}/{scientific_name}")
 	public void addSpecie(@PathVariable("common_name") String common_name, @PathVariable("scientific_name") String scientific_name) {

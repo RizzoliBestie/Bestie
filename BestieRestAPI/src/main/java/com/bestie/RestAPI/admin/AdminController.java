@@ -32,25 +32,5 @@ public class AdminController {
 			return true;
 		}
 		return false;
-	}
-	
-	///////////////////////////////////////////////
-	////// 	 Restituzione Tabelle Intere	 //////
-	///////////////////////////////////////////////
-	
-	@GetMapping("/list/users")
-	public List<User> getUserList(){
-		return userRepo.getAllUsers();
-	}
-	
-	@GetMapping("/list/species")
-	public List<Specie> getSpecieList(){
-		return specieRepo.getAllSpecie();
-	}
-	
-	@GetMapping("/list/races")
-	public List<Race> getRaceList(){
-		return raceRepo.getAllRaces();
-	}
-	
+	}	
 }

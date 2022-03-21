@@ -130,7 +130,7 @@ function Menu_Selection(){
                             delete_src.value="../img/icons/trash.png";
                             update_class.value = "pencil";
                             delete_class.value = "trash";
-                            update_onclick.value = "switchPage('type=species&id="+ jsonResponse[i].id_user + "')";
+                            update_onclick.value = "switchPage('type=species&id="+ jsonResponse[i].id_specie + "')";
                             delete_onclick.value= "deleteRow('"+ jsonResponse[i].id_specie+"')";
 
                             //Aggiunta attributi

@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -15,6 +16,11 @@ public class UserController {
 	@Autowired
 	UserRepository repo;
 
+	@GetMapping("/list/users")
+	public List<User> getUserList(){
+		return repo.getAllUsers();
+	}
+	
 	@GetMapping("/login/{username}/{password}")
 	public User getUserLogin(@PathVariable String username, @PathVariable String password) {
 		if(username!=null && password!=null) {
@@ -43,7 +49,7 @@ public class UserController {
 		return repo.findUserById(id);
 	}
 	
-	@PostMapping("/updateUser/{username}/{email}/{phone_number}/{id_user}")
+	@PutMapping("/updateUser/{username}/{email}/{phone_number}/{id_user}")
 	public void updateUser(@PathVariable("username") String username, @PathVariable("email") String email, @PathVariable("phone_number") String phone_number, @PathVariable("id_user") int id_user){
 		repo.updateUser(username, email, phone_number, id_user);
 	}
