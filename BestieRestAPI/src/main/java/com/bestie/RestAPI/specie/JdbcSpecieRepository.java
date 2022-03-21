@@ -30,8 +30,7 @@ public class JdbcSpecieRepository implements SpecieRepository{
 
 	@Override
 	public void deleteSpecie(int id_specie) {
-		// TODO Auto-generated method stub
-		
+		jdbcTemplate.update("DELETE FROM Specie WHERE id_specie = ?", id_specie);
 	}
 	
 }

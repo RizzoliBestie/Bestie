@@ -1,0 +1,40 @@
+<html>
+    <head>
+        <title>
+            Home Bestie
+        </title>
+        <link rel="stylesheet" href="../admin_home.css">
+        <script src="../update_page/admin_update.js"></script>
+    </head>
+    <body onload="AddPage()">
+        <div id="top_bar">
+            <span id="title">
+                ADMIN
+            </span>
+        </div>
+        <div id="navbar">
+            <ul>
+                <a href="../admin_home.html?selected=users">
+                    <li id="users" class="left_menu">
+                        Users
+                    </li>
+                </a>
+                <a href="../admin_home.html?selected=species">
+                    <li id="species" class="left_menu">
+                        Species
+                    </li>
+                </a>
+                <a href="../admin_home.html?selected=races">
+                    <li id="races" class="left_menu">
+                        Races
+                    </li>
+                </a>
+            </ul>
+        </div>
+        <div id="content">
+            <form method="POST" id="update_form">
+
+            </form>
+        </div>
+    </body>
+</html>
