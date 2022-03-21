@@ -3,6 +3,7 @@ package com.bestie.RestAPI.user;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -40,6 +41,16 @@ public class UserController {
 	public List<User> findById(@PathVariable("id") Integer id) {
 		System.out.println("ci siamooooo");
 		return repo.findUserById(id);
+	}
+	
+	@PostMapping("/updateUser/{username}/{email}/{phone_number}/{id_user}")
+	public void updateUser(@PathVariable("username") String username, @PathVariable("email") String email, @PathVariable("phone_number") String phone_number, @PathVariable("id_user") int id_user){
+		repo.updateUser(username, email, phone_number, id_user);
+	}
+	
+	@DeleteMapping("/deleteUser/{id}")
+	public void deleteUser(@PathVariable("id") int id) {
+		repo.deleteUser(id);
 	}
 	
 }

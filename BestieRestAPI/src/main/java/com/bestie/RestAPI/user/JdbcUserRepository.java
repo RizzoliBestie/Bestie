@@ -73,21 +73,16 @@ public class JdbcUserRepository implements UserRepository{
 		
 	}
 
+	@Override
+	public void updateUser(String username, String email, String phone_number, int id_user) {
+		jdbcTemplate.update("UPDATE User SET username = ?, email = ?, phone_number = ? WHERE id_user = ?",
+				username, email, phone_number, id_user);
+	}
 	
-	
-	//Metodi PET
-	
-	/*public boolean newPet(String owner, String race, String nickname, double weight, byte gender) {
-		int idUser;
-		try {
-			idUser = findUserByUsername(owner).get(0).getId_user();
-			idRace = 
-		}catch(Exception e) {
-			e.printStackTrace();
-		}
-		
-		jdbcTemplate.update("INSERT INTO Pet(id_user, id_race)")
-		return true;
-	}*/
+	@Override
+	public void deleteUser(int id) {
+		jdbcTemplate.update("DELETE FROM User WHERE id_user = ?", id);
+	}
+
 	
 }

@@ -17,6 +17,12 @@ public interface UserRepository {
 	//Trova un utente tramite email
 	public List<User> findUserByMail(String email);
 	
+	//Aggiorna i dati di un utente
+	public void updateUser(String username, String email, String phone_number, int id_user);
+	
+	//Elimina un utente
+	public void deleteUser(int id);
+	
 	//Trova una razza tramite 
 	
 	

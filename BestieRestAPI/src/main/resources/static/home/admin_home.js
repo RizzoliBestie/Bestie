@@ -54,7 +54,7 @@ function Menu_Selection(){
                             update_class.value = "pencil";
                             delete_class.value = "trash";
                             update_onclick.value = "switchPage('type=users&id="+ jsonResponse[i].id_user + "')";
-                            delete_onclick.value= "deleteRow('"+ jsonResponse[i].id_user+"')";
+                            delete_onclick.value= "deleteUserRow('"+ jsonResponse[i].id_user+"')";
 
                             //Aggiunta attributi
 
@@ -255,9 +255,19 @@ function switchPage(query){
     location.href = "../home/update_page/admin_update.html?" + query;
 }
 
-function deleteRow(id){
-    var choice = confirm("Vuoi davvero eliminare questa riga (id -> "+id+")?");
+function deleteUserRow(id){
+    var xhttp = new XMLHttpRequest();
+    var URIAddr = "../../../deleteUser/"+id;
+    var choice = confirm("Vuoi davvero eliminare questa riga (id = "+id+")?");
+    //var jsonResponse;
     if(choice){
-        alert("miao");
+        xhttp.onreadystatechange = function() {
+            if (this.status == 200 && xhttp.readyState == 4) {
+                Menu_Selection();
+            }
+        }
+        xhttp.open("DELETE", URIAddr);
+        xhttp.send(null);
+    }else{
     }
 }
