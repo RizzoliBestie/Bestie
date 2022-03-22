@@ -24,10 +24,12 @@ CREATE TABLE IF NOT EXISTS `Pet` (
   `id_race` int NOT NULL,
   `name` varchar(50) NOT NULL,
   `weight` double DEFAULT NULL,
-  `gender` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `fur_type` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `gender` tinyint DEFAULT NULL,
   `birthdate` date DEFAULT NULL,
   `lastMeal` date DEFAULT NULL,
   `lastWalk` date DEFAULT NULL,
+  `sterilized` tinyint NOT NULL DEFAULT '0',
   PRIMARY KEY (`id_pet`),
   KEY `id_user_PET` (`id_user`),
   KEY `id_race_PET` (`id_race`),
@@ -96,7 +98,7 @@ CREATE TABLE IF NOT EXISTS `User` (
 /*!40000 ALTER TABLE `User` DISABLE KEYS */;
 REPLACE INTO `User` (`id_user`, `username`, `email`, `password`, `phone_number`) VALUES
 	(1, 'mike73', 'mike73@', '123456', '1234567890'),
-	(2, 'piero_sasso', 'piero@gmai.it', 'foggianet77', 'null'),
+	(2, 'piero_sasso', 'piero@gmail.it', 'foggianet77', 'null'),
 	(3, 'paolita', 'paolita@libero.it', 'papa0l1t4', '3337776660'),
 	(4, 'lorenzo', 'lorenzo@', 'giuseppesimone69', '3330987658'),
 	(5, 'ricky', 'ricky@', '101010', '0372729999'),
