@@ -54,7 +54,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
         act = (Activity) context;
         ctx = getContext();
 
-        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(getContext());
+        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(ctx);
         fetchLastLocation();
     }
 
@@ -74,7 +74,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
     }
 
     private void fetchLastLocation() {
-        if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+        if (ActivityCompat.checkSelfPermission(ctx, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(act, new String[]
                     {Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_CODE);
             return;
@@ -85,7 +85,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
             public void onSuccess(Location location) {
                 if (location != null){
                     currentLocation = location;
-                    Toast.makeText(getContext(), currentLocation.getLatitude() + "" + currentLocation.getLongitude(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "Posizione Attuale:\n" + currentLocation.getLatitude() + " " + currentLocation.getLongitude(), Toast.LENGTH_SHORT).show();
                     SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
                     mapFragment.getMapAsync(MapFragment.this);
                 }
@@ -123,13 +123,30 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
         
         locationslist.add(new MapLocation("Ambulatorio Veterinario Risorgimento", "Veterinario", "Milano", 45.469503314883355, 9.20761260002182));
         locationslist.add(new MapLocation("Ambulatorio Veterinario Centro", "Veterinario", "Torino", 45.07255418517881, 7.682647026773152));
+        locationslist.add(new MapLocation("Puppakioti Pets Botique per cani", "Pet Shop", "Milano", 45.47066254747872, 9.204109886367203));
+        locationslist.add(new MapLocation("ArcaPlanet", "Pet Shop", "Milano", 45.50174978055938, 9.131297253435202));
 
         for(int mkindex = 0; mkindex < locationslist.size(); mkindex++){
             // Add a marker and move the camera
             LatLng marker = new LatLng(locationslist.get(mkindex).getLatitude(), locationslist.get(mkindex).getLongitude());
-            mMap.addMarker(new MarkerOptions()
+
+            BitmapDescriptor locationTypeIcon = null;
+            switch(locationslist.get(mkindex).getType()){
+                case "Veterinario":
+                    locationTypeIcon = BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN);
+                    break;
+                case "Pet Shop":
+                    locationTypeIcon = BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW);
+                    break;
+                default:
+                    locationTypeIcon = BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED);
+                    break;
+            }
+            MarkerOptions mapLocationMarkerOptions = new MarkerOptions()
                     .position(marker)
-                    .title(locationslist.get(mkindex).getName()).snippet(locationslist.get(mkindex).getType() + " " + locationslist.get(mkindex).getCity()));
+                    .title(locationslist.get(mkindex).getName()).snippet(locationslist.get(mkindex).getType() + " " + locationslist.get(mkindex).getCity())
+                    .icon(locationTypeIcon);
+            mMap.addMarker(mapLocationMarkerOptions);
             //mMap.moveCamera(CameraUpdateFactory.newLatLng(marker));
         }
 
