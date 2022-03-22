@@ -14,7 +14,6 @@ import android.widget.TextView;
 
 import androidx.appcompat.widget.Toolbar;
 
-import com.example.bestie.ImageDownloader;
 import com.example.bestie.R;
 
 public class StorageActivity extends AppCompatActivity {

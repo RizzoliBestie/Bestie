@@ -56,7 +56,7 @@ public class ItemGridAdapter extends ArrayAdapter<Item> {
 
         Item item = getItem(position);
 
-        vh.file_imageView = com.example.bestie.ImageBox.getImage(item.getIcon_id());
+        (new ImageDownloader(context, item.getImage_url(), vh.file_imageView)).execute();
         vh.file_nameTextView.setText(item.getFile_name());
         vh.descriptionTextView.setText(item.getDescription());
 

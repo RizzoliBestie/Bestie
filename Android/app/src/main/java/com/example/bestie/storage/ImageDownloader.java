@@ -1,4 +1,4 @@
-package com.example.bestie;
+package com.example.bestie.storage;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -39,7 +39,7 @@ public class ImageDownloader extends AsyncTask<Void, Void, Bitmap> {
             InputStream stream = new URL(mUrl).openConnection().getInputStream();
             Bitmap bitmap = BitmapFactory.decodeStream(stream);
 
-            Thread.sleep(500);
+            Thread.sleep(100);
             cache.put(mUrl, bitmap);
 
             return bitmap;
