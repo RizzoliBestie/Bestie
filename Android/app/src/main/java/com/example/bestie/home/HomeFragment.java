@@ -65,8 +65,6 @@ public class HomeFragment extends Fragment {
         Retrofit retrofit = ((API_Connection_Bestie) act.getApplication()).getRetrofit();
         API_Methods_Interface api = retrofit.create(API_Methods_Interface.class);
 
-        Toast.makeText(act, "Starting", Toast.LENGTH_SHORT).show();
-
         Call<List<Pet>> getPets = api.getPetsByUserId(id_user);
         getPets.enqueue(new Callback<List<Pet>>() {
             @Override
