@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import com.example.bestie.API.API_Connection_Bestie;
 import com.example.bestie.API.API_Methods_Interface;
+import com.example.bestie.MainActivity;
 import com.example.bestie.R;
 import com.example.bestie.general.Profile;
 import com.example.bestie.settings.SettingsActivity;
@@ -119,8 +120,8 @@ public class LogInActivity extends AppCompatActivity {
                                 editor.putString("password", password);
                                 editor.apply();
 
-                                Intent moveToSettings = new Intent(LogInActivity.this, SettingsActivity.class);
-                                startActivity(moveToSettings);
+                                Intent mainActivityIntent = new Intent(LogInActivity.this, MainActivity.class);
+                                startActivity(mainActivityIntent);
 
                             } else {
                                 Toast.makeText(LogInActivity.this, "Incorrect fields", Toast.LENGTH_LONG).show();

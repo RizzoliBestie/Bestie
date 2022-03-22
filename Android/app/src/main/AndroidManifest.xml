@@ -62,8 +62,14 @@
             android:parentActivityName=".MainActivity"></activity>
         <activity
             android:name=".login.LogInActivity"
-            android:exported="false"
-            android:label="Bestie: Log in"></activity>
+            android:exported="true"
+            android:label="Bestie: Log in">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".signin.SignInActivity"
             android:exported="false"
@@ -71,13 +77,9 @@
             android:parentActivityName=".login.LogInActivity"></activity>
         <activity
             android:name=".MainActivity"
-            android:exported="true"
+            android:exported="false"
             android:label="Bestie!">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 
