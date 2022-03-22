@@ -7,10 +7,13 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.example.bestie.curiosity.CuriosityFragment;
 import com.example.bestie.general.Profile;
@@ -89,6 +92,14 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case R.id.logout:
                         selected = new Intent(MainActivity.this, LogInActivity.class);
+                        SharedPreferences pref = MainActivity.this.getSharedPreferences("preferences", Context.MODE_PRIVATE);
+                        SharedPreferences.Editor editor = pref.edit();
+                        editor.putInt("id_user", 0);
+                        editor.putString("username", null);
+                        editor.putString("password", null);
+                        editor.apply();
+                        Toast.makeText(MainActivity.this, "Logout succeded", Toast.LENGTH_SHORT).show();
+                        break;
                 }
                 startActivity(selected);
                 return true;
