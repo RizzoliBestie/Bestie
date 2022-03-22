@@ -13,11 +13,14 @@ public class PetCard {
     int imgId;
     Uri uri;
     long id_pet;
+    Pet pet;
 
-    public PetCard(String title, int imgId, long id_pet){
-        this.title=title;
+    //C'è UN SACCO DI CODICE INUTILE MA è TARDI PER MODIFICARE
+    public PetCard(Pet pet, int imgId){
+        this.title= pet.getName();
         this.imgId= imgId;
-        this.id_pet=id_pet;
+        this.id_pet= pet.getId_pet();
+        this.pet=pet;
     }
 
     public PetCard(String title, Uri uri){

@@ -30,6 +30,9 @@ public class Pet {
         this.fur_type = fur_type;
         //this.uri_image= uri_image;
     }
+
+    
+
     public boolean isGender() {
         return gender;
     }

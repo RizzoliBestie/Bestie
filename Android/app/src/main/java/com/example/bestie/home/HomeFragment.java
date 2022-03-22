@@ -75,7 +75,7 @@ public class HomeFragment extends Fragment {
                     /*String uriString=pet.getUri_image();
                     if(uriString!=null){
                     Uri uri = Uri.parse(uriString);*/
-                    petCards.add(new PetCard(title, R.drawable.doggo, pet.getId_pet()));
+                    petCards.add(new PetCard(pet, R.drawable.doggo));
                 }
                 //else petCards.add(new PetCard(title, R.drawable.doggo));
                 //}

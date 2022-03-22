@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.bestie.R;
+import com.example.bestie.pet.Pet;
 import com.example.bestie.pet.PetActivity;
 import com.mikhaellopez.circularimageview.CircularImageView;
 
@@ -38,16 +39,17 @@ public class CardAdapter extends RecyclerView.Adapter<CardVH> {
 
     @Override
     public void onBindViewHolder(@NonNull CardVH holder, int position) {
+        //C'è UN SACCO DI CODICE INUTILE MA è TARDI PER MODIFICARE
         holder.textView.setText(items.get(position).title);
         holder.imageView.setImageResource(items.get(position).imgId);
-        holder.id_pet=items.get(position).id_pet;
+        holder.pet=items.get(position).pet;
         //METODO ONCLICK SU HOME IMAGE
         holder.imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent petActivityIntent= new Intent(ctx, PetActivity.class);
-                long id_pet= holder.id_pet;
-                petActivityIntent.putExtra("id_pet", id_pet);
+                petActivityIntent.putExtra("id_pet", holder.pet.getId_pet());
+                petActivityIntent.putExtra("id_user", holder.pet.getId_user());
                 ctx.startActivity(petActivityIntent);
 
 
@@ -72,7 +74,7 @@ class CardVH extends RecyclerView.ViewHolder{
     TextView textView;
     CircularImageView imageView;
     private CardAdapter adapter;
-    long id_pet;
+    Pet pet;
 
     public CardVH(@NonNull View itemView) {
         super(itemView);

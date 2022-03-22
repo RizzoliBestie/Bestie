@@ -80,7 +80,6 @@ public class MainActivity extends AppCompatActivity {
                 switch (item.getItemId()) {
                     case R.id.add_pet:
                         selected = new Intent(MainActivity.this, NewPetActivity.class);
-                        selected.putExtra("owner", (Parcelable) owner);
                         break;
                     case R.id.archivio:
                         selected = new Intent(MainActivity.this, StorageActivity.class);

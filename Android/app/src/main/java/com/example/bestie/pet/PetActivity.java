@@ -29,6 +29,7 @@ import retrofit2.Retrofit;
 public class PetActivity extends AppCompatActivity {
 
     long id_pet;
+    int id_user;
     String name=null;
     String[] specie;
     String[] razze;
@@ -53,6 +54,7 @@ public class PetActivity extends AppCompatActivity {
         infoPetFragment  = new InfoPetFragment();
 
         id_pet = getIntent().getExtras().getLong("id_pet");
+        id_user = getIntent().getExtras().getInt("id_user");
         Toolbar toolbar = findViewById(R.id.pet_toolbar);
         setSupportActionBar(toolbar);
 
@@ -94,6 +96,8 @@ public class PetActivity extends AppCompatActivity {
         bundle.putBoolean("isMale", isMale);
         bundle.putString("furType", furType);
         bundle.putInt("id_race", id_race);
+        bundle.putInt("id_pet", (int) id_pet);
+        bundle.putInt("id_user", id_user);
         infoPetFragment.setArguments(bundle);
         getSupportFragmentManager().beginTransaction().replace(R.id.info_pet_fragment_container, infoPetFragment).commit();
         fragmentExists=true;

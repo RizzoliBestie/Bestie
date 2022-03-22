@@ -1,5 +1,6 @@
 package com.bestie.RestAPI.oggetti;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,15 +40,19 @@ public class PetService {
 	
 	public void updatePet(Pet pet) {
 		final int id_pet=pet.getId_pet();
-		final int race = pet.getId_race();
+		final int id_race = pet.getId_race();
 		final String name = pet.getName();
 		final double weight = pet.getWeight();
 		final boolean gender = pet.getGender();
+		final Date birthdate = pet.getBirthDate();
+		final Date lastMeal = pet.getLastMeal();
+		final Date lastWalk = pet.getLastWalk();
 		final boolean sterilized = pet.getSterilized();
 		final String fur_type = pet.getFur_type();
 		
-		jdbcTemplate.update("UPDATE Pet SET id_race = ?, name = ?, weight = ?, gender = ?, sterilized = ?, fur_type = ? WHERE id_pet = ?",
-				race, name, weight, gender, sterilized, fur_type, id_pet);
+		jdbcTemplate.update("UPDATE Pet SET id_race = ?, name = ?, weight = ?, gender = ?, birthdate = ?, lastMeal = ?, lastWalk = ?,"
+				+ " sterilized = ?, fur_type = ? WHERE id_pet = ?",
+				 id_race, name, weight, gender, birthdate, lastMeal, lastWalk, sterilized, fur_type, id_pet);
 	}
 	
 }
