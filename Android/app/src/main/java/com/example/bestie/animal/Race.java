@@ -5,6 +5,7 @@ public class Race {
     private String information;
     private String size;
     private String fur_type;
+    //idea: weight?
 
     //Solo nome della razza
     public Race(String name){

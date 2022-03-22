@@ -28,6 +28,7 @@ import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.example.bestie.API.API_Methods_Interface;
 import com.example.bestie.OnSwipeTouchListener;
 import com.example.bestie.R;
 import com.example.bestie.animal.AnimalArrayAdapter;
@@ -53,6 +54,7 @@ public class CuriosityFragment extends Fragment {
     StateListDrawable backgroundSpinner = null;
 
     Activity act = null;
+    //API_Methods_Interface api = null;
 
     AnimalSectionSpinnerAdapter spinnerAdapter;
 
@@ -283,20 +285,47 @@ public class CuriosityFragment extends Fragment {
     public List<AnimalWiki> getAnimalData(){
         //Input manuale senza database
         List<AnimalWiki> animals = new ArrayList<AnimalWiki>();
-        animals.add(new AnimalWiki("Volpe", new Race("Fennec", "Il fennec è il più piccolo canide del mondo: il suo peso si aggira intorno a 1 kg. In media è alto 20 cm e lungo circa 30 cm, la coda è lunga 25 cm.\n" +
+        animals.add(new AnimalWiki("Volpe", new Race("Fennec", "Il Fennec è il più piccolo canide del mondo: il suo peso si aggira intorno a 1 kg. In media è alto 20 cm e lungo circa 30 cm, la coda è lunga 25 cm.\n" +
                 "\n" + "Le lunghe orecchie, che possono raggiungere 15 cm, servono per disperdere il calore e gli offrono un ottimo udito. Il pelo respinge la luce del sole di giorno grazie al colore e conserva calore durante la notte; inoltre gli permette di mimetizzarsi perfettamente nel deserto. Le zampe nella parte inferiore sono coperte da un pelo molto spesso che le protegge dal calore della sabbia.","20/30 cm", "Color Sabbia"), "Vulpes Zerda", "WILD", "https://www.parmadaily.it/wp-content/uploads/2016/09/fennec.jpg"));
-        animals.add(new AnimalWiki("Nittereute", new Race("Cane Procione"), "Nyctereutes procyonoides", "WILD", "https://upload.wikimedia.org/wikipedia/commons/8/85/Der_Marderhund%2C_Tanuki_oder_Enok_%28Nyctereutes_procyonoides%29%2C_bitte_nicht_zu_verwechseln_mit_einem_Waschb%C3%A4r%2C_hier_im_Wisentgehege_in_Springe_%28Kleiner_Deister%29.jpg"));
-        animals.add(new AnimalWiki("Volpe", new Race("Volpe Rossa"), "Vulpes Vulpes", "WILD","https://www.giornaletrentino.it/image/contentid/policy:1.2991162:1631209711/image%20(3).jpg?f=3x2&w=299&$p$f$w=c5a262c"));
+        animals.add(new AnimalWiki("Nittereute", new Race("Cane Procione", "Il nittereute, detto anche cane procione o cane viverrino, è una volpe indigena dell'Asia orientale, in particolare le valli fluviali e i margini delle foreste nelle regioni dell'Amur e dell'Ussuri della Siberia orientale, il Giappone, la Manciuria, e l'Indocina.\n" +
+                "\n" +
+                "Il nittereute è principalmente un animale notturno e opportunista, occupando una nicchia ecologica simile a quello del tasso e della volpe rossa, cibandosi di qualsiasi fonte di cibo disponibile, sebbene possa diventare un cacciatore specializzato di anfibi nelle zone umide.\n" +
+                "\n" +
+                "Viene classificato dalla IUCN tra le specie a rischio minimo, dato che è comune nel suo areale indigeno asiatico e ampiamente diffuso in Europa dopo introduzioni artificiali. Esemplari della sottospecie siberiana N. p. ussuriensis sono stati segnalati in Italia nord-orientale sin dalla seconda metà degli anni ottanta, sebbene in bassi numeri. Viene generalmente considerato un animale nocivo in Europa, poiché minaccia le popolazioni di uccelli terricoli e anfibi, e porta varie malattie pericolose come la rabbia.", "50/68 cm", "Color Grigio"), "Nyctereutes procyonoides", "WILD", "https://upload.wikimedia.org/wikipedia/commons/8/85/Der_Marderhund%2C_Tanuki_oder_Enok_%28Nyctereutes_procyonoides%29%2C_bitte_nicht_zu_verwechseln_mit_einem_Waschb%C3%A4r%2C_hier_im_Wisentgehege_in_Springe_%28Kleiner_Deister%29.jpg"));
+        animals.add(new AnimalWiki("Volpe", new Race("Volpe Rossa", "La volpe rossa, o semplicemente volpe (Vulpes vulpes Linnaeus, 1758), è la più grande delle volpi propriamente dette e il carnivoro con l'areale più vasto, essendo presente in tutto l'emisfero boreale, dal circolo polare artico al Nord Africa, il Nord America e l'Eurasia. Il suo areale si è espanso insieme a quello umano, essendo stata introdotta in Australia, dove viene considerata nociva per i marsupiali e gli uccelli indigeni. A causa dei suoi danni ecologici in quest'ultimo continente, la specie è considerata una tra le peggiori specie invasive.\n" +
+                "\n" +
+                "La volpe rossa vive solitamente in coppia o in piccoli gruppi rivolti a una coppia riproduttiva e la sua prole o da un maschio con varie femmine imparentate. I cuccioli cresciuti tendono a rimanere con i genitori per assisterli nella cura di nuovi piccoli. Si ciba prevalentemente di piccoli roditori, ma caccia anche conigli, uccelli terricoli, rettili, invertebrati e giovani ungulati. Ogni tanto si nutre anche di frutta e vegetali. Sebbene tenda a uccidere i predatori più piccoli, incluse altre specie di volpe, è vulnerabile agli attacchi di predatori più grossi come lupi, coyote, sciacalli e vari felini di grossa (come i leopardi) o media taglia (come le linci).\n" +
+                "\n" +
+                "La specie ha una lunga storia d'associazione con gli umani, essendo stata cacciata attivamente come animale nocivo o da pelliccia per molti secoli, ed è protagonista di tante fiabe e leggende. Dato il suo vasto areale e la popolazione numerosa, è fra gli animali più importanti nel commercio delle pellicce.", "75/140 cm", "Colori Rosso/Bianco/Nero"), "Vulpes Vulpes", "WILD","https://www.giornaletrentino.it/image/contentid/policy:1.2991162:1631209711/image%20(3).jpg?f=3x2&w=299&$p$f$w=c5a262c"));
         animals.add(new AnimalWiki("Urocioni", new Race("Volpe Grigia"), "Urocyon", "WILD","https://static.kodami.it/wp-content/uploads/sites/31/2021/05/iStock-1264712034-638x425.jpg"));
         animals.add(new AnimalWiki("Volpe", new Race("Volpe Americana"), "Vulpes Velox", "WILD","https://upload.wikimedia.org/wikipedia/commons/2/2a/Vulpes_velox.jpg"));
         animals.add(new AnimalWiki("Otocione", new Race("Otycion"), "Otycion megalotis", "WILD","https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Bandit_%2835877900754%29.jpg/220px-Bandit_%2835877900754%29.jpg"));
-        animals.add(new AnimalWiki("Gallina", new Race("Gallus"), "Gallus gallus domesticus", "FARM","https://www.tuttosullegalline.it/newsite/wp-content/uploads/2019/01/gallina-Brucie-4.jpg"));
+        animals.add(new AnimalWiki("Gallina", new Race("Gallus", "Il pollo (Gallus gallus domesticus o Gallus sinae) (Linnaeus, 1758) è un uccello domestico derivante da varie specie selvatiche di origini indiane. La sua presenza è documentata dal 4000 a.C. nella piana dell'Indo, da cui (attraverso la Persia) è giunto in Grecia e quindi in Europa.\n" +
+                "\n" +
+                "Darwin attribuì la paternità solo al Gallus gallus bankiva per varie motivazioni, tra cui la somiglianza del colore del piumaggio con quello di alcune razze domestiche, la variabilità delle sottospecie di Gallus gallus a seconda del luogo di diffusione e la fecondità delle uova derivanti dall'accoppiamento con i polli domestici.\n" +
+                "\n" +
+                "Questa posizione è notevolmente mutata nel corso del ventesimo secolo a seguito di esperienze di ibridazione effettuate con le altre specie selvatiche. Oggi si può affermare che alla creazione del pollo domestico hanno contribuito varie specie. I polli sono sempre stati allevati per moltissimi scopi: carne, uova, piume, compagnia, gare di combattimento tra galli, motivazioni religiose, sportive od ornamentali.", "41–46 cm", "Piume"), "Gallus gallus domesticus", "FARM","https://www.tuttosullegalline.it/newsite/wp-content/uploads/2019/01/gallina-Brucie-4.jpg"));
         animals.add(new AnimalWiki("Toro", new Race("Mucca"), "Bos Taurus", "FARM", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRo3nFYjIbXjGoZQ5umhVFLdBLEEAHDP85yAw&usqp=CAU"));
         animals.add(new AnimalWiki("Pecora", new Race("Ovis"), "Ovis aries", "FARM", "https://www.cibo360.it/images/alimentazione/cibi/pecora.jpg"));
         animals.add(new AnimalWiki("Cane", new Race("Siberian Husky"), "Canis lupus familiaris", "PETS","https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Le%C3%AFko_au_bois_de_la_Cambre.jpg/330px-Le%C3%AFko_au_bois_de_la_Cambre.jpg"));
-        animals.add(new AnimalWiki("Cane", new Race("Pastore Tedesco"), "Canis lupus familiaris", "PETS","http://www.difossombrone.it/images/anatomia/difettitesta.jpg"));
-        animals.add(new AnimalWiki("Gatto", new Race("Persiano"), "Felis catus", "PETS","https://upload.wikimedia.org/wikipedia/it/thumb/3/3e/Prisca.jpg/390px-Prisca.jpg"));
+        animals.add(new AnimalWiki("Cane", new Race("Pastore Tedesco", "Il pastore tedesco è un cane di taglia grande, dalla struttura leggermente allungata, di buona robustezza e muscolatura. Il carattere è equilibrato, dai nervi saldi, sicuro di sé, di indole tranquilla con i familiari e assolutamente buona salvo provocazioni. È docile, ma altresì caratterizzato da buona combattività, tempra e coraggio, doti che lo rendono facilmente addestrabile a tutti gli impieghi, dalla guardia alla difesa, dalla pastorizia all'accompagnamento.\n" +
+                "\n" +
+                "La testa vista dall'alto è cuneiforme, la fronte leggermente convessa, presenta un solco mediano appena accennato. Le rime labiali devono essere preferibilmente tese e di colore scuro. La forma degli occhi è a mandorla, il colore varia preferibilmente dallo scuro sino al marrone. Le orecchie sono di forma triangolare, erette, rivolte in avanti. La canna nasale è dritta col tartufo di colore nero. La mascella e la mandibola sono robuste, dotate di buona muscolatura. La formula dentaria conta 42 denti e la chiusura degli incisivi deve essere a forbice. Il collo è forte e robusto, la linea dorsale che discende dal garrese sino alla groppa, deve essere solida e regolare, senza presentare alterazioni che possano disturbare il suo decorso.", "60/65 cm", "Colore marrone/nero"), "Canis lupus familiaris", "PETS","http://www.difossombrone.it/images/anatomia/difettitesta.jpg"));
+        animals.add(new AnimalWiki("Gatto", new Race("Persiano", "Il gatto persiano è un gatto domestico, originario dell'Asia Minore. I primi esemplari furono portati in Europa nel 1626 da Pietro Della Valle. Alla razza fu dato il nome di gatto d'angora o, stranamente, di gatto francese. Quando poi, successivamente, dall'Iran venne importata una varietà di gatti più piccoli e tarchiati e col pelo lungo, venne creata la razza persiana.\n" +
+                "\n" +
+                "Quando nel 1871 fu organizzata la prima grande esposizione felina, dall'inglese Harrison Weir, il Persiano ricevette più riconoscimenti e da allora iniziarono i primi progetti di selezione.\n" +
+                "\n" +
+                "Questo tipo di gatto (ora esclusivamente d'appartamento) era molto apprezzato nell'età vittoriana: si sa che la Regina Vittoria ne possedeva bellissimi esemplari di colore blu.\n" +
+                "\n" +
+                "Molti sono gli allevamenti di questa specie. Il lungo e fluente pelo è il suo fascino e la sua bellezza, la colorazione del manto consta di circa duecento combinazioni di colori: fra le più diffuse, quelle a colori solidi (bianco, crema, nero, blu, cioccolato, lilla e rosso), e, per il tipo tortie, tonalità a squama di tartaruga di colore nero o blu-crema, ma anche cioccolato o lilla.\n" +
+                "\n" +
+                "La Fédération Internationale Féline (FIFE) ha diviso in 3 gruppi il gatto persiano, scegliendo per ogni gruppo una ripartizione di colore: il persiano bicolore con due terzi di colore solido e un terzo di bianco; il persiano arlecchino ha cinque sesti di mantello bianco mentre il colore copre un sesto della superficie; il persiano van con chiazze di colore solo sulla testa e sulla coda.", "30/35 cm", "Lungo, diversi colori"), "Felis catus", "PETS","https://upload.wikimedia.org/wikipedia/it/thumb/3/3e/Prisca.jpg/390px-Prisca.jpg"));
 
+        //Input database test
+        //Race apiRaces = api.getAllRaces(); //RESTITUISCE UN ARRAYLIST DI RACE NON L'OGGETTO!!!
+        //Animal apiSpecies = api.getAllSpecies();
+        /**/
+        //animals.add()
         return animals;
     }
 }
