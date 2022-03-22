@@ -56,6 +56,9 @@ public interface API_Methods_Interface {
     @PUT("/update/pet/{petObject}")
     Call<Boolean> updatePet(@Body Pet pet);
 
+    @GET("/pets/user/{id_user}")
+    Call<List<Pet>> getPetsByUserId(@Path("id_user") int id_user);
+
     //Ritorna tutti gli utenti presenti nel DB
     @GET("/list/users")
     Call<List<User>> getAllUsers();
@@ -65,5 +68,4 @@ public interface API_Methods_Interface {
 
     @GET("/specie/{id_specie}")
     Call<Specie> getSpecieById(@Path("id_specie") int id_specie);
-
 }

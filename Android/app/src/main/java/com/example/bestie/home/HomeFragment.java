@@ -3,6 +3,7 @@ package com.example.bestie.home;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -42,6 +43,7 @@ public class HomeFragment extends Fragment {
     CircularImageView homePetImage;
     TextView first_pet_add;
     CardAdapter adapter;
+    int id_user;
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -57,12 +59,15 @@ public class HomeFragment extends Fragment {
         homePetImage=v.findViewById(R.id.homeImage);
         first_pet_add=v.findViewById(R.id.first_pet_add);
 
+        SharedPreferences pref = act.getSharedPreferences("preferences", Context.MODE_PRIVATE);
+        id_user= pref.getInt("id_user", 0);
+
         Retrofit retrofit = ((API_Connection_Bestie) act.getApplication()).getRetrofit();
         API_Methods_Interface api = retrofit.create(API_Methods_Interface.class);
 
         Toast.makeText(act, "Starting", Toast.LENGTH_SHORT).show();
 
-        Call<List<Pet>> getPets = api.getAllPets();
+        Call<List<Pet>> getPets = api.getPetsByUserId(id_user);
         getPets.enqueue(new Callback<List<Pet>>() {
             @Override
             public void onResponse(Call<List<Pet>> call, Response<List<Pet>> response) {

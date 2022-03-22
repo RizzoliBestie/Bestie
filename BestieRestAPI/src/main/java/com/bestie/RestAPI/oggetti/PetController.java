@@ -40,4 +40,10 @@ public class PetController {
 		petService.updatePet(pet);
 		return true;
 	}
+	
+	@RequestMapping("/pets/user/{id_user}")
+	public List<Pet> getPetByIdUser(@PathVariable int id_user){
+		System.out.println("Pets by Id User getted");
+		return petService.getPetByIdUser(id_user);
+	}
 }

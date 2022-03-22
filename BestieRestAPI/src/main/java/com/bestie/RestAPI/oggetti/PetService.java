@@ -55,4 +55,8 @@ public class PetService {
 				 id_race, name, weight, gender, birthdate, lastMeal, lastWalk, sterilized, fur_type, id_pet);
 	}
 	
+	public List<Pet> getPetByIdUser(int id_user){
+		return jdbcTemplate.query("SELECT * FROM Pet WHERE id_user=?", BeanPropertyRowMapper.newInstance(Pet.class), id_user);
+	}
+	
 }
