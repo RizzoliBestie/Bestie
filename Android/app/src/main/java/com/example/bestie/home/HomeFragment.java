@@ -20,6 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.bestie.API.API_Connection_Bestie;
 import com.example.bestie.API.API_Methods_Interface;
 import com.example.bestie.R;
+import com.example.bestie.pet.NewPetActivity;
 import com.example.bestie.pet.Pet;
 import com.example.bestie.pet.PetActivity;
 import com.mikhaellopez.circularimageview.CircularImageView;
@@ -39,6 +40,7 @@ public class HomeFragment extends Fragment {
     List<Pet> pets = new LinkedList<>();
     List<PetCard> petCards = new LinkedList<>();
     CircularImageView homePetImage;
+    TextView first_pet_add;
     CardAdapter adapter;
 
     @Override
@@ -53,6 +55,7 @@ public class HomeFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_home, container, false);
 
         homePetImage=v.findViewById(R.id.homeImage);
+        first_pet_add=v.findViewById(R.id.first_pet_add);
 
         Retrofit retrofit = ((API_Connection_Bestie) act.getApplication()).getRetrofit();
         API_Methods_Interface api = retrofit.create(API_Methods_Interface.class);
@@ -69,20 +72,33 @@ public class HomeFragment extends Fragment {
                 }
                 Toast.makeText(act, "Success", Toast.LENGTH_SHORT).show();
                 pets = response.body();
-                for (int i = 0; i < pets.size(); i++) {
-                    Pet pet = pets.get(i);
-                    String title = pet.getName();
+                if (pets.size()==0){
+                    Toast.makeText(act, "Benvenuto!", Toast.LENGTH_SHORT).show();
+                    first_pet_add.setText("Clicca qui per creare il tuo primo pet!");
+                    first_pet_add.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Intent addFirstPetIntent = new Intent(act, NewPetActivity.class);
+                            startActivity(addFirstPetIntent);
+                        }
+                    });
+                }
+                else {
+                    for (int i = 0; i < pets.size(); i++) {
+                        Pet pet = pets.get(i);
+                        String title = pet.getName();
                     /*String uriString=pet.getUri_image();
                     if(uriString!=null){
                     Uri uri = Uri.parse(uriString);*/
-                    petCards.add(new PetCard(pet, R.drawable.doggo));
+                        petCards.add(new PetCard(pet, R.drawable.doggo));
+                    }
+                    //else petCards.add(new PetCard(title, R.drawable.doggo));
+                    //}
+                    RecyclerView recyclerView = v.findViewById(R.id.home_pets_container);
+                    recyclerView.setLayoutManager(new LinearLayoutManager(act));
+                    adapter = new CardAdapter(petCards, act);
+                    recyclerView.setAdapter(adapter);
                 }
-                //else petCards.add(new PetCard(title, R.drawable.doggo));
-                //}
-                RecyclerView recyclerView = v.findViewById(R.id.home_pets_container);
-                recyclerView.setLayoutManager(new LinearLayoutManager(act));
-                adapter = new CardAdapter(petCards, act);
-                recyclerView.setAdapter(adapter);
 
             }
 

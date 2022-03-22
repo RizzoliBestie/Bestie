@@ -9,7 +9,6 @@ import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CalendarView;
 import android.widget.EditText;
@@ -89,6 +88,7 @@ public class InfoPetFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_info_pet, container, false);
 
         //ACQUISISCO VALORI PET E SALVO IN VARIABILI
+        assert getArguments() != null;
         petName = getArguments().getString("name");
         weight = getArguments().getDouble("weight");
         furType = getArguments().getString("furType");
@@ -100,6 +100,7 @@ public class InfoPetFragment extends Fragment {
 
         //SETTO BOTTONE DI MODIFICA
         PetActivity petActivity = (PetActivity) getActivity();
+        assert petActivity != null;
         editPetButton = petActivity.getEditPetButton();
 
         //ISTANZIO RETROFIT E API INTERFACE
@@ -107,28 +108,24 @@ public class InfoPetFragment extends Fragment {
         api = retrofit.create(API_Methods_Interface.class);
 
         //IN ASCOLTO SU EDIT BUTTON, SE PREMUTO RICHIESTA PUT
-        editPetButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (mainCodeExecuted) {
-                    Toast.makeText(act, "Modificato!", Toast.LENGTH_SHORT).show();
-                    Pet pet = new Pet(id_pet, id_user, id_race, petName, weight, isMale, null, null, null, sterilized, furType);
-                    Call<Boolean> updatePet = api.updatePet(pet);
-                    updatePet.enqueue(new Callback<Boolean>() {
-                        @Override
-                        public void onResponse(Call<Boolean> call, Response<Boolean> response) {
-                            if (response.isSuccessful()) {
-                                Toast.makeText(petActivity, furType, Toast.LENGTH_SHORT).show();
-                            } else
-                                Toast.makeText(petActivity, "Not succesful", Toast.LENGTH_SHORT).show();
-                        }
+        editPetButton.setOnClickListener(view1 -> {
+            if (mainCodeExecuted) {
+                Pet pet = new Pet(id_pet, id_user, id_race, petName, weight, isMale, null, null, null, sterilized, furType);
+                Call<Boolean> updatePet = api.updatePet(pet);
+                updatePet.enqueue(new Callback<Boolean>() {
+                    @Override
+                    public void onResponse(@NonNull Call<Boolean> call, @NonNull Response<Boolean> response) {
+                        if (response.isSuccessful()) {
+                            Toast.makeText(act, "Modificato!", Toast.LENGTH_SHORT).show();
+                        } else
+                            Toast.makeText(petActivity, "Qualcosa è andato storto :(", Toast.LENGTH_SHORT).show();
+                    }
 
-                        @Override
-                        public void onFailure(Call<Boolean> call, Throwable t) {
-                            Toast.makeText(petActivity, "Failed", Toast.LENGTH_SHORT).show();
-                        }
-                    });
-                }
+                    @Override
+                    public void onFailure(@NonNull Call<Boolean> call, @NonNull Throwable t) {
+                        Toast.makeText(petActivity, "Failed", Toast.LENGTH_SHORT).show();
+                    }
+                });
             }
         });
 
@@ -137,9 +134,10 @@ public class InfoPetFragment extends Fragment {
         Call<List<Race>> getAllRace = api.getAllRaces();
         getAllRace.enqueue(new Callback<List<Race>>() {
             @Override
-            public void onResponse(Call<List<Race>> call, Response<List<Race>> response) {
+            public void onResponse(@NonNull Call<List<Race>> call, @NonNull Response<List<Race>> response) {
                 //SALVO LE RAZZE COME STRINGHE IN UN ARRAY
                 List<Race> raceList = response.body();
+                assert raceList != null;
                 razze = new String[raceList.size()];
                 for (int i = 0; i < raceList.size(); i++) {
                     razze[i] = raceList.get(i).getName();
@@ -157,7 +155,7 @@ public class InfoPetFragment extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<List<Race>> call, Throwable t) {
+            public void onFailure(@NonNull Call<List<Race>> call, @NonNull Throwable t) {
                 Toast.makeText(act, "Caricamento razze fallito", Toast.LENGTH_SHORT).show();
             }
         });
@@ -174,9 +172,10 @@ public class InfoPetFragment extends Fragment {
         Call<List<Specie>> getAllSpecie = api.getAllSpecies();
         getAllSpecie.enqueue(new Callback<List<Specie>>() {
             @Override
-            public void onResponse(Call<List<Specie>> call, Response<List<Specie>> response) {
+            public void onResponse(@NonNull Call<List<Specie>> call, @NonNull Response<List<Specie>> response) {
                 //SALVO LE SPECIE COME STRINGHE IN UN ARRAY
                 List<Specie> specieList = response.body();
+                assert specieList != null;
                 specie = new String[specieList.size()];
                 for (int i = 0; i < specieList.size(); i++) {
                     specie[i] = specieList.get(i).getCommon_name();
@@ -193,7 +192,7 @@ public class InfoPetFragment extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<List<Specie>> call, Throwable t) {
+            public void onFailure(@NonNull Call<List<Specie>> call, @NonNull Throwable t) {
                 Toast.makeText(act, "Caricamento specie fallito", Toast.LENGTH_SHORT).show();
             }
         });
@@ -215,7 +214,7 @@ public class InfoPetFragment extends Fragment {
     }
 
     //METODO PER CARICARE ARRAY PRINCIPALE
-    ArrayList<InfoPetListItem> loadArray(ArrayList<InfoPetListItem> arrayList) {
+    void loadArray(ArrayList<InfoPetListItem> arrayList) {
         InfoPetListItem specie = new InfoPetListItem("Specie:", specieText);
         InfoPetListItem razza = new InfoPetListItem("Razza:", raceText);
         InfoPetListItem peso = new InfoPetListItem("Peso (Kg):", weight);
@@ -231,19 +230,17 @@ public class InfoPetFragment extends Fragment {
         arrayList.add(sterile);
         arrayList.add(dataDiNascita);
 
-        return arrayList;
     }
 
     //METODO PER CARICARE ARRAY SECONDARIO
     // lo uso escluivamente per una questione grafica in modo che sembrerà una list view continua anche se interrotta da una calendar view
-    ArrayList<InfoPetListItem> loadArray2(ArrayList<InfoPetListItem> arrayList) {
+    void loadArray2(ArrayList<InfoPetListItem> arrayList) {
 
         InfoPetListItem hr = new InfoPetListItem(null, null);
         InfoPetListItem sesso = new InfoPetListItem("Sesso:", isMale);
         sesso.subtitle = "";
         arrayList.add(hr);
         arrayList.add(sesso);
-        return arrayList;
     }
 
     //METODO PER CARICARE ENTRAMBI GLI ARRAY CONTEMPORANEAMENTE
@@ -284,47 +281,38 @@ public class InfoPetFragment extends Fragment {
         }
 
         //SETTO METODI ON CLICK PER CAMBIARE SESSO (???)
-        male.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (!isMale) {
-                    imageResourceM = getResources().getIdentifier(maleOnUri, null, act.getPackageName());
-                    Drawable drawableM = getResources().getDrawable(imageResourceM, null);
-                    male.setImageDrawable(drawableM);
+        male.setOnClickListener(view -> {
+            if (!isMale) {
+                imageResourceM = getResources().getIdentifier(maleOnUri, null, act.getPackageName());
+                Drawable drawableM = getResources().getDrawable(imageResourceM, null);
+                male.setImageDrawable(drawableM);
 
-                    imageResourceF = getResources().getIdentifier(femaleUri, null, act.getPackageName());
-                    Drawable drawableF = getResources().getDrawable(imageResourceF, null);
-                    female.setImageDrawable(drawableF);
+                imageResourceF = getResources().getIdentifier(femaleUri, null, act.getPackageName());
+                Drawable drawableF = getResources().getDrawable(imageResourceF, null);
+                female.setImageDrawable(drawableF);
 
-                    isMale = true;
-                    switchSize(male, female);
-                }
+                isMale = true;
+                switchSize(male, female);
             }
         });
-        female.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (isMale) {
-                    imageResourceM = getResources().getIdentifier(maleUri, null, act.getPackageName());
-                    Drawable drawableM = getResources().getDrawable(imageResourceM, null);
-                    male.setImageDrawable(drawableM);
+        female.setOnClickListener(view -> {
+            if (isMale) {
+                imageResourceM = getResources().getIdentifier(maleUri, null, act.getPackageName());
+                Drawable drawableM = getResources().getDrawable(imageResourceM, null);
+                male.setImageDrawable(drawableM);
 
-                    imageResourceF = getResources().getIdentifier(femaleOnUri, null, act.getPackageName());
-                    Drawable drawableF = getResources().getDrawable(imageResourceF, null);
-                    female.setImageDrawable(drawableF);
+                imageResourceF = getResources().getIdentifier(femaleOnUri, null, act.getPackageName());
+                Drawable drawableF = getResources().getDrawable(imageResourceF, null);
+                female.setImageDrawable(drawableF);
 
-                    isMale = false;
-                    switchSize(female, male);
-                }
+                isMale = false;
+                switchSize(female, male);
             }
         });
 
-        infoPetLV.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                InfoPetListItem item = (InfoPetListItem) adapterView.getItemAtPosition(i);
-                setDialog(item);
-            }
+        infoPetLV.setOnItemClickListener((adapterView, view, i, l) -> {
+            InfoPetListItem item = (InfoPetListItem) adapterView.getItemAtPosition(i);
+            setDialog(item);
         });
     }
 
@@ -369,7 +357,7 @@ public class InfoPetFragment extends Fragment {
     }
 
     //DIALOG ITEM SPECIE
-    private Spinner alertDialogSpecie(String title, InfoPetListItem item) {
+    private void alertDialogSpecie(String title, InfoPetListItem item) {
         final Spinner spinnerField = new Spinner(this.getContext());
         ArrayAdapter<CharSequence> specieAdapter1 = new ArrayAdapter<>(act, R.layout.support_simple_spinner_dropdown_item, specie);
         specieAdapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -379,59 +367,51 @@ public class InfoPetFragment extends Fragment {
         AlertDialog dialog = new AlertDialog.Builder(act)
                 .setTitle(title)
                 .setView(spinnerField)
-                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        switch (i) {
-                            case DialogInterface.BUTTON_POSITIVE:
-                                selectedSpecieText = spinnerField.getSelectedItem().toString();
-                                item.setSubtitle(selectedSpecieText);
-                                adapter.notifyDataSetChanged();
-                                if (!selectedSpecieText.equals("")) {
-                                    getStringRacesBySelectedSpecie(selectedSpecieText);
-                                }
-                                break;
-                            case DialogInterface.BUTTON_NEGATIVE:
-                                break;
-                        }
+                .setPositiveButton("OK", (dialogInterface, i) -> {
+                    switch (i) {
+                        case DialogInterface.BUTTON_POSITIVE:
+                            selectedSpecieText = spinnerField.getSelectedItem().toString();
+                            item.setSubtitle(selectedSpecieText);
+                            adapter.notifyDataSetChanged();
+                            if (!selectedSpecieText.equals("")) {
+                                getStringRacesBySelectedSpecie(selectedSpecieText);
+                            }
+                            break;
+                        case DialogInterface.BUTTON_NEGATIVE:
+                            break;
                     }
                 })
                 .setNegativeButton("ANNULLA", null)
                 .create();
         dialog.show();
 
-        return spinnerField;
     }
 
-    private EditText alertDialogWeight(String title, InfoPetListItem item) {
+    private void alertDialogWeight(String title, InfoPetListItem item) {
         final EditText editTextField = new EditText(this.getContext());
         editTextField.setInputType(InputType.TYPE_CLASS_NUMBER);
         AlertDialog dialog = new AlertDialog.Builder(act)
                 .setTitle(title)
                 .setView(editTextField)
-                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        switch (i) {
-                            case DialogInterface.BUTTON_POSITIVE:
-                                String name = String.valueOf(editTextField.getText());
-                                item.setSubtitle(name);
-                                adapter.notifyDataSetChanged();
-                                setWeight(new Double(editTextField.getText().toString()));
-                                break;
-                            case DialogInterface.BUTTON_NEGATIVE:
-                                break;
-                        }
+                .setPositiveButton("OK", (dialogInterface, i) -> {
+                    switch (i) {
+                        case DialogInterface.BUTTON_POSITIVE:
+                            String name = String.valueOf(editTextField.getText());
+                            item.setSubtitle(name);
+                            adapter.notifyDataSetChanged();
+                            setWeight(new Double(editTextField.getText().toString()));
+                            break;
+                        case DialogInterface.BUTTON_NEGATIVE:
+                            break;
                     }
                 })
                 .setNegativeButton("ANNULLA", null)
                 .create();
         dialog.show();
 
-        return editTextField;
     }
 
-    private Spinner alertDialogPelo(String title, InfoPetListItem item) {
+    private void alertDialogPelo(String title, InfoPetListItem item) {
         final Spinner spinnerField = new Spinner(this.getContext());
         ArrayAdapter<CharSequence> specieAdapter1 = ArrayAdapter.createFromResource(act, R.array.peloType, android.R.layout.simple_dropdown_item_1line);
         specieAdapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -441,29 +421,25 @@ public class InfoPetFragment extends Fragment {
         AlertDialog dialog = new AlertDialog.Builder(act)
                 .setTitle(title)
                 .setView(spinnerField)
-                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        switch (i) {
-                            case DialogInterface.BUTTON_POSITIVE:
-                                String name = spinnerField.getSelectedItem().toString();
-                                item.setSubtitle(name);
-                                adapter.notifyDataSetChanged();
-                                setFurType(name);
-                                break;
-                            case DialogInterface.BUTTON_NEGATIVE:
-                                break;
-                        }
+                .setPositiveButton("OK", (dialogInterface, i) -> {
+                    switch (i) {
+                        case DialogInterface.BUTTON_POSITIVE:
+                            String name = spinnerField.getSelectedItem().toString();
+                            item.setSubtitle(name);
+                            adapter.notifyDataSetChanged();
+                            setFurType(name);
+                            break;
+                        case DialogInterface.BUTTON_NEGATIVE:
+                            break;
                     }
                 })
                 .setNegativeButton("ANNULLA", null)
                 .create();
         dialog.show();
 
-        return spinnerField;
     }
 
-    private Spinner alertDialogSterilized(String title, InfoPetListItem item) {
+    private void alertDialogSterilized(String title, InfoPetListItem item) {
         final Spinner spinnerField = new Spinner(this.getContext());
         ArrayAdapter<CharSequence> specieAdapter1 = ArrayAdapter.createFromResource(act, R.array.si_no, android.R.layout.simple_dropdown_item_1line);
         specieAdapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -473,29 +449,22 @@ public class InfoPetFragment extends Fragment {
         AlertDialog dialog = new AlertDialog.Builder(act)
                 .setTitle(title)
                 .setView(spinnerField)
-                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        switch (i) {
-                            case DialogInterface.BUTTON_POSITIVE:
-                                String name = spinnerField.getSelectedItem().toString();
-                                item.setSubtitle(name);
-                                adapter.notifyDataSetChanged();
-                                if (name.equals("Sì"))
-                                    setSterilized(true);
-                                else
-                                    setSterilized(false);
-                                break;
-                            case DialogInterface.BUTTON_NEGATIVE:
-                                break;
-                        }
+                .setPositiveButton("OK", (dialogInterface, i) -> {
+                    switch (i) {
+                        case DialogInterface.BUTTON_POSITIVE:
+                            String name = spinnerField.getSelectedItem().toString();
+                            item.setSubtitle(name);
+                            adapter.notifyDataSetChanged();
+                            setSterilized(name.equals("Sì"));
+                            break;
+                        case DialogInterface.BUTTON_NEGATIVE:
+                            break;
                     }
                 })
                 .setNegativeButton("ANNULLA", null)
                 .create();
         dialog.show();
 
-        return spinnerField;
     }
 
     void getStringRacesBySelectedSpecie(String specieString) {
