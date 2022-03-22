@@ -33,6 +33,19 @@ public class JdbcRaceRepository implements RaceRepository{
 		return jdbcTemplate.query("SELECT * FROM Race WHERE id_race=? ", BeanPropertyRowMapper.newInstance(Race.class), id_race);
 	}
 
+	@Override
+	public void deleteRace(int id_race) {
+		jdbcTemplate.update("DELETE FROM Race WHERE id_race = ? ", id_race);
+		
+	}
+
+	@Override
+	public void updateRace(String name, String information, String size, int id_race) {
+		jdbcTemplate.update("UPDATE Race SET name = ? , information = ? , size = ? WHERE id_race = ?", name, information, size, id_race);
+	}
+
+	
+
 	
 	
 	

@@ -5,10 +5,14 @@ function UpdatePage(){
     switch(check.get('type')){
         case 'users':
             URIAddr = "../../../users/"+check.get('id');
+            break;
         case 'species':
             URIAddr = "../../../species/"+check.get('id');
+            break;
         case 'races':
-            URIAddr = "../../../races/"+check.get('id');
+            //alert(check.get('id'));
+            URIAddr = "../../../race/"+check.get('id');
+            break;
     }
     var xhttp = new XMLHttpRequest();
     var jsonResponse;
@@ -66,6 +70,8 @@ function UpdatePage(){
                         phone_p.appendChild(phone_text);
 
                         //Assegnamento valore atrtributi
+
+                        //alert(jsonResponse);
 
                         username_type.value="text";
                         email_type.value="text";
@@ -209,6 +215,114 @@ function UpdatePage(){
                         document.getElementById("update_form").appendChild(button);
                         break;
                     case 'races':
+                        //Creazione Elementi
+
+                        var name_field = document.createElement("input");
+                        var information_field = document.createElement("input");
+                        var size_field = document.createElement("input");
+                        var fur_type_field = document.createElement("input");
+                        var url_field = document    .createElement("input");
+
+                        var name_p = document.createElement("p");
+                        var information_p = document.createElement("p");
+                        var size_p = document.createElement("p");
+
+                        var button = document.createElement("input");
+
+                        //Creazione attributi
+
+                        var name_type = document.createAttribute("type");
+                        var information_type = document.createAttribute("type");
+                        var size_type = document.createAttribute("type");
+                        var name_style = document.createAttribute("style");
+                        var information_style = document.createAttribute("style");
+                        var size_style = document.createAttribute("style");
+                        var name_value = document.createAttribute("value");
+                        var information_value = document.createAttribute("value");
+                        var size_value = document.createAttribute("value");
+                        var name_id = document.createAttribute("id");
+                        var information_id = document.createAttribute("id");
+                        var size_id = document.createAttribute("id");
+
+                        var name_title = document.createAttribute("style");
+                        var information_title = document.createAttribute("style");
+                        var size_title = document.createAttribute("style");
+                        
+                        var button_type = document.createAttribute("type");
+                        var button_value = document.createAttribute("value");
+                        var button_style = document.createAttribute("style");
+                        var button_onclick = document.createAttribute("onclick");
+
+                        //TextNode
+
+                        var name_text = document.createTextNode("Name");
+                        var information_text = document.createTextNode("information");
+                        var size_text = document.createTextNode("size");
+
+                        name_p.appendChild(name_text);
+                        information_p.appendChild(information_text);
+                        size_p.appendChild(size_text);
+
+                        //Assegnamento valore atrtributi
+
+                        //alert(jsonResponse);
+
+                        name_type.value="text";
+                        information_type.value="text";
+                        size_type.value="text";
+                        name_style.value="display: block; margin-top: 2em; height: 3em; width: 20em; margin-left: 3em;";
+                        information_style.value="display: block; margin-top: 2em; height: 3em; width: 20em; margin-left: 3em;";
+                        size_style.value="display: block; margin-top: 2em; height: 3em; width: 20em; margin-left: 3em;";
+                        name_value.value=jsonResponse.name;
+                        information_value.value=jsonResponse.information;
+                        size_value.value=jsonResponse.size;
+                        name_id.value = "nameID";
+                        information_id.value = "informationID";
+                        size_id.value = "sizeID";
+
+                        name_title.value="margin-top: 2em; font-weigth: bold; margin-left: 3em;";
+                        information_title.value="margin-top: 2em; font-weigth: bold; margin-left: 3em;";
+                        size_title.value="margin-top: 2em; font-weigth: bold; margin-left: 3em;";
+
+                        button_type.value = "button";
+                        button_value.value = "Send";
+                        button_style.value = "margin-top: 2em; margin-left: 3em;";
+                        button_onclick.value = "updateRecord('races')";
+
+                        //Assegnamento attributi -> elementi
+
+                        name_field.setAttributeNode(name_type);
+                        information_field.setAttributeNode(information_type);
+                        size_field.setAttributeNode(size_type);
+                        name_field.setAttributeNode(name_style);
+                        information_field.setAttributeNode(information_style);
+                        size_field.setAttributeNode(size_style);
+                        name_field.setAttributeNode(name_value);
+                        information_field.setAttributeNode(information_value);
+                        size_field.setAttributeNode(size_value);
+                        name_field.setAttributeNode(name_id);
+                        information_field.setAttributeNode(information_id);
+                        size_field.setAttributeNode(size_id);
+
+
+                        name_p.setAttributeNode(name_title);
+                        information_p.setAttributeNode(information_title);
+                        size_p.setAttributeNode(size_title);
+
+                        button.setAttributeNode(button_type);
+                        button.setAttributeNode(button_value);
+                        button.setAttributeNode(button_style);
+                        button.setAttributeNode(button_onclick);
+
+                        //Costruzione elementi
+
+                        document.getElementById("update_form").appendChild(name_p);
+                        document.getElementById("update_form").appendChild(name_field);
+                        document.getElementById("update_form").appendChild(information_p);
+                        document.getElementById("update_form").appendChild(information_field);
+                        document.getElementById("update_form").appendChild(size_p);
+                        document.getElementById("update_form").appendChild(size_field);
+                        document.getElementById("update_form").appendChild(button);
                         break;
                 }
             }
@@ -223,7 +337,7 @@ function UpdatePage(){
 }
 
 function updateRecord(type){
-    //alert(document.getElementById("usernameID").value);
+    //alert(type);
     var URIAddr;
     switch(type){
         case "users":
@@ -233,17 +347,26 @@ function updateRecord(type){
             var id_user = (new URLSearchParams(window.location.search)).get('id');
 
             URIAddr = "../../../updateUser/"+username+"/"+email+"/"+phone_number+"/"+id_user;
+            alert(URIAddr);
             break;
         case "species":
-            var common_name = document.getElementById("common_nameID");
-            var scientific_name = document.getElementById("scientific_nameID");
+            var common_name = document.getElementById("common_nameID").value;
+            var scientific_name = document.getElementById("scientific_nameID").value;
+            var id_specie = (new URLSearchParams(window.location.search)).get('id');
 
-            URIAddr = "../../../updateSpecie/"+common_name+"/"+scientific_name;
+            URIAddr = "../../../updateSpecie/"+common_name+"/"+scientific_name+"/"+id_specie;
             break;
         case "races":
+            var name = document.getElementById("nameID").value;
+            var information = document.getElementById("informationID").value;
+            var size = document.getElementById("sizeID").value;
+            var id_specie = (new URLSearchParams(window.location.search)).get('id');
+
+            URIAddr = "../../../updateRace/"+name+"/"+information+"/"+size+"/"+id_specie;
+
             break;
     }
-    //alert(id_user);
+    //alert(URIAddr);
 
     var xhttp = new XMLHttpRequest();
     //var jsonResponse;

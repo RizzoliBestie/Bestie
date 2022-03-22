@@ -44,6 +44,7 @@ public class SpecieController {
 	
 	@DeleteMapping("/deleteSpecie/{id_specie}")
 	public void deleteSpecie(@PathVariable("id_specie") int id_specie) {
+		System.out.println("Delete");
 		jdbcSpecieRepository.deleteSpecie(id_specie);
 	}
 	

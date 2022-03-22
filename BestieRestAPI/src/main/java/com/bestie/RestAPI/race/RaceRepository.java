@@ -13,4 +13,8 @@ public interface RaceRepository {
 	
 	public List<Race> getRaceById(int id_race);
 		
+	public void deleteRace(int id_race);
+	
+	public void updateRace(String name, String information, String size, int id_race);
+	
 }

@@ -131,7 +131,7 @@ function Menu_Selection(){
                             update_class.value = "pencil";
                             delete_class.value = "trash";
                             update_onclick.value = "switchPage('type=species&id="+ jsonResponse[i].id_specie + "')";
-                            delete_onclick.value= "deleteRow('"+ jsonResponse[i].id_specie+"')";
+                            delete_onclick.value= "deleteSpecieRow('"+ jsonResponse[i].id_specie+"')";
 
                             //Aggiunta attributi
                             update_input.setAttributeNode(update_type);
@@ -197,8 +197,8 @@ function Menu_Selection(){
                             delete_src.value="../img/icons/trash.png";
                             update_class.value = "pencil";
                             delete_class.value = "trash";
-                            update_onclick.value = "switchPage('type=races&id="+ jsonResponse[i].id_user + "')";
-                            delete_onclick.value= "deleteRow('"+ jsonResponse[i].id_race+"')";
+                            update_onclick.value = "switchPage('type=races&id="+ jsonResponse[i].id_race + "')";
+                            delete_onclick.value= "deleteRaceRow('"+ jsonResponse[i].id_race+"')";
 
                             //Aggiunta attributi
                             update_input.setAttributeNode(update_type);
@@ -258,6 +258,40 @@ function switchPage(query){
 function deleteUserRow(id){
     var xhttp = new XMLHttpRequest();
     var URIAddr = "../../../deleteUser/"+id;
+    var choice = confirm("Vuoi davvero eliminare questa riga (id = "+id+")?");
+    //var jsonResponse;
+    if(choice){
+        xhttp.onreadystatechange = function() {
+            if (this.status == 200 && xhttp.readyState == 4) {
+                Menu_Selection();
+            }
+        }
+        xhttp.open("DELETE", URIAddr);
+        xhttp.send(null);
+    }else{
+    }
+}
+
+function deleteSpecieRow(id){
+    var xhttp = new XMLHttpRequest();
+    var URIAddr = "../../../deleteSpecie/"+id;
+    var choice = confirm("Vuoi davvero eliminare questa riga (id = "+id+")?");
+    //var jsonResponse;
+    if(choice){
+        xhttp.onreadystatechange = function() {
+            if (this.status == 200 && xhttp.readyState == 4) {
+                Menu_Selection();
+            }
+        }
+        xhttp.open("DELETE", URIAddr);
+        xhttp.send(null);
+    }else{
+    }
+}
+
+function deleteRaceRow(id){
+    var xhttp = new XMLHttpRequest();
+    var URIAddr = "../../../deleteRace/"+id;
     var choice = confirm("Vuoi davvero eliminare questa riga (id = "+id+")?");
     //var jsonResponse;
     if(choice){
