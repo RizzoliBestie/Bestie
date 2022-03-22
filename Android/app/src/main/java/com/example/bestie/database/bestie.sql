@@ -51,12 +51,17 @@ CREATE TABLE IF NOT EXISTS `Race` (
   PRIMARY KEY (`id_race`),
   KEY `id_specie_RACE` (`id_specie`),
   CONSTRAINT `id_specie_RACE` FOREIGN KEY (`id_specie`) REFERENCES `Specie` (`id_specie`) ON DELETE RESTRICT ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dump dei dati della tabella Bestie.Race: ~1 rows (circa)
+-- Dump dei dati della tabella Bestie.Race: ~6 rows (circa)
 /*!40000 ALTER TABLE `Race` DISABLE KEYS */;
 REPLACE INTO `Race` (`id_race`, `id_specie`, `name`, `information`, `size`, `fur_type`, `url`) VALUES
-	(1, 1, 'golden_retriver', 'bello_e_biondo', 'XL', 'long', '');
+	(1, 1, 'golden_retriver', 'not the tipical princess', 'XL', 'long', 'https://golden-retriver.it'),
+	(2, 1, 'askyyyyy', 'He likes churros', 'XL', 'Long', 'https://www.asky.com'),
+	(3, 2, 'european', 'he doesn\'t like run too much', 'S', 'short', 'https://www.yyy.zzz'),
+	(4, 4, 'fennec', 'Big ears', 'M', 'short', 'https://www.fennec.com'),
+	(5, 3, 'cricetus cricetus', 'when you sleep, he watches you', 'XXS', 'short', 'https://www.watchyou.it'),
+	(6, 5, 'kunekune', 'like a dog, but bigger', 'XXL', 'medium', 'https://kunekune.big-dog.en');
 /*!40000 ALTER TABLE `Race` ENABLE KEYS */;
 
 -- Dump della struttura di tabella Bestie.Specie
@@ -65,13 +70,16 @@ CREATE TABLE IF NOT EXISTS `Specie` (
   `common_name` varchar(50) NOT NULL,
   `scientific_name` varchar(50) NOT NULL,
   PRIMARY KEY (`id_specie`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dump dei dati della tabella Bestie.Specie: ~2 rows (circa)
+-- Dump dei dati della tabella Bestie.Specie: ~5 rows (circa)
 /*!40000 ALTER TABLE `Specie` DISABLE KEYS */;
 REPLACE INTO `Specie` (`id_specie`, `common_name`, `scientific_name`) VALUES
 	(1, 'dog', 'canis_familiaris'),
-	(2, 'cat', 'cattttttttt');
+	(2, 'cat', 'felis catus'),
+	(3, 'hamster', 'cricetinae'),
+	(4, 'fox', 'vulpes vulpes'),
+	(5, 'pig', 'sus');
 /*!40000 ALTER TABLE `Specie` ENABLE KEYS */;
 
 -- Dump della struttura di tabella Bestie.User
@@ -82,17 +90,19 @@ CREATE TABLE IF NOT EXISTS `User` (
   `password` varchar(50) NOT NULL,
   `phone_number` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id_user`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dump dei dati della tabella Bestie.User: ~6 rows (circa)
+-- Dump dei dati della tabella Bestie.User: ~8 rows (circa)
 /*!40000 ALTER TABLE `User` DISABLE KEYS */;
 REPLACE INTO `User` (`id_user`, `username`, `email`, `password`, `phone_number`) VALUES
 	(1, 'mike73', 'mike73@', '123456', '1234567890'),
-	(2, 'mike73', 'mike@', '098765', '1234567890'),
-	(3, 'luca', 'luca@', 'volpe!', '1234567890'),
+	(2, 'piero_sasso', 'piero@gmai.it', 'foggianet77', 'null'),
+	(3, 'paolita', 'paolita@libero.it', 'papa0l1t4', '3337776660'),
 	(4, 'lorenzo', 'lorenzo@', 'giuseppesimone69', '3330987658'),
 	(5, 'ricky', 'ricky@', '101010', '0372729999'),
-	(6, 'maiale', 'maiale@', '124536sffg', '12455314313');
+	(6, 'pigduck', 'pigduck@yahoo.com', '124536sffg', '0981234756'),
+	(7, 'indomabile', 'indo@gmail.com', 'indoModena98', '8465288711'),
+	(8, 'kaytetsu', 'kay.tetsu@gmail.com', 'bolognaTortello777', NULL);
 /*!40000 ALTER TABLE `User` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;

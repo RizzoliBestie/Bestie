@@ -347,7 +347,7 @@ function updateRecord(type){
             var id_user = (new URLSearchParams(window.location.search)).get('id');
 
             URIAddr = "../../../updateUser/"+username+"/"+email+"/"+phone_number+"/"+id_user;
-            alert(URIAddr);
+            //alert(URIAddr);
             break;
         case "species":
             var common_name = document.getElementById("common_nameID").value;
